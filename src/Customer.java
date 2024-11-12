@@ -7,8 +7,8 @@ public class Customer {
 	private String email;
 	private String password;
 	private String address;
-	private LinkedList<String> phoneNumbers;
-	private LinkedList<Payment> savedPaymentMethods;
+	private final LinkedList<String> phoneNumbers = new LinkedList<>();;
+	private final LinkedList<Payment> savedPaymentMethods = new LinkedList<>();
 	
 	Customer(String name, String email, String password, String address, String phoneNumber) {
 		userID = idCounter;
@@ -65,11 +65,11 @@ public class Customer {
 		return phoneNumbers.get(index);
 	}
 	
-	public void addPhoneNumber(String phoneNumber) {
-		if (phoneNumbers.contains(phoneNumber)) {
-			return;
-		}
+	public boolean addPhoneNumber(String phoneNumber) {
+		if (phoneNumbers.contains(phoneNumber))
+			return false;
 		phoneNumbers.addLast(phoneNumber);
+		return true;
 	}
 	
 	public boolean removePhoneNumber(String phoneNumber) {
