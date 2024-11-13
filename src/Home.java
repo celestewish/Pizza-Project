@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Home {
+public class Home extends JFrame {
 	private JPanel panelHome;
 	private JButton btnHome;
 	private JButton btnMenu;
@@ -10,10 +10,11 @@ public class Home {
 	private JButton btnLogin;
 	
 	public Home() {
+		createGUI();
 		btnHome.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+				
 			}
 		});
 		
@@ -37,5 +38,14 @@ public class Home {
 			
 			}
 		});
+	}
+	
+	private void createGUI() {
+		setSize(300, 200);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	public JPanel getPanelHome() {
+		return panelHome;
 	}
 }

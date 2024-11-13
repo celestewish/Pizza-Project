@@ -1,15 +1,9 @@
 import java.util.LinkedList;
 
-enum deliveryMethod {
-	PICKUP,
-	DELIVERY,
-	DINE_IN
-}
-
 public class Order {
 	private static int orderCounter = 1;
 	private final int orderNumber;
-	private LinkedList<MenuItem> items;
+	private final LinkedList<MenuItem> items;
 	private deliveryMethod deliveryMethod;
 	private boolean cash;
 	private Payment payment;
