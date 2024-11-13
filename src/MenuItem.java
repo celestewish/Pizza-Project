@@ -32,4 +32,8 @@ public abstract class MenuItem {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	
+	public void incrementCount(int count) {
+		this.count += count;
+	}
 }
