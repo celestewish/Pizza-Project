@@ -1,16 +1,22 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class FrameLogic extends JFrame{
+public class FrameLogic extends JFrame {
 	private JPanel screenContainer;
 	
+	private Customer curUser;
+	private boolean loggedIn;
+	
 	public FrameLogic() {
+		loggedIn = false;
+		
 		setContentPane(screenContainer);
 		setTitle("Mom and Pop's Shop");
 		setSize(1200, 800);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 		
 		
 		screenContainer.setLayout(new CardLayout());
