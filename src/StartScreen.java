@@ -16,7 +16,7 @@ public class StartScreen extends CardScreen {
 		
 		
 		btnLogin.addActionListener((ActionEvent ) -> {
-			showScreen("SignUp");
+			showScreen("SignIn");
 		});
 		btnHome.addActionListener(new ActionListener() {
 			@Override
@@ -33,7 +33,7 @@ public class StartScreen extends CardScreen {
 		btnSignIn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				showScreen("SignUp");
+				showScreen("SignIn");
 			}
 		});
 	}
