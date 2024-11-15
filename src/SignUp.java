@@ -11,7 +11,7 @@ public class SignUp extends CardScreen {
 	private JTextField txtFname;
 	private JTextField txtMname;
 	private JTextField txtLname;
-	private JPasswordField txtPasword;
+	private JPasswordField txtPassword;
 	private JTextField txtEmail;
 	
 	private JCheckBox showPasswordCheckBox;
@@ -43,9 +43,9 @@ public class SignUp extends CardScreen {
 		
 		showPasswordCheckBox.addActionListener(_ -> {
 			if (showPasswordCheckBox.isSelected())
-				txtPasword.setEchoChar((char)0);
+				txtPassword.setEchoChar((char)0);
 			else
-				txtPasword.setEchoChar('*');
+				txtPassword.setEchoChar('*');
 		});
 	}
 	
