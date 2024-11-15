@@ -12,7 +12,7 @@ public class SignIn extends CardScreen {
 
 	private JButton btnMenu;
 	private JButton btnSignIn;
-	
+
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer) {
 		super(screenLayoutController, screenContainer);
 		btnReturn.addActionListener((ActionEvent) -> {
