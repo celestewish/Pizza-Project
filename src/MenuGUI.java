@@ -33,7 +33,10 @@ public class MenuGUI extends CardScreen{
     private JTextArea $PriceTextArea4;
     private JComboBox comboBox4;
     private JButton addButton2;
-    private JTextArea textArea1;
+    private JTextArea garlicKnotsTextArea;
+    private JTextArea $PriceTextArea5;
+    private JComboBox comboBox5;
+    private JButton addButton3;
 
     public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer) {
         super(screenLayoutController, screenContainer);
