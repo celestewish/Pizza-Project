@@ -12,6 +12,10 @@ public class SignIn extends CardScreen {
 
 	private JButton btnMenu;
 	private JButton btnSignIn;
+	private JTextField textEmail;
+	private JTextField textPassword;
+	private JCheckBox keepMeLoggedInCheckBox;
+	private JButton signInButton;
 
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer) {
 		super(screenLayoutController, screenContainer);
