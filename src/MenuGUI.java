@@ -7,6 +7,18 @@ public class MenuGUI extends CardScreen{
     JFrame frame;
     private JLabel statusLabel;
     private JPanel panel1;
+    private JButton homeButton;
+    private JButton dealsButton;
+    private JButton menuButton;
+    private JButton locationsButton;
+    private JButton carryOutXMinutesButton;
+    private JButton viewOrderButton;
+    private JTextArea createYourOwnPizzaTextArea;
+    private JTextArea $PriceTextArea;
+    private JButton createButton;
+    private JTextArea wingsTextArea;
+    private JTextField $PriceTextField;
+    private JComboBox Add;
 
     public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer) {
         super(screenLayoutController, screenContainer);
