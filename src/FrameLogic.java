@@ -4,20 +4,10 @@ import java.awt.*;
 public class FrameLogic extends JFrame{
 	private JPanel screenContainer;
 	private JPanel login;
-	private JButton btnHome;
-	private JButton btnMenu;
-	private JButton btnSignIn;
 	private JButton btnLogin;
 	private JPanel sign_in;
-	private JTextField emailField;
-	private JLabel email;
-	private JLabel password;
-	private JPasswordField passwordField;
-	private JCheckBox checkStaySignedIn;
-	private JButton btnAcceptCredentials;
-	private JLabel txtlabel;
-	private JButton signUpButton;
 	private JButton btnReturn;
+	private JButton btnHome_s;
 	
 	public FrameLogic() {
 		setContentPane(screenContainer);
@@ -28,14 +18,23 @@ public class FrameLogic extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		screenContainer.setLayout(new CardLayout());
+		SignUp signUp = new SignUp((CardLayout)screenContainer.getLayout(), screenContainer);
+		screenContainer.add(signUp.getScreenPanel(), "SignUp");
+		((CardLayout) screenContainer.getLayout()).show(screenContainer, "SignUp");
+		
+		
 		screenContainer.add(login, "Login");
 		screenContainer.add(sign_in, "SignIn");
 		
-		btnLogin.addActionListener(e -> {
+		btnLogin.addActionListener(_ -> {
 			CardLayout layout = (CardLayout) screenContainer.getLayout();
 			layout.show(screenContainer, "SignIn");
 		});
-		btnReturn.addActionListener(e -> {
+		btnReturn.addActionListener(_ -> {
+			CardLayout layout = (CardLayout) screenContainer.getLayout();
+			layout.show(screenContainer, "Login");
+		});
+		btnHome_s.addActionListener(_ -> {
 			CardLayout layout = (CardLayout) screenContainer.getLayout();
 			layout.show(screenContainer, "Login");
 		});
