@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class MenuGUI extends CardScreen{
@@ -30,6 +28,12 @@ public class MenuGUI extends CardScreen{
     private JComboBox comboBox3;
     private JButton addButton;
     private JButton addButton1;
+    private JScrollBar scrollBar1;
+    private JTextArea chocolateLavaCakeTextArea;
+    private JTextArea $PriceTextArea4;
+    private JComboBox comboBox4;
+    private JButton addButton2;
+    private JTextArea textArea1;
 
     public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer) {
         super(screenLayoutController, screenContainer);
