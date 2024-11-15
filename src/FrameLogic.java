@@ -3,11 +3,6 @@ import java.awt.*;
 
 public class FrameLogic extends JFrame{
 	private JPanel screenContainer;
-	private JPanel login;
-	private JButton btnLogin;
-	private JPanel sign_in;
-	private JButton btnReturn;
-	private JButton btnHome_s;
 	
 	public FrameLogic() {
 		setContentPane(screenContainer);
