@@ -3,12 +3,8 @@ import java.awt.*;
 
 public class FrameLogic extends JFrame {
 	private JPanel screenContainer;
-	
-	private Customer curUser;
-	private boolean loggedIn;
-	
+
 	public FrameLogic() {
-		loggedIn = false;
 		
 		setContentPane(screenContainer);
 		setTitle("Mom and Pop's Shop");

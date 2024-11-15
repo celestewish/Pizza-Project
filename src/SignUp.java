@@ -44,6 +44,8 @@ public class SignUp extends CardScreen {
 			else
 				txtPassword.setEchoChar('*');
 		});
+		
+		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 	}
 	
 	public JPanel getScreenPanel() {

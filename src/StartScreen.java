@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class StartScreen extends CardScreen {
 	private JPanel pnlStartScreen;
@@ -15,26 +13,20 @@ public class StartScreen extends CardScreen {
 		super(screenLayoutController, screenContainer);
 		
 		
-		btnLogin.addActionListener((ActionEvent ) -> {
+		btnLogin.addActionListener(_ -> {
 			showScreen("SignIn");
 		});
-		btnHome.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("StartScreen");
-			}
+		
+		btnHome.addActionListener(_ -> {
+			showScreen("StartScreen");
 		});
-		btnMenu.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("MenuGUI");
-			}
+		
+		btnMenu.addActionListener(_ -> {
+			showScreen("MenuGUI");
 		});
-		btnSignIn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("SignIn");
-			}
+		
+		btnSignIn.addActionListener(_ -> {
+			showScreen("SignIn");
 		});
 	}
 	
