@@ -11,11 +11,12 @@ public class SignIn extends CardScreen {
 	private JButton btnReturn;
 
 	private JButton btnMenu;
-	private JButton btnSignIn;
 	private JTextField textEmail;
 	private JTextField textPassword;
 	private JCheckBox keepMeLoggedInCheckBox;
-	private JButton signInButton;
+	private JButton signInSignUpButton;
+	private JButton btnSignIn;
+	private JButton signUpButton;
 
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer) {
 		super(screenLayoutController, screenContainer);
@@ -26,6 +27,18 @@ public class SignIn extends CardScreen {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				showScreen("StartScreen");
+			}
+		});
+		btnMenu.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				showScreen("MenuScreen");
+			}
+		});
+		signInSignUpButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				showScreen("SignIn");
 			}
 		});
 	}
