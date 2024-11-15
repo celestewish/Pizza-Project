@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public class CheckOut extends CardScreen{
     private JPanel panel1;
     private JButton homeButton;
-    private JButton dealsButton;
     private JButton menuButton;
     private JButton locationsButton;
     private JTextField checkoutTextField;
@@ -36,11 +35,13 @@ public class CheckOut extends CardScreen{
                 showScreen("MenuGUI");
             }
         });
+        locationsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {showScreen("Locations");}
+        });
 
     }
 
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
+
 }
