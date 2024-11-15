@@ -28,13 +28,15 @@ public class MenuGUI extends CardScreen{
     private JTextArea $PriceTextArea3;
     private JComboBox comboBox2;
     private JComboBox comboBox3;
+    private JButton addButton;
+    private JButton addButton1;
 
     public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer) {
         super(screenLayoutController, screenContainer);
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showScreen("MenuGUI");
+                showScreen("");
             }
         });
     }
