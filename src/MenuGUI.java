@@ -17,8 +17,17 @@ public class MenuGUI extends CardScreen{
     private JTextArea $PriceTextArea;
     private JButton createButton;
     private JTextArea wingsTextArea;
-    private JTextField $PriceTextField;
     private JComboBox Add;
+    private JTextArea $PriceTextArea1;
+    private JTextArea drinksTextArea;
+    private JTextArea $PriceTextArea2;
+    private JComboBox TypeDrinks;
+    private JComboBox DrinkSize;
+    private JComboBox comboBox1;
+    private JTextArea garlicBreadTextArea;
+    private JTextArea $PriceTextArea3;
+    private JComboBox comboBox2;
+    private JComboBox comboBox3;
 
     public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer) {
         super(screenLayoutController, screenContainer);
