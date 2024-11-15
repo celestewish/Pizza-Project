@@ -36,7 +36,7 @@ public class MenuGUI extends CardScreen{
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showScreen("");
+                showScreen("PizzaGUI");
             }
         });
     }
