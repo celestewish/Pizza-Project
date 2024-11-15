@@ -12,31 +12,25 @@ public class FrameLogic extends JFrame{
 	public FrameLogic() {
 		setContentPane(screenContainer);
 		setTitle("Mom and Pop's Shop");
-		setSize(800, 600);
+		setSize(1200, 800);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
+		
 		screenContainer.setLayout(new CardLayout());
+		
+		StartScreen startScreen = new StartScreen((CardLayout)screenContainer.getLayout(), screenContainer);
+		screenContainer.add(startScreen.getScreenPanel(), "StartScreen");
+		
 		SignUp signUp = new SignUp((CardLayout)screenContainer.getLayout(), screenContainer);
 		screenContainer.add(signUp.getScreenPanel(), "SignUp");
-		((CardLayout) screenContainer.getLayout()).show(screenContainer, "SignUp");
+		
+		SignIn signIn = new SignIn((CardLayout)screenContainer.getLayout(), screenContainer );
+		screenContainer.add(signIn.getScreenPanel(), "SignIn");
 		
 		
-		screenContainer.add(login, "Login");
-		screenContainer.add(sign_in, "SignIn");
 		
-		btnLogin.addActionListener(_ -> {
-			CardLayout layout = (CardLayout) screenContainer.getLayout();
-			layout.show(screenContainer, "SignIn");
-		});
-		btnReturn.addActionListener(_ -> {
-			CardLayout layout = (CardLayout) screenContainer.getLayout();
-			layout.show(screenContainer, "Login");
-		});
-		btnHome_s.addActionListener(_ -> {
-			CardLayout layout = (CardLayout) screenContainer.getLayout();
-			layout.show(screenContainer, "Login");
-		});
+		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");
 	}
 }

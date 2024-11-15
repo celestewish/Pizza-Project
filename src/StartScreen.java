@@ -11,6 +11,11 @@ public class StartScreen extends CardScreen {
 	
 	public StartScreen(CardLayout screenLayoutController, JPanel screenContainer) {
 		super(screenLayoutController, screenContainer);
+		
+		
+		btnLogin.addActionListener(_ -> {
+			showScreen("SignUp");
+		});
 	}
 	
 	public JPanel getScreenPanel() {

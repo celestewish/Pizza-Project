@@ -14,6 +14,8 @@ public class SignUp extends CardScreen {
 	private JPasswordField txtPasword;
 	private JTextField txtEmail;
 	
+	private JCheckBox showPasswordCheckBox;
+	
 	private JTextField txtStreet;
 	private JTextField txtCity;
 	private JTextField txtState;
@@ -35,8 +37,15 @@ public class SignUp extends CardScreen {
 	public SignUp(CardLayout screenLayoutController, JPanel screenContainer) {
 		super(screenLayoutController, screenContainer);
 		
-		btnReturn.addActionListener(e -> {
-			showScreen("Login");
+		btnReturn.addActionListener(_ -> {
+			showScreen("StartScreen");
+		});
+		
+		showPasswordCheckBox.addActionListener(_ -> {
+			if (showPasswordCheckBox.isSelected())
+				txtPasword.setEchoChar((char)0);
+			else
+				txtPasword.setEchoChar('*');
 		});
 	}
 	
