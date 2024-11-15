@@ -7,7 +7,7 @@ public class Customer {
 	private String email;
 	private String password;
 	private String address;
-	private final LinkedList<String> phoneNumbers = new LinkedList<>();;
+	private final LinkedList<String> phoneNumbers = new LinkedList<>();
 	private final LinkedList<Payment> savedPaymentMethods = new LinkedList<>();
 	
 	Customer(String name, String email, String password, String address, String phoneNumber) {
