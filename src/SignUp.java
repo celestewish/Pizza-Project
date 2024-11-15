@@ -23,7 +23,6 @@ public class SignUp extends CardScreen {
 	
 	private JTextField txtPhoneNumber;
 	
-	
 	private JCheckBox boxCard;
 	private JCheckBox boxCash;
 	
@@ -37,9 +36,7 @@ public class SignUp extends CardScreen {
 	public SignUp(CardLayout screenLayoutController, JPanel screenContainer) {
 		super(screenLayoutController, screenContainer);
 		
-		btnReturn.addActionListener(_ -> {
-			showScreen("StartScreen");
-		});
+		btnReturn.addActionListener(_ -> showScreen("StartScreen"));
 		
 		showPasswordCheckBox.addActionListener(_ -> {
 			if (showPasswordCheckBox.isSelected())
