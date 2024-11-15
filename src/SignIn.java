@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
@@ -18,7 +19,7 @@ public class SignIn extends CardScreen {
 	
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer) {
 		super(screenLayoutController, screenContainer);
-		btnReturn.addActionListener(_ -> {
+		btnReturn.addActionListener((ActionEvent) -> {
 		
 		});
 	}
