@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -5,16 +6,12 @@ import javax.swing.*;
 public class MenuGUI extends CardScreen{
     JFrame frame;
     private JLabel statusLabel;
-    private JButton button1;
-    private JButton btnHome;
-    private JComboBox comboBox1;
-    
-    public MenuGUI() {
-        btnHome.addActionListener(_ -> {
-            showScreen("StartScreen");
-        });
+    private JPanel panel1;
+
+    public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer) {
+        super(screenLayoutController, screenContainer);
     }
-    
+
     public static void main(String[] args) {
         JFrame frame = new JFrame();
         JLabel menuTitle = new JLabel();
@@ -29,7 +26,6 @@ public class MenuGUI extends CardScreen{
                 createPizza();
             }
         });
-
     }
     public static void createPizza() {
         JFrame frame = new JFrame();
