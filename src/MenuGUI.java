@@ -31,6 +31,15 @@ public class MenuGUI extends CardScreen{
 
     public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer) {
         super(screenLayoutController, screenContainer);
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showScreen("MenuGUI");
+            }
+        });
+    }
+    public JPanel getScreenPanel(){
+        return panel1;
     }
 
     public static void main(String[] args) {
