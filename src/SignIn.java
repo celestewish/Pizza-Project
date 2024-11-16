@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
 
 public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
@@ -18,6 +20,7 @@ public class SignIn extends CardScreen {
 	private JButton btnLocations;
 	private JCheckBox showPasswordCheckBox;
 	private JPasswordField txtPassword;
+	private JLabel lblEmailNotExist;
 	
 	
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
@@ -67,6 +70,10 @@ public class SignIn extends CardScreen {
 			if (isTextEmpty(txtEmail, "Please enter an email.", "", 0)) {
 				return;
 			}
+			if (!info.UserDatabase().customerExists(txtEmail.getText())) {
+				lblEmailNotExist.setText("! No account exists for this email");
+				return;
+			}
 			if (isTextEmpty(txtPassword, "Please enter a password.", "", 0)) {
 				return;
 			}
@@ -89,6 +96,24 @@ public class SignIn extends CardScreen {
 				txtPassword.setEchoChar((char)0);
 			else
 				txtPassword.setEchoChar('*');
+		});
+		
+		// Listener to reset a warning label when the text is changed
+		txtEmail.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+			@Override
+			public void insertUpdate(javax.swing.event.DocumentEvent e) {
+				lblEmailNotExist.setText(""); // Clear the label
+			}
+			
+			@Override
+			public void removeUpdate(javax.swing.event.DocumentEvent e) {
+				lblEmailNotExist.setText(""); // Clear the label
+			}
+			
+			@Override
+			public void changedUpdate(javax.swing.event.DocumentEvent e) {
+				// No action needed for plain text fields
+			}
 		});
 	}
 	
