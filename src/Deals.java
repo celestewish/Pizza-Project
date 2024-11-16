@@ -8,6 +8,8 @@ public class Deals extends CardScreen{
     private JButton btnMenu;
     private JButton btnLocations;
     private JButton btnSignIn;
+    private JButton btnOrdernow1;
+    private JButton btnOrdernow2;
 
     public Deals(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
