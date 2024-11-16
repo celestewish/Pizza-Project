@@ -35,7 +35,7 @@ public class CheckOut extends CardScreen {
         userName.setText(name[0]);
         nameShown.setText(name[0]);
 
-        editButton.addActionListener((_) -> {
+        editButton.addActionListener((e) -> {
             String phoneNumberInput = null;
 
             String firstNameInput = firstNameDis.getText();

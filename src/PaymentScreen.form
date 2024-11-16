@@ -152,7 +152,7 @@
               <text value="First Last"/>
             </properties>
           </component>
-          <component id="adf24" class="javax.swing.JTextField" binding="a1234123412341234TextField" default-binding="true">
+          <component id="adf24" class="javax.swing.JTextField" binding="cardNumberTextField">
             <constraints>
               <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -164,7 +164,7 @@
               <text value="1234 1234 1234 1234"/>
             </properties>
           </component>
-          <component id="6eb47" class="javax.swing.JTextField" binding="a123TextField" default-binding="true">
+          <component id="6eb47" class="javax.swing.JTextField" binding="CVVTextField">
             <constraints>
               <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -194,7 +194,7 @@
               <text value="Zip Code"/>
             </properties>
           </component>
-          <component id="113ac" class="javax.swing.JTextField" binding="a0101TextField" default-binding="true">
+          <component id="113ac" class="javax.swing.JTextField" binding="expDateTextField">
             <constraints>
               <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
@@ -206,7 +206,7 @@
               <text value="01/01"/>
             </properties>
           </component>
-          <component id="6f96e" class="javax.swing.JTextField" binding="a123456TextField" default-binding="true">
+          <component id="6f96e" class="javax.swing.JTextField" binding="zipCodeTextField">
             <constraints>
               <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
