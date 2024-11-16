@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class StartScreen extends CardScreen {
 	private JPanel pnlStartScreen;
@@ -15,7 +13,7 @@ public class StartScreen extends CardScreen {
 
 
 	public StartScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-		super(screenLayoutController, screenContainer, info);
+		super(screenLayoutController, screenContainer);
 		
 		
 		btnLogin.addActionListener(_ -> {
