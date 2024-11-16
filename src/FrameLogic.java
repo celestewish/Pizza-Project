@@ -32,6 +32,9 @@ public class FrameLogic extends JFrame {
 
 		PizzaGUI pizza = new PizzaGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(pizza.getScreenPanel(), "PizzaGUI");
+
+		Deals deals = new Deals((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		screenContainer.add(deals.getScreenPanel(), "Deals");
 		
 		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");
