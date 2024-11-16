@@ -9,7 +9,7 @@ public class SignIn extends CardScreen {
 	private JButton btnReturn;
 
 	private JButton btnMenu;
-	private JButton btnSignIn;
+	private JButton btnSignUp;
 	private JTextField textEmail;
 	private JTextField textPassword;
 	private JCheckBox keepMeLoggedInCheckBox;
@@ -19,6 +19,7 @@ public class SignIn extends CardScreen {
 		super(screenLayoutController, screenContainer, info);
 		
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
+		btnSignUp.addActionListener(_ -> showScreen("SignUp"));
 	}
 	
 	public JPanel getScreenPanel() {
