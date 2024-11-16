@@ -17,8 +17,8 @@ public class Locations extends CardScreen{
     private JTextField friSat11am12amTextField;
     private JTextField mariettaGA30060TextField;
 
-    public Locations(CardLayout screenLayoutController, JPanel screenContainer) {
-        super(screenLayoutController, screenContainer);
+    public Locations(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+        super(screenLayoutController, screenContainer, info);
 
         homeButton.addActionListener(new ActionListener() {
             @Override
