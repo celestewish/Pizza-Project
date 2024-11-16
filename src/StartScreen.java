@@ -10,32 +10,36 @@ public class StartScreen extends CardScreen {
 	private JButton btnSignIn;
 	private JButton btnMenu;
 	private JButton btnHome;
+	private JButton btnDeals;
+	private JButton btnLocations;
 
-	public StartScreen(CardLayout screenLayoutController, JPanel screenContainer) {
-		super(screenLayoutController, screenContainer);
+
+	public StartScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+		super(screenLayoutController, screenContainer, info);
 		
 		
-		btnLogin.addActionListener((ActionEvent ) -> {
-			showScreen("SignUp");
+		btnLogin.addActionListener(_ -> {
+			showScreen("SignIn");
 		});
-		btnHome.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("StartScreen");
-			}
+		
+		btnHome.addActionListener(_ -> {
+			showScreen("StartScreen");
 		});
-		btnMenu.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("MenuGUI");
-			}
+		
+		btnMenu.addActionListener(_ -> {
+			showScreen("MenuGUI");
 		});
-		btnSignIn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("SignUp");
-			}
+		
+		btnSignIn.addActionListener(_ -> {
+			showScreen("SignIn");
 		});
+
+
+		btnLocations.addActionListener(_ -> showScreen("Locations"));
+
+		btnDeals.addActionListener(_ -> {
+            showScreen("Deals");
+        });
 	}
 	
 	public JPanel getScreenPanel() {

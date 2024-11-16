@@ -1,7 +1,11 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class Customer {
-	private static int idCounter = 1000000;
+	private static int idCounter;
 	private final int userID;
 	private String name;
 	private String email;
@@ -11,6 +15,24 @@ public class Customer {
 	private final LinkedList<Payment> savedPaymentMethods = new LinkedList<>();
 	
 	Customer(String name, String email, String password, String address, String phoneNumber) {
+		// Read file to determine next available ID
+		File file = new File("resources/customerRecords.txt");
+		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+			String line;
+			int maxID = 0;
+			
+			while ((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+				int id = Integer.parseInt(fields[0]);
+				maxID = Math.max(maxID, id);
+			}
+			
+			idCounter = maxID + 1;
+		} catch (IOException e) {
+			// Handle exception or set default ID
+			idCounter = 1000000;
+		}
+		
 		userID = idCounter;
 		idCounter++;
 		this.name = name;
@@ -79,5 +101,14 @@ public class Customer {
 		}
 		else
 			return false;
+	}
+	
+	public String toCSV() {
+		return userID + "," +
+				name + "," +
+				email + "," +
+				password + "," +
+				address + "," +
+				String.join(";", phoneNumbers);
 	}
 }
