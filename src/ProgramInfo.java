@@ -2,6 +2,7 @@ public class ProgramInfo {
 	private Customer currentUser;
 	private boolean isLoggedIn;
 	private int loginAttempts;
+	private Order curOrder;
 	
 	private final UserDatabase userDatabase;
 	
@@ -10,10 +11,15 @@ public class ProgramInfo {
 		currentUser = null;
 		isLoggedIn = false;
 		loginAttempts = 0;
+		curOrder = null;
 	}
 	
 	public Customer CurrentUser() {
 		return currentUser;
+	}
+	
+	public Order CurOrder() {
+		return curOrder;
 	}
 	
 	public void setCurrentUser(Customer customer) {currentUser = customer;}
@@ -46,18 +52,23 @@ public class ProgramInfo {
 	public String getName(){
 		return currentUser.getName();
 	}
+	
 	public String getPhoneAtIndex0(){
 		return currentUser.getPhoneNumberAtIndex(0);
 	}
+	
 	public String getEmail(){
 		return currentUser.getEmail();
 	}
+	
 	public void setName(String name){
 		currentUser.setName(name);
 	}
+	
 	public boolean addPhone(String phone){
 		return currentUser.addPhoneNumber(phone);
 	}
+	
 	public void setEmail(String mail){
 		currentUser.setEmail(mail);
 	}
