@@ -20,8 +20,8 @@ public abstract class CardScreen {
 		screenLayoutController.show(screenContainer, pnlName);
 	}
 	
-	public boolean isEmailTaken(String email, String message, String title, int optionPaneType) {
-		if (info.UserDatabase().customerExists(email)) {
+	public boolean isEmailTaken(JTextField t, String message, String title, int optionPaneType) {
+		if (info.UserDatabase().customerExists(t.getText())) {
 			JOptionPane.showMessageDialog(
 					null,
 					message,
@@ -84,7 +84,7 @@ public abstract class CardScreen {
 							"-Uppercase Letter\n" +
 							"-Number\n" +
 							"-Special character (excluding " +
-							"!, #, $, ^, _, ~, ,, ., @, [, ], `, {, }, *, +, -, :)",
+							"%, /, , &, <, >, ?, |, \"",
 					"",
 					JOptionPane.ERROR_MESSAGE);
 			return true;
