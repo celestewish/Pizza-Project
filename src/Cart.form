@@ -66,7 +66,7 @@
             <properties>
               <background color="-4243670"/>
               <foreground color="-1"/>
-              <text value="Sign In/Sign Up"/>
+              <text value="HI, Customer"/>
             </properties>
           </component>
           <hspacer id="46e5d">
