@@ -1,15 +1,12 @@
 public abstract class MenuItem {
 	private static int idCounter = 1000;
 	private final int itemID;
-	private String name;
 	private float cost;
 	private int count;
 	
-	public MenuItem(String name, float cost) {
+	public MenuItem() {
 		itemID = idCounter;
 		idCounter++;
-		this.name = name;
-		this.cost = cost;
 		count = 1;
 	}
 	
