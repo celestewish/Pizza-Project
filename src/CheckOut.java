@@ -21,7 +21,7 @@ public class CheckOut extends CardScreen {
 
 
     public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        super(screenLayoutController, screenContainer);
+        super(screenLayoutController, screenContainer, info);
 
         //array to store customer name to display, index 0 is  first name,
         //index 1 is last name

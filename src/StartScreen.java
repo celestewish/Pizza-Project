@@ -13,7 +13,7 @@ public class StartScreen extends CardScreen {
 
 
 	public StartScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-		super(screenLayoutController, screenContainer);
+		super(screenLayoutController, screenContainer, info);
 		
 		
 		btnLogin.addActionListener(_ -> {

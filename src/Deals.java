@@ -10,7 +10,7 @@ public class Deals extends CardScreen{
     private JButton btnSignIn;
 
     public Deals(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        super(screenLayoutController, screenContainer);
+        super(screenLayoutController, screenContainer, info);
 
         btnHome.addActionListener(e -> showScreen("StartScreen"));
 

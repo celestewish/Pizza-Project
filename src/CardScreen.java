@@ -10,7 +10,7 @@ public abstract class CardScreen {
 			'!', '#', '$', '^', '_', '~', ',', '.', '@', '[', ']', '`', '{', '}', '*', '+', '-', ':'
 	};
 	
-	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer) {
+	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		this.screenLayoutController = screenLayoutController;
 		this.screenContainer = screenContainer;
 		this.info = info;

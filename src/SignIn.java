@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.InputMethodListener;
 
 public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
@@ -24,7 +22,7 @@ public class SignIn extends CardScreen {
 	
 	
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-		super(screenLayoutController, screenContainer,info);
+		super(screenLayoutController, screenContainer, info);
 		lblEmailNotExist.setText("");
 		
 		btnReturn.addActionListener((_) -> {

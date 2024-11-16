@@ -39,7 +39,7 @@ public class MenuGUI extends CardScreen{
     private JButton addButton3;
 
     public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        super(screenLayoutController, screenContainer);
+        super(screenLayoutController, screenContainer, info);
         createButton.addActionListener(_ -> showScreen("PizzaGUI"));
         homeButton.addActionListener(_ -> showScreen("StartScreen"));
     }
