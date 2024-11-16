@@ -80,11 +80,13 @@ public abstract class CardScreen {
 		}
 		if (!hasUppercase || !hasNumber || !hasSpecialChar) {
 			JOptionPane.showMessageDialog(null,
-					"Password must include at least one:\n" +
-							"-Uppercase Letter\n" +
-							"-Number\n" +
-							"-Special character (excluding " +
-							"%, /, , &, <, >, ?, |, \"",
+					"""
+							Password must include at least one:
+							-Uppercase Letter
+							-Number
+							-Special character (excluding \
+							%, /, , &, <, >, ?, |, "
+							""",
 					"",
 					JOptionPane.ERROR_MESSAGE);
 			return true;

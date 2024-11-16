@@ -42,6 +42,17 @@ public class Customer {
 		phoneNumbers.addFirst(phoneNumber);
 	}
 	
+	// constructor to create a new object with specified userID (used on startup to create customer objects for each entry in the database)
+	Customer(int userID, String name, String email, String password, String address, LinkedList<String> phoneNumbers) {
+		this.userID = userID;
+		idCounter++;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.address = address;
+		this.phoneNumbers.addAll(phoneNumbers);
+	}
+	
 	public int getUserID() {
 		return userID;
 	}
@@ -103,7 +114,8 @@ public class Customer {
 			return false;
 	}
 	
-	public String toCSV() {
+	@Override
+	public String toString() {
 		return userID + "," +
 				name + "," +
 				email + "," +

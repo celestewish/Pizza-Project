@@ -63,49 +63,91 @@ public class SignUp extends CardScreen {
 				txtPassword.setEchoChar('*');
 		});
 		
-		btnHome.addActionListener(_ -> showScreen("StartScreen"));
+		btnHome.addActionListener(_ -> {
+			showScreen("StartScreen");
+			resetFields();
+		});
 		
-		btnMenu.addActionListener(_ -> showScreen("MenuGUI"));
+		btnMenu.addActionListener(_ -> {
+			showScreen("MenuGUI");
+			resetFields();
+		});
 		
-		btnSignIn_SignUp.addActionListener(_ -> showScreen("SignIn"));
+		btnSignIn_SignUp.addActionListener(_ -> {
+			showScreen("SignIn");
+			resetFields();
+		});
 		
 		btnSignUp.addActionListener(_ -> {
+			// Call a method that will show an error if there's an error and halt the execution if an error was thrown
 			for (JTextField f : requiredTextFields) {
 				if (isTextEmpty(f, "Please complete all required fields", "", 0))
 					return;
 			}
-			
+			// Call a method that will show an error if there's an error and halt the execution if an error was thrown
 			if (isPasswordInvalid(txtPassword))
 				return;
-			
+			// Call a method that will show an error if there's an error and halt the execution if an error was thrown
 			if (isPhoneInvalid(txtPhoneNumber, "Please enter a valid phone number", "", 0))
 				return;
-			
+			// Call a method that will show an error if there's an error and halt the execution if an error was thrown
 			for (JComboBox<Integer> b : requiredComboBoxes) {
 				if (isComboBoxUnselected(b, "Please complete all required fields", "", 0))
 					return;
 			}
-			
+			// Call a method that will show an error if there's an error and halt the execution if an error was thrown
 			if (isEmailTaken(txtEmail, "There is already an account with this email", "", 0))
 				return;
 			
-			String fullName = txtFname.getText() + " " + txtMname.getText() + " " + txtLname.getText();
-			String fullAddress = txtStreet.getText() + " " + txtCity.getText() + " " + txtState.getText() + " " +  txtZIP.getText();
-			StringBuilder password = new StringBuilder();
-			for (char c : txtPassword.getPassword()) {
-				password.append(c);
-			}
-			info.UserDatabase().storeUser(new Customer(fullName, txtEmail.getText(), password.toString(), fullAddress, txtPhoneNumber.getText()));
+			Customer newCustomer = createNewCustomer();
+			info.UserDatabase().storeUser(newCustomer); // add the customer to the database
+			info.setCurrentUser(newCustomer); // set the current user and the newly made customer object
+			// show user a confirmation pop-up window welcoming them to the system
 			JOptionPane.showMessageDialog(null,
 					"Your account has successfully been created!\n" +
 							"Welcome to Mom and Pop's Pizza Shop, " + txtFname.getText() + "!",
 					"",
 					JOptionPane.INFORMATION_MESSAGE);
-			showScreen("MenuGUI");
+			showScreen("MenuGUI"); // take the new user to the menu screen
 		});
 	}
 	
 	public JPanel getScreenPanel() {
 		return pnlSignUp;
+	}
+	
+	private Customer createNewCustomer() {
+		String fullName = txtFname.getText() + " " + txtMname.getText() + " " + txtLname.getText();
+		String fullAddress = txtStreet.getText() + " " + txtCity.getText() + " " + txtState.getText() + " " +  txtZIP.getText();
+		StringBuilder password = new StringBuilder();
+		for (char c : txtPassword.getPassword()) {
+			password.append(c);
+		}
+		// Take all info and create new customer object
+		return new Customer(fullName, txtEmail.getText(), password.toString(), fullAddress, txtPhoneNumber.getText());
+	}
+	
+	// method to reset all fields in the screen when the user goes to another screen
+	public void resetFields() {
+	    txtFname.setText("");
+	    txtMname.setText("");
+	    txtLname.setText("");
+		txtPassword.setText("");
+		txtEmail.setText("");
+		
+		showPasswordCheckBox.setSelected(false);
+		txtPhoneNumber.setText("");
+		
+		txtStreet.setText("");
+		txtCity.setText("");
+		txtState.setText("");
+		txtZIP.setText("");
+		
+		boxCard.setSelected(false);
+		boxCash.setSelected(false);
+		
+		cboxMonth.setSelectedIndex(0);
+		cboxDay.setSelectedIndex(0);
+		cboxYear.setSelectedIndex(0);
 	}
 }

@@ -1,6 +1,7 @@
 public class ProgramInfo {
 	private Customer currentUser;
 	private boolean isLoggedIn;
+	private int loginAttempts;
 	
 	private final UserDatabase userDatabase;
 	
@@ -8,6 +9,7 @@ public class ProgramInfo {
 		userDatabase = new UserDatabase();
 		currentUser = null;
 		isLoggedIn = false;
+		loginAttempts = 0;
 	}
 	
 	public Customer CurrentUser() {

@@ -24,18 +24,34 @@ public class SignIn extends CardScreen {
 		super(screenLayoutController, screenContainer,info);
 
 		btnReturn.addActionListener((_) -> {
-		showScreen("StartScreen");
+			showScreen("StartScreen");
+			resetFields();
 		});
 
-		btnHome.addActionListener(_ -> showScreen("StartScreen"));
+		btnHome.addActionListener(_ -> {
+			showScreen("StartScreen");
+			resetFields();
+		});
 
-		btnDeals.addActionListener(_ -> showScreen("Deals"));
+		btnDeals.addActionListener(_ -> {
+			showScreen("Deals");
+			resetFields();
+		});
 
-		btnMenu.addActionListener(_ -> showScreen("MenuGUI"));
+		btnMenu.addActionListener(_ -> {
+			showScreen("MenuGUI");
+			resetFields();
+		});
 
-		btnLocations.addActionListener(_ -> showScreen("Locations"));
+		btnLocations.addActionListener(_ -> {
+			showScreen("Locations");
+			resetFields();
+		});
 
-		btnSignIn_SignUp.addActionListener(_ -> showScreen("SignUp"));
+		btnSignIn_SignUp.addActionListener(_ -> {
+			showScreen("SignUp");
+			resetFields();
+		});
 
 		keepMeLoggedInCheckBox.addActionListener(_ -> {
 
@@ -51,7 +67,10 @@ public class SignIn extends CardScreen {
 			showScreen("MenuGUI");
 				});
 
-		btnSignUp.addActionListener(e -> showScreen("SignUp"));
+		btnSignUp.addActionListener(_ -> {
+			showScreen("SignUp");
+			resetFields();
+		});
 
 		showPasswordCheckBox.addActionListener(_ -> {
 			if (showPasswordCheckBox.isSelected())
@@ -63,5 +82,12 @@ public class SignIn extends CardScreen {
 	
 	public JPanel getScreenPanel() {
 		return pnlSignIn;
+	}
+	
+	public void resetFields() {
+		txtEmail.setText("");
+		txtPassword.setText("");
+		keepMeLoggedInCheckBox.setSelected(false);
+		showPasswordCheckBox.setSelected(false);
 	}
 }
