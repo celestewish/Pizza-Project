@@ -12,7 +12,7 @@ public class SignIn extends CardScreen {
 
 	private JButton btnMenu;
 	private JButton btnSignIn;
-	private JTextField textEmail;
+	private JTextField txtEmail;
 	private JCheckBox keepMeLoggedInCheckBox;
 	private JButton signInButton;
 	private JButton signUpButton;
@@ -43,17 +43,10 @@ public class SignIn extends CardScreen {
 			}
 		});
 
-		btnHome.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("StartScreen");
-			}
-		});
-
 		btnMenu.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				showScreen("Menu");
+				showScreen("MenuGUI");
 			}
 		});
 
@@ -79,27 +72,20 @@ public class SignIn extends CardScreen {
 		});
 
 		signInButton.addActionListener(new ActionListener() {
-
+			/*if (isTextEmpty(txtEmail, "Please enter an email", "", 0)) {
+				return;
+			}*/
             @Override
 			public void actionPerformed(ActionEvent e) {
 				showScreen("MenuGUI");
 			}
-			if (isTextEmpty(textEmail, "Please enter an email","",0)) {
-				return;
-			}
+
 		});
 
 		signUpButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				showScreen("SignUp");
-			}
-		});
-
-		btnReturn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("StartScreen");
 			}
 		});
 
