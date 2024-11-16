@@ -16,6 +16,7 @@ public class Locations extends CardScreen{
     private JTextField monThur9am11pmTextField;
     private JTextField friSat11am12amTextField;
     private JTextField mariettaGA30060TextField;
+    private JButton dealsButton;
 
     public Locations(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
