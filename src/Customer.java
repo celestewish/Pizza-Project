@@ -19,7 +19,7 @@ public class Customer {
 		File file = new File("resources/customerRecords.txt");
 		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 			String line;
-			int maxID = 0;
+			int maxID = -1;
 			
 			while ((line = reader.readLine()) != null) {
 				String[] fields = line.split(",");
@@ -27,7 +27,10 @@ public class Customer {
 				maxID = Math.max(maxID, id);
 			}
 			
-			idCounter = maxID + 1;
+			if (maxID == -1)
+				idCounter = 1000000;
+			else
+				idCounter = maxID + 1;
 		} catch (IOException e) {
 			// Handle exception or set default ID
 			idCounter = 1000000;
