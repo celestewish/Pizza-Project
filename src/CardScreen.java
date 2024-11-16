@@ -17,7 +17,19 @@ public abstract class CardScreen {
 	}
 	
 	public void showScreen(String pnlName) {
+		if (pnlName.equals("StartScreen") && info.IsLoggedIn())
+			pnlName = "MenuGUI";
+		
 		screenLayoutController.show(screenContainer, pnlName);
+	}
+	
+	public void onGoHome() {
+		String screenName;
+		if (info.IsLoggedIn())
+			screenName = "MenuGUI";
+		else
+			screenName = "Login";
+		showScreen(screenName);
 	}
 	
 	public void showPopUpWindow(String message, String title, int optionPaneType) {
