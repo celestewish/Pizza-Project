@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
@@ -14,20 +13,17 @@ public class SignIn extends CardScreen {
 	private JButton btnMenu;
 	private JButton btnSignIn;
 	private JTextField textEmail;
-	private JTextField textPassword;
 	private JCheckBox keepMeLoggedInCheckBox;
 	private JButton signInButton;
 	private JButton signUpButton;
 	private JButton btnDeals;
 	private JButton btnLocations;
+	private JCheckBox showPasswordCheckBox;
+	private JPasswordField txtPassword;
 
 
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer,info);
-
-		ArrayList<JTextField> requiredTextFields = new ArrayList<>();
-		requiredTextFields.add(textEmail);
-		requiredTextFields.add(textPassword);
 
 		btnReturn.addActionListener((ActionEvent) -> {
 		showScreen("StartScreen");
@@ -83,16 +79,13 @@ public class SignIn extends CardScreen {
 		});
 
 		signInButton.addActionListener(new ActionListener() {
-			for (JTextField f : requiredTextFields){
 
-			}
-			for (JTextField f : requiredTextFields) {
-				if (isTextEmpty(f, "Please complete all required fields", "", 0))
-					return;
-			}
-			@Override
+            @Override
 			public void actionPerformed(ActionEvent e) {
 				showScreen("MenuGUI");
+			}
+			if (isTextEmpty(textEmail, "Please enter an email","",0)) {
+				return;
 			}
 		});
 
@@ -110,6 +103,12 @@ public class SignIn extends CardScreen {
 			}
 		});
 
+		showPasswordCheckBox.addActionListener(_ -> {
+			if (showPasswordCheckBox.isSelected())
+				txtPassword.setEchoChar((char)0);
+			else
+				txtPassword.setEchoChar('*');
+		});
 	}
 	
 	public JPanel getScreenPanel() {
