@@ -10,7 +10,7 @@ public class ProgramInfo {
 		isLoggedIn = false;
 	}
 	
-	public Customer getCurrentUser() {
+	public Customer CurrentUser() {
 		return currentUser;
 	}
 	
@@ -24,7 +24,7 @@ public class ProgramInfo {
 	public void setLoggedIn(boolean isLoggedIn) {this.isLoggedIn = isLoggedIn;}
 	
 	
-	public UserDatabase getUserDatabase() {
+	public UserDatabase UserDatabase() {
 		return userDatabase;
 	}
 }

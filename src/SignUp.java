@@ -1,8 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import java.text.ParseException;
 import java.util.ArrayList;
-import javax.swing.text.MaskFormatter;
+import java.util.Arrays;
 
 public class SignUp extends CardScreen {
 	private JPanel pnlSignUp;
@@ -18,18 +17,17 @@ public class SignUp extends CardScreen {
 	private JTextField txtEmail;
 	
 	private JCheckBox showPasswordCheckBox;
+	private JTextField txtPhoneNumber;
 	
 	private JTextField txtStreet;
 	private JTextField txtCity;
 	private JTextField txtState;
 	private JTextField txtZIP;
 	
-	private JFormattedTextField ftxtPhoneNumber;
-	
 	private JCheckBox boxCard;
 	private JCheckBox boxCash;
 	
-	private JComboBox<String> cboxMonth;
+	private JComboBox<Integer> cboxMonth;
 	private JComboBox<Integer> cboxDay;
 	private JComboBox<Integer> cboxYear;
 	
@@ -39,8 +37,6 @@ public class SignUp extends CardScreen {
 	
 	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer, info);
-		
-		createUIComponents();
 		
 		ArrayList<JTextField> requiredTextFields = new ArrayList<>();
 		requiredTextFields.add(txtFname);
@@ -52,7 +48,7 @@ public class SignUp extends CardScreen {
 		requiredTextFields.add(txtState);
 		requiredTextFields.add(txtZIP);
 		
-		ArrayList<JComboBox> requiredComboBoxes = new ArrayList<>();
+		ArrayList<JComboBox<Integer>> requiredComboBoxes = new ArrayList<>();
 		requiredComboBoxes.add(cboxMonth);
 		requiredComboBoxes.add(cboxDay);
 		requiredComboBoxes.add(cboxYear);
@@ -75,26 +71,34 @@ public class SignUp extends CardScreen {
 				if (isTextEmpty(f, "Please complete all required fields", "", 0))
 					return;
 			}
-			if (isFTextEmpty(ftxtPhoneNumber, "Please enter a valid phone number", "", 0))
+			if (isPasswordInvalid(txtPassword))
 				return;
-			for (JComboBox b : requiredComboBoxes) {
+			if (isPhoneInvalid(txtPhoneNumber, "Please enter a valid phone number", "", 0))
+				return;
+			for (JComboBox<Integer> b : requiredComboBoxes) {
 				if (isComboBoxUnselected(b, "Please complete all required fields", "", 0))
 					return;
 			}
+			if (isEmailTaken(txtEmail.getText(), "There is already an account with this email", "", 0))
+				return;
+			
+			String fullName = txtFname.getText() + " " + txtMname.getText() + " " + txtLname.getText();
+			String fullAddress = txtStreet.getText() + " " + txtCity.getText() + " " + txtState.getText() + " " +  txtZIP.getText();
+			StringBuilder password = new StringBuilder();
+			for (char c : txtPassword.getPassword()) {
+				password.append(c);
+			}
+			info.UserDatabase().storeUser(new Customer(fullName, txtEmail.getText(), password.toString(), fullAddress, txtPhoneNumber.getText()));
+			JOptionPane.showMessageDialog(null,
+					"Your account has successfully been created!\n" +
+							"Welcome to Mom and Pop's Pizza Shop, " + txtFname.getText() + "!",
+					"",
+					JOptionPane.INFORMATION_MESSAGE);
 			showScreen("MenuGUI");
 		});
 	}
 	
 	public JPanel getScreenPanel() {
 		return pnlSignUp;
-	}
-	
-	private void createUIComponents() {
-		try {
-			MaskFormatter phoneFormatter = new MaskFormatter("(###) ###-####");
-			phoneFormatter.setPlaceholderCharacter('_');
-			ftxtPhoneNumber = new JFormattedTextField(phoneFormatter);
-			ftxtPhoneNumber.setColumns(14);
-		} catch (ParseException _) { }
 	}
 }

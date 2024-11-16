@@ -671,14 +671,17 @@
               <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <component id="53981" class="javax.swing.JFormattedTextField" binding="ftxtPhoneNumber" custom-create="true">
+          <component id="a878c" class="javax.swing.JTextField" binding="txtPhoneNumber">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <text value="___-___-____"/>
+              <columns value="10"/>
+              <editable value="true"/>
+              <enabled value="true"/>
+              <text value=""/>
             </properties>
           </component>
         </children>
