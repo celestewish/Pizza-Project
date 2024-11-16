@@ -1,14 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SignUp extends CardScreen {
 	private JPanel pnlSignUp;
 	
 	private JButton btnHome;
 	private JButton btnMenu;
-	private JButton btnSignIn;
+	private JButton btnSignIn_SignUp;
 	
 	private JTextField txtFname;
 	private JTextField txtMname;
@@ -33,6 +32,8 @@ public class SignUp extends CardScreen {
 	
 	private JButton btnSignUp;
 	private JButton btnReturn;
+	private JButton btnDeals;
+	private JButton btnLocations;
 	
 	
 	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
@@ -65,6 +66,8 @@ public class SignUp extends CardScreen {
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 		
 		btnMenu.addActionListener(_ -> showScreen("MenuGUI"));
+		
+		btnSignIn_SignUp.addActionListener(_ -> showScreen("SignIn"));
 		
 		btnSignUp.addActionListener(_ -> {
 			for (JTextField f : requiredTextFields) {

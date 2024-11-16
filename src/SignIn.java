@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
@@ -11,67 +9,39 @@ public class SignIn extends CardScreen {
 	private JButton btnReturn;
 
 	private JButton btnMenu;
-	private JButton btnSignIn;
+	private JButton btnSignIn_SignUp;
 	private JTextField txtEmail;
 	private JCheckBox keepMeLoggedInCheckBox;
-	private JButton signInButton;
-	private JButton signUpButton;
+	private JButton btnSignIn_ValidateCredentials;
+	private JButton btnSignUp;
 	private JButton btnDeals;
 	private JButton btnLocations;
 	private JCheckBox showPasswordCheckBox;
 	private JPasswordField txtPassword;
-
-
+	
+	
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer,info);
 
-		btnReturn.addActionListener((ActionEvent) -> {
+		btnReturn.addActionListener((_) -> {
 		showScreen("StartScreen");
 		});
 
-		btnHome.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("StartScreen");
-			}
+		btnHome.addActionListener(_ -> showScreen("StartScreen"));
+
+		btnDeals.addActionListener(_ -> showScreen("Deals"));
+
+		btnMenu.addActionListener(_ -> showScreen("MenuGUI"));
+
+		btnLocations.addActionListener(_ -> showScreen("Locations"));
+
+		btnSignIn_SignUp.addActionListener(_ -> showScreen("SignUp"));
+
+		keepMeLoggedInCheckBox.addActionListener(_ -> {
+
 		});
 
-		btnDeals.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("Deals");
-			}
-		});
-
-		btnMenu.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("MenuGUI");
-			}
-		});
-
-		btnLocations.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("Locations");
-			}
-		});
-
-		btnSignIn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("SignIn");
-			}
-		});
-
-		keepMeLoggedInCheckBox.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-
-        signInButton.addActionListener(e -> {
+        btnSignIn_ValidateCredentials.addActionListener(_ -> {
 			if (isTextEmpty(txtEmail, "Please enter an email.", "", 0)) {
 				return;
 			}
@@ -81,7 +51,7 @@ public class SignIn extends CardScreen {
 			showScreen("MenuGUI");
 				});
 
-		signUpButton.addActionListener(e -> showScreen("SignUp"));
+		btnSignUp.addActionListener(e -> showScreen("SignUp"));
 
 		showPasswordCheckBox.addActionListener(_ -> {
 			if (showPasswordCheckBox.isSelected())
