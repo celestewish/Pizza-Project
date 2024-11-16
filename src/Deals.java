@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Deals extends CardScreen{
-    private JPanel panel1;
+    private JPanel pnlDeals;
     private JButton btnHome;
     private JButton btnDeals;
     private JButton btnMenu;
@@ -12,7 +12,7 @@ public class Deals extends CardScreen{
     public Deals(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer);
 
-        btnHome.addActionListener(e -> showScreen("MenuGUI"));
+        btnHome.addActionListener(e -> showScreen("StartScreen"));
 
         btnDeals.addActionListener(e -> showScreen("Deals"));
 
@@ -21,5 +21,9 @@ public class Deals extends CardScreen{
         btnLocations.addActionListener(e -> showScreen("Locations"));
 
         btnSignIn.addActionListener(e -> showScreen("SignIn"));
+    }
+
+    public JPanel getScreenPanel() {
+        return pnlDeals;
     }
 }
