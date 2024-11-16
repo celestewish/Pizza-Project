@@ -36,19 +36,15 @@ public class UserDatabase {
 	}
 	
 	public boolean customerExists(String emailToCheck) {
-		if (!file.getParentFile().mkdirs()) // Check if the file exists and make it if not. If the file did not exist, return false
-			return false;
-		
 		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 			String line;
 			
-			// Read each line in the CSV
+			// Read each line
 			while ((line = reader.readLine()) != null) {
 				// Split the line into fields
 				String[] fields = line.split(",");
-				
 				// Check if the email matches (email is in the 3rd column, index 2)
-				if (fields.length > 2 && fields[2].replaceAll("\"", "").equals(emailToCheck)) {
+				if (fields[2].replaceAll("\"", "").equalsIgnoreCase(emailToCheck)) {
 					return true; // Email found
 				}
 			}

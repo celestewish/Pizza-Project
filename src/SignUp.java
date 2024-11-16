@@ -71,15 +71,19 @@ public class SignUp extends CardScreen {
 				if (isTextEmpty(f, "Please complete all required fields", "", 0))
 					return;
 			}
+			
 			if (isPasswordInvalid(txtPassword))
 				return;
+			
 			if (isPhoneInvalid(txtPhoneNumber, "Please enter a valid phone number", "", 0))
 				return;
+			
 			for (JComboBox<Integer> b : requiredComboBoxes) {
 				if (isComboBoxUnselected(b, "Please complete all required fields", "", 0))
 					return;
 			}
-			if (isEmailTaken(txtEmail.getText(), "There is already an account with this email", "", 0))
+			
+			if (isEmailTaken(txtEmail, "There is already an account with this email", "", 0))
 				return;
 			
 			String fullName = txtFname.getText() + " " + txtMname.getText() + " " + txtLname.getText();
