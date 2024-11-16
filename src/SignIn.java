@@ -71,23 +71,17 @@ public class SignIn extends CardScreen {
 			}
 		});
 
-		signInButton.addActionListener(new ActionListener() {
-			/*if (isTextEmpty(txtEmail, "Please enter an email", "", 0)) {
+        signInButton.addActionListener(e -> {
+			if (isTextEmpty(txtEmail, "Please enter an email.", "", 0)) {
 				return;
-			}*/
-            @Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("MenuGUI");
 			}
-
-		});
-
-		signUpButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("SignUp");
+			if (isTextEmpty(txtPassword, "Please enter a password.", "", 0)) {
+				return;
 			}
-		});
+			showScreen("MenuGUI");
+				});
+
+		signUpButton.addActionListener(e -> showScreen("SignUp"));
 
 		showPasswordCheckBox.addActionListener(_ -> {
 			if (showPasswordCheckBox.isSelected())

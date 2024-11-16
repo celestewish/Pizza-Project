@@ -14,38 +14,14 @@ public class Deals extends CardScreen{
     public Deals(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer,info);
 
-        btnHome.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showScreen("MenuGUI");
-            }
-        });
-        btnDeals.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showScreen("Deals");
-            }
+        btnHome.addActionListener(e -> showScreen("MenuGUI"));
 
-        });
-        btnMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showScreen("MenuGUI");
-            }
-        });
+        btnDeals.addActionListener(e -> showScreen("Deals"));
 
-        btnLocations.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showScreen("Locations");
-            }
-        });
+        btnMenu.addActionListener(e -> showScreen("MenuGUI"));
 
-        btnSignIn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showScreen("SignIn");
-            }
-        });
+        btnLocations.addActionListener(e -> showScreen("Locations"));
+
+        btnSignIn.addActionListener(e -> showScreen("SignIn"));
     }
 }

@@ -33,18 +33,13 @@ public class StartScreen extends CardScreen {
 		btnSignIn.addActionListener(_ -> {
 			showScreen("SignIn");
 		});
-		btnDeals.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("Deals");
-			}
-		});
-		btnLocations.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("Locations");
-			}
-		});
+
+
+		btnLocations.addActionListener(_ -> showScreen("Locations"));
+
+		btnDeals.addActionListener(_ -> {
+            showScreen("Deals");
+        });
 	}
 	
 	public JPanel getScreenPanel() {
