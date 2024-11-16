@@ -6,9 +6,9 @@ import java.awt.event.ActionListener;
 
 public class CheckOut extends CardScreen {
     private JPanel panel1;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
+    private JButton homeBTN;
+    private JButton MenuBTN;
+    private JButton locationsBTN;
     private JTextField firstNameDis;
     private JTextField lastNameDis;
     private JTextField textField3;
@@ -16,6 +16,7 @@ public class CheckOut extends CardScreen {
     private JButton editButton;
     private JButton dealsButton;
     private JButton proceedToPaymentButton;
+    private JLabel nameShown;
     private JLabel welcome;
     private JLabel userName;
     private JLabel FirstName;
@@ -32,6 +33,7 @@ public class CheckOut extends CardScreen {
         textField4.setText(info.getPhoneAtIndex0());
         textField3.setText(info.getEmail());
         userName.setText(name[0]);
+        nameShown.setText(name[0]);
 
         editButton.addActionListener((_) -> {
             String phoneNumberInput = null;
@@ -67,12 +69,12 @@ public class CheckOut extends CardScreen {
 
         });
 
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+        homeBTN.addActionListener(e -> showScreen("StartScreen"));
+        MenuBTN.addActionListener(e -> showScreen("MenuGUI"));
+        dealsButton.addActionListener(e -> showScreen("Deals"));
+        locationsBTN.addActionListener(e -> showScreen("Locations"));
 
-            }
-        });
+        proceedToPaymentButton.addActionListener(e -> showScreen("PaymentScreen"));
     }
 
 
