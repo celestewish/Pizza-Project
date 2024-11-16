@@ -4,11 +4,11 @@ public class UserDatabase {
 	static File file;
 	
 	public UserDatabase() {
-		String storagePath = "resources/customerRecords.csv";
+		String storagePath = "resources/customerRecords.txt";
 		file = new File(storagePath);
 	}
 	
-	public static boolean storeUser(Customer customer) {
+	public boolean storeUser(Customer customer) {
 		// Check if a customer with the proposed email already exists within the database
 		if (customerExists(customer.getEmail()))
 			return false; // Return false if an entry was found
@@ -35,7 +35,7 @@ public class UserDatabase {
 		return false;
 	}
 	
-	public static boolean customerExists(String emailToCheck) {
+	public boolean customerExists(String emailToCheck) {
 		if (!file.getParentFile().mkdirs()) // Check if the file exists and make it if not. If the file did not exist, return false
 			return false;
 		
