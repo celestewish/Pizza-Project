@@ -9,8 +9,8 @@ public class StartScreen extends CardScreen {
 	private JButton btnMenu;
 	private JButton btnHome;
 
-	public StartScreen(CardLayout screenLayoutController, JPanel screenContainer) {
-		super(screenLayoutController, screenContainer);
+	public StartScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+		super(screenLayoutController, screenContainer, info);
 		
 		
 		btnLogin.addActionListener(_ -> {

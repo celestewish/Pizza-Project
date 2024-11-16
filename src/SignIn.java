@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
@@ -17,17 +15,10 @@ public class SignIn extends CardScreen {
 	private JCheckBox keepMeLoggedInCheckBox;
 	private JButton signInButton;
 
-	public SignIn(CardLayout screenLayoutController, JPanel screenContainer) {
-		super(screenLayoutController, screenContainer);
-		btnReturn.addActionListener((ActionEvent) -> {
+	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+		super(screenLayoutController, screenContainer, info);
 		
-		});
-		btnHome.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				showScreen("StartScreen");
-			}
-		});
+		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 	}
 	
 	public JPanel getScreenPanel() {

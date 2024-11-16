@@ -38,8 +38,8 @@ public class MenuGUI extends CardScreen{
     private JComboBox comboBox5;
     private JButton addButton3;
 
-    public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer) {
-        super(screenLayoutController, screenContainer);
+    public MenuGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+        super(screenLayoutController, screenContainer, info);
         createButton.addActionListener(_ -> showScreen("PizzaGUI"));
     }
     public JPanel getScreenPanel(){

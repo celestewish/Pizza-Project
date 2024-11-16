@@ -33,8 +33,8 @@ public class SignUp extends CardScreen {
 	private JButton btnSignUp;
 	private JButton btnReturn;
 	
-	public SignUp(CardLayout screenLayoutController, JPanel screenContainer) {
-		super(screenLayoutController, screenContainer);
+	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+		super(screenLayoutController, screenContainer, info);
 		
 		btnReturn.addActionListener(_ -> showScreen("StartScreen"));
 		

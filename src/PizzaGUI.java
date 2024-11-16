@@ -14,8 +14,8 @@ public class PizzaGUI extends CardScreen{
     private JTextArea cheeseTextArea;
     private JCheckBox yesCheeseCheckBox;
 
-    public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer) {
-        super(screenLayoutController, screenContainer);
+    public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+        super(screenLayoutController, screenContainer, info);
     }
     public JPanel getScreenPanel(){
         return panel1;

@@ -80,4 +80,13 @@ public class Customer {
 		else
 			return false;
 	}
+	
+	public String toCSV() {
+		return userID + "," +
+				"\"" + name + "\"," +
+				"\"" + email + "\"," +
+				"\"" + password + "\"," +
+				"\"" + address + "\"," +
+				"\"" + String.join(";", phoneNumbers) + "\"";
+	}
 }
