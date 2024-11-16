@@ -150,6 +150,55 @@ public abstract class CardScreen {
 		return false;
 	}
 	
+	public boolean isEmailInvalid(JTextField t) {
+		String email = t.getText().trim();
+		
+		// Check if the email contains exactly one '@'
+		String[] parts = email.split("@");
+		if (parts.length != 2) {
+			showPopUpWindow(
+					"Please enter a valid email.",
+					"",
+					0);
+			return true; // Invalid: No '@' or multiple '@'
+		}
+		
+		// Check the local part (before '@')
+		String localPart = parts[0];
+		if (localPart.isEmpty()) {
+			showPopUpWindow(
+					"Please enter a valid email.",
+					"",
+					0);
+			return true; // Invalid: Local part is empty
+		}
+		
+		// Check the domain part (after '@')
+		String domainPart = parts[1];
+		String[] domainParts = domainPart.split("\\.");
+		if (domainParts.length < 2) {
+			showPopUpWindow(
+					"Please enter a valid email.",
+					"",
+					0);
+			return true; // Invalid: No '.' in domain
+		}
+		
+		// Ensure all domain parts are non-empty
+		for (String part : domainParts) {
+			if (part.isEmpty()) {
+				showPopUpWindow(
+						"Please enter a valid email.",
+						"",
+						0);
+				return true; // Invalid: Empty domain part
+			}
+		}
+		
+		// If all checks pass, the email is valid
+		return false;
+	}
+	
 	public boolean isComboBoxUnselected (JComboBox t, String message, String title, int optionPaneType) {
 		if (t.getSelectedItem() == "...") {
 			JOptionPane.showMessageDialog(

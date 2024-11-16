@@ -25,7 +25,8 @@ public class SignIn extends CardScreen {
 	
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer,info);
-
+		lblEmailNotExist.setText("");
+		
 		btnReturn.addActionListener((_) -> {
 			showScreen("StartScreen");
 			resetScreen();
@@ -70,6 +71,10 @@ public class SignIn extends CardScreen {
 			if (isTextEmpty(txtEmail, "Please enter an email.", "", 0)) {
 				return;
 			}
+			
+			if (isEmailInvalid(txtEmail))
+				return;
+			
 			if (!info.UserDatabase().customerExists(txtEmail.getText())) {
 				lblEmailNotExist.setText("! No account exists for this email");
 				return;

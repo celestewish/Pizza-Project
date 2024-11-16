@@ -54,7 +54,10 @@ public class SignUp extends CardScreen {
 		requiredComboBoxes.add(cboxDay);
 		requiredComboBoxes.add(cboxYear);
 		
-		btnReturn.addActionListener(_ -> showScreen("StartScreen"));
+		btnReturn.addActionListener(_ -> {
+			showScreen("StartScreen");
+			resetFields();
+		});
 		
 		showPasswordCheckBox.addActionListener(_ -> {
 			if (showPasswordCheckBox.isSelected())
@@ -84,6 +87,10 @@ public class SignUp extends CardScreen {
 				if (isTextEmpty(f, "Please complete all required fields", "", 0))
 					return;
 			}
+			
+			if (isEmailInvalid(txtEmail))
+				return;
+			
 			// Call a method that will show an error if there's an error and halt the execution if an error was thrown
 			if (isPasswordInvalid(txtPassword))
 				return;
