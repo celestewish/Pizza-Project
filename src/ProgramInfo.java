@@ -42,4 +42,25 @@ public class ProgramInfo {
 	public void resetLoginAttempts() {
 		loginAttempts = 0;
 	}
+
+	public String getName(){
+		return currentUser.getName();
+	}
+	public String getPhoneAtIndex0(){
+		return currentUser.getPhoneNumberAtIndex(0);
+	}
+	public String getEmail(){
+		return currentUser.getEmail();
+	}
+	public void setName(String name){
+		currentUser.setName(name);
+	}
+	public boolean addPhone(String phone){
+		return currentUser.addPhoneNumber(phone);
+	}
+	public void setEmail(String mail){
+		currentUser.setEmail(mail);
+	}
+
+
 }

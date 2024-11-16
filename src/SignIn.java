@@ -24,7 +24,7 @@ public class SignIn extends CardScreen {
 	
 	
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-		super(screenLayoutController, screenContainer,info);
+		super(screenLayoutController, screenContainer);
 
 		btnReturn.addActionListener((_) -> {
 			showScreen("StartScreen");

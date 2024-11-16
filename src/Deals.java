@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Deals extends CardScreen{
     private JPanel panel1;
@@ -12,7 +10,7 @@ public class Deals extends CardScreen{
     private JButton btnSignIn;
 
     public Deals(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        super(screenLayoutController, screenContainer,info);
+        super(screenLayoutController, screenContainer);
 
         btnHome.addActionListener(e -> showScreen("MenuGUI"));
 

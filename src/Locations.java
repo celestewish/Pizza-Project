@@ -18,7 +18,7 @@ public class Locations extends CardScreen{
     private JTextField mariettaGA30060TextField;
 
     public Locations(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        super(screenLayoutController, screenContainer, info);
+        super(screenLayoutController, screenContainer);
 
         homeButton.addActionListener(new ActionListener() {
             @Override
