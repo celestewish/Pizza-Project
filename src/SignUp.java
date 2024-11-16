@@ -102,6 +102,7 @@ public class SignUp extends CardScreen {
 			Customer newCustomer = createNewCustomer();
 			info.UserDatabase().storeUser(newCustomer); // add the customer to the database
 			info.setCurrentUser(newCustomer); // set the current user and the newly made customer object
+			info.setLoggedIn(true);
 			// show user a confirmation pop-up window welcoming them to the system
 			JOptionPane.showMessageDialog(null,
 					"Your account has successfully been created!\n" +
@@ -119,12 +120,9 @@ public class SignUp extends CardScreen {
 	private Customer createNewCustomer() {
 		String fullName = txtFname.getText() + " " + txtMname.getText() + " " + txtLname.getText();
 		String fullAddress = txtStreet.getText() + " " + txtCity.getText() + " " + txtState.getText() + " " +  txtZIP.getText();
-		StringBuilder password = new StringBuilder();
-		for (char c : txtPassword.getPassword()) {
-			password.append(c);
-		}
+		String password = convertPasswordToString(txtPassword.getPassword());
 		// Take all info and create new customer object
-		return new Customer(fullName, txtEmail.getText(), password.toString(), fullAddress, txtPhoneNumber.getText());
+		return new Customer(fullName, txtEmail.getText(), password, fullAddress, txtPhoneNumber.getText());
 	}
 	
 	// method to reset all fields in the screen when the user goes to another screen

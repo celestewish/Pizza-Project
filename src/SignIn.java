@@ -25,38 +25,44 @@ public class SignIn extends CardScreen {
 
 		btnReturn.addActionListener((_) -> {
 			showScreen("StartScreen");
-			resetFields();
+			resetScreen();
+			info.resetLoginAttempts();
 		});
 
 		btnHome.addActionListener(_ -> {
 			showScreen("StartScreen");
-			resetFields();
+			resetScreen();
+			info.resetLoginAttempts();
 		});
 
 		btnDeals.addActionListener(_ -> {
 			showScreen("Deals");
-			resetFields();
+			resetScreen();
+			info.resetLoginAttempts();
 		});
 
 		btnMenu.addActionListener(_ -> {
 			showScreen("MenuGUI");
-			resetFields();
+			resetScreen();
+			info.resetLoginAttempts();
 		});
 
 		btnLocations.addActionListener(_ -> {
 			showScreen("Locations");
-			resetFields();
+			resetScreen();
+			info.resetLoginAttempts();
 		});
 
 		btnSignIn_SignUp.addActionListener(_ -> {
 			showScreen("SignUp");
-			resetFields();
+			resetScreen();
+			info.resetLoginAttempts();
 		});
 
 		keepMeLoggedInCheckBox.addActionListener(_ -> {
-
+		
 		});
-
+		
         btnSignIn_ValidateCredentials.addActionListener(_ -> {
 			if (isTextEmpty(txtEmail, "Please enter an email.", "", 0)) {
 				return;
@@ -64,12 +70,18 @@ public class SignIn extends CardScreen {
 			if (isTextEmpty(txtPassword, "Please enter a password.", "", 0)) {
 				return;
 			}
+			if (!doesPasswordMatchEmail(txtEmail.getText(), convertPasswordToString(txtPassword.getPassword())))
+				return;
+			
+			info.setCurrentUser(info.UserDatabase().getUser(txtEmail.getText()));
+			info.setLoggedIn(true);
+	        info.resetLoginAttempts();
 			showScreen("MenuGUI");
-				});
+		});
 
 		btnSignUp.addActionListener(_ -> {
 			showScreen("SignUp");
-			resetFields();
+			resetScreen();
 		});
 
 		showPasswordCheckBox.addActionListener(_ -> {
@@ -84,7 +96,7 @@ public class SignIn extends CardScreen {
 		return pnlSignIn;
 	}
 	
-	public void resetFields() {
+	public void resetScreen() {
 		txtEmail.setText("");
 		txtPassword.setText("");
 		keepMeLoggedInCheckBox.setSelected(false);

@@ -20,6 +20,22 @@ public abstract class CardScreen {
 		screenLayoutController.show(screenContainer, pnlName);
 	}
 	
+	public void showPopUpWindow(String message, String title, int optionPaneType) {
+		JOptionPane.showMessageDialog(
+				null,
+				message,
+				title,
+				optionPaneType
+		);
+	}
+	
+	public String convertPasswordToString (char[] password) {
+		StringBuilder passwordString = new StringBuilder();
+		for (char c : password)
+			passwordString.append(c);
+		return passwordString.toString();
+	}
+	
 	public boolean isEmailTaken(JTextField t, String message, String title, int optionPaneType) {
 		if (info.UserDatabase().customerExists(t.getText())) {
 			JOptionPane.showMessageDialog(
@@ -30,6 +46,33 @@ public abstract class CardScreen {
 			return true;
 		}
 		return  false;
+	}
+	
+	public boolean doesPasswordMatchEmail(String email, String password) {
+		if (!info.UserDatabase().customerExists(email)) {
+			showPopUpWindow(
+					"That email does not exist in our database...\nPlease sign up with the button below!",
+					"",
+					1);
+			return false;
+		}
+		if (!info.UserDatabase().getUser(email).checkPassword(password)) {
+			showPopUpWindow(
+					"Incorrect password.",
+					"",
+					0);
+			info.incrementLoginAttempts();
+			if (info.getLoginAttempts() >= 3) {
+				showPopUpWindow(
+						"You have surpassed the limit of 3 login attempts.\n" +
+								"Sending a password reset link to the email:\n\t\t" +
+								email,
+						"",
+						1);
+			}
+			return false;
+		}
+		return true;
 	}
 	
 	public boolean isTextEmpty (JTextField t, String message, String title, int optionPaneType) {

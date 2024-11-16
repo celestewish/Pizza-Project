@@ -29,4 +29,17 @@ public class ProgramInfo {
 	public UserDatabase UserDatabase() {
 		return userDatabase;
 	}
+	
+	
+	public int getLoginAttempts() {
+		return loginAttempts;
+	}
+	
+	public void incrementLoginAttempts() {
+		loginAttempts++;
+	}
+	
+	public void resetLoginAttempts() {
+		loginAttempts = 0;
+	}
 }
