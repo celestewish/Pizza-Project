@@ -61,4 +61,7 @@ public class ProgramInfo {
 	public void setEmail(String mail){
 		currentUser.setEmail(mail);
 	}
+	public String getAddress(){
+		return currentUser.getAddress();
+	}
 }
