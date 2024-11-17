@@ -3,6 +3,7 @@ public class ProgramInfo {
 	private boolean isLoggedIn;
 	private int loginAttempts;
 	private Order curOrder;
+	private Pizza curPizza;
 	
 	private final UserDatabase userDatabase;
 	
@@ -18,11 +19,27 @@ public class ProgramInfo {
 		return currentUser;
 	}
 	
-	public Order CurOrder() {
+	public void setCurrentUser(Customer customer) {currentUser = customer;}
+	
+	
+	public Order getCurOrder() {
 		return curOrder;
 	}
 	
-	public void setCurrentUser(Customer customer) {currentUser = customer;}
+	public void setCurOrder(Order order) {
+		curOrder = order;
+	}
+	
+	
+	
+	public Pizza getCurPizza() {
+		return curPizza;
+	}
+	
+	public void setCurPizza(Pizza curPizza) {
+		this.curPizza = curPizza;
+	}
+	
 	
 	
 	public boolean IsLoggedIn() {
@@ -32,9 +49,11 @@ public class ProgramInfo {
 	public void setLoggedIn(boolean isLoggedIn) {this.isLoggedIn = isLoggedIn;}
 	
 	
+	
 	public UserDatabase UserDatabase() {
 		return userDatabase;
 	}
+	
 	
 	
 	public int getLoginAttempts() {

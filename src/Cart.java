@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Cart extends CardScreen {
 
@@ -15,7 +17,12 @@ public class Cart extends CardScreen {
 
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer, info);
-		
+
+
+		btnHome.addActionListener(e -> showScreen("StartScreen"));
+		btnMenu.addActionListener(e -> showScreen("MenuGUI"));
+		btnDeals.addActionListener(e -> showScreen("Deals"));
+		btnLocations.addActionListener(e -> showScreen("Deals"));
 	}
 	
 }
