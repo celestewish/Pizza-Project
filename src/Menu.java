@@ -108,6 +108,7 @@ public class Menu extends CardScreen{
 		placeYourOrderButton.addActionListener(_ -> {
 			menuItems.add(info.getCurPizza());
 			Order myOrder = new Order(menuItems);
+			info.setCurOrder(myOrder);
 		});
 	}
 	public JPanel getScreenPanel() {
