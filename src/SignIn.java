@@ -50,7 +50,7 @@ public class SignIn extends CardScreen {
 		});
 
 		btnLocations.addActionListener(_ -> {
-			showScreen("Location");
+			showScreen("LocationScreen");
 			resetScreen();
 			info.resetLoginAttempts();
 		});
