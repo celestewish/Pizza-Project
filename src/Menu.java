@@ -54,6 +54,9 @@ public class Menu extends CardScreen{
 		//listeners
 		btnCreatePizza.addActionListener(_ -> showScreen("PizzaGUI"));
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
+		btnLocations.addActionListener(_ -> showScreen("LocationScreen"));
+		btnDeals.addActionListener(_ ->showScreen("Deals"));
+		btnSignIn.addActionListener(_ -> showScreen("SignIn"));
 		optDrinkSize.addActionListener(_ -> {
 			if (optDrinkSize.getSelectedIndex() == 0)
 				return;
@@ -108,6 +111,7 @@ public class Menu extends CardScreen{
 		placeYourOrderButton.addActionListener(_ -> {
 			menuItems.add(info.getCurPizza());
 			Order myOrder = new Order(menuItems);
+			showScreen("CheckOut");
 		});
 	}
 	public JPanel getScreenPanel() {
