@@ -9,13 +9,7 @@ public class Locations extends CardScreen{
     private JButton menuButton;
     private JButton locationsButton;
     private JPanel Bottom;
-    private JTextField momSAndPopTextField;
-    private JTextField a680ArnstonRdSuiteTextField;
-    private JTextField phone7705551212TextField;
-    private JTextField operatingHoursTextField;
-    private JTextField monThur9am11pmTextField;
-    private JTextField friSat11am12amTextField;
-    private JTextField mariettaGA30060TextField;
+    private JButton dealsButton;
 
     public Locations(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
@@ -36,6 +30,12 @@ public class Locations extends CardScreen{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 showScreen("Locations");
+            }
+        });
+        dealsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                showScreen("Deals");
             }
         });
     }
