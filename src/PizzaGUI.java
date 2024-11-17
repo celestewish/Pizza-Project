@@ -23,14 +23,15 @@ public class PizzaGUI extends CardScreen {
     private JCheckBox checkCheese;
     
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+        //variables
         super(screenLayoutController, screenContainer, info);
         final pizzaSize[] mySize = new pizzaSize[1];
         final crustType[] myCrust = new crustType[1];
         final boolean[] sauce = new boolean[1];
+        //action listeners
         btnHome.addActionListener(_ -> {
             showScreen("Menu");
         });
-
         btnContinue.addActionListener(_ -> {
             Pizza myPizza = new Pizza(mySize[0], myCrust[0], sauce[0]);
             info.setCurPizza(myPizza);

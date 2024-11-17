@@ -40,6 +40,7 @@ public class ToppingsGUI extends CardScreen {
 
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
+        //variables
         final Topping[] pepperoni = new Topping[1];
         final Topping[] sausage = new Topping[1];
         final Topping[] bacon = new Topping[1];
@@ -50,8 +51,8 @@ public class ToppingsGUI extends CardScreen {
         final Topping[] olives = new Topping[1];
         final Topping[] peppers = new Topping[1];
         final Topping[] mushrooms = new Topping[1];
-        LinkedList<Topping> toppings = new LinkedList<>();
 
+        //action listeners
         btnHome.addActionListener(e -> showScreen("Deals"));
 
         btnDeals.addActionListener(e -> showScreen("Deals"));
@@ -62,7 +63,7 @@ public class ToppingsGUI extends CardScreen {
 
         cartButton.addActionListener(e -> showScreen("Cart"));
 
-
+        //adds the toppings
         comboBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,6 +125,7 @@ public class ToppingsGUI extends CardScreen {
                 mushrooms[0] = new Topping("mushrooms", 3f, false, Objects.requireNonNull(comboBox10.getSelectedItem()).toString());
             }
         });
+        //adds toppings, adds them to database, and then returns to menu
         returnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -46,9 +46,12 @@ public class Menu extends CardScreen{
 	
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer, info);
+		//variables
 		AtomicInteger drinkSize = new AtomicInteger();
 		AtomicInteger amount = new AtomicInteger();
 		LinkedList<MenuItem> menuItems = new LinkedList<>();
+
+		//listeners
 		btnCreatePizza.addActionListener(_ -> showScreen("PizzaGUI"));
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 		optDrinkSize.addActionListener(_ -> {
