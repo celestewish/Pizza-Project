@@ -1,4 +1,3 @@
-import javax.smartcardio.Card;
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,7 +27,7 @@ public class FrameLogic extends JFrame {
 		SignIn signIn = new SignIn((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(signIn.getScreenPanel(), "SignIn");
 		
-		MenuGUI menu = new MenuGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		Menu menu = new Menu((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(menu.getScreenPanel(), "MenuGUI");
 
 		PizzaGUI pizza = new PizzaGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
@@ -41,7 +40,7 @@ public class FrameLogic extends JFrame {
 		screenContainer.add(checkout.getScreenPanel(), "CheckOut");
 
 		Locations locations = new Locations((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(locations.getScreenPanel(), "Locations");
+		//screenContainer.add(locations.getScreenPanel(), "Locations");
 		
 		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");

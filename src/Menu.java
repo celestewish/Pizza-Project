@@ -3,6 +3,8 @@ import java.awt.*;
 
 public class Menu extends CardScreen{
 	
+	private JPanel menuPanel;
+	
 	private JButton btnDeals;
 	private JButton btnLocations;
 	private JButton btnHome;
@@ -40,5 +42,9 @@ public class Menu extends CardScreen{
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer, info);
 
+	}
+	
+	public JPanel getScreenPanel() {
+		return menuPanel;
 	}
 }
