@@ -17,6 +17,12 @@ public class Order {
 		this.payment = payment;
 	}
 	
+	public Order(LinkedList<MenuItem> items) {
+		orderNumber = orderCounter;
+		orderCounter++;
+		this.items = items;
+	}
+	
 	public boolean addItem(MenuItem item) {
 		if (items.contains(item)) {
 			items.get(items.indexOf(item)).incrementCount(item.getCount());
