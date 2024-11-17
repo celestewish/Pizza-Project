@@ -257,16 +257,36 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 float totalCost = 0;
-                totalCost += pepperoni[0].getPrice();
-                totalCost += sausage[0].getPrice();
-                totalCost += bacon[0].getPrice();
-                totalCost += chicken[0].getPrice();
-                totalCost += groundBeef[0].getPrice();
-                totalCost += spinach[0].getPrice();
-                totalCost += onions[0].getPrice();
-                totalCost += olives[0].getPrice();
-                totalCost += peppers[0].getPrice();
-                totalCost += mushrooms[0].getPrice();
+                if (pepperoni[0] != null) {
+                    totalCost += pepperoni[0].getPrice();
+                }
+                if (sausage[0] != null) {
+                    totalCost += sausage[0].getPrice();
+                }
+                if (bacon[0] != null) {
+                    totalCost += bacon[0].getPrice();
+                }
+                if (chicken[0] != null) {
+                    totalCost += chicken[0].getPrice();
+                }
+                if (groundBeef[0] != null) {
+                    totalCost += groundBeef[0].getPrice();
+                }
+                if (spinach[0] != null) {
+                    totalCost += spinach[0].getPrice();
+                }
+                if (onions[0] != null) {
+                    totalCost += onions[0].getPrice();
+                }
+                if (olives[0] != null) {
+                    totalCost += olives[0].getPrice();
+                }
+                if (peppers[0] != null) {
+                    totalCost += peppers[0].getPrice();
+                }
+                if (mushrooms[0] != null) {
+                    totalCost += mushrooms[0].getPrice();
+                }
                 totalLabel = new JLabel(String.valueOf(totalCost));
             }
         });
