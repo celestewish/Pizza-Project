@@ -47,7 +47,7 @@ public class CheckOut extends CardScreen {
             }
             catch(NumberFormatException ex){
                 JFrame frame = new JFrame("Error");
-                frame.setSize(400,200);
+                frame.setSize(200,200);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 JOptionPane.showMessageDialog(frame, "Invalid input! PLease enter a valid phone number.", "Error", JOptionPane.ERROR_MESSAGE);
                 frame.setVisible(true);
