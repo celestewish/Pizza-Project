@@ -27,8 +27,8 @@ public class FrameLogic extends JFrame {
 		SignIn signIn = new SignIn((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(signIn.getScreenPanel(), "SignIn");
 		
-		MenuGUI menu = new MenuGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(menu.getScreenPanel(), "MenuGUI");
+		Menu menu = new Menu((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		screenContainer.add(menu.getScreenPanel(), "Menu");
 
 		PizzaGUI pizza = new PizzaGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(pizza.getScreenPanel(), "PizzaGUI");
