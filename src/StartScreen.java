@@ -5,6 +5,7 @@ import java.awt.*;
 public class StartScreen extends CardScreen {
 	private JPanel pnlStartScreen;
 
+	//buttons
 	private JButton btnLogin;
 	private JButton btnSignIn;
 	private JButton btnMenu;
@@ -12,11 +13,11 @@ public class StartScreen extends CardScreen {
 	private JButton btnDeals;
 	private JButton btnLocations;
 
-
+	//constructor for start screen
 	public StartScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer, info);
 		
-		
+		//action listeners for the buttons
 		btnLogin.addActionListener(_ -> {
 			showScreen("SignIn");
 		});
