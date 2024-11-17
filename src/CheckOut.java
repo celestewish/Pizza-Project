@@ -20,6 +20,7 @@ public class CheckOut extends CardScreen {
     private JLabel welcome;
     private JLabel userName;
     private JLabel FirstName;
+    private JPanel Top;
 
 
     public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
@@ -79,7 +80,7 @@ public class CheckOut extends CardScreen {
 
 
     
-    public JPanel getScreenPanel() {return panel1;}
+    public JPanel getScreenPanel() {return Top;}
 
 
 }

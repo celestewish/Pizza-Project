@@ -19,8 +19,6 @@ public class Locations extends CardScreen{
         dealsButton.addActionListener(e -> showScreen("Deals"));
         locationsButton.addActionListener(e -> showScreen("Locations"));
     }
-    
-    public JPanel getScreenPanel(){
-        return Top;
-    }
+
+
 }
