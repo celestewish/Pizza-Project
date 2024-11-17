@@ -27,7 +27,7 @@ public class StartScreen extends CardScreen {
 		});
 		
 		btnMenu.addActionListener(_ -> {
-			showScreen("MenuGUI");
+			showScreen("Menu");
 		});
 		
 		btnSignIn.addActionListener(_ -> {
@@ -35,7 +35,7 @@ public class StartScreen extends CardScreen {
 		});
 
 
-		btnLocations.addActionListener(_ -> showScreen("Locations"));
+		btnLocations.addActionListener(_ ->{ showScreen("Location");});
 
 		btnDeals.addActionListener(_ -> {
             showScreen("Deals");

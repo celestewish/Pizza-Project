@@ -10,6 +10,7 @@ public class PizzaGUI extends CardScreen {
     private JButton btnLocations;
     private JButton btnSignOut;
     private JButton viewCartButton;
+    private JButton btnContinue;
     
     private JLabel lblHiCustomerName;
     
@@ -18,13 +19,11 @@ public class PizzaGUI extends CardScreen {
     private JComboBox cboxSauce;
     private JCheckBox checkCheese;
     
-    private JButton btnContinue;
-    
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
         
         btnHome.addActionListener(_ -> {
-            showScreen("StartScreen");
+            showScreen("Menu");
         });
 
         btnContinue.addActionListener(_ -> {

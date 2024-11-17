@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 
 public class CheckOut extends CardScreen {
@@ -71,12 +70,12 @@ public class CheckOut extends CardScreen {
 
         });
 
-        homeBTN.addActionListener(e -> showScreen("StartScreen"));
-        MenuBTN.addActionListener(e -> showScreen("MenuGUI"));
-        dealsButton.addActionListener(e -> showScreen("Deals"));
-        locationsBTN.addActionListener(e -> showScreen("Locations"));
+        homeBTN.addActionListener(e ->{ showScreen("StartScreen");});
+        MenuBTN.addActionListener(e ->{ showScreen("MenuGUI");});
+        dealsButton.addActionListener(e ->{ showScreen("Deals");});
+        locationsBTN.addActionListener(e ->{ showScreen("Locations");});
 
-        proceedToPaymentButton.addActionListener(e -> showScreen("PaymentScreen"));
+        proceedToPaymentButton.addActionListener(e ->{ showScreen("PaymentScreen");});
     }
 
 
