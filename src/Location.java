@@ -12,10 +12,18 @@ public class Location extends CardScreen{
     public Location(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
 
-        homeButton.addActionListener(e -> showScreen("StartScreen"));
-        menuButton.addActionListener(e -> showScreen("Menu"));
-        dealsButton.addActionListener(e -> showScreen("Deals"));
-        locationsButton.addActionListener(e -> showScreen("Location"));
+        homeButton.addActionListener(e -> {
+            showScreen("StartScreen");
+        });
+        menuButton.addActionListener(e -> {
+            showScreen("Menu");
+        });
+        dealsButton.addActionListener(e -> {
+            showScreen("Deals");
+        });
+        locationsButton.addActionListener(e -> {
+            showScreen("Location");
+        });
     }
     
     public JPanel getScreenPanel() {
