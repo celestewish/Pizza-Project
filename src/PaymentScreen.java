@@ -97,6 +97,7 @@ public class PaymentScreen extends CardScreen {
                 frame.setVisible(true);
             }
 
+            showScreen("Payment_Receipt");
 
         });
     }
@@ -118,5 +119,7 @@ public class PaymentScreen extends CardScreen {
 
         return year >= 0 && year <= 99;
     }
+
+    public JPanel getScreenPanel(){return panel1;}
 
 }
