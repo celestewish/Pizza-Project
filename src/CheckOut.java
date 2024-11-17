@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 
 public class CheckOut extends CardScreen {
-    private JPanel pnlCheckout;
+    private JPanel pnlCheckOut;
     
     private JButton homeBTN;
     private JButton MenuBTN;
@@ -81,7 +81,7 @@ public class CheckOut extends CardScreen {
 
 
     
-    public JPanel getScreenPanel() {return pnlCheckout;}
+    public JPanel getScreenPanel() {return pnlCheckOut;}
 
 
 }
