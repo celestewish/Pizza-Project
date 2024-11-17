@@ -26,19 +26,19 @@ public class Menu extends CardScreen{
 	private JButton btnAddWing;
 	private JLabel lblGarlicPrice;
 	private JLabel lblSaladPrice;
-	private JComboBox optDrinkType;
-	private JComboBox optDrinkSize;
-	private JComboBox optDrinkCt;
-	private JComboBox optDessertType;
-	private JComboBox optDessertCt;
-	private JComboBox optWingType;
-	private JComboBox optWingSize;
-	private JComboBox optWingCt;
-	private JComboBox optGarlicSize;
-	private JComboBox optGarlicCt;
-	private JComboBox optSaladType;
-	private JComboBox optSaladDressing;
-	private JComboBox optSaladCount;
+	private JComboBox<Integer> optDrinkType;
+	private JComboBox<Integer> optDrinkSize;
+	private JComboBox<Integer> optDrinkCt;
+	private JComboBox<Integer> optDessertType;
+	private JComboBox<Integer> optDessertCt;
+	private JComboBox<Integer> optWingType;
+	private JComboBox<Integer> optWingSize;
+	private JComboBox<Integer> optWingCt;
+	private JComboBox<Integer> optGarlicSize;
+	private JComboBox<Integer> optGarlicCt;
+	private JComboBox<Integer> optSaladType;
+	private JComboBox<Integer> optSaladDressing;
+	private JComboBox<Integer> optSaladCount;
 	
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer, info);
@@ -47,14 +47,17 @@ public class Menu extends CardScreen{
 		btnCreatePizza.addActionListener(_ -> showScreen("PizzaGUI"));
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 		optDrinkSize.addActionListener(_ -> {
-			if (optDrinkSize.getSelectedItem().equals("Small")) {
-				drinkSize.set(0);
-			}
-			else if (optDrinkSize.getSelectedItem().equals("Medium")) {
-				drinkSize.set(1);
-			}
-			else if (optDrinkSize.getSelectedItem().equals("Large")) {
-				drinkSize.set(2);
+			if (optDrinkSize.getSelectedIndex() == 0)
+				return;
+			
+			String size = (String)optDrinkSize.getSelectedItem();
+			if (size == null)
+				return;
+			
+			switch (size) {
+				case "Small" -> drinkSize.set(0);
+				case "Medium" -> drinkSize.set(1);
+				case "Large" -> drinkSize.set(2);
 			}
 		});
 		optDrinkCt.addActionListener(_ -> {amount.set((int) optDrinkCt.getSelectedItem());});
