@@ -44,13 +44,13 @@ public class SignIn extends CardScreen {
 		});
 
 		btnMenu.addActionListener(_ -> {
-			showScreen("MenuGUI");
+			showScreen("Menu");
 			resetScreen();
 			info.resetLoginAttempts();
 		});
 
 		btnLocations.addActionListener(_ -> {
-			showScreen("Locations");
+			showScreen("Location");
 			resetScreen();
 			info.resetLoginAttempts();
 		});
