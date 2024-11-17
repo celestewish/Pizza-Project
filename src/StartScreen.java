@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class StartScreen extends CardScreen {
 	private JPanel pnlStartScreen;
@@ -35,7 +34,7 @@ public class StartScreen extends CardScreen {
 		});
 
 
-		btnLocations.addActionListener(_ ->{ showScreen("Location");});
+		btnLocations.addActionListener(_ ->{ showScreen("Location ");});
 
 		btnDeals.addActionListener(_ -> {
             showScreen("Deals");

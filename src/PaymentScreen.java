@@ -1,10 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PaymentScreen extends CardScreen {
-    private JPanel panel1;
+    private JPanel pnlPaymentScreen;
     private JButton HomeBtn;
     private JButton menuButton;
     private JButton DealsBTN;
@@ -21,6 +19,7 @@ public class PaymentScreen extends CardScreen {
 
     public PaymentScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info){
         super(screenLayoutController, screenContainer, info);
+
         String[] name = info.getName().split(" ");
         String[] custAddress = info.getAddress().split(" ");
 
@@ -31,9 +30,9 @@ public class PaymentScreen extends CardScreen {
         cityStateZip.setText(custAddress[3] + " " + custAddress[4] + " " + custAddress[5]);
 
         HomeBtn.addActionListener(e -> showScreen("StartScreen"));
-        menuButton.addActionListener(e -> showScreen("MenuGUI"));
+        menuButton.addActionListener(e -> showScreen("Menu"));
         DealsBTN.addActionListener(e -> showScreen("Deals"));
-        LocationsBTN.addActionListener(e -> showScreen("Locations"));
+        LocationsBTN.addActionListener(e -> showScreen("Location"));
         submitPaymentButton.addActionListener((e) -> {
             String cardNameInput = firstLastTextField.getText();
             String cardNumberInput = null;
@@ -120,6 +119,6 @@ public class PaymentScreen extends CardScreen {
         return year >= 0 && year <= 99;
     }
 
-    public JPanel getScreenPanel(){return panel1;}
+    public JPanel getScreenPanel(){return pnlPaymentScreen;}
 
 }

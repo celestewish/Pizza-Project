@@ -74,7 +74,7 @@ public class CheckOut extends CardScreen {
         dealsButton.addActionListener(e ->{ showScreen("Deals");});
         locationsBTN.addActionListener(e ->{ showScreen("Locations");});
 
-        proceedToPaymentButton.addActionListener(e ->{ showScreen("PaymentScreen");});
+        proceedToPaymentButton.addActionListener(e ->{ showScreen("paymentScreen");});
     }
 
 
