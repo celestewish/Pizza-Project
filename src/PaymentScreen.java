@@ -119,6 +119,6 @@ public class PaymentScreen extends CardScreen {
         return year >= 0 && year <= 99;
     }
 
-    public JPanel getScreenPanel(){return pnlPaymentScreen;}
+    public  JPanel getScreenPanel(){return pnlPaymentScreen;}
 
 }
