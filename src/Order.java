@@ -35,4 +35,28 @@ public class Order {
 		}
 		return false;
 	}
+	
+	public deliveryMethod getDeliveryMethod() {
+		return deliveryMethod;
+	}
+	
+	public void setDeliveryMethod(deliveryMethod deliveryMethod) {
+		this.deliveryMethod = deliveryMethod;
+	}
+	
+	public boolean isCash() {
+		return cash;
+	}
+	
+	public void setCash(boolean cash) {
+		this.cash = cash;
+	}
+	
+	public Payment getPayment() {
+		return payment;
+	}
+	
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
 }
