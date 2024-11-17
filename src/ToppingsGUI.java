@@ -68,7 +68,6 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pepperoni[0] = new Topping("pepperoni", 3f, false, Objects.requireNonNull(comboBox1.getSelectedItem()).toString());
-
             }
         });
         comboBox2.addActionListener(new ActionListener() {
@@ -142,6 +141,116 @@ public class ToppingsGUI extends CardScreen {
                 myPizza.addTopping(mushrooms[0]);
                 info.setCurPizza(Objects.requireNonNull(myPizza));
                 showScreen("Menu");
+            }
+        });
+        extraCheckBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox1.isSelected()) {
+                    pepperoni[0] = new Topping("pepperoni", 3f, true, Objects.requireNonNull(comboBox1.getSelectedItem()).toString());
+                }
+                else{
+                    pepperoni[0] = new Topping("pepperoni", 3f, false, Objects.requireNonNull(comboBox1.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox2.isSelected()) {
+                    sausage[0] = new Topping("sausage", 3f, true, Objects.requireNonNull(comboBox2.getSelectedItem()).toString());
+                }
+                else{
+                    sausage[0] = new Topping("sausage", 3f, false, Objects.requireNonNull(comboBox2.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox3.isSelected()) {
+                    bacon[0] = new Topping("bacon", 3f, true, Objects.requireNonNull(comboBox3.getSelectedItem()).toString());
+                }
+                else{
+                    bacon[0] = new Topping("bacon", 3f, false, Objects.requireNonNull(comboBox3.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox4.isSelected()) {
+                    chicken[0] =  new Topping("chicken", 3f, true, Objects.requireNonNull(comboBox4.getSelectedItem()).toString());
+                }
+                else{
+                    chicken[0] =  new Topping("chicken", 3f, false, Objects.requireNonNull(comboBox4.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox5.isSelected()) {
+                    groundBeef[0] =  new Topping("groundBeef", 3f, true, Objects.requireNonNull(comboBox5.getSelectedItem()).toString());
+                }
+                else{
+                    groundBeef[0] =  new Topping("groundBeef", 3f, false, Objects.requireNonNull(comboBox5.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox6.isSelected()) {
+                    spinach[0] =  new Topping("spinach", 3f, true, Objects.requireNonNull(comboBox6.getSelectedItem()).toString());
+                }
+                else{
+                    spinach[0] =  new Topping("spinach", 3f, false, Objects.requireNonNull(comboBox6.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox7.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox7.isSelected()) {
+                    onions[0] = new Topping("onions", 3f, true, Objects.requireNonNull(comboBox7.getSelectedItem()).toString());
+                }
+                else{
+                    onions[0] = new Topping("onions", 3f, false, Objects.requireNonNull(comboBox7.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox8.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox8.isSelected()) {
+                    olives[0] =  new Topping("olives", 3f, true, Objects.requireNonNull(comboBox8.getSelectedItem()).toString());
+                }
+                else{
+                    olives[0] =  new Topping("olives", 3f, false, Objects.requireNonNull(comboBox8.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox9.isSelected()) {
+                    peppers[0] = new Topping("peppers", 3f, true, Objects.requireNonNull(comboBox9.getSelectedItem()).toString());
+                }
+                else{
+                    peppers[0] = new Topping("peppers", 3f, false, Objects.requireNonNull(comboBox9.getSelectedItem()).toString());
+                }
+            }
+        });
+        extraCheckBox10.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (extraCheckBox10.isSelected()) {
+                    mushrooms[0] = new Topping("mushrooms", 3f, true, Objects.requireNonNull(comboBox10.getSelectedItem()).toString());
+                }
+                else{
+                    mushrooms[0] = new Topping("mushrooms", 3f, false, Objects.requireNonNull(comboBox10.getSelectedItem()).toString());
+                }
             }
         });
     }
