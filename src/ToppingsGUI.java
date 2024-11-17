@@ -143,14 +143,16 @@ public class ToppingsGUI extends CardScreen {
                 showScreen("Menu");
             }
         });
+
+        //checks for extras
         extraCheckBox1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox1.isSelected()) {
-                    pepperoni[0] = new Topping("pepperoni", 3f, true, Objects.requireNonNull(comboBox1.getSelectedItem()).toString());
+                    pepperoni[0] = new Topping("pepperoni", 6f, true, Objects.requireNonNull(comboBox1.getSelectedItem()).toString());
                 }
                 else{
-                    pepperoni[0] = new Topping("pepperoni", 3f, false, Objects.requireNonNull(comboBox1.getSelectedItem()).toString());
+                    pepperoni[0] = new Topping("pepperoni", 6f, false, Objects.requireNonNull(comboBox1.getSelectedItem()).toString());
                 }
             }
         });
@@ -158,10 +160,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox2.isSelected()) {
-                    sausage[0] = new Topping("sausage", 3f, true, Objects.requireNonNull(comboBox2.getSelectedItem()).toString());
+                    sausage[0] = new Topping("sausage", 6f, true, Objects.requireNonNull(comboBox2.getSelectedItem()).toString());
                 }
                 else{
-                    sausage[0] = new Topping("sausage", 3f, false, Objects.requireNonNull(comboBox2.getSelectedItem()).toString());
+                    sausage[0] = new Topping("sausage", 6f, false, Objects.requireNonNull(comboBox2.getSelectedItem()).toString());
                 }
             }
         });
@@ -169,10 +171,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox3.isSelected()) {
-                    bacon[0] = new Topping("bacon", 3f, true, Objects.requireNonNull(comboBox3.getSelectedItem()).toString());
+                    bacon[0] = new Topping("bacon", 6f, true, Objects.requireNonNull(comboBox3.getSelectedItem()).toString());
                 }
                 else{
-                    bacon[0] = new Topping("bacon", 3f, false, Objects.requireNonNull(comboBox3.getSelectedItem()).toString());
+                    bacon[0] = new Topping("bacon", 6f, false, Objects.requireNonNull(comboBox3.getSelectedItem()).toString());
                 }
             }
         });
@@ -180,10 +182,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox4.isSelected()) {
-                    chicken[0] =  new Topping("chicken", 3f, true, Objects.requireNonNull(comboBox4.getSelectedItem()).toString());
+                    chicken[0] =  new Topping("chicken", 6f, true, Objects.requireNonNull(comboBox4.getSelectedItem()).toString());
                 }
                 else{
-                    chicken[0] =  new Topping("chicken", 3f, false, Objects.requireNonNull(comboBox4.getSelectedItem()).toString());
+                    chicken[0] =  new Topping("chicken", 6f, false, Objects.requireNonNull(comboBox4.getSelectedItem()).toString());
                 }
             }
         });
@@ -191,10 +193,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox5.isSelected()) {
-                    groundBeef[0] =  new Topping("groundBeef", 3f, true, Objects.requireNonNull(comboBox5.getSelectedItem()).toString());
+                    groundBeef[0] =  new Topping("groundBeef", 6f, true, Objects.requireNonNull(comboBox5.getSelectedItem()).toString());
                 }
                 else{
-                    groundBeef[0] =  new Topping("groundBeef", 3f, false, Objects.requireNonNull(comboBox5.getSelectedItem()).toString());
+                    groundBeef[0] =  new Topping("groundBeef", 6f, false, Objects.requireNonNull(comboBox5.getSelectedItem()).toString());
                 }
             }
         });
@@ -202,10 +204,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox6.isSelected()) {
-                    spinach[0] =  new Topping("spinach", 3f, true, Objects.requireNonNull(comboBox6.getSelectedItem()).toString());
+                    spinach[0] =  new Topping("spinach", 6f, true, Objects.requireNonNull(comboBox6.getSelectedItem()).toString());
                 }
                 else{
-                    spinach[0] =  new Topping("spinach", 3f, false, Objects.requireNonNull(comboBox6.getSelectedItem()).toString());
+                    spinach[0] =  new Topping("spinach", 6f, false, Objects.requireNonNull(comboBox6.getSelectedItem()).toString());
                 }
             }
         });
@@ -213,10 +215,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox7.isSelected()) {
-                    onions[0] = new Topping("onions", 3f, true, Objects.requireNonNull(comboBox7.getSelectedItem()).toString());
+                    onions[0] = new Topping("onions", 6f, true, Objects.requireNonNull(comboBox7.getSelectedItem()).toString());
                 }
                 else{
-                    onions[0] = new Topping("onions", 3f, false, Objects.requireNonNull(comboBox7.getSelectedItem()).toString());
+                    onions[0] = new Topping("onions", 6f, false, Objects.requireNonNull(comboBox7.getSelectedItem()).toString());
                 }
             }
         });
@@ -224,10 +226,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox8.isSelected()) {
-                    olives[0] =  new Topping("olives", 3f, true, Objects.requireNonNull(comboBox8.getSelectedItem()).toString());
+                    olives[0] =  new Topping("olives", 6f, true, Objects.requireNonNull(comboBox8.getSelectedItem()).toString());
                 }
                 else{
-                    olives[0] =  new Topping("olives", 3f, false, Objects.requireNonNull(comboBox8.getSelectedItem()).toString());
+                    olives[0] =  new Topping("olives", 6f, false, Objects.requireNonNull(comboBox8.getSelectedItem()).toString());
                 }
             }
         });
@@ -235,10 +237,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox9.isSelected()) {
-                    peppers[0] = new Topping("peppers", 3f, true, Objects.requireNonNull(comboBox9.getSelectedItem()).toString());
+                    peppers[0] = new Topping("peppers", 6f, true, Objects.requireNonNull(comboBox9.getSelectedItem()).toString());
                 }
                 else{
-                    peppers[0] = new Topping("peppers", 3f, false, Objects.requireNonNull(comboBox9.getSelectedItem()).toString());
+                    peppers[0] = new Topping("peppers", 6f, false, Objects.requireNonNull(comboBox9.getSelectedItem()).toString());
                 }
             }
         });
@@ -246,10 +248,10 @@ public class ToppingsGUI extends CardScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (extraCheckBox10.isSelected()) {
-                    mushrooms[0] = new Topping("mushrooms", 3f, true, Objects.requireNonNull(comboBox10.getSelectedItem()).toString());
+                    mushrooms[0] = new Topping("mushrooms", 6f, true, Objects.requireNonNull(comboBox10.getSelectedItem()).toString());
                 }
                 else{
-                    mushrooms[0] = new Topping("mushrooms", 3f, false, Objects.requireNonNull(comboBox10.getSelectedItem()).toString());
+                    mushrooms[0] = new Topping("mushrooms", 6f, false, Objects.requireNonNull(comboBox10.getSelectedItem()).toString());
                 }
             }
         });
