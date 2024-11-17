@@ -28,15 +28,17 @@ public class PizzaGUI extends CardScreen {
         final pizzaSize[] mySize = new pizzaSize[1];
         final crustType[] myCrust = new crustType[1];
         final boolean[] sauce = new boolean[1];
-        //action listeners
+        //goes to menu
         btnHome.addActionListener(_ -> {
             showScreen("Menu");
         });
+        //goes to toppings
         btnContinue.addActionListener(_ -> {
             Pizza myPizza = new Pizza(mySize[0], myCrust[0], sauce[0]);
             info.setCurPizza(myPizza);
             showScreen("ToppingsGUI");
         });
+        //these add each aspect of the pizza
         cboxCrust.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
