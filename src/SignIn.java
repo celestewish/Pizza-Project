@@ -86,7 +86,7 @@ public class SignIn extends CardScreen {
 			info.setCurrentUser(info.UserDatabase().getUser(txtEmail.getText()));
 			info.setLoggedIn(true);
 	        info.resetLoginAttempts();
-			showScreen("MenuGUI");
+			showScreen("Menu");
 		});
 
 		btnSignUp.addActionListener(_ -> {
