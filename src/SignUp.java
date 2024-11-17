@@ -68,7 +68,15 @@ public class SignUp extends CardScreen {
 		
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 		
-		btnMenu.addActionListener(_ -> showScreen("MenuGUI"));
+		btnMenu.addActionListener(_ -> {
+			showScreen("MenuGUI");
+			resetFields();
+		});
+		
+		btnSignIn_SignUp.addActionListener(_ -> {
+			showScreen("SignIn");
+			resetFields();
+		});
 		
 		btnSignUp.addActionListener(_ -> {
 			for (JTextField f : requiredTextFields) {

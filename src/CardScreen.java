@@ -18,7 +18,7 @@ public abstract class CardScreen {
 	
 	public void showScreen(String pnlName) {
 		if (pnlName.equals("StartScreen") && info.IsLoggedIn())
-			pnlName = "MenuGUI";
+			pnlName = "Menu";
 		
 		screenLayoutController.show(screenContainer, pnlName);
 	}

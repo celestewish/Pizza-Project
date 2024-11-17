@@ -38,9 +38,6 @@ public class FrameLogic extends JFrame {
 
 		CheckOut checkout = new CheckOut((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(checkout.getScreenPanel(), "CheckOut");
-
-		Locations locations = new Locations((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(locations.getScreenPanel(), "Locations");
 		
 		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");

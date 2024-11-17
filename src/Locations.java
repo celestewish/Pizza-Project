@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Locations extends CardScreen{
-    private JPanel pnlLocations;
+public class Locations extends CardScreen {
+    private JPanel panel1;
+    
     private JButton homeButton;
     private JButton menuButton;
     private JButton locationsButton;
@@ -13,12 +14,12 @@ public class Locations extends CardScreen{
         super(screenLayoutController, screenContainer, info);
 
         homeButton.addActionListener(e -> showScreen("StartScreen"));
-        menuButton.addActionListener(e -> showScreen("MenuGUI"));
+        menuButton.addActionListener(e -> showScreen("Menu"));
         dealsButton.addActionListener(e -> showScreen("Deals"));
         locationsButton.addActionListener(e -> showScreen("Locations"));
     }
     
     public JPanel getScreenPanel() {
-        return pnlLocations;
+        return panel1;
     }
 }

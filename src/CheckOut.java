@@ -22,8 +22,7 @@ public class CheckOut extends CardScreen {
     private JLabel welcome;
     private JLabel userName;
     private JLabel FirstName;
-
-
+    
     public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
 
