@@ -20,7 +20,6 @@ public class SignIn extends CardScreen {
 	private JPasswordField txtPassword;
 	private JLabel lblEmailNotExist;
 	
-	
 	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer, info);
 		lblEmailNotExist.setText("");

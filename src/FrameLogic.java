@@ -51,6 +51,8 @@ public class FrameLogic extends JFrame {
 		MenuForNonUser menuForNonUser = new MenuForNonUser((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(menuForNonUser.getScreenPanel(), "MenuForNonUser");
 		
+		Payment_Receipt paymentReceipt = new Payment_Receipt((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		screenContainer.add(paymentReceipt.getScreenPanel(), "PaymentReceipt");
 
 		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");
