@@ -42,7 +42,7 @@ public class ToppingsGUI extends CardScreen {
 
         btnDeals.addActionListener(e -> showScreen("Deals"));
 
-        btnLocations.addActionListener(e -> showScreen("Locations"));
+        btnLocations.addActionListener(e -> showScreen("Location"));
 
         btnMenu.addActionListener(e -> showScreen("Menu"));
 
