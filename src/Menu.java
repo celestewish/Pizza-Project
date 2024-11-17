@@ -51,12 +51,14 @@ public class Menu extends CardScreen{
 		AtomicInteger amount = new AtomicInteger();
 		LinkedList<MenuItem> menuItems = new LinkedList<>();
 
-		//listeners
+		//listeners to change screens
 		btnCreatePizza.addActionListener(_ -> showScreen("PizzaGUI"));
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 		btnLocations.addActionListener(_ -> showScreen("LocationScreen"));
 		btnDeals.addActionListener(_ ->showScreen("Deals"));
 		btnSignIn.addActionListener(_ -> showScreen("SignIn"));
+
+		//listeners to add menu items to the order
 		optDrinkSize.addActionListener(_ -> {
 			if (optDrinkSize.getSelectedIndex() == 0)
 				return;
