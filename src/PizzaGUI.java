@@ -20,12 +20,15 @@ public class PizzaGUI extends CardScreen {
     
     private JButton btnContinue;
     
-    
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
         
         btnHome.addActionListener(_ -> {
             showScreen("StartScreen");
+        });
+
+        btnContinue.addActionListener(_ -> {
+            showScreen("ToppingsGUI");
         });
     }
     
