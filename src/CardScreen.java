@@ -20,6 +20,9 @@ public abstract class CardScreen {
 		if (pnlName.equals("StartScreen") && info.IsLoggedIn())
 			pnlName = "Menu";
 		
+		if (pnlName.equals("Menu") && !info.IsLoggedIn())
+			pnlName = "MenuForNonUser";
+		
 		screenLayoutController.show(screenContainer, pnlName);
 	}
 	

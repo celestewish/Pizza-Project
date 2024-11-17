@@ -44,9 +44,13 @@ public class FrameLogic extends JFrame {
 
 		LocationScreen location = new LocationScreen((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(location.getScreenPanel(), "LocationScreen");
-
+		
 		ToppingsGUI toppings = new ToppingsGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(toppings.getScreenPanel(), "ToppingsGUI");
+		
+		MenuForNonUser menuForNonUser = new MenuForNonUser((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		screenContainer.add(menuForNonUser.getScreenPanel(), "MenuForNonUser");
+		
 
 		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");

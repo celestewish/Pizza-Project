@@ -20,7 +20,7 @@ public class Deals extends CardScreen{
 
         btnMenu.addActionListener(e -> showScreen("Menu"));
 
-        btnLocations.addActionListener(e -> showScreen("Location"));
+        btnLocations.addActionListener(e -> showScreen("LocationScreen"));
 
         btnSignIn.addActionListener(e -> showScreen("SignIn"));
     }
