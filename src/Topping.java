@@ -2,9 +2,9 @@ public class Topping {
 	private final String name;
 	private float price;
 	private boolean extra;
-	private toppingPlacement placement;
+	private String placement;
 	
-	public Topping(String name, float price, boolean extra, toppingPlacement placement) {
+	public Topping(String name, float price, boolean extra, String placement) {
 		this.name = name;
 		this.price = price;
 		this.extra = extra;
@@ -31,11 +31,11 @@ public class Topping {
 		this.extra = extra;
 	}
 	
-	public toppingPlacement getPlacement() {
+	public String getPlacement() {
 		return placement;
 	}
 	
-	public void setPlacement(toppingPlacement placement) {
+	public void setPlacement(String placement) {
 		this.placement = placement;
 	}
 }
