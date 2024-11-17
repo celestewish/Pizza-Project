@@ -1,3 +1,4 @@
+import javax.smartcardio.Card;
 import javax.swing.*;
 import java.awt.*;
 
@@ -35,6 +36,12 @@ public class FrameLogic extends JFrame {
 
 		Deals deals = new Deals((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(deals.getScreenPanel(), "Deals");
+
+		CheckOut checkout = new CheckOut((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		screenContainer.add(checkout.getScreenPanel(), "CheckOut");
+
+		Locations locations = new Locations((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		screenContainer.add(locations.getScreenPanel(), "Locations");
 		
 		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");
