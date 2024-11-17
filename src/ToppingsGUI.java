@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class ToppingsGUI extends CardScreen {
 
-    private JPanel panel1;
+    private JPanel toppingsPanel;
     private JButton btnDeals;
     private JButton btnLocations;
     private JButton btnHome;
@@ -51,6 +51,6 @@ public class ToppingsGUI extends CardScreen {
     }
 
     public JPanel getScreenPanel(){
-        return panel1;
+        return toppingsPanel;
     }
 }
