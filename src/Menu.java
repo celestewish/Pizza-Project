@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class Menu extends CardScreen{
 	
@@ -44,6 +47,11 @@ public class Menu extends CardScreen{
 		super(screenLayoutController, screenContainer, info);
 		AtomicInteger drinkSize = new AtomicInteger();
 		AtomicInteger amount = new AtomicInteger();
+		AtomicReference<AtomicReferenceArray<Drink>> drinks = null;
+		AtomicReference<AtomicReferenceArray<Dessert>> desserts = null;
+		AtomicReference<AtomicReferenceArray<Side>> wings = null;
+		AtomicReference<AtomicReferenceArray<Side>> garlics = null;
+		AtomicReference<AtomicReferenceArray<Side>> salads = null;
 		btnCreatePizza.addActionListener(_ -> showScreen("PizzaGUI"));
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 		optDrinkSize.addActionListener(_ -> {
@@ -59,41 +67,45 @@ public class Menu extends CardScreen{
 		});
 		optDrinkCt.addActionListener(_ -> {amount.set((int) optDrinkCt.getSelectedItem());});
 		btnAddDrink.addActionListener(_ -> {
-			Drink[] drinks = new Drink[amount.get()];
+			drinks.set(new AtomicReferenceArray<>(new Drink[amount.get()]));
 			for (int i = 0; i < amount.get(); i++) {
-				drinks[i] = new Drink(drinkSize.get());
+				drinks.get().set(i, new Drink(drinkSize.get()));
 			}
 		});
 		optDrinkCt.addActionListener(_ -> {amount.set((int) optDessertCt.getSelectedItem());});
 		btnAddDessert.addActionListener(_ -> {
-			Dessert[] desserts = new Dessert[amount.get()];
+			desserts.set(new AtomicReferenceArray<>(new Dessert[amount.get()]));
 			for (int i = 0; i < amount.get(); i++) {
-				desserts[i] = new Dessert();
+				desserts.get().set(i, new Dessert());
 			}
 		});
 		optWingCt.addActionListener(_ -> {amount.set((int) optWingCt.getSelectedItem());});
 		btnAddWing.addActionListener(_ -> {
-			Side[] wings = new Side[amount.get()];
+			wings.set(new AtomicReferenceArray<>(new Side[amount.get()]));
 			for (int i = 0; i < amount.get(); i++) {
-				wings[i] = new Side();
+				wings.get().set(i, new Side());
 			}
 		});
 		optGarlicCt.addActionListener(_ -> {amount.set((int) optGarlicCt.getSelectedItem());});
 		btnAddGarlicBread.addActionListener(_ -> {
-			Side[] garlics = new Side[amount.get()];
+			garlics.set(new AtomicReferenceArray<>(new Side[amount.get()]));
 			for (int i = 0; i < amount.get(); i++) {
-				garlics[i] = new Side();
+				garlics.get().set(i, new Side());
 			}
 		});
 		optSaladCount.addActionListener(_ -> {amount.set((int) optSaladCount.getSelectedItem());});
 		btnAddSalad.addActionListener(_ -> {
-			Side[] salads = new Side[amount.get()];
+			salads.set(new AtomicReferenceArray<>(new Side[amount.get()]));
 			for (int i = 0; i < amount.get(); i++) {
-				salads[i] = new Side();
+				salads.get().set(i, new Side());
 			}
 		});
 		placeYourOrderButton.addActionListener(_ -> {
+			LinkedList<MenuItem> orderItems = new LinkedList<MenuItem>();
+			for (int i = 0; i < drinks.get().length(); i++) {
 
+			}
+			Order myOrder = new Order(orderItems);
 		});
 	}
 	
