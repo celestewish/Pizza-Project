@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class ToppingsGUI extends CardScreen{
+public class ToppingsGUI extends CardScreen {
 
     private JPanel panel1;
     private JButton btnDeals;
@@ -35,8 +37,19 @@ public class ToppingsGUI extends CardScreen{
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
 
-        
+        btnHome.addActionListener(e -> showScreen("Deals"));
+
+        btnDeals.addActionListener(e -> showScreen("Deals"));
+
+        btnLocations.addActionListener(e -> showScreen("Locations"));
+
+        btnMenu.addActionListener(e -> showScreen("Menu"));
+
+        cartButton.addActionListener(e -> showScreen("Cart"));
+
+
     }
+
     public JPanel getScreenPanel(){
         return panel1;
     }
