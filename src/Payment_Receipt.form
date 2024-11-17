@@ -77,7 +77,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="c45b7" class="javax.swing.JLabel">
+          <component id="c45b7" class="javax.swing.JLabel" binding="ThankYou">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -88,7 +88,7 @@
               <text value="Thank you for placing your order, an email confirmation will be sent to @customer email"/>
             </properties>
           </component>
-          <component id="28f35" class="javax.swing.JLabel">
+          <component id="28f35" class="javax.swing.JLabel" binding="OrderPlace">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="21"/>
@@ -100,7 +100,7 @@
               <text value="Your Order has been Placed, Customer Name"/>
             </properties>
           </component>
-          <component id="1f023" class="javax.swing.JLabel">
+          <component id="1f023" class="javax.swing.JLabel" binding="ItemType">
             <constraints>
               <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -116,7 +116,7 @@
               <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <component id="13be4" class="javax.swing.JLabel">
+          <component id="13be4" class="javax.swing.JLabel" binding="ListIngred">
             <constraints>
               <grid row="7" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -127,7 +127,7 @@
               <text value="List of Ingredients: Thin Crust, Marinera Sauce, regular cheese, Olives, Onions, Green Peppers, "/>
             </properties>
           </component>
-          <component id="29083" class="javax.swing.JLabel">
+          <component id="29083" class="javax.swing.JLabel" binding="Total">
             <constraints>
               <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="21"/>
@@ -139,7 +139,7 @@
               <text value="Total"/>
             </properties>
           </component>
-          <component id="12895" class="javax.swing.JLabel">
+          <component id="12895" class="javax.swing.JLabel" binding="TotalInfo">
             <constraints>
               <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -170,7 +170,7 @@
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="3807f" class="javax.swing.JLabel">
+          <component id="3807f" class="javax.swing.JLabel" binding="OrderSummary">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -182,7 +182,7 @@
               <text value="Order Summary:"/>
             </properties>
           </component>
-          <component id="f9024" class="javax.swing.JLabel">
+          <component id="f9024" class="javax.swing.JLabel" binding="OrderNumber">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -203,7 +203,7 @@
               <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="68411" class="javax.swing.JLabel">
+          <component id="68411" class="javax.swing.JLabel" binding="PaymentMethod">
             <constraints>
               <grid row="11" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -232,7 +232,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="9ab31" class="javax.swing.JLabel">
+          <component id="9ab31" class="javax.swing.JLabel" binding="StorePhone">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -243,7 +243,7 @@
               <text value="Store Phone Number: 123-456-7891"/>
             </properties>
           </component>
-          <component id="38cbe" class="javax.swing.JLabel">
+          <component id="38cbe" class="javax.swing.JLabel" binding="Carry">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="21"/>
@@ -255,7 +255,7 @@
               <text value="Carry out From Store #101"/>
             </properties>
           </component>
-          <component id="388b4" class="javax.swing.JLabel">
+          <component id="388b4" class="javax.swing.JLabel" binding="StoreAddress">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
@@ -271,7 +271,7 @@
               <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <component id="fd0e3" class="javax.swing.JLabel">
+          <component id="fd0e3" class="javax.swing.JLabel" binding="EstTime">
             <constraints>
               <grid row="6" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="17"/>
