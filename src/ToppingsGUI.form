@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ToppingsGUI">
-  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel1" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1179" height="715"/>
+      <xy x="20" y="20" width="1635" height="715"/>
     </constraints>
     <properties>
       <background color="-1582921"/>
@@ -273,6 +273,7 @@
               <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-1582921"/>
               <text value="Extra"/>
             </properties>
           </component>
@@ -305,6 +306,7 @@
               <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-1582921"/>
               <text value="Extra"/>
             </properties>
           </component>
@@ -352,6 +354,7 @@
               <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-1582921"/>
               <text value="Extra"/>
             </properties>
           </component>
@@ -384,6 +387,7 @@
               <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-1582921"/>
               <text value="Extra"/>
             </properties>
           </component>
@@ -416,6 +420,7 @@
               <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-1582921"/>
               <text value="Extra"/>
             </properties>
           </component>
@@ -475,6 +480,7 @@
                   <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-1582921"/>
                   <text value="Extra"/>
                 </properties>
               </component>
@@ -485,7 +491,7 @@
                 <properties>
                   <font name="Arial" size="18"/>
                   <foreground color="-16777216"/>
-                  <text value="Sausage"/>
+                  <text value="Onions"/>
                 </properties>
               </component>
               <component id="2a382" class="javax.swing.JComboBox" default-binding="true">
@@ -507,6 +513,7 @@
                   <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-1582921"/>
                   <text value="Extra"/>
                 </properties>
               </component>
@@ -532,7 +539,7 @@
                 <properties>
                   <font name="Arial" size="18"/>
                   <foreground color="-16777216"/>
-                  <text value="Bacon"/>
+                  <text value="Olives"/>
                 </properties>
               </component>
               <component id="f3dcd" class="javax.swing.JComboBox" default-binding="true">
@@ -554,6 +561,7 @@
                   <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-1582921"/>
                   <text value="Extra"/>
                 </properties>
               </component>
@@ -564,7 +572,7 @@
                 <properties>
                   <font name="Arial" size="18"/>
                   <foreground color="-16777216"/>
-                  <text value="Chicken"/>
+                  <text value="Peppers"/>
                 </properties>
               </component>
               <component id="8a1e" class="javax.swing.JComboBox" default-binding="true">
@@ -586,6 +594,7 @@
                   <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-1582921"/>
                   <text value="Extra"/>
                 </properties>
               </component>
@@ -596,7 +605,7 @@
                 <properties>
                   <font name="Arial" size="18"/>
                   <foreground color="-16777216"/>
-                  <text value="Ground Beef"/>
+                  <text value="Mushrooms"/>
                 </properties>
               </component>
               <component id="3a71b" class="javax.swing.JComboBox" default-binding="true">
@@ -618,6 +627,7 @@
                   <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-1582921"/>
                   <text value="Extra"/>
                 </properties>
               </component>
@@ -628,7 +638,7 @@
                 <properties>
                   <font name="Arial" size="18"/>
                   <foreground color="-16777216"/>
-                  <text value="Pepperoni"/>
+                  <text value="Spinach"/>
                 </properties>
               </component>
               <vspacer id="9e7b">
@@ -660,10 +670,20 @@
       <hspacer id="89091">
         <constraints>
           <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="250" height="-1"/>
+            <preferred-size width="600" height="-1"/>
           </grid>
         </constraints>
       </hspacer>
+      <component id="a0d11" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="10" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font name="Arial" size="16"/>
+          <foreground color="-16777216"/>
+          <text value="Vegetables"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
