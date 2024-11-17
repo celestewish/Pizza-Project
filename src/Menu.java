@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicReferenceArray;
@@ -105,13 +106,24 @@ public class Menu extends CardScreen{
 		});
 		placeYourOrderButton.addActionListener(_ -> {
 			LinkedList<MenuItem> orderItems = new LinkedList<MenuItem>();
-			for (int i = 0; i < drinks.get().length(); i++) {
-
+			for (int i = 0; i < Objects.requireNonNull(drinks).get().length(); i++) {
+				orderItems.add(drinks.get().get(i));
+			}
+			for (int i = 0; i < Objects.requireNonNull(desserts).get().length(); i++) {
+				orderItems.add(desserts.get().get(i));
+			}
+			for (int i = 0; i < Objects.requireNonNull(wings).get().length(); i++) {
+				orderItems.add(wings.get().get(i));
+			}
+			for (int i = 0; i < Objects.requireNonNull(garlics).get().length(); i++) {
+				orderItems.add(garlics.get().get(i));
+			}
+			for (int i = 0; i < Objects.requireNonNull(salads).get().length(); i++) {
+				orderItems.add(salads.get().get(i));
 			}
 			Order myOrder = new Order(orderItems);
 		});
 	}
-	
 	public JPanel getScreenPanel() {
 		return menuPanel;
 	}
