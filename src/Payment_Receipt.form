@@ -22,7 +22,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="89754" class="javax.swing.JButton">
+          <component id="89754" class="javax.swing.JButton" binding="btnHome">
             <constraints>
               <grid row="0" column="1" row-span="3" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
