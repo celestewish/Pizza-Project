@@ -119,7 +119,7 @@ public class SignUp extends CardScreen {
 							"Welcome to Mom and Pop's Pizza Shop, " + txtFname.getText() + "!",
 					"",
 					JOptionPane.INFORMATION_MESSAGE);
-			showScreen("MenuGUI");
+			showScreen("Menu");
 		});
 	}
 	
