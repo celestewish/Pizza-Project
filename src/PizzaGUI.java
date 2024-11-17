@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PizzaGUI extends CardScreen{
     private JPanel panel1;
@@ -16,12 +18,13 @@ public class PizzaGUI extends CardScreen{
 
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
+
+        btnContinue.addActionListener(e -> {
+            showScreen("ToppingsGUI");
+        });
     }
     public JPanel getScreenPanel(){
         return panel1;
     }
 
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }

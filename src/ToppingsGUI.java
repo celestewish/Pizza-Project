@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class ToppingsGUI extends CardScreen{
 
-
+    private JPanel panel1;
     private JButton btnDeals;
     private JButton btnLocations;
     private JButton btnHome;
@@ -14,5 +14,9 @@ public class ToppingsGUI extends CardScreen{
 
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
+
+    }
+    public JPanel getScreenPanel(){
+        return panel1;
     }
 }
