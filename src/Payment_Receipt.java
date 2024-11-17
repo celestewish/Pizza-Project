@@ -1,16 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Payment_Receipt extends CardScreen{
-
-
-    private JPanel Home;
+	private JPanel pnlHome;
     private JButton btnHome;
-
-    public Payment_Receipt(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+	private JLabel lblOrderNumberField;
+	private JLabel lblTotalField;
+	
+	public Payment_Receipt(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
-        btnHome.addActionListener(e -> showScreen("StartScreen"));
+        btnHome.addActionListener(_ -> showScreen("StartScreen"));
+		
     }
+	
+	public JPanel getScreenPanel () {
+		return pnlHome;
+	}
 }

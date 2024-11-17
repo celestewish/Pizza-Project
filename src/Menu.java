@@ -1,10 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedList;
-import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class Menu extends CardScreen{
 	
@@ -51,12 +48,14 @@ public class Menu extends CardScreen{
 		AtomicInteger amount = new AtomicInteger();
 		LinkedList<MenuItem> menuItems = new LinkedList<>();
 
-		//listeners
+		//listeners to change screens
 		btnCreatePizza.addActionListener(_ -> showScreen("PizzaGUI"));
 		btnHome.addActionListener(_ -> showScreen("StartScreen"));
 		btnLocations.addActionListener(_ -> showScreen("LocationScreen"));
 		btnDeals.addActionListener(_ ->showScreen("Deals"));
 		btnSignIn.addActionListener(_ -> showScreen("SignIn"));
+
+		//listeners to add menu items to the order
 		optDrinkSize.addActionListener(_ -> {
 			if (optDrinkSize.getSelectedIndex() == 0)
 				return;
