@@ -32,6 +32,7 @@ public class ToppingsGUI extends CardScreen {
     private JCheckBox extraCheckBox8;
     private JCheckBox extraCheckBox9;
     private JCheckBox extraCheckBox10;
+    private JLabel totalLabel;
 
 
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
