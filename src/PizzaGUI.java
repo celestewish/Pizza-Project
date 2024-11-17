@@ -12,12 +12,16 @@ public class PizzaGUI extends CardScreen{
     private JButton btnHome;
     private JButton btnMenu;
     private JButton cartButton;
-    private JButton button1;
+    private JButton btnContinue;
 
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
     }
     public JPanel getScreenPanel(){
         return panel1;
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
