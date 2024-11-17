@@ -210,7 +210,7 @@
             </constraints>
             <properties>
               <font name="Arial"/>
-              <foreground color="-16777216"/>
+              <foreground color="-1582921"/>
               <text value="Hi, Customer!"/>
             </properties>
           </component>

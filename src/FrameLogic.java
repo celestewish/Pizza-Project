@@ -55,6 +55,8 @@ public class FrameLogic extends JFrame {
 		screenContainer.add(receipt.getScreenPanel(), "paymentReceipt");
 
 		
+		Payment_Receipt paymentReceipt = new Payment_Receipt((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		screenContainer.add(paymentReceipt.getScreenPanel(), "PaymentReceipt");
 
 		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");

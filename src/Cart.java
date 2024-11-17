@@ -12,12 +12,14 @@ public class Cart extends CardScreen {
 	private JButton btnMenu;
 	private JButton btnDeals;
 	private JButton btnLocations;
-	private JButton btnSignIn_SignUp;
 	private JPanel Checkout;
 	private JButton btnCheckout;
 	private JButton btnBack;
 	private JButton btnChange;
-
+	private JLabel lblHiCustomerName;
+	private JButton btnSignOut;
+	private JButton viewCartButton;
+	
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
 		super(screenLayoutController, screenContainer, info);
 
@@ -29,9 +31,5 @@ public class Cart extends CardScreen {
 		btnCheckout.addActionListener(e -> showScreen("PaymentScreen"));
 		btnChange.addActionListener(e -> showScreen("Locations"));
 		btnBack.addActionListener(e -> showScreen("Menu"));
-	}
-
-	private void createUIComponents() {
-		// TODO: place custom component creation code here
 	}
 }
