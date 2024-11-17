@@ -18,7 +18,7 @@ public class Deals extends CardScreen{
 
         btnDeals.addActionListener(e -> showScreen("Deals"));
 
-        btnMenu.addActionListener(e -> showScreen("MenuGUI"));
+        btnMenu.addActionListener(e -> showScreen("Menu"));
 
         btnLocations.addActionListener(e -> showScreen("Locations"));
 
