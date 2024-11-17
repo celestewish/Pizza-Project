@@ -78,6 +78,11 @@ public class SignUp extends CardScreen {
 			resetFields();
 		});
 		
+		btnLocations.addActionListener(_ -> {
+			showScreen("LocationScreen");
+			resetFields();
+		});
+		
 		btnSignUp.addActionListener(_ -> {
 			for (JTextField f : requiredTextFields) {
 				if (isTextEmpty(f, "Please complete all required fields", "", 0))

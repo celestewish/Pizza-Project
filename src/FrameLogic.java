@@ -42,12 +42,13 @@ public class FrameLogic extends JFrame {
 		PaymentScreen paymentScreen = new PaymentScreen((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(paymentScreen.getScreenPanel(), "paymentScreen");
 
-		Location location = new Location((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(location.getScreenPanel(), "Location");
+		LocationScreen location = new LocationScreen((CardLayout)screenContainer.getLayout(), screenContainer, info);
+		screenContainer.add(location.getScreenPanel(), "LocationScreen");
 
 		ToppingsGUI toppings = new ToppingsGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(toppings.getScreenPanel(), "ToppingsGUI");
 
+		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");
 	}
 }
