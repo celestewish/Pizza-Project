@@ -20,7 +20,7 @@ public class Locations extends CardScreen{
         locationsButton.addActionListener(e -> showScreen("Locations"));
     }
     
-    public JPanel getScreenPanel(){
+    public JPanel getScreenPanel() {
         return Top;
     }
 }

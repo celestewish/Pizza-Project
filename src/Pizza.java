@@ -29,7 +29,7 @@ public class Pizza extends MenuItem {
 		this.crust = crust;
 	}
 	
-	public boolean isSauce() {
+	public boolean getSauce() {
 		return sauce;
 	}
 	
@@ -39,5 +39,12 @@ public class Pizza extends MenuItem {
 	
 	public LinkedList<Topping> getToppings() {
 		return toppings;
+	}
+	
+	public boolean addTopping(Topping topping) {
+		if (toppings.contains(topping))
+			return false;
+		toppings.addLast(topping);
+		return true;
 	}
 }

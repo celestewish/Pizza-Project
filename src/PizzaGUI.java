@@ -1,30 +1,38 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class PizzaGUI extends CardScreen{
-    private JPanel panel1;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JComboBox comboBox3;
-    private JCheckBox yesCheeseCheckBox;
-    private JButton btnDeals;
-    private JButton btnLocations;
+public class PizzaGUI extends CardScreen {
+    private JPanel pizzaPanel;
+    
     private JButton btnHome;
     private JButton btnMenu;
-    private JButton cartButton;
+    private JButton btnDeals;
+    private JButton btnLocations;
+    private JButton btnSignOut;
+    private JButton viewCartButton;
+    
+    private JLabel lblHiCustomerName;
+    
+    private JComboBox cboxCrust;
+    private JComboBox cboxSize;
+    private JComboBox cboxSauce;
+    private JCheckBox checkCheese;
+    
     private JButton btnContinue;
-
+    
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
+        
+        btnHome.addActionListener(_ -> {
+            showScreen("StartScreen");
+        });
 
-        btnContinue.addActionListener(e -> {
+        btnContinue.addActionListener(_ -> {
             showScreen("ToppingsGUI");
         });
     }
+    
     public JPanel getScreenPanel(){
-        return panel1;
+        return pizzaPanel;
     }
-
 }

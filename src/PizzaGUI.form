@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="PizzaGUI">
-  <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="4" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="pizzaPanel" layout-manager="GridLayoutManager" row-count="7" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1185" height="400"/>
+      <xy x="20" y="20" width="1039" height="729"/>
     </constraints>
     <properties>
       <background color="-1582921"/>
@@ -12,43 +12,44 @@
     <children>
       <component id="87920" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Arial" size="28"/>
+          <font name="Arial" size="36"/>
           <foreground color="-16777216"/>
           <text value="Crust Options"/>
         </properties>
       </component>
       <hspacer id="b7d39">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="50" height="-1"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="70" height="-1"/>
           </grid>
         </constraints>
       </hspacer>
       <component id="76f46" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Arial" size="28"/>
+          <font name="Arial" size="36"/>
           <foreground color="-16777216"/>
           <text value="Sauce"/>
         </properties>
       </component>
       <hspacer id="fdcfa">
         <constraints>
-          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="50" height="-1"/>
+          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="70" height="-1"/>
           </grid>
         </constraints>
       </hspacer>
-      <component id="3a296" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+      <component id="3a296" class="javax.swing.JComboBox" binding="cboxSauce">
         <constraints>
-          <grid row="2" column="4" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font size="20"/>
           <model>
             <item value="Marinera"/>
             <item value="Alfredo"/>
@@ -57,54 +58,56 @@
       </component>
       <hspacer id="3d652">
         <constraints>
-          <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="70" height="-1"/>
+          </grid>
         </constraints>
       </hspacer>
       <component id="a8b28" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="7" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Arial" size="28"/>
+          <font name="Arial" size="36"/>
           <foreground color="-16777216"/>
           <text value="Cheese"/>
         </properties>
       </component>
-      <component id="aaa16" class="javax.swing.JCheckBox" binding="yesCheeseCheckBox" default-binding="true">
+      <component id="aaa16" class="javax.swing.JCheckBox" binding="checkCheese">
         <constraints>
-          <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-1582921"/>
+          <font size="18"/>
+          <foreground color="-16777216"/>
           <text value="Yes, Cheese"/>
         </properties>
       </component>
-      <vspacer id="279b3">
-        <constraints>
-          <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <vspacer id="65386">
         <constraints>
-          <grid row="2" column="9" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="9" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="dbc2e" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+      <component id="dbc2e" class="javax.swing.JComboBox" binding="cboxCrust">
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font size="20"/>
           <model>
+            <item value="Deep Dish"/>
             <item value="Thin"/>
             <item value="Thick"/>
-            <item value="Deep Dish"/>
           </model>
         </properties>
       </component>
-      <component id="95983" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+      <component id="95983" class="javax.swing.JComboBox" binding="cboxSize">
         <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <font size="20"/>
           <model>
             <item value="Small"/>
             <item value="Medium"/>
@@ -113,7 +116,7 @@
           </model>
         </properties>
       </component>
-      <grid id="55726" layout-manager="GridLayoutManager" row-count="3" column-count="10" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="55726" layout-manager="GridLayoutManager" row-count="3" column-count="11" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="10" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -146,7 +149,7 @@
           </vspacer>
           <hspacer id="9e64b">
             <constraints>
-              <grid row="1" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="1" column="10" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="50" height="-1"/>
               </grid>
             </constraints>
@@ -191,17 +194,17 @@
               <text value="Menu"/>
             </properties>
           </component>
-          <component id="25491" class="javax.swing.JButton" binding="cartButton" default-binding="true">
+          <component id="25491" class="javax.swing.JButton" binding="viewCartButton" default-binding="true">
             <constraints>
-              <grid row="1" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="9" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-4243670"/>
               <foreground color="-262148"/>
-              <text value="Cart: "/>
+              <text value="View Cart "/>
             </properties>
           </component>
-          <component id="7aa4e" class="javax.swing.JLabel">
+          <component id="7aa4e" class="javax.swing.JLabel" binding="lblHiCustomerName">
             <constraints>
               <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -213,8 +216,23 @@
           </component>
           <hspacer id="fa560">
             <constraints>
-              <grid row="1" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+              <grid row="1" column="8" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="75" height="-1"/>
+              </grid>
+            </constraints>
+          </hspacer>
+          <component id="e91eb" class="javax.swing.JButton" binding="btnSignOut">
+            <constraints>
+              <grid row="1" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Sign Out"/>
+            </properties>
+          </component>
+          <hspacer id="95b79">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="-1"/>
               </grid>
             </constraints>
           </hspacer>
@@ -222,10 +240,10 @@
       </grid>
       <component id="4ecc4" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <font name="Arial" size="28"/>
+          <font name="Arial" size="36"/>
           <foreground color="-16777216"/>
           <text value="Size"/>
         </properties>
@@ -233,7 +251,7 @@
       <grid id="30dc9" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="3" column="0" row-span="1" col-span="10" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+          <grid row="6" column="0" row-span="1" col-span="10" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="-1" height="100"/>
           </grid>
         </constraints>
@@ -340,14 +358,39 @@
           </vspacer>
         </children>
       </grid>
-      <component id="8f62a" class="javax.swing.JButton" binding="btnContinue" custom-create="true">
+      <hspacer id="f73e4">
         <constraints>
-          <grid row="2" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+      </hspacer>
+      <hspacer id="acee4">
+        <constraints>
+          <grid row="2" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="76938">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="8f62a" class="javax.swing.JButton" binding="btnContinue">
+        <constraints>
+          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="70"/>
+          </grid>
         </constraints>
         <properties>
+          <font size="22"/>
           <text value="Continue"/>
         </properties>
       </component>
+      <vspacer id="4d902">
+        <constraints>
+          <grid row="5" column="7" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
 </form>

@@ -59,4 +59,8 @@ public class Order {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
+	
+	public int getOrderNumber() {
+		return orderNumber;
+	}
 }

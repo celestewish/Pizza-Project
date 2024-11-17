@@ -268,7 +268,7 @@
               </model>
             </properties>
           </component>
-          <component id="7578" class="javax.swing.JCheckBox" binding="extraCheckBox" default-binding="true">
+          <component id="7578" class="javax.swing.JCheckBox" binding="extraCheckBox1">
             <constraints>
               <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -287,7 +287,7 @@
               <text value="Sausage"/>
             </properties>
           </component>
-          <component id="4995c" class="javax.swing.JComboBox" default-binding="true">
+          <component id="4995c" class="javax.swing.JComboBox" binding="comboBox2">
             <constraints>
               <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="20" height="-1"/>
@@ -301,7 +301,7 @@
               </model>
             </properties>
           </component>
-          <component id="a2e84" class="javax.swing.JCheckBox" default-binding="true">
+          <component id="a2e84" class="javax.swing.JCheckBox" binding="extraCheckBox2">
             <constraints>
               <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -335,7 +335,7 @@
               <text value="Bacon"/>
             </properties>
           </component>
-          <component id="ab218" class="javax.swing.JComboBox" default-binding="true">
+          <component id="ab218" class="javax.swing.JComboBox" binding="comboBox3">
             <constraints>
               <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="20" height="-1"/>
@@ -349,7 +349,7 @@
               </model>
             </properties>
           </component>
-          <component id="a7dcb" class="javax.swing.JCheckBox" default-binding="true">
+          <component id="a7dcb" class="javax.swing.JCheckBox" binding="extraCheckBox3">
             <constraints>
               <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -368,7 +368,7 @@
               <text value="Chicken"/>
             </properties>
           </component>
-          <component id="b4b85" class="javax.swing.JComboBox" default-binding="true">
+          <component id="b4b85" class="javax.swing.JComboBox" binding="comboBox4">
             <constraints>
               <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="20" height="-1"/>
@@ -382,7 +382,7 @@
               </model>
             </properties>
           </component>
-          <component id="87e22" class="javax.swing.JCheckBox" default-binding="true">
+          <component id="87e22" class="javax.swing.JCheckBox" binding="extraCheckBox4">
             <constraints>
               <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -401,7 +401,7 @@
               <text value="Ground Beef"/>
             </properties>
           </component>
-          <component id="f167a" class="javax.swing.JComboBox" default-binding="true">
+          <component id="f167a" class="javax.swing.JComboBox" binding="comboBox5">
             <constraints>
               <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="20" height="-1"/>
@@ -415,7 +415,7 @@
               </model>
             </properties>
           </component>
-          <component id="4f0ad" class="javax.swing.JCheckBox" default-binding="true">
+          <component id="4f0ad" class="javax.swing.JCheckBox" binding="extraCheckBox5">
             <constraints>
               <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -461,7 +461,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="6b307" class="javax.swing.JComboBox" default-binding="true">
+              <component id="6b307" class="javax.swing.JComboBox" binding="comboBox6">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="20" height="-1"/>
@@ -475,7 +475,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="4ac86" class="javax.swing.JCheckBox" default-binding="true">
+              <component id="4ac86" class="javax.swing.JCheckBox" binding="extraCheckBox6">
                 <constraints>
                   <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -494,7 +494,7 @@
                   <text value="Onions"/>
                 </properties>
               </component>
-              <component id="2a382" class="javax.swing.JComboBox" default-binding="true">
+              <component id="2a382" class="javax.swing.JComboBox" binding="comboBox7">
                 <constraints>
                   <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="20" height="-1"/>
@@ -508,7 +508,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="6ea86" class="javax.swing.JCheckBox" default-binding="true">
+              <component id="6ea86" class="javax.swing.JCheckBox" binding="extraCheckBox7">
                 <constraints>
                   <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -542,7 +542,7 @@
                   <text value="Olives"/>
                 </properties>
               </component>
-              <component id="f3dcd" class="javax.swing.JComboBox" default-binding="true">
+              <component id="f3dcd" class="javax.swing.JComboBox" binding="comboBox8">
                 <constraints>
                   <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="20" height="-1"/>
@@ -556,7 +556,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="66e58" class="javax.swing.JCheckBox" default-binding="true">
+              <component id="66e58" class="javax.swing.JCheckBox" binding="extraCheckBox8">
                 <constraints>
                   <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -575,7 +575,7 @@
                   <text value="Peppers"/>
                 </properties>
               </component>
-              <component id="8a1e" class="javax.swing.JComboBox" default-binding="true">
+              <component id="8a1e" class="javax.swing.JComboBox" binding="comboBox9">
                 <constraints>
                   <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="20" height="-1"/>
@@ -589,7 +589,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="39959" class="javax.swing.JCheckBox" default-binding="true">
+              <component id="39959" class="javax.swing.JCheckBox" binding="extraCheckBox9">
                 <constraints>
                   <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -608,7 +608,7 @@
                   <text value="Mushrooms"/>
                 </properties>
               </component>
-              <component id="3a71b" class="javax.swing.JComboBox" default-binding="true">
+              <component id="3a71b" class="javax.swing.JComboBox" binding="comboBox10">
                 <constraints>
                   <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="20" height="-1"/>
@@ -622,7 +622,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="d52d5" class="javax.swing.JCheckBox" default-binding="true">
+              <component id="d52d5" class="javax.swing.JCheckBox" binding="extraCheckBox10">
                 <constraints>
                   <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
