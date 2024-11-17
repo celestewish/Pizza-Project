@@ -2,14 +2,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MenuForNonUser extends CardScreen {
-	
+	private JPanel pnlMenu;
 	
 	private JButton btnHome;
 	private JButton btnMenu;
 	private JButton btnSignIn_SignUp;
 	private JButton btnDeals;
 	private JButton btnLocations;
-	private JPanel pnlMenu;
 	private JButton btnCreateAccount;
 	private JTextArea cokeDietCokePepsiTextArea;
 	private JTextArea cookieBrowniesCinnamonKnotsTextArea;
@@ -41,8 +40,9 @@ public class MenuForNonUser extends CardScreen {
 		btnCreateAccount.addActionListener(_ -> {
 			showScreen("SignUp");
 		});
-		
-		
-		
+	}
+	
+	public JPanel getScreenPanel() {
+		return pnlMenu;
 	}
 }

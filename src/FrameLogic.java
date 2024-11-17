@@ -49,7 +49,7 @@ public class FrameLogic extends JFrame {
 		screenContainer.add(toppings.getScreenPanel(), "ToppingsGUI");
 		
 		MenuForNonUser menuForNonUser = new MenuForNonUser((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(toppings.getScreenPanel(), "MenuForNonUser");
+		screenContainer.add(menuForNonUser.getScreenPanel(), "MenuForNonUser");
 		
 
 		
