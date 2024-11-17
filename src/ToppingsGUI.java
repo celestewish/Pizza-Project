@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
 import java.util.Objects;
 
 public class ToppingsGUI extends CardScreen {
@@ -36,6 +35,7 @@ public class ToppingsGUI extends CardScreen {
     private JCheckBox extraCheckBox10;
     private JLabel totalLabel;
     private JButton returnButton;
+    private JButton updateTotalButton;
 
 
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
@@ -251,6 +251,23 @@ public class ToppingsGUI extends CardScreen {
                 else{
                     mushrooms[0] = new Topping("mushrooms", 3f, false, Objects.requireNonNull(comboBox10.getSelectedItem()).toString());
                 }
+            }
+        });
+        updateTotalButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float totalCost = 0;
+                totalCost += pepperoni[0].getPrice();
+                totalCost += sausage[0].getPrice();
+                totalCost += bacon[0].getPrice();
+                totalCost += chicken[0].getPrice();
+                totalCost += groundBeef[0].getPrice();
+                totalCost += spinach[0].getPrice();
+                totalCost += onions[0].getPrice();
+                totalCost += olives[0].getPrice();
+                totalCost += peppers[0].getPrice();
+                totalCost += mushrooms[0].getPrice();
+                totalLabel = new JLabel(String.valueOf(totalCost));
             }
         });
     }
