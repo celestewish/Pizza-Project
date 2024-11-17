@@ -1,27 +1,35 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class PizzaGUI extends CardScreen{
-    private JPanel panel1;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JComboBox comboBox3;
-    private JCheckBox yesCheeseCheckBox;
-    private JButton btnDeals;
-    private JButton btnLocations;
+public class PizzaGUI extends CardScreen {
+    private JPanel pizzaPanel;
+    
     private JButton btnHome;
     private JButton btnMenu;
-    private JButton cartButton;
+    private JButton btnDeals;
+    private JButton btnLocations;
+    private JButton btnSignOut;
+    private JButton viewCartButton;
+    
+    private JLabel lblHiCustomerName;
+    
+    private JComboBox cboxCrust;
+    private JComboBox cboxSize;
+    private JComboBox cboxSauce;
+    private JCheckBox checkCheese;
+    
     private JButton btnContinue;
-
+    
+    
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
         super(screenLayoutController, screenContainer, info);
+        
+        btnHome.addActionListener(_ -> {
+            showScreen("StartScreen");
+        });
     }
+    
     public JPanel getScreenPanel(){
-        return panel1;
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
+        return pizzaPanel;
     }
 }
