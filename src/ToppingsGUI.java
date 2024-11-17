@@ -287,7 +287,7 @@ public class ToppingsGUI extends CardScreen {
                 if (mushrooms[0] != null) {
                     totalCost += mushrooms[0].getPrice();
                 }
-                totalLabel = new JLabel(String.valueOf(totalCost));
+                totalLabel.setText("Total Cost: " + String.valueOf(totalCost));
             }
         });
     }
