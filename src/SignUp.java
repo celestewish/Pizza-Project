@@ -7,9 +7,9 @@ public class SignUp extends CardScreen {
 	
 	private JButton btnHome;
 	private JButton btnMenu;
-	private JButton btnDeals;
 	private JButton btnLocations;
-	private JButton btnSignIn_SignUp;
+	private JButton btnDeals;
+	private JButton btnSignUp_SignIn;
 	
 	private JTextField txtFname;
 	private JTextField txtMname;
@@ -17,27 +17,29 @@ public class SignUp extends CardScreen {
 	private JPasswordField txtPassword;
 	private JTextField txtEmail;
 	
-	private JCheckBox showPasswordCheckBox;
+	private JLabel lblEmailTaken;
+	
+	private JCheckBox chbxShowPassword;
 	private JTextField txtPhoneNumber;
 	
 	private JTextField txtStreet;
 	private JTextField txtCity;
-	private JTextField txtState;
+	private JComboBox cobxState;
 	private JTextField txtZIP;
 	
-	private JCheckBox boxCard;
-	private JCheckBox boxCash;
+	private JCheckBox chbxCard;
+	private JCheckBox chbxCash;
 	
-	private JComboBox<Integer> cboxMonth;
-	private JComboBox<Integer> cboxDay;
-	private JComboBox<Integer> cboxYear;
+	private JComboBox cobxMonth;
+	private JComboBox cobxDay;
+	private JComboBox cobxYear;
 	
 	private JButton btnSignUp;
 	private JButton btnReturn;
 	
-	
-	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-		super(screenLayoutController, screenContainer, info);
+	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+		super(screenLayoutController, screenContainer, info, panelName);
+		setScreenPanel(pnlSignUp);
 		
 		ArrayList<JTextField> requiredTextFields = new ArrayList<>();
 		requiredTextFields.add(txtFname);
@@ -46,34 +48,41 @@ public class SignUp extends CardScreen {
 		requiredTextFields.add(txtEmail);
 		requiredTextFields.add(txtStreet);
 		requiredTextFields.add(txtCity);
-		requiredTextFields.add(txtState);
 		requiredTextFields.add(txtZIP);
 		
 		ArrayList<JComboBox<Integer>> requiredComboBoxes = new ArrayList<>();
-		requiredComboBoxes.add(cboxMonth);
-		requiredComboBoxes.add(cboxDay);
-		requiredComboBoxes.add(cboxYear);
+		requiredComboBoxes.add(cobxState);
+		requiredComboBoxes.add(cobxMonth);
+		requiredComboBoxes.add(cobxDay);
+		requiredComboBoxes.add(cobxYear);
 		
 		btnReturn.addActionListener(_ -> {
 			showScreen("StartScreen");
 			resetFields();
 		});
 		
-		showPasswordCheckBox.addActionListener(_ -> {
-			if (showPasswordCheckBox.isSelected())
+		chbxShowPassword.addActionListener(_ -> {
+			if (chbxShowPassword.isSelected())
 				txtPassword.setEchoChar((char)0);
 			else
 				txtPassword.setEchoChar('*');
 		});
 		
-		btnHome.addActionListener(_ -> showScreen("StartScreen"));
-		
-		btnMenu.addActionListener(_ -> {
-			showScreen("MenuGUI");
+		btnHome.addActionListener(_ -> {
+			showScreen("StartScreen");
 			resetFields();
 		});
 		
-		btnSignIn_SignUp.addActionListener(_ -> {
+		btnMenu.addActionListener(_ -> {
+			showScreen("Menu");
+			resetFields();
+		});
+		
+		btnDeals.addActionListener(_ -> {
+			showScreen("Deals");
+		});
+		
+		btnSignUp_SignIn.addActionListener(_ -> {
 			showScreen("SignIn");
 			resetFields();
 		});
@@ -108,7 +117,7 @@ public class SignUp extends CardScreen {
 				return;
 			
 			String fullName = txtFname.getText() + " " + txtMname.getText() + " " + txtLname.getText();
-			String fullAddress = txtStreet.getText() + " " + txtCity.getText() + " " + txtState.getText() + " " +  txtZIP.getText();
+			String fullAddress = txtStreet.getText() + " " + txtCity.getText() + " " + cobxState.getSelectedItem() + " " +  txtZIP.getText();
 			StringBuilder password = new StringBuilder();
 			for (char c : txtPassword.getPassword()) {
 				password.append(c);
@@ -123,10 +132,6 @@ public class SignUp extends CardScreen {
 		});
 	}
 	
-	public JPanel getScreenPanel() {
-		return pnlSignUp;
-	}
-	
 	// method to reset all fields in the screen when the user goes to another screen
 	public void resetFields() {
 		txtFname.setText("");
@@ -135,19 +140,19 @@ public class SignUp extends CardScreen {
 		txtPassword.setText("");
 		txtEmail.setText("");
 		
-		showPasswordCheckBox.setSelected(false);
+		chbxShowPassword.setSelected(false);
 		txtPhoneNumber.setText("");
 		
 		txtStreet.setText("");
 		txtCity.setText("");
-		txtState.setText("");
 		txtZIP.setText("");
 		
-		boxCard.setSelected(false);
-		boxCash.setSelected(false);
+		chbxCard.setSelected(false);
+		chbxCash.setSelected(false);
 		
-		cboxMonth.setSelectedIndex(0);
-		cboxDay.setSelectedIndex(0);
-		cboxYear.setSelectedIndex(0);
+		cobxState.setSelectedIndex(0);
+		cobxMonth.setSelectedIndex(0);
+		cobxDay.setSelectedIndex(0);
+		cobxYear.setSelectedIndex(0);
 	}
 }

@@ -18,8 +18,8 @@ public class FrameLogic extends JFrame {
 		
 		screenContainer.setLayout(new CardLayout());
 		
-		StartScreen startScreen = new StartScreen((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(startScreen.getScreenPanel(), "StartScreen");
+		Login startScreen = new Login((CardLayout)screenContainer.getLayout(), screenContainer, info, "Login");
+		screenContainer.add(startScreen.getScreenPanel(), startScreen.getPanelName());
 		
 		SignUp signUp = new SignUp((CardLayout)screenContainer.getLayout(), screenContainer, info);
 		screenContainer.add(signUp.getScreenPanel(), "SignUp");

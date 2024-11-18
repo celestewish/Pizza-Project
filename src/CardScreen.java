@@ -5,15 +5,30 @@ public abstract class CardScreen {
 	private final CardLayout screenLayoutController;
 	private final JPanel screenContainer;
 	private final ProgramInfo info;
+	private JPanel screenPanel;
+	private final String panelName;
 	
 	private static final char[] SPECIAL_CHARS = {
 			'!', '#', '$', '^', '_', '~', ',', '.', '@', '[', ']', '`', '{', '}', '*', '+', '-', ':'
 	};
 	
-	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
+	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		this.screenLayoutController = screenLayoutController;
 		this.screenContainer = screenContainer;
 		this.info = info;
+		this.panelName = panelName;
+	}
+	
+	public String getPanelName() {
+		return panelName;
+	}
+	
+	public JPanel getScreenPanel() {
+		return screenPanel;
+	}
+	
+	public void setScreenPanel(JPanel screenPanel) {
+		this.screenPanel = screenPanel;
 	}
 	
 	public void showScreen(String pnlName) {

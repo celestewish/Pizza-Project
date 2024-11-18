@@ -1,793 +1,1020 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="SignUp">
-  <grid id="27dc6" binding="pnlSignUp" layout-manager="GridLayoutManager" row-count="17" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="pnlSignUp" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="998" height="912"/>
+      <xy x="20" y="20" width="998" height="1055"/>
     </constraints>
     <properties>
       <background color="-1582921"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="6f6c1" layout-manager="CardLayout" hgap="0" vgap="0">
-        <constraints>
-          <grid row="16" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-4243670"/>
-        </properties>
-        <border type="none"/>
-        <children/>
-      </grid>
-      <component id="27427" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="316" height="20"/>
-          </grid>
-        </constraints>
-        <properties>
-          <font size="16"/>
-          <foreground color="-16777216"/>
-          <text value="Date of Birth"/>
-        </properties>
-      </component>
-      <component id="83207" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font size="16"/>
-          <foreground color="-16777216"/>
-          <text value="Preferred Payment Method"/>
-        </properties>
-      </component>
-      <vspacer id="4d763">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="11" height="21"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <vspacer id="dbc83">
-        <constraints>
-          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="11" height="21"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <vspacer id="3ee2a">
-        <constraints>
-          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="11" height="21"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <vspacer id="2e8b5">
-        <constraints>
-          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="11" height="21"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <vspacer id="8dedf">
-        <constraints>
-          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="11" height="21"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <grid id="a3900" layout-manager="GridLayoutManager" row-count="3" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="b4bab" layout-manager="GridLayoutManager" row-count="3" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-4243670"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="d0493" class="javax.swing.JButton" binding="btnHome">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-4243670"/>
-              <foreground color="-1"/>
-              <text value="Home"/>
-            </properties>
-          </component>
-          <component id="f0539" class="javax.swing.JButton" binding="btnMenu">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-4243670"/>
-              <foreground color="-1"/>
-              <text value="Menu"/>
-            </properties>
-          </component>
-          <component id="c3ae" class="javax.swing.JButton" binding="btnSignIn_SignUp">
-            <constraints>
-              <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-4243670"/>
-              <foreground color="-1"/>
-              <text value="Sign In/Sign Up"/>
-            </properties>
-          </component>
-          <hspacer id="cfdba">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="50" height="-1"/>
-              </grid>
-            </constraints>
-          </hspacer>
-          <hspacer id="ba42e">
+          <hspacer id="a4e76">
             <constraints>
               <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <vspacer id="1d815">
+          <vspacer id="8a1f6">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                 <preferred-size width="-1" height="7"/>
               </grid>
             </constraints>
           </vspacer>
-          <vspacer id="b590c">
+          <vspacer id="dd401">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="15"/>
                 <preferred-size width="-1" height="15"/>
+                <maximum-size width="-1" height="15"/>
               </grid>
             </constraints>
           </vspacer>
-          <hspacer id="b699f">
+          <hspacer id="da665">
             <constraints>
               <grid row="1" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="50" height="-1"/>
               </grid>
             </constraints>
           </hspacer>
-          <component id="1d585" class="javax.swing.JButton" binding="btnDeals">
+          <component id="c20e8" class="javax.swing.JButton" binding="btnHome">
             <constraints>
-              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="25"/>
+              </grid>
             </constraints>
             <properties>
-              <background color="-4243670"/>
-              <foreground color="-1"/>
+              <font name="Times New Roman" size="24"/>
+              <foreground color="-16777216"/>
+              <text value="Home"/>
+            </properties>
+          </component>
+          <hspacer id="dddb4">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="-1"/>
+              </grid>
+            </constraints>
+          </hspacer>
+          <component id="d3aae" class="javax.swing.JButton" binding="btnMenu">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="25"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Times New Roman" size="24"/>
+              <foreground color="-16777216"/>
+              <text value="Menu"/>
+            </properties>
+          </component>
+          <component id="ad6a6" class="javax.swing.JButton" binding="btnDeals">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="25"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Times New Roman" size="24"/>
+              <foreground color="-16777216"/>
               <text value="Deals"/>
             </properties>
           </component>
-          <component id="3f016" class="javax.swing.JButton" binding="btnLocations">
+          <component id="37783" class="javax.swing.JButton" binding="btnLocations">
             <constraints>
-              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="25"/>
+              </grid>
             </constraints>
             <properties>
-              <background color="-4243670"/>
-              <foreground color="-1"/>
+              <font name="Times New Roman" size="24"/>
+              <foreground color="-16777216"/>
               <text value="Locations"/>
             </properties>
           </component>
-        </children>
-      </grid>
-      <vspacer id="c4dc0">
-        <constraints>
-          <grid row="15" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="-1" height="20"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <hspacer id="96420">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="-1" height="20"/>
-          </grid>
-        </constraints>
-      </hspacer>
-      <grid id="e0c61" layout-manager="GridLayoutManager" row-count="1" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1582921"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="e39b0" class="javax.swing.JComboBox" binding="cboxMonth">
+          <component id="b99fa" class="javax.swing.JButton" binding="btnSignUp_SignIn">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="100" height="-1"/>
-                <maximum-size width="100" height="-1"/>
+              <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="25"/>
               </grid>
             </constraints>
             <properties>
-              <model>
-                <item value="..."/>
-                <item value="(01) January"/>
-                <item value="(02) February"/>
-                <item value="(03) March"/>
-                <item value="(04) April"/>
-                <item value="(05) May"/>
-                <item value="(06) June"/>
-                <item value="(07) July"/>
-                <item value="(08) August"/>
-                <item value="(09) September"/>
-                <item value="(10) October"/>
-                <item value="(11) November"/>
-                <item value="(12) December"/>
-              </model>
-            </properties>
-          </component>
-          <component id="8ff19" class="javax.swing.JComboBox" binding="cboxDay">
-            <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="40" height="-1"/>
-                <maximum-size width="40" height="-1"/>
-              </grid>
-            </constraints>
-            <properties>
-              <model>
-                <item value="..."/>
-                <item value="1"/>
-                <item value="2"/>
-                <item value="3"/>
-                <item value="4"/>
-                <item value="5"/>
-                <item value="6"/>
-                <item value="7"/>
-                <item value="8"/>
-                <item value="9"/>
-                <item value="10"/>
-                <item value="11"/>
-                <item value="12"/>
-                <item value="13"/>
-                <item value="14"/>
-                <item value="15"/>
-                <item value="16"/>
-                <item value="17"/>
-                <item value="18"/>
-                <item value="19"/>
-                <item value="20"/>
-                <item value="21"/>
-                <item value="22"/>
-                <item value="23"/>
-                <item value="24"/>
-                <item value="25"/>
-                <item value="26"/>
-                <item value="27"/>
-                <item value="28"/>
-                <item value="29"/>
-                <item value="30"/>
-                <item value="31"/>
-              </model>
-            </properties>
-          </component>
-          <component id="6cd84" class="javax.swing.JComboBox" binding="cboxYear">
-            <constraints>
-              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="60" height="-1"/>
-                <maximum-size width="60" height="-1"/>
-              </grid>
-            </constraints>
-            <properties>
-              <model>
-                <item value="..."/>
-                <item value="1904"/>
-                <item value="1905"/>
-                <item value="1906"/>
-                <item value="1907"/>
-                <item value="1908"/>
-                <item value="1909"/>
-                <item value="1910"/>
-                <item value="1911"/>
-                <item value="1912"/>
-                <item value="1913"/>
-                <item value="1914"/>
-                <item value="1915"/>
-                <item value="1916"/>
-                <item value="1917"/>
-                <item value="1918"/>
-                <item value="1919"/>
-                <item value="1920"/>
-                <item value="1921"/>
-                <item value="1922"/>
-                <item value="1923"/>
-                <item value="1924"/>
-                <item value="1925"/>
-                <item value="1926"/>
-                <item value="1927"/>
-                <item value="1928"/>
-                <item value="1929"/>
-                <item value="1930"/>
-                <item value="1931"/>
-                <item value="1932"/>
-                <item value="1933"/>
-                <item value="1934"/>
-                <item value="1935"/>
-                <item value="1936"/>
-                <item value="1937"/>
-                <item value="1938"/>
-                <item value="1939"/>
-                <item value="1940"/>
-                <item value="1941"/>
-                <item value="1942"/>
-                <item value="1943"/>
-                <item value="1944"/>
-                <item value="1945"/>
-                <item value="1946"/>
-                <item value="1947"/>
-                <item value="1948"/>
-                <item value="1949"/>
-                <item value="1950"/>
-                <item value="1951"/>
-                <item value="1952"/>
-                <item value="1953"/>
-                <item value="1954"/>
-                <item value="1955"/>
-                <item value="1956"/>
-                <item value="1957"/>
-                <item value="1958"/>
-                <item value="1959"/>
-                <item value="1960"/>
-                <item value="1961"/>
-                <item value="1962"/>
-                <item value="1963"/>
-                <item value="1964"/>
-                <item value="1965"/>
-                <item value="1966"/>
-                <item value="1967"/>
-                <item value="1968"/>
-                <item value="1969"/>
-                <item value="1970"/>
-                <item value="1971"/>
-                <item value="1972"/>
-                <item value="1973"/>
-                <item value="1974"/>
-                <item value="1975"/>
-                <item value="1976"/>
-                <item value="1977"/>
-                <item value="1978"/>
-                <item value="1979"/>
-                <item value="1980"/>
-                <item value="1981"/>
-                <item value="1982"/>
-                <item value="1983"/>
-                <item value="1984"/>
-                <item value="1985"/>
-                <item value="1986"/>
-                <item value="1987"/>
-                <item value="1988"/>
-                <item value="1989"/>
-                <item value="1990"/>
-                <item value="1991"/>
-                <item value="1992"/>
-                <item value="1993"/>
-                <item value="1994"/>
-                <item value="1995"/>
-                <item value="1996"/>
-                <item value="1997"/>
-                <item value="1998"/>
-                <item value="1999"/>
-                <item value="2000"/>
-                <item value="2001"/>
-                <item value="2002"/>
-                <item value="2003"/>
-                <item value="2004"/>
-                <item value="2005"/>
-                <item value="2006"/>
-              </model>
-            </properties>
-          </component>
-          <component id="9ad55" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
+              <font name="Times New Roman" size="24"/>
               <foreground color="-16777216"/>
-              <horizontalAlignment value="4"/>
-              <horizontalTextPosition value="0"/>
-              <text value="*Month"/>
-            </properties>
-          </component>
-          <component id="eaa69" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <horizontalAlignment value="4"/>
-              <horizontalTextPosition value="0"/>
-              <text value="*Day"/>
-            </properties>
-          </component>
-          <component id="5f8ae" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <horizontalAlignment value="4"/>
-              <horizontalTextPosition value="0"/>
-              <text value="*Year"/>
-            </properties>
-          </component>
-          <hspacer id="9c636">
-            <constraints>
-              <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
-          <component id="f5f61" class="javax.swing.JSeparator">
-            <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <maximum-size width="30" height="-1"/>
-              </grid>
-            </constraints>
-            <properties>
-              <foreground color="-1582921"/>
+              <text value="SignIn/SignUp"/>
             </properties>
           </component>
         </children>
       </grid>
-      <grid id="e42dc" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
+      <scrollpane id="ee37b">
         <constraints>
-          <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties>
-          <background color="-1582921"/>
-        </properties>
+        <properties/>
         <border type="none"/>
         <children>
-          <component id="3b356" class="javax.swing.JCheckBox" binding="boxCard">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="100" height="-1"/>
-              </grid>
-            </constraints>
+          <grid id="30191" layout-manager="GridLayoutManager" row-count="14" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
             <properties>
               <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Credit/Debit"/>
             </properties>
-          </component>
-          <component id="c2718" class="javax.swing.JCheckBox" binding="boxCash">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Cash/Check"/>
-            </properties>
-          </component>
-          <hspacer id="9cae9">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
-        </children>
-      </grid>
-      <grid id="2329a" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1582921"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="f0c97" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="17"/>
+            <border type="none"/>
+            <children>
+              <grid id="2329a" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1582921"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="f0c97" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* First Name"/>
+                    </properties>
+                  </component>
+                  <component id="a6c61" class="javax.swing.JTextField" binding="txtFname">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                    </properties>
+                  </component>
+                  <component id="3a0c6" class="javax.swing.JTextField" binding="txtEmail">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                    </properties>
+                  </component>
+                  <component id="2bab6" class="javax.swing.JPasswordField" binding="txtPassword">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                    </properties>
+                  </component>
+                  <component id="b311" class="javax.swing.JTextField" binding="txtLname">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                    </properties>
+                  </component>
+                  <component id="4e838" class="javax.swing.JCheckBox" binding="chbxShowPassword">
+                    <constraints>
+                      <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1582921"/>
+                      <font size="14"/>
+                      <foreground color="-16777216"/>
+                      <text value="Show Password"/>
+                    </properties>
+                  </component>
+                  <component id="a6d08" class="javax.swing.JTextField" binding="txtMname">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                    </properties>
+                  </component>
+                  <component id="8069c" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="21"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="22"/>
+                      <foreground color="-16777216"/>
+                      <text value="Account Information"/>
+                    </properties>
+                  </component>
+                  <component id="16f7b" class="javax.swing.JLabel" binding="lblEmailTaken">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1582921"/>
+                      <font size="14"/>
+                      <foreground color="-4259810"/>
+                      <text value="Email Already in DB"/>
+                    </properties>
+                  </component>
+                  <component id="369c3" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Middle Name"/>
+                    </properties>
+                  </component>
+                  <component id="aab2a" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Last Name"/>
+                    </properties>
+                  </component>
+                  <component id="709d1" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Email"/>
+                    </properties>
+                  </component>
+                  <component id="acbd5" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Password"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*FirstName"/>
-            </properties>
-          </component>
-          <component id="a6c61" class="javax.swing.JTextField" binding="txtFname">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="d52c8" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="17"/>
+              <vspacer id="4d763">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="11" height="50"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <hspacer id="96420">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <minimum-size width="-1" height="20"/>
+                  </grid>
+                </constraints>
+              </hspacer>
+              <grid id="ecb93" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1582921"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="b27cf" class="javax.swing.JTextField" binding="txtStreet">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                    </properties>
+                  </component>
+                  <component id="3cfd" class="javax.swing.JTextField" binding="txtCity">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                    </properties>
+                  </component>
+                  <component id="89da4" class="javax.swing.JTextField" binding="txtZIP">
+                    <constraints>
+                      <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                    </properties>
+                  </component>
+                  <hspacer id="43bca">
+                    <constraints>
+                      <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="a878c" class="javax.swing.JTextField" binding="txtPhoneNumber">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <columns value="10"/>
+                      <editable value="true"/>
+                      <enabled value="true"/>
+                      <font size="14"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="50107" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="21"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="22"/>
+                      <foreground color="-16777216"/>
+                      <text value="Address"/>
+                    </properties>
+                  </component>
+                  <component id="36350" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Street"/>
+                    </properties>
+                  </component>
+                  <component id="21f75" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* City"/>
+                    </properties>
+                  </component>
+                  <component id="7aee8" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="50" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* State"/>
+                    </properties>
+                  </component>
+                  <component id="78e14" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* ZIP code"/>
+                    </properties>
+                  </component>
+                  <component id="11167" class="javax.swing.JComboBox" binding="cobxState">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="20" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                      <model>
+                        <item value="..."/>
+                        <item value="AL"/>
+                        <item value="AK"/>
+                        <item value="AZ"/>
+                        <item value="AR"/>
+                        <item value="CA"/>
+                        <item value="CO"/>
+                        <item value="CT"/>
+                        <item value="DE"/>
+                        <item value="FL"/>
+                        <item value="GA"/>
+                        <item value="HI"/>
+                        <item value="ID"/>
+                        <item value="IL"/>
+                        <item value="IN"/>
+                        <item value="IA"/>
+                        <item value="KS"/>
+                        <item value="KY"/>
+                        <item value="LA"/>
+                        <item value="ME"/>
+                        <item value="MD"/>
+                        <item value="MA"/>
+                        <item value="MI"/>
+                        <item value="MN"/>
+                        <item value="MS"/>
+                        <item value="MO"/>
+                        <item value="MT"/>
+                        <item value="NE"/>
+                        <item value="NV"/>
+                        <item value="NH"/>
+                        <item value="NJ"/>
+                        <item value="NM"/>
+                        <item value="NY"/>
+                        <item value="NC"/>
+                        <item value="ND"/>
+                        <item value="OH"/>
+                        <item value="OK"/>
+                        <item value="OR"/>
+                        <item value="PA"/>
+                        <item value="RI"/>
+                        <item value="SC"/>
+                        <item value="SD"/>
+                        <item value="TN"/>
+                        <item value="TX"/>
+                        <item value="UT"/>
+                        <item value="VT"/>
+                        <item value="VA"/>
+                        <item value="WA"/>
+                        <item value="WV"/>
+                        <item value="WI"/>
+                        <item value="WY"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="b5cc2" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="17"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Phone Number"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*Email"/>
-            </properties>
-          </component>
-          <component id="3a0c6" class="javax.swing.JTextField" binding="txtEmail">
-            <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="30c8a" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="17"/>
+              <vspacer id="dbc83">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="11" height="40"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <component id="6e8c7" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="21"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font name="Times New Roman" size="22"/>
+                  <foreground color="-16777216"/>
+                  <text value="Date of Birth"/>
+                </properties>
+              </component>
+              <grid id="e0c61" layout-manager="GridLayoutManager" row-count="1" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1582921"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="e39b0" class="javax.swing.JComboBox" binding="cobxMonth">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <minimum-size width="150" height="-1"/>
+                        <preferred-size width="150" height="-1"/>
+                        <maximum-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                      <model>
+                        <item value="..."/>
+                        <item value="(01) January"/>
+                        <item value="(02) February"/>
+                        <item value="(03) March"/>
+                        <item value="(04) April"/>
+                        <item value="(05) May"/>
+                        <item value="(06) June"/>
+                        <item value="(07) July"/>
+                        <item value="(08) August"/>
+                        <item value="(09) September"/>
+                        <item value="(10) October"/>
+                        <item value="(11) November"/>
+                        <item value="(12) December"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="8ff19" class="javax.swing.JComboBox" binding="cobxDay">
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                        <maximum-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                      <model>
+                        <item value="..."/>
+                        <item value="1"/>
+                        <item value="2"/>
+                        <item value="3"/>
+                        <item value="4"/>
+                        <item value="5"/>
+                        <item value="6"/>
+                        <item value="7"/>
+                        <item value="8"/>
+                        <item value="9"/>
+                        <item value="10"/>
+                        <item value="11"/>
+                        <item value="12"/>
+                        <item value="13"/>
+                        <item value="14"/>
+                        <item value="15"/>
+                        <item value="16"/>
+                        <item value="17"/>
+                        <item value="18"/>
+                        <item value="19"/>
+                        <item value="20"/>
+                        <item value="21"/>
+                        <item value="22"/>
+                        <item value="23"/>
+                        <item value="24"/>
+                        <item value="25"/>
+                        <item value="26"/>
+                        <item value="27"/>
+                        <item value="28"/>
+                        <item value="29"/>
+                        <item value="30"/>
+                        <item value="31"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <component id="6cd84" class="javax.swing.JComboBox" binding="cobxYear">
+                    <constraints>
+                      <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="60" height="-1"/>
+                        <maximum-size width="60" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                      <model>
+                        <item value="..."/>
+                        <item value="1904"/>
+                        <item value="1905"/>
+                        <item value="1906"/>
+                        <item value="1907"/>
+                        <item value="1908"/>
+                        <item value="1909"/>
+                        <item value="1910"/>
+                        <item value="1911"/>
+                        <item value="1912"/>
+                        <item value="1913"/>
+                        <item value="1914"/>
+                        <item value="1915"/>
+                        <item value="1916"/>
+                        <item value="1917"/>
+                        <item value="1918"/>
+                        <item value="1919"/>
+                        <item value="1920"/>
+                        <item value="1921"/>
+                        <item value="1922"/>
+                        <item value="1923"/>
+                        <item value="1924"/>
+                        <item value="1925"/>
+                        <item value="1926"/>
+                        <item value="1927"/>
+                        <item value="1928"/>
+                        <item value="1929"/>
+                        <item value="1930"/>
+                        <item value="1931"/>
+                        <item value="1932"/>
+                        <item value="1933"/>
+                        <item value="1934"/>
+                        <item value="1935"/>
+                        <item value="1936"/>
+                        <item value="1937"/>
+                        <item value="1938"/>
+                        <item value="1939"/>
+                        <item value="1940"/>
+                        <item value="1941"/>
+                        <item value="1942"/>
+                        <item value="1943"/>
+                        <item value="1944"/>
+                        <item value="1945"/>
+                        <item value="1946"/>
+                        <item value="1947"/>
+                        <item value="1948"/>
+                        <item value="1949"/>
+                        <item value="1950"/>
+                        <item value="1951"/>
+                        <item value="1952"/>
+                        <item value="1953"/>
+                        <item value="1954"/>
+                        <item value="1955"/>
+                        <item value="1956"/>
+                        <item value="1957"/>
+                        <item value="1958"/>
+                        <item value="1959"/>
+                        <item value="1960"/>
+                        <item value="1961"/>
+                        <item value="1962"/>
+                        <item value="1963"/>
+                        <item value="1964"/>
+                        <item value="1965"/>
+                        <item value="1966"/>
+                        <item value="1967"/>
+                        <item value="1968"/>
+                        <item value="1969"/>
+                        <item value="1970"/>
+                        <item value="1971"/>
+                        <item value="1972"/>
+                        <item value="1973"/>
+                        <item value="1974"/>
+                        <item value="1975"/>
+                        <item value="1976"/>
+                        <item value="1977"/>
+                        <item value="1978"/>
+                        <item value="1979"/>
+                        <item value="1980"/>
+                        <item value="1981"/>
+                        <item value="1982"/>
+                        <item value="1983"/>
+                        <item value="1984"/>
+                        <item value="1985"/>
+                        <item value="1986"/>
+                        <item value="1987"/>
+                        <item value="1988"/>
+                        <item value="1989"/>
+                        <item value="1990"/>
+                        <item value="1991"/>
+                        <item value="1992"/>
+                        <item value="1993"/>
+                        <item value="1994"/>
+                        <item value="1995"/>
+                        <item value="1996"/>
+                        <item value="1997"/>
+                        <item value="1998"/>
+                        <item value="1999"/>
+                        <item value="2000"/>
+                        <item value="2001"/>
+                        <item value="2002"/>
+                        <item value="2003"/>
+                        <item value="2004"/>
+                        <item value="2005"/>
+                        <item value="2006"/>
+                      </model>
+                    </properties>
+                  </component>
+                  <hspacer id="9c636">
+                    <constraints>
+                      <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="efa0f" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Month"/>
+                    </properties>
+                  </component>
+                  <component id="3a29a" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Day"/>
+                    </properties>
+                  </component>
+                  <component id="d2263" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="* Year"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*Password"/>
-            </properties>
-          </component>
-          <component id="2bab6" class="javax.swing.JPasswordField" binding="txtPassword">
-            <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="b311" class="javax.swing.JTextField" binding="txtLname">
-            <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
+              <component id="b401f" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="21"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <font name="Times New Roman" size="22"/>
+                  <foreground color="-16777216"/>
+                  <text value="Preferred Payment Method"/>
+                </properties>
+              </component>
+              <grid id="e42dc" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1582921"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="3b356" class="javax.swing.JCheckBox" binding="chbxCard">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="100" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1582921"/>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="Credit/Debit"/>
+                    </properties>
+                  </component>
+                  <component id="c2718" class="javax.swing.JCheckBox" binding="chbxCash">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-1582921"/>
+                      <enabled value="true"/>
+                      <font size="16"/>
+                      <foreground color="-16777216"/>
+                      <text value="Cash/Check"/>
+                    </properties>
+                  </component>
+                  <hspacer id="9cae9">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <component id="97c03" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font size="14"/>
+                      <foreground color="-16777216"/>
+                      <text value="* fields are required"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="38f5e" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*LastName"/>
-            </properties>
-          </component>
-          <component id="4e838" class="javax.swing.JCheckBox" binding="showPasswordCheckBox" default-binding="true">
-            <constraints>
-              <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Show Password"/>
-            </properties>
-          </component>
-          <component id="a6d08" class="javax.swing.JTextField" binding="txtMname">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
+              <grid id="7054a" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="11" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1582921"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="bd431" class="javax.swing.JButton" binding="btnSignUp">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="-1" height="40"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-4243670"/>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1582921"/>
+                      <text value="Sign-Up"/>
+                    </properties>
+                  </component>
+                  <component id="5111c" class="javax.swing.JButton" binding="btnReturn">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <minimum-size width="-1" height="40"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-9617622"/>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1582921"/>
+                      <text value="Return"/>
+                    </properties>
+                  </component>
+                  <hspacer id="30bda">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <hspacer id="860a">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                </children>
               </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="f5198" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*MiddleName"/>
-            </properties>
-          </component>
-          <component id="8069c" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="21"/>
+              <grid id="66404" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="13" column="0" row-span="1" col-span="4" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="100"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-4243670"/>
+                  <font name="Arial"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <hspacer id="15168">
+                    <constraints>
+                      <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <grid id="48a2f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="3" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                  <hspacer id="f9aa1">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="60" height="-1"/>
+                      </grid>
+                    </constraints>
+                  </hspacer>
+                  <vspacer id="ecc44">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                        <preferred-size width="-1" height="10"/>
+                      </grid>
+                    </constraints>
+                  </vspacer>
+                  <component id="7a9b5" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="24"/>
+                      <foreground color="-1"/>
+                      <text value="Operating Hours:"/>
+                    </properties>
+                  </component>
+                  <component id="a8b3f" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="680 Arnston Rd, Suite 161"/>
+                    </properties>
+                  </component>
+                  <component id="73ee9" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="Marietta, GA 30060"/>
+                    </properties>
+                  </component>
+                  <component id="123ee" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="770-555-1212"/>
+                    </properties>
+                  </component>
+                  <component id="91e52" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="24"/>
+                      <foreground color="-1"/>
+                      <text value="Mom and Pop's Pizzaria"/>
+                    </properties>
+                  </component>
+                  <component id="dd41b" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="Mon-Thur. 9am-11pm"/>
+                    </properties>
+                  </component>
+                  <component id="70e3e" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="Fri-Sat. 11am-12am"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
-            </constraints>
-            <properties>
-              <font size="16"/>
-              <foreground color="-16777216"/>
-              <text value="Account Information"/>
-            </properties>
-          </component>
-        </children>
-      </grid>
-      <grid id="ecb93" layout-manager="GridLayoutManager" row-count="5" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1582921"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="a3811" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="17"/>
-              </grid>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*Street"/>
-            </properties>
-          </component>
-          <component id="b27cf" class="javax.swing.JTextField" binding="txtStreet">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="d798f" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="17"/>
-              </grid>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*PhoneNumber"/>
-            </properties>
-          </component>
-          <component id="57832" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*City"/>
-            </properties>
-          </component>
-          <component id="3cfd" class="javax.swing.JTextField" binding="txtCity">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="5302c" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*State"/>
-            </properties>
-          </component>
-          <component id="a7ba2" class="javax.swing.JTextField" binding="txtState">
-            <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="4455a" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="4" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <foreground color="-16777216"/>
-              <text value="*ZIP"/>
-            </properties>
-          </component>
-          <component id="89da4" class="javax.swing.JTextField" binding="txtZIP">
-            <constraints>
-              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="489bc" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="20"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font size="16"/>
-              <foreground color="-16777216"/>
-              <text value="Address"/>
-            </properties>
-          </component>
-          <hspacer id="43bca">
-            <constraints>
-              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
-          <component id="a878c" class="javax.swing.JTextField" binding="txtPhoneNumber">
-            <constraints>
-              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties>
-              <columns value="10"/>
-              <editable value="true"/>
-              <enabled value="true"/>
-              <text value=""/>
-            </properties>
-          </component>
-        </children>
-      </grid>
-      <hspacer id="7aa9a">
-        <constraints>
-          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="-1" height="20"/>
+              <hspacer id="dda4e">
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <vspacer id="87921">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="11" height="40"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <vspacer id="31e53">
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="11" height="40"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <vspacer id="19610">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="11" height="40"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <vspacer id="1751">
+                <constraints>
+                  <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <preferred-size width="11" height="40"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+            </children>
           </grid>
-        </constraints>
-      </hspacer>
-      <vspacer id="a831f">
-        <constraints>
-          <grid row="16" column="4" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="-1" height="50"/>
-          </grid>
-        </constraints>
-      </vspacer>
-      <grid id="7054a" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="0" left="0" bottom="0" right="0"/>
-        <constraints>
-          <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-1582921"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="bd431" class="javax.swing.JButton" binding="btnSignUp">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-4243670"/>
-              <foreground color="-1582921"/>
-              <text value="Sign-Up"/>
-            </properties>
-          </component>
-          <component id="5111c" class="javax.swing.JButton" binding="btnReturn">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-9617622"/>
-              <foreground color="-1582921"/>
-              <text value="Return"/>
-            </properties>
-          </component>
-          <hspacer id="30bda">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
-          <hspacer id="860a">
-            <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
         </children>
-      </grid>
-      <component id="97c03" class="javax.swing.JLabel">
-        <constraints>
-          <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <foreground color="-16777216"/>
-          <text value="* fields are required"/>
-        </properties>
-      </component>
-      <vspacer id="4ccb">
-        <constraints>
-          <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-            <preferred-size width="11" height="21"/>
-          </grid>
-        </constraints>
-      </vspacer>
+      </scrollpane>
     </children>
   </grid>
 </form>
