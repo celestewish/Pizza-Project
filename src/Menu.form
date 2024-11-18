@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="pnlMenu" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="26" y="27" width="1334" height="1081"/>
+      <xy x="26" y="27" width="1160" height="1199"/>
     </constraints>
     <properties>
       <background color="-1582921"/>
@@ -152,6 +152,7 @@
               <background color="-4243670"/>
               <font name="Times New Roman" size="20" style="3"/>
               <foreground color="-1"/>
+              <horizontalAlignment value="4"/>
               <text value="Hi, {Customer Name}"/>
             </properties>
           </component>
@@ -395,123 +396,6 @@
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </hspacer>
-                </children>
-              </grid>
-              <grid id="d22a5" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                <margin top="0" left="0" bottom="0" right="0"/>
-                <constraints>
-                  <grid row="12" column="0" row-span="1" col-span="5" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                    <preferred-size width="-1" height="100"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-4243670"/>
-                  <font name="Arial"/>
-                </properties>
-                <border type="none"/>
-                <children>
-                  <hspacer id="dfd78">
-                    <constraints>
-                      <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                  </hspacer>
-                  <grid id="6a3d3" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-                    <margin top="0" left="0" bottom="0" right="0"/>
-                    <constraints>
-                      <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <preferred-size width="3" height="-1"/>
-                      </grid>
-                    </constraints>
-                    <properties>
-                      <background color="-1"/>
-                    </properties>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
-                  <hspacer id="80eeb">
-                    <constraints>
-                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                        <preferred-size width="60" height="-1"/>
-                      </grid>
-                    </constraints>
-                  </hspacer>
-                  <vspacer id="8b5f6">
-                    <constraints>
-                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
-                        <preferred-size width="-1" height="10"/>
-                      </grid>
-                    </constraints>
-                  </vspacer>
-                  <component id="9b0d6" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Times New Roman" size="24"/>
-                      <foreground color="-1"/>
-                      <text value="Operating Hours:"/>
-                    </properties>
-                  </component>
-                  <component id="c2a80" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Times New Roman" size="18"/>
-                      <foreground color="-1"/>
-                      <text value="680 Arnston Rd, Suite 161"/>
-                    </properties>
-                  </component>
-                  <component id="7282b" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Times New Roman" size="18"/>
-                      <foreground color="-1"/>
-                      <text value="Marietta, GA 30060"/>
-                    </properties>
-                  </component>
-                  <component id="20a7e" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Times New Roman" size="18"/>
-                      <foreground color="-1"/>
-                      <text value="770-555-1212"/>
-                    </properties>
-                  </component>
-                  <component id="a645c" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Times New Roman" size="24"/>
-                      <foreground color="-1"/>
-                      <text value="Mom and Pop's Pizzaria"/>
-                    </properties>
-                  </component>
-                  <component id="589b3" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Times New Roman" size="18"/>
-                      <foreground color="-1"/>
-                      <text value="Mon-Thur. 9am-11pm"/>
-                    </properties>
-                  </component>
-                  <component id="23175" class="javax.swing.JLabel">
-                    <constraints>
-                      <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font name="Times New Roman" size="18"/>
-                      <foreground color="-1"/>
-                      <text value="Fri-Sat. 11am-12am"/>
-                    </properties>
-                  </component>
                 </children>
               </grid>
               <vspacer id="ef7ed">
@@ -961,6 +845,130 @@
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                         <preferred-size width="-1" height="5"/>
+                      </grid>
+                    </constraints>
+                  </vspacer>
+                </children>
+              </grid>
+              <grid id="80840" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="12" column="0" row-span="1" col-span="5" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="100"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-4243670"/>
+                  <font name="Arial"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <hspacer id="4f4c5">
+                    <constraints>
+                      <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </hspacer>
+                  <grid id="8f603" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="1" column="2" row-span="4" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="3" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                  <hspacer id="cae84">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="60" height="-1"/>
+                      </grid>
+                    </constraints>
+                  </hspacer>
+                  <vspacer id="bae1f">
+                    <constraints>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                        <preferred-size width="-1" height="10"/>
+                      </grid>
+                    </constraints>
+                  </vspacer>
+                  <component id="1e8ee" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="24"/>
+                      <foreground color="-1"/>
+                      <text value="Operating Hours:"/>
+                    </properties>
+                  </component>
+                  <component id="7b96e" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="680 Arnston Rd, Suite 161"/>
+                    </properties>
+                  </component>
+                  <component id="ef97a" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="Marietta, GA 30060"/>
+                    </properties>
+                  </component>
+                  <component id="8c327" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="770-555-1212"/>
+                    </properties>
+                  </component>
+                  <component id="a107d" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="24"/>
+                      <foreground color="-1"/>
+                      <text value="Mom and Pop's Pizzaria"/>
+                    </properties>
+                  </component>
+                  <component id="8e186" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="Mon-Thur. 9am-11pm"/>
+                    </properties>
+                  </component>
+                  <component id="a6efd" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Times New Roman" size="18"/>
+                      <foreground color="-1"/>
+                      <text value="Fri-Sat. 11am-12am"/>
+                    </properties>
+                  </component>
+                  <vspacer id="c50a3">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                        <preferred-size width="-1" height="10"/>
                       </grid>
                     </constraints>
                   </vspacer>

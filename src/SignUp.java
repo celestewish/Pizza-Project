@@ -124,8 +124,7 @@ public class SignUp extends CardScreen {
 					"",
 					JOptionPane.INFORMATION_MESSAGE);
 			
-			info.setCurrentUser(info.UserDatabase().getUser(txtEmail.getText()));
-			info.setLoggedIn(true);
+			onSignIn(info, txtEmail.getText());
 			showScreen(Screen.MENU);
 		});
 		

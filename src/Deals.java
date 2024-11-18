@@ -29,6 +29,8 @@ public class Deals extends CardScreen{
     
     @Override
     public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+        if (info.isLoggedIn())
+            return Screen.DEALS_USER;
         return toScreen;
     }
     

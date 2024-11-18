@@ -27,7 +27,7 @@ public class Menu extends CardScreen{
 		info.registerScreenName(Screen.MENU, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
-		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart, lblHiName, lblTotalCost);
+		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 		
 //		//variables
 //		AtomicInteger drinkSize = new AtomicInteger();
@@ -115,7 +115,8 @@ public class Menu extends CardScreen{
 	
 	@Override
 	public void onEnterScreen(ProgramInfo info) {
-		lblHiName.setText("Hi, " + info.CurrentUser().getName());
-		lblCurTotal.setText("Current Total: $" + info.getCurOrder().calcTotalOrderCost());
+		lblHiName.setText("Hi, " + info.CurrentUser().getName().split(" ")[0]);
+		if (info.getCurOrder() != null)
+			lblCurTotal.setText("Current Total: $" + info.getCurOrder().calcTotalOrderCost());
 	}
 }

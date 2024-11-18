@@ -1,28 +1,25 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Locations extends CardScreen{
-	private JPanel pnlLocations;
+public class LocationsForUser extends CardScreen {
+	private JPanel pnlLocationsUser;
 	
 	private JButton btnHome;
 	private JButton btnMenu;
 	private JButton btnDeals;
 	private JButton btnLocations;
-	private JButton btnSignUp_SignIn;
 	private JButton btnSignOut;
 	private JButton btnCart;
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
-	private JPanel pnlNavBarLoggedIn;
-	private JPanel pnlNavBarLoggedOut;
 	
-	public Locations(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+	public LocationsForUser(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);
-		setScreenPanel(pnlLocations);
-		info.registerScreenName(Screen.LOCATIONS, this);
+		setScreenPanel(pnlLocationsUser);
+		info.registerScreenName(Screen.LOCATIONS_USER, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
-		setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
+		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 	}
 	
 	@Override
@@ -32,8 +29,6 @@ public class Locations extends CardScreen{
 	
 	@Override
 	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
-		if (info.isLoggedIn())
-			return Screen.LOCATIONS_USER;
 		return toScreen;
 	}
 	

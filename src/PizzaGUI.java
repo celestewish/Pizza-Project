@@ -32,7 +32,7 @@ public class PizzaGUI extends CardScreen {
         final CrustType[] myCrust = new CrustType[1];
         final boolean[] sauce = new boolean[1];
 
-        setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart, lblHiName, lblCurTotal);
+        setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 
         btnContinue.addActionListener(_ -> {
             Pizza newPizza = new Pizza(mySize[0], myCrust[0], sauce[0]);
@@ -86,7 +86,7 @@ public class PizzaGUI extends CardScreen {
     
     @Override
     public boolean onAttemptLeaveScreen(ProgramInfo info) {
-        return showConfirmationDialog("Yes, I want to abandon my pizza", "No, keep me here");
+        return showConfirmationDialog("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here");
     }
     
     @Override

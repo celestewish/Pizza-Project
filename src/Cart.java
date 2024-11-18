@@ -20,7 +20,7 @@ public class Cart extends CardScreen {
 		info.registerScreenName(Screen.CART, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
-		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart, lblHiName, lblCurTotal);
+		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 	}
 	
 	@Override

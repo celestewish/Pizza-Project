@@ -57,6 +57,12 @@ public class FrameLogic extends JFrame {
 		Cart cart = new Cart((CardLayout)screenContainer.getLayout(), screenContainer, info,
 				"Cart");
 		
+		LocationsForUser locationsForUser = new LocationsForUser((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"LocationsForUser");
+		
+		DealsForUser dealsForUser = new DealsForUser((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"Locations");
+		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, login.getPanelName());
 		info.setCurScreen(Screen.LOGIN);
 	}

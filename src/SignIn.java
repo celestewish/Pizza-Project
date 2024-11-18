@@ -57,8 +57,7 @@ public class SignIn extends CardScreen {
 			if (!doesPasswordMatchEmail(txtEmail.getText(), convertPasswordToString(txtPassword.getPassword())))
 				return;
 			
-			info.setCurrentUser(info.UserDatabase().getUser(txtEmail.getText()));
-			info.setLoggedIn(true);
+			onSignIn(info, txtEmail.getText());
 			showScreen(Screen.MENU);
 		});
 

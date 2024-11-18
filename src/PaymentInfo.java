@@ -28,7 +28,7 @@ public class PaymentInfo extends CardScreen {
 		info.registerScreenName(Screen.PAYMENT_INFO, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
-		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart, lblHiName, lblCurTotal);
+		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 		
 		//submits payment
 		submitPaymentButton.addActionListener((e) -> {

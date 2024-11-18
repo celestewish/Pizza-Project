@@ -29,11 +29,23 @@ public abstract class CardScreen {
 	
 	public abstract void onEnterScreen(ProgramInfo info);
 	
-	public void onSignOut(ProgramInfo info) {
-		info.setCurrentUser(null);
-		info.setCurPizza(null);
-		info.setCurOrder(null);
-		info.setLoggedIn(false);
+	public boolean onSignOut(ProgramInfo info) {
+		if (showConfirmationDialog(
+				"Would you like to sign out?",
+				"Yes, sign me out",
+				"No, keep me signed in")) {
+			info.setCurrentUser(null);
+			info.setCurPizza(null);
+			info.setCurOrder(null);
+			info.setLoggedIn(false);
+			return true;
+		}
+		return false;
+	}
+	
+	public void onSignIn(ProgramInfo info, String email) {
+		info.setLoggedIn(true);
+		info.setCurrentUser(info.UserDatabase().getUser(email));
 	}
 	
 	public void showScreen(Screen screen) {
@@ -50,8 +62,9 @@ public abstract class CardScreen {
 				screen = Screen.LOGIN;
 			
 		screen = info.Screens().get(screen).onAttemptEnterScreen(info, screen);
-			
+		
 		resetScreen();
+		info.Screens().get(screen).onEnterScreen(info);
 		info.advanceScreen(screen);
 		screenLayoutController.show(screenContainer, info.Screens().get((screen)).getPanelName());
 	}
@@ -64,7 +77,7 @@ public abstract class CardScreen {
 		sign_up_sign_in.addActionListener(_ -> showScreen(Screen.SIGN_IN));
 	}
 	
-	public void setUpNavBar_LoggedIn(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_out, JButton cart, JLabel customerName, JLabel currentTotal) {
+	public void setUpNavBar_LoggedIn(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_out, JButton cart) {
 		home.addActionListener(_ -> showScreen(Screen.HOME));
 		menu.addActionListener(_ -> showScreen(Screen.MENU));
 		deals.addActionListener(_ -> showScreen(Screen.DEALS));
@@ -72,8 +85,9 @@ public abstract class CardScreen {
 		cart.addActionListener(_ -> showScreen(Screen.CART));
 		
 		sign_out.addActionListener(_ -> {
+			if (!onSignOut(info))
+				return;
 			showScreen(Screen.LOGIN);
-			onSignOut(info);
 		});
 	}
 	
@@ -111,15 +125,14 @@ public abstract class CardScreen {
 		return components;
 	}
 	
-	
-	public static boolean showConfirmationDialog(String option1, String defaultOption) {
+	public static boolean showConfirmationDialog(String message, String option1, String defaultOption) {
 		// Define the options for the dialog
 		String[] options = {option1, defaultOption};
 		
 		// Show the confirmation dialog
 		int choice = JOptionPane.showOptionDialog(
 				null, // Parent component (null for center of the screen)
-				option1,
+				message,
 				defaultOption,
 				JOptionPane.DEFAULT_OPTION,
 				JOptionPane.QUESTION_MESSAGE,

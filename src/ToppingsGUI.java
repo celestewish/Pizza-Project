@@ -32,17 +32,23 @@ public class ToppingsGUI extends CardScreen {
     private JCheckBox extraCheckBox7;
     private JCheckBox extraCheckBox8;
     private JCheckBox extraCheckBox9;
-    private JCheckBox extraCheckBox10;
+    private JButton btnSignOut;
+    private JButton btnCart;
+    private JLabel lblHiName;
+    private JLabel lblCurTotal;
     private JLabel totalLabel;
-    private JButton returnButton;
     private JButton updateTotalButton;
-
-
+    private JButton returnButton;
+    private JCheckBox extraCheckBox10;
+    
+    
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
         super(screenLayoutController, screenContainer, info, panelName);
         setScreenPanel(pnlToppings);
         info.registerScreenName(Screen.TOPPINGS, this);
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
+        
+        setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
         
         //variables
         final Topping[] pepperoni = new Topping[1];
@@ -56,27 +62,7 @@ public class ToppingsGUI extends CardScreen {
         final Topping[] peppers = new Topping[1];
         final Topping[] mushrooms = new Topping[1];
 
-        //action listeners
-        btnHome.addActionListener(_ -> {
-            showScreen(Screen.LOGIN);
-        });
 
-        btnDeals.addActionListener(_ -> {
-            showScreen(Screen.DEALS);
-        });
-
-        btnLocations.addActionListener(_ -> {
-            showScreen(Screen.LOCATIONS);
-        });
-
-        btnMenu.addActionListener(_ -> {
-            showScreen(Screen.MENU);
-        });
-
-        cartButton.addActionListener(_ -> {
-            showScreen(Screen.CART);
-        });
-//
 //        //adds the toppings
 //        comboBox1.addActionListener(new ActionListener() {
 //            @Override
