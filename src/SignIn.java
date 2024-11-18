@@ -99,4 +99,9 @@ public class SignIn extends CardScreen {
 			return Screen.SIGN_UP;
 		return toScreen;
 	}
+	
+	@Override
+	public void onEnterScreen(ProgramInfo info) {
+	
+	}
 }

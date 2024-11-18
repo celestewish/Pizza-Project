@@ -317,4 +317,9 @@ public class ToppingsGUI extends CardScreen {
     public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
         return toScreen;
     }
+    
+    @Override
+    public void onEnterScreen(ProgramInfo info) {
+    
+    }
 }

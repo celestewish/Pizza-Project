@@ -124,6 +124,8 @@ public class SignUp extends CardScreen {
 					"",
 					JOptionPane.INFORMATION_MESSAGE);
 			
+			info.setCurrentUser(info.UserDatabase().getUser(txtEmail.getText()));
+			info.setLoggedIn(true);
 			showScreen(Screen.MENU);
 		});
 		
@@ -163,5 +165,10 @@ public class SignUp extends CardScreen {
 		if (info.getCurScreen() == Screen.SIGN_UP)
 			return Screen.SIGN_IN;
 		return toScreen;
+	}
+	
+	@Override
+	public void onEnterScreen(ProgramInfo info) {
+	
 	}
 }

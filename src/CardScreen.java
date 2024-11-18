@@ -12,7 +12,7 @@ public abstract class CardScreen {
 	private final ArrayList<JComponent> components;
 	
 	private static final char[] SPECIAL_CHARS = {
-			'!', '#', '$', '^', '_', '~', ',', '.', '@', '[', ']', '`', '{', '}', '*', '+', '-', ':'
+			'!', '#', '$', '^', '_', '~', ',', '.', '@', '[', ']', '`', '{', '}', '*', '+', '-', ':', '&'
 	};
 	
 	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
@@ -27,6 +27,14 @@ public abstract class CardScreen {
 	
 	public abstract Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen);
 	
+	public abstract void onEnterScreen(ProgramInfo info);
+	
+	public void onSignOut(ProgramInfo info) {
+		info.setCurrentUser(null);
+		info.setCurPizza(null);
+		info.setCurOrder(null);
+		info.setLoggedIn(false);
+	}
 	
 	public void showScreen(Screen screen) {
 		if (!onAttemptLeaveScreen(info))
@@ -36,7 +44,7 @@ public abstract class CardScreen {
 			screen = info.getLastScreen();
 		
 		if (screen == Screen.HOME)
-			if (info.IsLoggedIn())
+			if (info.isLoggedIn())
 				screen = Screen.MENU;
 			else
 				screen = Screen.LOGIN;
@@ -61,11 +69,12 @@ public abstract class CardScreen {
 		menu.addActionListener(_ -> showScreen(Screen.MENU));
 		deals.addActionListener(_ -> showScreen(Screen.DEALS));
 		locations.addActionListener(_ -> showScreen(Screen.LOCATIONS));
-		sign_out.addActionListener(_ -> showScreen(Screen.LOGIN));
 		cart.addActionListener(_ -> showScreen(Screen.CART));
 		
-		//customerName.setText("Hi, " + info.CurrentUser().getName());
-		//currentTotal.setText("Current Total: $" + info.getCurOrder()); //TODO Make method for summing costs and change this method call
+		sign_out.addActionListener(_ -> {
+			showScreen(Screen.LOGIN);
+			onSignOut(info);
+		});
 	}
 	
 	public String getPanelName() {
@@ -218,14 +227,14 @@ public abstract class CardScreen {
 		char[] password = p.getPassword();
 		
 		for (char c : password) {
-			if (Character.isUpperCase(c)) {
+			if (Character.isUpperCase(c))
 				hasUppercase = true;
-			} else if (Character.isDigit(c)) {
+			else if (Character.isDigit(c))
 				hasNumber = true;
-			} else if (isSpecialChar(c)) {
+			else if (isSpecialChar(c))
 				hasSpecialChar = true;
-			}
 		}
+		
 		if (!hasUppercase || !hasNumber || !hasSpecialChar) {
 			JOptionPane.showMessageDialog(null,
 					"""
@@ -233,7 +242,7 @@ public abstract class CardScreen {
 							-Uppercase Letter
 							-Number
 							-Special character (excluding \
-							%, /, , &, <, >, ?, |, "
+							%, /, , &, <, >, ?, |, and ")
 							""",
 					"",
 					JOptionPane.ERROR_MESSAGE);

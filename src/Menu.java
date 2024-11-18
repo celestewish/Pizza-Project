@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.LinkedList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Menu extends CardScreen{
 	private JPanel pnlMenu;
@@ -17,33 +15,11 @@ public class Menu extends CardScreen{
 	
 	private JButton placeYourOrderButton;
 	private JButton btnCreatePizza;
-	private JButton btnAddDrink;
-	private JButton btnAddDessert;
-	private JButton btnAddSalad;
-	private JButton btnAddGarlicBread;
-	private JButton btnAddWing;
-	private JComboBox<?> optDrinkSize;
-	private JComboBox<?> optDrinkCt;
-	private JComboBox<?> optDessertCt;
-	private JComboBox<?> optWingCt;
-	private JComboBox<?> optGarlicCt;
-	private JComboBox<?> optSaladCount;
-
+	
 	private JButton btnViewOrder;
 	private JLabel lblPizzaPrice;
-	private JLabel lblWingPrice;
-	private JComboBox optWingType;
-	private JComboBox optWingSize;
-	private JLabel lblDrinkPrice;
-	private JComboBox optDrinkType;
-	private JLabel lblGarlicPrice;
-	private JComboBox optGarlicSize;
-	private JLabel lblDessertPrice;
-	private JComboBox optDessertType;
-	private JLabel lblSaladPrice;
-	private JComboBox optSaladType;
-	private JComboBox optSaladDressing;
 	private JLabel lblTotalCost;
+	private JTextArea pizza1Pizza1InfoTextArea;
 	
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);
@@ -132,8 +108,14 @@ public class Menu extends CardScreen{
 	
 	@Override
 	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
-		if (!info.IsLoggedIn())
+		if (!info.isLoggedIn())
 			return Screen.MENU_NON_USER;
 		return toScreen;
+	}
+	
+	@Override
+	public void onEnterScreen(ProgramInfo info) {
+		lblHiName.setText("Hi, " + info.CurrentUser().getName());
+		lblCurTotal.setText("Current Total: $" + info.getCurOrder().calcTotalOrderCost());
 	}
 }

@@ -59,7 +59,7 @@ public class ProgramInfo {
 	
 	
 	
-	public boolean IsLoggedIn() {
+	public boolean isLoggedIn() {
 		return isLoggedIn;
 	}
 	
