@@ -23,12 +23,15 @@ public abstract class CardScreen {
 		components = new ArrayList<>();
 	}
 	
-	public abstract Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen);
+	public abstract boolean onAttemptLeaveScreen(ProgramInfo info);
 	
 	public abstract Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen);
 	
 	
 	public void showScreen(Screen screen) {
+		if (!onAttemptLeaveScreen(info))
+			return;
+		
 		if (screen == Screen.RETURN)
 			screen = info.getLastScreen();
 		
@@ -38,8 +41,6 @@ public abstract class CardScreen {
 			else
 				screen = Screen.LOGIN;
 			
-		
-			//TODO make leaving logic
 		screen = info.Screens().get(screen).onAttemptEnterScreen(info, screen);
 			
 		resetScreen();

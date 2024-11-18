@@ -90,8 +90,8 @@ public class SignIn extends CardScreen {
 	}
 	
 	@Override
-	public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
-		return fromScreen;
+	public boolean onAttemptLeaveScreen(ProgramInfo info) {
+		return true;
 	}
 	
 	@Override

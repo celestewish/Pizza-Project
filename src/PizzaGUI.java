@@ -33,26 +33,6 @@ public class PizzaGUI extends CardScreen {
         final boolean[] sauce = new boolean[1];
 
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart, lblHiName, lblCurTotal);
-        
-        btnHome.addActionListener(_ -> {
-            showScreen(Screen.LOGIN);
-        });
-        
-        btnMenu.addActionListener(_ -> {
-            showScreen(Screen.MENU);
-        });
-        
-        btnSignOut.addActionListener(_ -> {
-            showScreen(Screen.SIGN_UP);
-        });
-        
-        btnLocations.addActionListener(_ -> {
-            showScreen(Screen.LOCATIONS);
-        });
-        
-        btnDeals.addActionListener(_ -> {
-            showScreen(Screen.DEALS);
-        });
 
         btnContinue.addActionListener(_ -> {
             Pizza newPizza = new Pizza(mySize[0], myCrust[0], sauce[0]);
@@ -71,6 +51,7 @@ public class PizzaGUI extends CardScreen {
                 myCrust[0] = CrustType.THICK_CRUST;
             }
         });
+        
         cboxSize.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -104,15 +85,12 @@ public class PizzaGUI extends CardScreen {
     
     
     @Override
-    public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
-        return fromScreen;
+    public boolean onAttemptLeaveScreen(ProgramInfo info) {
+        return showConfirmationDialog("Yes, I want to abandon my pizza", "No, keep me here");
     }
     
     @Override
     public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
-        if (showConfirmationDialog("Yes, I want to abandon my pizza", "No, keep me here"))
-            return null;
-        else
-            return toScreen;
+        return toScreen;
     }
 }
