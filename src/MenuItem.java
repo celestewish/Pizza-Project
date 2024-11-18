@@ -1,25 +1,22 @@
 public abstract class MenuItem {
-	private static int idCounter = 1000;
-	private final int itemID;
-	private float cost;
+	private float price;
 	private int count;
 	
-	public MenuItem() {
-		itemID = idCounter;
-		idCounter++;
+	public MenuItem(float price) {
+		this.price = price;
 		count = 1;
 	}
 	
-	public int getItemID() {
-		return itemID;
+	public float calcTotalCost() {
+		return price * count;
 	}
 	
-	public float getCost() {
-		return cost;
+	public float getPrice() {
+		return price;
 	}
 	
-	public void setCost(float cost) {
-		this.cost = cost;
+	public void setPrice(float price) {
+		this.price = price;
 	}
 	
 	public int getCount() {

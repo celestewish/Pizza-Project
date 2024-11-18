@@ -274,34 +274,34 @@ public class ToppingsGUI extends CardScreen {
             public void actionPerformed(ActionEvent e) {
                 float totalCost = 0;
                 if (pepperoni[0] != null) {
-                    totalCost += pepperoni[0].getPrice();
+                    totalCost += pepperoni[0].getBasePrice();
                 }
                 if (sausage[0] != null) {
-                    totalCost += sausage[0].getPrice();
+                    totalCost += sausage[0].getBasePrice();
                 }
                 if (bacon[0] != null) {
-                    totalCost += bacon[0].getPrice();
+                    totalCost += bacon[0].getBasePrice();
                 }
                 if (chicken[0] != null) {
-                    totalCost += chicken[0].getPrice();
+                    totalCost += chicken[0].getBasePrice();
                 }
                 if (groundBeef[0] != null) {
-                    totalCost += groundBeef[0].getPrice();
+                    totalCost += groundBeef[0].getBasePrice();
                 }
                 if (spinach[0] != null) {
-                    totalCost += spinach[0].getPrice();
+                    totalCost += spinach[0].getBasePrice();
                 }
                 if (onions[0] != null) {
-                    totalCost += onions[0].getPrice();
+                    totalCost += onions[0].getBasePrice();
                 }
                 if (olives[0] != null) {
-                    totalCost += olives[0].getPrice();
+                    totalCost += olives[0].getBasePrice();
                 }
                 if (peppers[0] != null) {
-                    totalCost += peppers[0].getPrice();
+                    totalCost += peppers[0].getBasePrice();
                 }
                 if (mushrooms[0] != null) {
-                    totalCost += mushrooms[0].getPrice();
+                    totalCost += mushrooms[0].getBasePrice();
                 }
                 totalLabel.setText("Total Cost: " + String.valueOf(totalCost));
             }

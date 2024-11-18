@@ -23,6 +23,18 @@ public class Order {
 		this.items = items;
 	}
 	
+	public float calcTotalOrderCost() {
+		float total = 0;
+		
+		for (MenuItem item : items)
+			total += item.calcTotalCost();
+		
+		if (deliveryMethod.equals(DeliveryMethod.DELIVERY))
+			total += 5F;
+		
+		return total;
+	}
+	
 	public boolean addItem(MenuItem item) {
 		if (items.contains(item)) {
 			items.get(items.indexOf(item)).incrementCount(item.getCount());

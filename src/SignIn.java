@@ -27,7 +27,6 @@ public class SignIn extends CardScreen {
 		lblEmailNotExist.setText("");
 		info.registerScreenName(Screen.SIGN_IN, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
-		
 		addJComponent(txtEmail);
 		addJComponent(txtPassword);
 		addJComponent(showPasswordCheckBox);
