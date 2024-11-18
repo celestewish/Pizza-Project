@@ -1,27 +1,29 @@
 public class Drink extends MenuItem {
-	private int size;
+	private DrinkSize size;
 	
-	public Drink(int size) {
+	public Drink(DrinkSize size, float price) {
+		super(price);
 		this.size = size;
 	}
 	
-	public int getSize() {
+	@Override
+	public float calcTotalCost() {
+		float total = getPrice();
+		
+		switch (size) {
+			case SMALL -> total += 0;
+			case MEDIUM -> total += 1;
+			case LARGE -> total += 1.5F;
+		}
+		
+		return total * getCount();
+	}
+	
+	public DrinkSize getSize() {
 		return size;
 	}
 	
-	public void setSize(int size) {
+	public void setSize(DrinkSize size) {
 		this.size = size;
-	}
-	
-	public String sizeToString() {
-		switch (size) {
-			case 0:
-				return "Small";
-			case 1:
-				return "Medium";
-			case 2:
-				return "Large";
-		}
-		return "";
 	}
 }

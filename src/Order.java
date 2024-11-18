@@ -44,14 +44,11 @@ public class Order {
 		return true;
 	}
 	
-	public boolean removeItem(int itemID) {
-		for (MenuItem i : items) {
-			if (i.getItemID() == itemID) {
-				items.remove(i);
-				return true;
-			}
-		}
-		return false;
+	public boolean removeItem(MenuItem item) {
+		if (!items.contains(item))
+			return false;
+		items.remove(item);
+		return true;
 	}
 	
 	public DeliveryMethod getDeliveryMethod() {

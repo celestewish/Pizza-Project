@@ -169,7 +169,7 @@ public abstract class CardScreen {
 				showPopUpWindow(
 						"You have surpassed the limit of 3 login attempts.\n" +
 								"Sending a password reset link to the email:\n\t\t" +
-								email,
+								email.toLowerCase(),
 						"",
 						1);
 			}
