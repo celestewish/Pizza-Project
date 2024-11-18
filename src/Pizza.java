@@ -1,31 +1,31 @@
 import java.util.LinkedList;
 
 public class Pizza extends MenuItem {
-	private pizzaSize size;
-	private crustType crust;
+	private PizzaSize size;
+	private CrustType crust;
 	private boolean sauce; // true for marinara, false for alfredo
 	private final LinkedList<Topping> toppings;
 	
-	public Pizza(pizzaSize size, crustType crust, boolean sauce) {
+	public Pizza(PizzaSize size, CrustType crust, boolean sauce) {
 		this.size = size;
 		this.crust = crust;
 		this.sauce = sauce;
 		toppings = new LinkedList<>();
 	}
 	
-	public pizzaSize getSize() {
+	public PizzaSize getSize() {
 		return size;
 	}
 	
-	public void setSize(pizzaSize size) {
+	public void setSize(PizzaSize size) {
 		this.size = size;
 	}
 	
-	public crustType getCrust() {
+	public CrustType getCrust() {
 		return crust;
 	}
 	
-	public void setCrust(crustType crust) {
+	public void setCrust(CrustType crust) {
 		this.crust = crust;
 	}
 	

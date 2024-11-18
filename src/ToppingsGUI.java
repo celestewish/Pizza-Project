@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class ToppingsGUI extends CardScreen {
-
-    private JPanel toppingsPanel;
+    private JPanel pnlToppings;
+    
     private JButton btnDeals;
     private JButton btnLocations;
     private JButton btnHome;
@@ -38,8 +38,12 @@ public class ToppingsGUI extends CardScreen {
     private JButton updateTotalButton;
 
 
-    public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        super(screenLayoutController, screenContainer, info);
+    public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+        super(screenLayoutController, screenContainer, info, panelName);
+        setScreenPanel(pnlToppings);
+        info.registerScreenName(Screen.TOPPINGS, this);
+        screenContainer.add(this.getScreenPanel(), this.getPanelName());
+        
         //variables
         final Topping[] pepperoni = new Topping[1];
         final Topping[] sausage = new Topping[1];
@@ -53,15 +57,25 @@ public class ToppingsGUI extends CardScreen {
         final Topping[] mushrooms = new Topping[1];
 
         //action listeners
-        btnHome.addActionListener(e -> showScreen("Deals"));
+        btnHome.addActionListener(_ -> {
+            showScreen(Screen.LOGIN);
+        });
 
-        btnDeals.addActionListener(e -> showScreen("Deals"));
+        btnDeals.addActionListener(_ -> {
+            showScreen(Screen.DEALS);
+        });
 
-        btnLocations.addActionListener(e -> showScreen("Location"));
+        btnLocations.addActionListener(_ -> {
+            showScreen(Screen.LOCATIONS);
+        });
 
-        btnMenu.addActionListener(e -> showScreen("Menu"));
+        btnMenu.addActionListener(_ -> {
+            showScreen(Screen.MENU);
+        });
 
-        cartButton.addActionListener(e -> showScreen("Cart"));
+        cartButton.addActionListener(_ -> {
+            showScreen(Screen.CART);
+        });
 
         //adds the toppings
         comboBox1.addActionListener(new ActionListener() {
@@ -140,7 +154,7 @@ public class ToppingsGUI extends CardScreen {
                 myPizza.addTopping(peppers[0]);
                 myPizza.addTopping(mushrooms[0]);
                 info.setCurPizza(Objects.requireNonNull(myPizza));
-                showScreen("Menu");
+                showScreen(Screen.MENU);
             }
         });
 
@@ -293,8 +307,14 @@ public class ToppingsGUI extends CardScreen {
             }
         });
     }
-
-    public JPanel getScreenPanel(){
-        return toppingsPanel;
+    
+    @Override
+    public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
+        return fromScreen;
+    }
+    
+    @Override
+    public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+        return toScreen;
     }
 }

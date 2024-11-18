@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public abstract class CardScreen {
 	private final CardLayout screenLayoutController;
@@ -7,6 +8,8 @@ public abstract class CardScreen {
 	private final ProgramInfo info;
 	private JPanel screenPanel;
 	private final String panelName;
+	
+	private final ArrayList<JComponent> components;
 	
 	private static final char[] SPECIAL_CHARS = {
 			'!', '#', '$', '^', '_', '~', ',', '.', '@', '[', ']', '`', '{', '}', '*', '+', '-', ':'
@@ -17,6 +20,51 @@ public abstract class CardScreen {
 		this.screenContainer = screenContainer;
 		this.info = info;
 		this.panelName = panelName;
+		components = new ArrayList<>();
+	}
+	
+	public abstract Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen);
+	
+	public abstract Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen);
+	
+	
+	public void showScreen(Screen screen) {
+		if (screen == Screen.RETURN)
+			screen = info.getLastScreen();
+		
+		if (screen == Screen.HOME)
+			if (info.IsLoggedIn())
+				screen = Screen.MENU;
+			else
+				screen = Screen.LOGIN;
+			
+		
+			//TODO make leaving logic
+		screen = info.Screens().get(screen).onAttemptEnterScreen(info, screen);
+			
+		resetScreen();
+		info.advanceScreen(screen);
+		screenLayoutController.show(screenContainer, info.Screens().get((screen)).getPanelName());
+	}
+	
+	public void setUpNavBar_LoggedOut(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_up_sign_in) {
+		home.addActionListener(_ -> showScreen(Screen.HOME));
+		menu.addActionListener(_ -> showScreen(Screen.MENU));
+		deals.addActionListener(_ -> showScreen(Screen.DEALS));
+		locations.addActionListener(_ -> showScreen(Screen.LOCATIONS));
+		sign_up_sign_in.addActionListener(_ -> showScreen(Screen.SIGN_IN));
+	}
+	
+	public void setUpNavBar_LoggedIn(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_out, JButton cart, JLabel customerName, JLabel currentTotal) {
+		home.addActionListener(_ -> showScreen(Screen.HOME));
+		menu.addActionListener(_ -> showScreen(Screen.MENU));
+		deals.addActionListener(_ -> showScreen(Screen.DEALS));
+		locations.addActionListener(_ -> showScreen(Screen.LOCATIONS));
+		sign_out.addActionListener(_ -> showScreen(Screen.LOGIN));
+		cart.addActionListener(_ -> showScreen(Screen.CART));
+		
+		//customerName.setText("Hi, " + info.CurrentUser().getName());
+		//currentTotal.setText("Current Total: $" + info.getCurOrder()); //TODO Make method for summing costs and change this method call
 	}
 	
 	public String getPanelName() {
@@ -31,23 +79,47 @@ public abstract class CardScreen {
 		this.screenPanel = screenPanel;
 	}
 	
-	public void showScreen(String pnlName) {
-		if (pnlName.equals("StartScreen") && info.IsLoggedIn())
-			pnlName = "Menu";
+	public void resetScreen() {
+		info.resetLoginAttempts();
 		
-		if (pnlName.equals("Menu") && !info.IsLoggedIn())
-			pnlName = "MenuForNonUser";
-		
-		screenLayoutController.show(screenContainer, pnlName);
+		for (JComponent c : components) {
+			if (c instanceof JTextField) {
+				((JTextField) c).setText(""); // Reset text for JTextField
+			} else if (c instanceof JComboBox) {
+				((JComboBox<?>) c).setSelectedIndex(0); // Reset selection for JComboBox
+			} else if (c instanceof JCheckBox) {
+				((JCheckBox) c).setSelected(false); // Reset selection for JCheckBox
+			}
+		}
 	}
 	
-	public void onGoHome() {
-		String screenName;
-		if (info.IsLoggedIn())
-			screenName = "MenuGUI";
-		else
-			screenName = "Login";
-		showScreen(screenName);
+	public void addJComponent(JComponent component) {
+		components.add(component);
+	}
+	
+	public ArrayList<JComponent> getComponents() {
+		return components;
+	}
+	
+	
+	public static boolean showConfirmationDialog(String option1, String defaultOption) {
+		// Define the options for the dialog
+		String[] options = {option1, defaultOption};
+		
+		// Show the confirmation dialog
+		int choice = JOptionPane.showOptionDialog(
+				null, // Parent component (null for center of the screen)
+				option1,
+				defaultOption,
+				JOptionPane.DEFAULT_OPTION,
+				JOptionPane.QUESTION_MESSAGE,
+				null,
+				options,
+				options[1] // Default option
+		);
+		
+		// return true if the user chose option1, otherwise false
+		return choice == 0;
 	}
 	
 	public void showPopUpWindow(String message, String title, int optionPaneType) {
@@ -66,13 +138,13 @@ public abstract class CardScreen {
 		return passwordString.toString();
 	}
 	
-	public boolean isEmailTaken(JTextField t, String message, String title, int optionPaneType) {
+	public boolean isEmailTaken(JTextField t) {
 		if (info.UserDatabase().customerExists(t.getText())) {
 			JOptionPane.showMessageDialog(
 					null,
-					message,
-					title,
-					optionPaneType);
+					"There is already an account with this email",
+					"",
+					JOptionPane.ERROR_MESSAGE);
 			return true;
 		}
 		return  false;
@@ -105,13 +177,15 @@ public abstract class CardScreen {
 		return true;
 	}
 	
-	public boolean isTextEmpty (JTextField t, String message, String title, int optionPaneType) {
+	public boolean isTextEmpty (boolean required, JTextField t) {
 		if (t.getText().isBlank()) {
-			JOptionPane.showMessageDialog(
-					null,
-					message,
-					title,
-					optionPaneType);
+			if (required) {
+				JOptionPane.showMessageDialog(
+						null,
+						"Please complete all required fields",
+						"",
+						JOptionPane.ERROR_MESSAGE);
+			}
 			return true;
 		}
 		return  false;
@@ -167,14 +241,14 @@ public abstract class CardScreen {
 		return  false;
 	}
 	
-	public boolean isPhoneInvalid(JTextField t, String message, String title, int optionPaneType) {
+	public boolean isPhoneInvalid(JTextField t) {
 		String p = t.getText();
 		if (p.length() != 10 || !p.matches("\\d+")) {
 			JOptionPane.showMessageDialog(
 					null,
-					message,
-					title,
-					optionPaneType);
+					"Please enter a valid phone number",
+					"",
+					JOptionPane.ERROR_MESSAGE);
 			return true;
 		}
 		return false;
@@ -229,13 +303,15 @@ public abstract class CardScreen {
 		return false;
 	}
 	
-	public boolean isComboBoxUnselected (JComboBox t, String message, String title, int optionPaneType) {
-		if (t.getSelectedItem() == "...") {
-			JOptionPane.showMessageDialog(
-					null,
-					message,
-					title,
-					optionPaneType);
+	public boolean isComboBoxUnselected (boolean required, JComboBox<?> t) {
+		if (t.getSelectedIndex() == 0) {
+			if (required) {
+				JOptionPane.showMessageDialog(
+						null,
+						"Please complete all required fields",
+						"title",
+						JOptionPane.ERROR_MESSAGE);
+			}
 			return true;
 		}
 		return  false;

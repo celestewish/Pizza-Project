@@ -4,11 +4,11 @@ public class Order {
 	private static int orderCounter = 1;
 	private final int orderNumber;
 	private final LinkedList<MenuItem> items;
-	private deliveryMethod deliveryMethod;
+	private DeliveryMethod deliveryMethod;
 	private boolean cash;
 	private Payment payment;
 	
-	public Order(LinkedList<MenuItem> items, deliveryMethod deliveryMethod, boolean cash, Payment payment) {
+	public Order(LinkedList<MenuItem> items, DeliveryMethod deliveryMethod, boolean cash, Payment payment) {
 		orderNumber = orderCounter;
 		orderCounter++;
 		this.items = items;
@@ -42,11 +42,11 @@ public class Order {
 		return false;
 	}
 	
-	public deliveryMethod getDeliveryMethod() {
+	public DeliveryMethod getDeliveryMethod() {
 		return deliveryMethod;
 	}
 	
-	public void setDeliveryMethod(deliveryMethod deliveryMethod) {
+	public void setDeliveryMethod(DeliveryMethod deliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
 	}
 	

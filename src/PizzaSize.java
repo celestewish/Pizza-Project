@@ -1,4 +1,4 @@
-public enum pizzaSize {
+public enum PizzaSize {
 	SMALL,
 	MEDIUM,
 	LARGE,

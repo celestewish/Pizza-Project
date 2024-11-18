@@ -5,67 +5,41 @@ public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
 
 	private JButton btnHome;
-
-	private JButton btnReturn;
-
-	private JButton btnMenu;
-	private JButton btnSignIn_SignUp;
-	private JTextField txtEmail;
-	private JCheckBox keepMeLoggedInCheckBox;
-	private JButton btnSignIn_ValidateCredentials;
-	private JButton btnSignUp;
 	private JButton btnDeals;
 	private JButton btnLocations;
-	private JCheckBox showPasswordCheckBox;
-	private JPasswordField txtPassword;
-	private JLabel lblEmailNotExist;
+	private JButton btnReturn;
+	private JButton btnMenu;
+	private JButton btnSignUp_SignIn;
 	
-	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-		super(screenLayoutController, screenContainer, info);
+	private JTextField txtEmail;
+	private JPasswordField txtPassword;
+	
+	private JLabel lblEmailNotExist;
+	private JCheckBox showPasswordCheckBox;
+	
+	private JButton btnValidateCredentials;
+	private JButton btnSignUp;
+
+	
+	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+		super(screenLayoutController, screenContainer, info, panelName);
+		setScreenPanel(pnlSignIn);
 		lblEmailNotExist.setText("");
+		info.registerScreenName(Screen.SIGN_IN, this);
+		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
-		btnReturn.addActionListener((_) -> {
-			showScreen("StartScreen");
-			resetScreen();
-			info.resetLoginAttempts();
-		});
-
-		btnHome.addActionListener(_ -> {
-			showScreen("StartScreen");
-			resetScreen();
-			info.resetLoginAttempts();
-		});
-
-		btnDeals.addActionListener(_ -> {
-			showScreen("Deals");
-			resetScreen();
-			info.resetLoginAttempts();
-		});
-
-		btnMenu.addActionListener(_ -> {
-			showScreen("Menu");
-			resetScreen();
-			info.resetLoginAttempts();
-		});
-
-		btnLocations.addActionListener(_ -> {
-			showScreen("LocationScreen");
-			resetScreen();
-			info.resetLoginAttempts();
-		});
-
-		btnSignIn_SignUp.addActionListener(_ -> {
-			showScreen("SignUp");
-			resetScreen();
-			info.resetLoginAttempts();
-		});
-
-		keepMeLoggedInCheckBox.addActionListener(_ -> {
+		addJComponent(txtEmail);
+		addJComponent(txtPassword);
+		addJComponent(showPasswordCheckBox);
 		
-		});
+		setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
 		
-        btnSignIn_ValidateCredentials.addActionListener(_ -> {
-			if (isTextEmpty(txtEmail, "Please enter an email.", "", 0)) {
+		btnReturn.addActionListener(_ -> showScreen(Screen.RETURN));
+		
+		btnSignUp.addActionListener(_ -> showScreen(Screen.SIGN_UP));
+		
+        btnValidateCredentials.addActionListener(_ -> {
+			if (isTextEmpty(true, txtEmail)) {
 				return;
 			}
 			
@@ -76,21 +50,17 @@ public class SignIn extends CardScreen {
 				lblEmailNotExist.setText("! No account exists for this email");
 				return;
 			}
-			if (isTextEmpty(txtPassword, "Please enter a password.", "", 0)) {
+			
+			if (isTextEmpty(true, txtPassword)) {
 				return;
 			}
+			
 			if (!doesPasswordMatchEmail(txtEmail.getText(), convertPasswordToString(txtPassword.getPassword())))
 				return;
 			
 			info.setCurrentUser(info.UserDatabase().getUser(txtEmail.getText()));
 			info.setLoggedIn(true);
-	        info.resetLoginAttempts();
-			showScreen("Menu");
-		});
-
-		btnSignUp.addActionListener(_ -> {
-			showScreen("SignUp");
-			resetScreen();
+			showScreen(Screen.MENU);
 		});
 
 		showPasswordCheckBox.addActionListener(_ -> {
@@ -119,14 +89,15 @@ public class SignIn extends CardScreen {
 		});
 	}
 	
-	public JPanel getScreenPanel() {
-		return pnlSignIn;
+	@Override
+	public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
+		return fromScreen;
 	}
 	
-	public void resetScreen() {
-		txtEmail.setText("");
-		txtPassword.setText("");
-		keepMeLoggedInCheckBox.setSelected(false);
-		showPasswordCheckBox.setSelected(false);
+	@Override
+	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+		if (info.getCurScreen() == Screen.SIGN_IN)
+			return Screen.SIGN_UP;
+		return toScreen;
 	}
 }

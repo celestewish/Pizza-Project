@@ -1,35 +1,35 @@
 import javax.swing.*;
 import javax.swing.JPanel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Cart extends CardScreen {
-
-	private JPanel Background;
-	private JPanel header;
+	private JPanel pnlCart;
+	
 	private JButton btnHome;
 	private JButton btnMenu;
 	private JButton btnDeals;
 	private JButton btnLocations;
-	private JPanel Checkout;
-	private JButton btnCheckout;
-	private JButton btnBack;
-	private JButton btnChange;
-	private JLabel lblHiCustomerName;
 	private JButton btnSignOut;
-	private JButton viewCartButton;
+	private JButton btnCart;
+	private JLabel lblHiName;
+	private JLabel lblCurTotal;
 	
-	public Cart (CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-		super(screenLayoutController, screenContainer, info);
+	public Cart (CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+		super(screenLayoutController, screenContainer, info, panelName);
+		setScreenPanel(pnlCart);
+		info.registerScreenName(Screen.CART, this);
+		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
-
-		btnHome.addActionListener(e -> showScreen("StartScreen"));
-		btnMenu.addActionListener(e -> showScreen("MenuGUI"));
-		btnDeals.addActionListener(e -> showScreen("Deals"));
-		btnLocations.addActionListener(e -> showScreen("Deals"));
-		btnCheckout.addActionListener(e -> showScreen("PaymentScreen"));
-		btnChange.addActionListener(e -> showScreen("Locations"));
-		btnBack.addActionListener(e -> showScreen("Menu"));
+		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart, lblHiName, lblCurTotal);
+	}
+	
+	@Override
+	public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
+		return fromScreen;
+	}
+	
+	@Override
+	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+		return toScreen;
 	}
 }

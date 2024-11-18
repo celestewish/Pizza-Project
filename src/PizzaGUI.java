@@ -2,71 +2,89 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.LinkedList;
+import java.util.Objects;
 
 public class PizzaGUI extends CardScreen {
-    private JPanel pizzaPanel;
+    private JPanel pnlCreatePizza;
     
     private JButton btnHome;
+    private JButton btnContinue;
     private JButton btnMenu;
     private JButton btnDeals;
     private JButton btnLocations;
     private JButton btnSignOut;
-    private JButton viewCartButton;
-    private JButton btnContinue;
+    private JButton btnCart;
     
-    private JLabel lblHiCustomerName;
+    private JLabel lblHiName;
+    private JLabel lblCurTotal;
     
-    private JComboBox cboxCrust;
-    private JComboBox cboxSize;
-    private JComboBox cboxSauce;
-    private JCheckBox checkCheese;
+    private JComboBox<?> cboxCrust;
+    private JComboBox<?> cboxSize;
+    private JComboBox<?> cboxSauce;
     
-    public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        //variables
-        super(screenLayoutController, screenContainer, info);
-        final pizzaSize[] mySize = new pizzaSize[1];
-        final crustType[] myCrust = new crustType[1];
+    public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+        super(screenLayoutController, screenContainer, info, panelName);
+        setScreenPanel(pnlCreatePizza);
+        info.registerScreenName(Screen.CREATE_PIZZA, this);
+        screenContainer.add(this.getScreenPanel(), this.getPanelName());
+        
+        final PizzaSize[] mySize = new PizzaSize[1];
+        final CrustType[] myCrust = new CrustType[1];
         final boolean[] sauce = new boolean[1];
-        //goes to menu
+
+        setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart, lblHiName, lblCurTotal);
+        
         btnHome.addActionListener(_ -> {
-            showScreen("Menu");
+            showScreen(Screen.LOGIN);
         });
-        //goes to toppings
+        
+        btnMenu.addActionListener(_ -> {
+            showScreen(Screen.MENU);
+        });
+        
+        btnSignOut.addActionListener(_ -> {
+            showScreen(Screen.SIGN_UP);
+        });
+        
+        btnLocations.addActionListener(_ -> {
+            showScreen(Screen.LOCATIONS);
+        });
+        
+        btnDeals.addActionListener(_ -> {
+            showScreen(Screen.DEALS);
+        });
+
         btnContinue.addActionListener(_ -> {
-            Pizza myPizza = new Pizza(mySize[0], myCrust[0], sauce[0]);
-            info.setCurPizza(myPizza);
-            showScreen("ToppingsGUI");
+            Pizza newPizza = new Pizza(mySize[0], myCrust[0], sauce[0]);
+            info.setCurPizza(newPizza);
+            showScreen(Screen.TOPPINGS);
         });
-        //these add each aspect of the pizza
-        cboxCrust.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (cboxCrust.getSelectedItem().toString().equalsIgnoreCase("deep dish")){
-                    myCrust[0] = crustType.DEEP_DISH;
-                }
-                else if (cboxCrust.getSelectedItem().toString().equalsIgnoreCase("thin")){
-                    myCrust[0] = crustType.THIN_CRUST;
-                }
-                else if (cboxCrust.getSelectedItem().toString().equalsIgnoreCase("thick")){
-                    myCrust[0] = crustType.THICK_CRUST;
-                }
+
+        cboxCrust.addActionListener(_ -> {
+            if (Objects.requireNonNull(cboxCrust.getSelectedItem()).toString().equalsIgnoreCase("deep dish")){
+                myCrust[0] = CrustType.DEEP_DISH;
+            }
+            else if (cboxCrust.getSelectedItem().toString().equalsIgnoreCase("thin")){
+                myCrust[0] = CrustType.THIN_CRUST;
+            }
+            else if (cboxCrust.getSelectedItem().toString().equalsIgnoreCase("thick")){
+                myCrust[0] = CrustType.THICK_CRUST;
             }
         });
         cboxSize.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (cboxSize.getSelectedItem().toString().equalsIgnoreCase("small")){
-                    mySize[0] = pizzaSize.SMALL;
+                    mySize[0] = PizzaSize.SMALL;
                 }
                 else if (cboxSize.getSelectedItem().toString().equalsIgnoreCase("medium")){
-                    mySize[0] = pizzaSize.MEDIUM;
+                    mySize[0] = PizzaSize.MEDIUM;
                 }
                 else if (cboxSize.getSelectedItem().toString().equalsIgnoreCase("large")){
-                    mySize[0] = pizzaSize.LARGE;
+                    mySize[0] = PizzaSize.LARGE;
                 }
                 else if (cboxSize.getSelectedItem().toString().equalsIgnoreCase("xlarge")){
-                    mySize[0] = pizzaSize.XL;
+                    mySize[0] = PizzaSize.XL;
                 }
             }
         });
@@ -84,7 +102,17 @@ public class PizzaGUI extends CardScreen {
         });
     }
     
-    public JPanel getScreenPanel(){
-        return pizzaPanel;
+    
+    @Override
+    public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
+        return fromScreen;
+    }
+    
+    @Override
+    public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+        if (showConfirmationDialog("Yes, I want to abandon my pizza", "No, keep me here"))
+            return null;
+        else
+            return toScreen;
     }
 }

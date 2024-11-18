@@ -1,10 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Payment_Receipt extends CardScreen{
-
+    private JPanel pnlPaymentReceipt;
 
     private JPanel Home;
     private JButton btnHome;
@@ -21,12 +19,23 @@ public class Payment_Receipt extends CardScreen{
     private JLabel StorePhone;
     private JLabel StoreAddress;
     private JLabel EstTime;
-
-    public Payment_Receipt(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        super(screenLayoutController, screenContainer, info);
-        btnHome.addActionListener(e -> showScreen("StartScreen"));
+    
+    public Payment_Receipt(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+        super(screenLayoutController, screenContainer, info, panelName);
+        setScreenPanel(pnlPaymentReceipt);
+        info.registerScreenName(Screen.PAYMENT_RECEIPT, this);
+        screenContainer.add(this.getScreenPanel(), this.getPanelName());
+        
+        btnHome.addActionListener(_ -> showScreen(Screen.MENU));
     }
-
-    public JPanel getScreenPanel(){return Home;}
-
+    
+    @Override
+    public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
+        return fromScreen;
+    }
+    
+    @Override
+    public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+        return toScreen;
+    }
 }

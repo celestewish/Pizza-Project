@@ -1,46 +1,47 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class PaymentScreen extends CardScreen {
-    private JPanel pnlPaymentScreen;
-    private JButton HomeBtn;
-    private JButton menuButton;
-    private JButton DealsBTN;
-    private JButton LocationsBTN;
-    private JLabel nameShown;
-    private JLabel streetName;
-    private JLabel cityStateZip;
-    private JTextField firstLastTextField;
-    private JTextField cardNumberTextField;
-    private JTextField CVVTextField;
-    private JTextField expDateTextField;
-    private JTextField zipCodeTextField;
-    private JButton submitPaymentButton;
-
-    public PaymentScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info){
-        super(screenLayoutController, screenContainer, info);
-
-
-
-        nameShown.setText("Guest");
-
-
-        HomeBtn.addActionListener(e -> showScreen("StartScreen"));
-        menuButton.addActionListener(e -> showScreen("Menu"));
-        DealsBTN.addActionListener(e -> showScreen("Deals"));
-        LocationsBTN.addActionListener(e -> showScreen("Location"));
-        //submits payment
-        submitPaymentButton.addActionListener((e) -> {
-            String[] name = info.getName().split(" ");
-            String[] custAddress = info.getAddress().split(" ");
-            streetName.setText(custAddress[0] + " "  + custAddress[1] + " " + custAddress[2]);
-            cityStateZip.setText(custAddress[3] + " " + custAddress[4] + " " + custAddress[5]);
-            String cardNameInput = firstLastTextField.getText();
-            String cardNumberInput = null;
-            String expDateInput = null;
-            String zipCodeInput = null;
-            int cvvInput = 0;
-            //could not implement in time
+public class PaymentInfo extends CardScreen {
+	private JPanel pnlPaymentInfo;
+	
+	private JButton btnHome;
+	private JButton btnMenu;
+	private JButton btnDeals;
+	private JButton btnLocations;
+	private JButton btnSignOut;
+	private JButton btnCart;
+	private JLabel lblHiName;
+	private JLabel lblCurTotal;
+	
+	private JLabel streetName;
+	private JLabel cityStateZip;
+	private JTextField firstLastTextField;
+	private JButton submitPaymentButton;
+	private JTextField cardNumberTextField;
+	private JTextField CVVTextField;
+	private JTextField expDateTextField;
+	private JTextField zipCodeTextField;
+	
+	public PaymentInfo(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName){
+		super(screenLayoutController, screenContainer, info, panelName);
+		setScreenPanel(pnlPaymentInfo);
+		info.registerScreenName(Screen.PAYMENT_INFO, this);
+		screenContainer.add(this.getScreenPanel(), this.getPanelName());
+		
+		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart, lblHiName, lblCurTotal);
+		
+		//submits payment
+		submitPaymentButton.addActionListener((e) -> {
+			String[] name = info.getName().split(" ");
+			String[] custAddress = info.getAddress().split(" ");
+			streetName.setText(custAddress[0] + " "  + custAddress[1] + " " + custAddress[2]);
+			cityStateZip.setText(custAddress[3] + " " + custAddress[4] + " " + custAddress[5]);
+			String cardNameInput = firstLastTextField.getText();
+			String cardNumberInput = null;
+			String expDateInput = null;
+			String zipCodeInput = null;
+			int cvvInput = 0;
+			//could not implement in time
             /*
             try{
                 cardNumberInput = cardNumberTextField.getText();
@@ -99,30 +100,38 @@ public class PaymentScreen extends CardScreen {
             frame.setVisible(true);
             }
              */
-
-            showScreen("paymentReceipt");
-
-        });
-    }
-
-    public boolean isValidDate(String date){
-        String dateRegex = "^(0[1-9]|1[0-2])/\\d{2}$";
-
-        if(!date.matches(dateRegex)){
-            return false;
-        }
-
-        String[] parts = date.split("/");
-        int month = Integer.parseInt(parts[0]);
-        int year = Integer.parseInt(parts[1]);
-
-        if(month<1 || month>12){
-            return false;
-        }
-
-        return year >= 0 && year <= 99;
-    }
-
-    public  JPanel getScreenPanel(){return pnlPaymentScreen;}
-
+			
+			showScreen(Screen.PAYMENT_RECEIPT);
+			
+		});
+	}
+	
+	public boolean isValidDate(String date){
+		String dateRegex = "^(0[1-9]|1[0-2])/\\d{2}$";
+		
+		if(!date.matches(dateRegex)){
+			return false;
+		}
+		
+		String[] parts = date.split("/");
+		int month = Integer.parseInt(parts[0]);
+		int year = Integer.parseInt(parts[1]);
+		
+		if(month<1 || month>12){
+			return false;
+		}
+		
+		return year >= 0 && year <= 99;
+	}
+	
+	@Override
+	public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
+		return fromScreen;
+	}
+	
+	@Override
+	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+		return toScreen;
+	}
 }
+

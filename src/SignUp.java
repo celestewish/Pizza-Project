@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class SignUp extends CardScreen {
 	private JPanel pnlSignUp;
@@ -14,25 +13,25 @@ public class SignUp extends CardScreen {
 	private JTextField txtFname;
 	private JTextField txtMname;
 	private JTextField txtLname;
-	private JPasswordField txtPassword;
 	private JTextField txtEmail;
-	
-	private JLabel lblEmailTaken;
+	private JPasswordField txtPassword;
 	
 	private JCheckBox chbxShowPassword;
-	private JTextField txtPhoneNumber;
+	private JLabel lblEmailTaken;
 	
 	private JTextField txtStreet;
 	private JTextField txtCity;
-	private JComboBox cobxState;
+	private JComboBox<?> cobxState;
 	private JTextField txtZIP;
+	
+	private JTextField txtPhoneNumber;
+	
+	private JComboBox<?> cobxMonth;
+	private JComboBox<?> cobxDay;
+	private JComboBox<?> cobxYear;
 	
 	private JCheckBox chbxCard;
 	private JCheckBox chbxCash;
-	
-	private JComboBox cobxMonth;
-	private JComboBox cobxDay;
-	private JComboBox cobxYear;
 	
 	private JButton btnSignUp;
 	private JButton btnReturn;
@@ -40,80 +39,76 @@ public class SignUp extends CardScreen {
 	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);
 		setScreenPanel(pnlSignUp);
+		info.registerScreenName(Screen.SIGN_UP, this);
+		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
-		ArrayList<JTextField> requiredTextFields = new ArrayList<>();
-		requiredTextFields.add(txtFname);
-		requiredTextFields.add(txtMname);
-		requiredTextFields.add(txtLname);
-		requiredTextFields.add(txtEmail);
-		requiredTextFields.add(txtStreet);
-		requiredTextFields.add(txtCity);
-		requiredTextFields.add(txtZIP);
+		lblEmailTaken.setText("");
 		
-		ArrayList<JComboBox<Integer>> requiredComboBoxes = new ArrayList<>();
-		requiredComboBoxes.add(cobxState);
-		requiredComboBoxes.add(cobxMonth);
-		requiredComboBoxes.add(cobxDay);
-		requiredComboBoxes.add(cobxYear);
+		addJComponent(txtFname);
+		addJComponent(txtMname);
+		addJComponent(txtLname);
+		addJComponent(txtEmail);
+		addJComponent(txtStreet);
+		addJComponent(txtCity);
+		addJComponent(txtZIP);
+		addJComponent(cobxState);
+		addJComponent(cobxMonth);
+		addJComponent(cobxDay);
+		addJComponent(cobxYear);
 		
 		btnReturn.addActionListener(_ -> {
-			showScreen("StartScreen");
-			resetFields();
-		});
-		
-		chbxShowPassword.addActionListener(_ -> {
-			if (chbxShowPassword.isSelected())
-				txtPassword.setEchoChar((char)0);
-			else
-				txtPassword.setEchoChar('*');
+			showScreen(Screen.RETURN);
+			resetScreen();
 		});
 		
 		btnHome.addActionListener(_ -> {
-			showScreen("StartScreen");
-			resetFields();
+			showScreen(Screen.LOGIN);
+			resetScreen();
 		});
 		
 		btnMenu.addActionListener(_ -> {
-			showScreen("Menu");
-			resetFields();
+			showScreen(Screen.MENU);
+			resetScreen();
 		});
 		
 		btnDeals.addActionListener(_ -> {
-			showScreen("Deals");
+			showScreen(Screen.DEALS);
+			resetScreen();
 		});
 		
 		btnSignUp_SignIn.addActionListener(_ -> {
-			showScreen("SignIn");
-			resetFields();
+			showScreen(Screen.SIGN_IN);
+			resetScreen();
 		});
 		
 		btnLocations.addActionListener(_ -> {
-			showScreen("LocationScreen");
-			resetFields();
+			showScreen(Screen.LOCATIONS);
+			resetScreen();
 		});
 		
 		btnSignUp.addActionListener(_ -> {
-			for (JTextField f : requiredTextFields) {
-				if (isTextEmpty(f, "Please complete all required fields", "", 0))
+			if (info.UserDatabase().customerExists(txtEmail.getText())) {
+				lblEmailTaken.setText("! There already exists an account with this email");
+				return;
+			}
+			
+			for (JComponent jcomp : getComponents()) {
+				if (jcomp instanceof JTextField && isTextEmpty(true, (JTextField) jcomp))
+					return;
+				else if (jcomp instanceof JComboBox && isComboBoxUnselected(true, (JComboBox<?>) jcomp))
 					return;
 			}
 			
 			if (isEmailInvalid(txtEmail))
 				return;
 			
-			// Call a method that will show an error if there's an error and halt the execution if an error was thrown
 			if (isPasswordInvalid(txtPassword))
 				return;
 			
-			if (isPhoneInvalid(txtPhoneNumber, "Please enter a valid phone number", "", 0))
+			if (isPhoneInvalid(txtPhoneNumber))
 				return;
 			
-			for (JComboBox<Integer> b : requiredComboBoxes) {
-				if (isComboBoxUnselected(b, "Please complete all required fields", "", 0))
-					return;
-			}
-			
-			if (isEmailTaken(txtEmail, "There is already an account with this email", "", 0))
+			if (isEmailTaken(txtEmail))
 				return;
 			
 			String fullName = txtFname.getText() + " " + txtMname.getText() + " " + txtLname.getText();
@@ -128,31 +123,45 @@ public class SignUp extends CardScreen {
 							"Welcome to Mom and Pop's Pizza Shop, " + txtFname.getText() + "!",
 					"",
 					JOptionPane.INFORMATION_MESSAGE);
-			showScreen("Menu");
+			
+			showScreen(Screen.MENU);
+		});
+		
+		// Listener to reset a warning label when the text is changed
+		txtEmail.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+			@Override
+			public void insertUpdate(javax.swing.event.DocumentEvent e) {
+				lblEmailTaken.setText(""); // Clear the label
+			}
+			
+			@Override
+			public void removeUpdate(javax.swing.event.DocumentEvent e) {
+				lblEmailTaken.setText(""); // Clear the label
+			}
+			
+			@Override
+			public void changedUpdate(javax.swing.event.DocumentEvent e) {
+				// No action needed for plain text fields
+			}
+		});
+		
+		chbxShowPassword.addActionListener(_ -> {
+			if (chbxShowPassword.isSelected())
+				txtPassword.setEchoChar((char)0);
+			else
+				txtPassword.setEchoChar('*');
 		});
 	}
 	
-	// method to reset all fields in the screen when the user goes to another screen
-	public void resetFields() {
-		txtFname.setText("");
-		txtMname.setText("");
-		txtLname.setText("");
-		txtPassword.setText("");
-		txtEmail.setText("");
-		
-		chbxShowPassword.setSelected(false);
-		txtPhoneNumber.setText("");
-		
-		txtStreet.setText("");
-		txtCity.setText("");
-		txtZIP.setText("");
-		
-		chbxCard.setSelected(false);
-		chbxCash.setSelected(false);
-		
-		cobxState.setSelectedIndex(0);
-		cobxMonth.setSelectedIndex(0);
-		cobxDay.setSelectedIndex(0);
-		cobxYear.setSelectedIndex(0);
+	@Override
+	public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
+		return fromScreen;
+	}
+	
+	@Override
+	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+		if (info.getCurScreen() == Screen.SIGN_UP)
+			return Screen.SIGN_IN;
+		return toScreen;
 	}
 }

@@ -6,9 +6,15 @@ import java.awt.*;
 public class CheckOut extends CardScreen {
     private JPanel pnlCheckOut;
     
-    private JButton homeBTN;
-    private JButton MenuBTN;
-    private JButton locationsBTN;
+    private JButton btnHome;
+    private JButton btnMenu;
+    private JButton btnDeals;
+    private JButton btnLocations;
+    private JButton btnSignOut;
+    private JButton btnCart;
+    private JLabel lblHiName;
+    private JLabel lblCurTotal;
+    
     private JTextField firstNameDis;
     private JTextField lastNameDis;
     private JTextField textField3;
@@ -16,14 +22,12 @@ public class CheckOut extends CardScreen {
     private JButton editButton;
     private JButton dealsButton;
     private JButton proceedToPaymentButton;
-    private JLabel nameShown;
-  
-    private JLabel welcome;
-    private JLabel FirstName;
     
-    public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info) {
-        super(screenLayoutController, screenContainer, info);
-
+    public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+        super(screenLayoutController, screenContainer, info, panelName);
+        setScreenPanel(pnlCheckOut);
+        info.registerScreenName(Screen.CHECK_OUT, this);
+        screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
         //array to store customer name to display, index 0 is  first name,
         //index 1 is last name
@@ -32,7 +36,6 @@ public class CheckOut extends CardScreen {
         lastNameDis.setText(null);
         textField4.setText(null);
         textField3.setText(null);
-        nameShown.setText("Guest");
 
         editButton.addActionListener((e) -> {
             String[] name = info.getName().split(" ");
@@ -82,22 +85,15 @@ public class CheckOut extends CardScreen {
             textField4.setText(info.getPhoneAtIndex0());
             textField3.setText(info.getEmail());
         });
-
-
-
-
-
-        homeBTN.addActionListener(e ->{ showScreen("StartScreen");});
-        MenuBTN.addActionListener(e ->{ showScreen("MenuGUI");});
-        dealsButton.addActionListener(e ->{ showScreen("Deals");});
-        locationsBTN.addActionListener(e ->{ showScreen("Locations");});
-
-        proceedToPaymentButton.addActionListener(e ->{ showScreen("paymentScreen");});
     }
-
-
     
-    public JPanel getScreenPanel() {return pnlCheckOut;}
-
-
+    @Override
+    public Screen onAttemptLeaveScreen(ProgramInfo info, Screen fromScreen) {
+        return fromScreen;
+    }
+    
+    @Override
+    public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+        return toScreen;
+    }
 }

@@ -1,4 +1,4 @@
-public enum deliveryMethod {
+public enum DeliveryMethod {
 	PICKUP,
 	DELIVERY,
 	DINE_IN

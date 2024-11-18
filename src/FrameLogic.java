@@ -18,47 +18,46 @@ public class FrameLogic extends JFrame {
 		
 		screenContainer.setLayout(new CardLayout());
 		
-		Login startScreen = new Login((CardLayout)screenContainer.getLayout(), screenContainer, info, "Login");
-		screenContainer.add(startScreen.getScreenPanel(), startScreen.getPanelName());
+		Login login = new Login((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"Login");
 		
-		SignUp signUp = new SignUp((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(signUp.getScreenPanel(), "SignUp");
+		SignUp signUp = new SignUp((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"SignUp");
 		
-		SignIn signIn = new SignIn((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(signIn.getScreenPanel(), "SignIn");
+		SignIn signIn = new SignIn((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"SignIn");
 		
-		Menu menu = new Menu((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(menu.getScreenPanel(), "Menu");
+		Menu menu = new Menu((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"Menu");
 
-		PizzaGUI pizza = new PizzaGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(pizza.getScreenPanel(), "PizzaGUI");
+		PizzaGUI createPizza = new PizzaGUI((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"CreatePizza");
 
-		Deals deals = new Deals((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(deals.getScreenPanel(), "Deals");
+		Deals deals = new Deals((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"Deals");
 
-		CheckOut checkout = new CheckOut((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(checkout.getScreenPanel(), "CheckOut");
+		CheckOut checkout = new CheckOut((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"CheckOut");
 
-		PaymentScreen paymentScreen = new PaymentScreen((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(paymentScreen.getScreenPanel(), "paymentScreen");
+		PaymentInfo paymentScreen = new PaymentInfo((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"PaymentInfo");
 
-		LocationScreen location = new LocationScreen((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(location.getScreenPanel(), "LocationScreen");
+		Locations location = new Locations((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"Locations");
 		
-		ToppingsGUI toppings = new ToppingsGUI((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(toppings.getScreenPanel(), "ToppingsGUI");
+		ToppingsGUI toppings = new ToppingsGUI((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"Toppings");
 		
-		MenuForNonUser menuForNonUser = new MenuForNonUser((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(menuForNonUser.getScreenPanel(), "MenuForNonUser");
-
-		Payment_Receipt receipt = new Payment_Receipt((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(receipt.getScreenPanel(), "paymentReceipt");
-
+		MenuForNonUser menuForNonUser = new MenuForNonUser((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"MenuForNonUser");
 		
-		Payment_Receipt paymentReceipt = new Payment_Receipt((CardLayout)screenContainer.getLayout(), screenContainer, info);
-		screenContainer.add(paymentReceipt.getScreenPanel(), "PaymentReceipt");
-
+		Payment_Receipt paymentReceipt = new Payment_Receipt((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"PaymentReceipt");
 		
-		((CardLayout) screenContainer.getLayout()).show(screenContainer, "StartScreen");
+		Cart cart = new Cart((CardLayout)screenContainer.getLayout(), screenContainer, info,
+				"Cart");
+		
+		((CardLayout) screenContainer.getLayout()).show(screenContainer, login.getPanelName());
+		info.setCurScreen(Screen.LOGIN);
 	}
 }
