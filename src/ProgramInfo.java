@@ -19,7 +19,7 @@ public class ProgramInfo {
 		isLoggedIn = false;
 		loginAttempts = 0;
 		curOrder = null;
-		curScreen = null;
+		curScreen = Screen.LOGIN;
 		lastScreen = null;
 	}
 	
