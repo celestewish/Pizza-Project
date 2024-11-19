@@ -19,6 +19,15 @@ public class Payment_Receipt extends CardScreen{
     private JLabel StorePhone;
     private JLabel StoreAddress;
     private JLabel EstTime;
+    private JButton btnMenu;
+    private JButton btnDeals;
+    private JButton btnLocations;
+    private JButton btnSignOut;
+    private JButton btnCart;
+    private JLabel lblHiName;
+    private JLabel lblCurTotal;
+    private JPanel pnlCartLogo;
+    private JPanel pnlLogo;
     
     public Payment_Receipt(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
         super(screenLayoutController, screenContainer, info, panelName);
@@ -42,5 +51,10 @@ public class Payment_Receipt extends CardScreen{
     @Override
     public void onEnterScreen(ProgramInfo info) {
     
+    }
+    
+    private void createUIComponents() {
+        pnlCartLogo = new ImagePanel("cart.png");
+        pnlLogo = new ImagePanel("PizzaLogo.png");
     }
 }

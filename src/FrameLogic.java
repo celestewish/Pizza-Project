@@ -61,7 +61,7 @@ public class FrameLogic extends JFrame {
 				"LocationsForUser");
 		
 		DealsForUser dealsForUser = new DealsForUser((CardLayout)screenContainer.getLayout(), screenContainer, info,
-				"Locations");
+				"DealsForUser");
 		
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, login.getPanelName());
 		info.setCurScreen(Screen.LOGIN);

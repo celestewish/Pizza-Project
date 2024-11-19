@@ -11,6 +11,8 @@ public class Cart extends CardScreen {
 	private JButton btnLocations;
 	private JButton btnSignOut;
 	private JButton btnCart;
+	private JPanel pnlCartLogo;
+	private JPanel pnlLogo;
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
 	
@@ -36,5 +38,10 @@ public class Cart extends CardScreen {
 	@Override
 	public void onEnterScreen(ProgramInfo info) {
 	
+	}
+	
+	private void createUIComponents() {
+		pnlCartLogo = new ImagePanel("cart.png");
+		pnlLogo = new ImagePanel("PizzaLogo.png");
 	}
 }

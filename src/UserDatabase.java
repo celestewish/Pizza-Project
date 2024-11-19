@@ -6,7 +6,7 @@ public class UserDatabase {
 	private final LinkedList<Customer> customers;
 	
 	public UserDatabase() {
-		String storagePath = "resources/customerRecords.txt";
+		String storagePath = "src/main/resources/customerRecords.txt";
 		file = new File(storagePath);
 		customers = new LinkedList<>();
 		loadUsers();

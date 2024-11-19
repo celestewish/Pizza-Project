@@ -12,6 +12,7 @@ public class Deals extends CardScreen{
     
     private JButton btnOrdernow1;
     private JButton btnOrdernow2;
+    private JPanel pnlLogo;
     
     public Deals(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
         super(screenLayoutController, screenContainer, info, panelName);
@@ -37,5 +38,9 @@ public class Deals extends CardScreen{
     @Override
     public void onEnterScreen(ProgramInfo info) {
     
+    }
+    
+    private void createUIComponents() {
+        pnlLogo = new ImagePanel("PizzaLogo.png");
     }
 }

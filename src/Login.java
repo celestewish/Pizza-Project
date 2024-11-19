@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class Login extends CardScreen {
 	private JPanel pnlLogin;
+	private JPanel pnlLogo;
 	
 	private JButton btnSignUp_SignIn;
 	private JButton btnMenu;
@@ -39,5 +40,9 @@ public class Login extends CardScreen {
 	@Override
 	public void onEnterScreen(ProgramInfo info) {
 	
+	}
+	
+	private void createUIComponents() {
+		pnlLogo = new ImagePanel("PizzaLogo.png");
 	}
 }

@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class SignUp extends CardScreen {
 	private JPanel pnlSignUp;
+	private JPanel pnlLogo;
 	
 	private JButton btnHome;
 	private JButton btnMenu;
@@ -42,6 +43,8 @@ public class SignUp extends CardScreen {
 		info.registerScreenName(Screen.SIGN_UP, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
+		setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
+		
 		lblEmailTaken.setText("");
 		
 		addJComponent(txtFname);
@@ -55,36 +58,6 @@ public class SignUp extends CardScreen {
 		addJComponent(cobxMonth);
 		addJComponent(cobxDay);
 		addJComponent(cobxYear);
-		
-		btnReturn.addActionListener(_ -> {
-			showScreen(Screen.RETURN);
-			resetScreen();
-		});
-		
-		btnHome.addActionListener(_ -> {
-			showScreen(Screen.LOGIN);
-			resetScreen();
-		});
-		
-		btnMenu.addActionListener(_ -> {
-			showScreen(Screen.MENU);
-			resetScreen();
-		});
-		
-		btnDeals.addActionListener(_ -> {
-			showScreen(Screen.DEALS);
-			resetScreen();
-		});
-		
-		btnSignUp_SignIn.addActionListener(_ -> {
-			showScreen(Screen.SIGN_IN);
-			resetScreen();
-		});
-		
-		btnLocations.addActionListener(_ -> {
-			showScreen(Screen.LOCATIONS);
-			resetScreen();
-		});
 		
 		btnSignUp.addActionListener(_ -> {
 			if (info.UserDatabase().customerExists(txtEmail.getText())) {
@@ -169,5 +142,9 @@ public class SignUp extends CardScreen {
 	@Override
 	public void onEnterScreen(ProgramInfo info) {
 	
+	}
+	
+	private void createUIComponents() {
+		pnlLogo = new ImagePanel("PizzaLogo.png");
 	}
 }

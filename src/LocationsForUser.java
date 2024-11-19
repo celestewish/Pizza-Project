@@ -12,6 +12,8 @@ public class LocationsForUser extends CardScreen {
 	private JButton btnCart;
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
+	private JPanel pnlCartLogo;
+	private JPanel pnlLogo;
 	
 	public LocationsForUser(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);
@@ -29,11 +31,18 @@ public class LocationsForUser extends CardScreen {
 	
 	@Override
 	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+		if (!info.isLoggedIn())
+			return Screen.LOCATIONS;
 		return toScreen;
 	}
 	
 	@Override
 	public void onEnterScreen(ProgramInfo info) {
 	
+	}
+	
+	private void createUIComponents() {
+		pnlCartLogo = new ImagePanel("cart.png");
+		pnlLogo = new ImagePanel("PizzaLogo.png");
 	}
 }
