@@ -479,7 +479,7 @@
                         </constraints>
                         <properties>
                           <font size="18"/>
-                          <text value="Create"/>
+                          <text value="Reorder"/>
                         </properties>
                       </component>
                       <vspacer id="70a90">
@@ -531,11 +531,11 @@
                         <properties>
                           <font size="20"/>
                           <model>
-                            <item value="10/24/23 Order #101 Credit card payment "/>
+                            <item value="10/24/23 Order #101 Credit card payment"/>
                             <item value=""/>
-                            <item value="Supreme Pizza "/>
-                            <item value="Coke "/>
-                            <item value="Garlic Knots "/>
+                            <item value="Supreme Pizza"/>
+                            <item value="Coke"/>
+                            <item value="Garlic Knots"/>
                             <item value=""/>
                             <item value="Total $40.78"/>
                           </model>
@@ -807,12 +807,15 @@
                       </model>
                     </properties>
                   </component>
-                  <component id="5201b" class="javax.swing.JCheckBox" binding="reorderThisCheckBox" default-binding="true">
+                  <component id="15888" class="javax.swing.JButton">
                     <constraints>
-                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="40" height="40"/>
+                      </grid>
                     </constraints>
                     <properties>
-                      <text value="Reorder This"/>
+                      <font size="18"/>
+                      <text value="Reorder"/>
                     </properties>
                   </component>
                 </children>

@@ -15,7 +15,6 @@ public class Favorite_Order {
     private JButton btnOrders;
     private JComboBox cboxCrust;
     private JList list1;
-    private JCheckBox reorderThisCheckBox;
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
