@@ -10,19 +10,21 @@ public class Pizza extends MenuItem {
 		this.size = size;
 		this.crust = crust;
 		this.sauce = sauce;
-		toppings = new LinkedList<>();
+		this.toppings = new LinkedList<>();
 	}
 	
 	@Override
-	public float calcTotalCost() {
+	public float calcPrice() {
 		float total = 0;
 		
+		// Calculate the cost based on crust type
 		switch (crust) {
 			case DEEP_DISH -> total += 2.25F;
 			case THIN_CRUST -> total += .75F;
 			case THICK_CRUST -> total += 1.5F;
 		}
 		
+		// Calculate the cost based on pizza size
 		switch (size) {
 			case XL -> total += 17.5F;
 			case LARGE -> total += 15F;
@@ -30,11 +32,62 @@ public class Pizza extends MenuItem {
 			case SMALL -> total += 9.5F;
 		}
 		
+		// Add the cost of toppings
 		for (Topping t : toppings) {
 			total += t.calcTotalPrice();
 		}
 		
-		return total * getCount();
+		return total;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder pizza = new StringBuilder();
+		
+		// Append the size of pizza
+		switch (size) {
+			case SMALL -> pizza.append("Small");
+			case MEDIUM -> pizza.append("Medium");
+			case LARGE -> pizza.append("Large");
+			case XL -> pizza.append("Extra Large");
+		}
+		pizza.append(" ");
+		
+		// Append the crust of pizza
+		switch (crust) {
+			case DEEP_DISH -> pizza.append("Deep Dish");
+			case THICK_CRUST -> pizza.append("Thick Crust");
+			case THIN_CRUST -> pizza.append("Thin Crust");
+		}
+		pizza.append(" ");
+		
+		// Append the sauce of pizza
+		if (sauce)
+			pizza.append("Marinara Sauce");
+		else
+			pizza.append("Alfredo Sauce");
+		
+		// Append the price (calculated with count externally)
+		pizza.append(" - $").append(String.format("%.2f", getPrice()));
+		
+		// Append the toppings
+		pizza.append("\nToppings:\n");
+		for (Topping topping : toppings)
+			pizza.append("  ").append(topping.toString()).append("\n");
+		
+		return pizza.toString();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;  // Check if both objects are the same instance
+		if (obj == null || getClass() != obj.getClass()) return false;  // Ensure the objects are of the same class
+		Pizza pizza = (Pizza) obj;  // Cast the object to Pizza
+		// Compare pizza-specific fields (size, crust, sauce, and toppings)
+		return size == pizza.size &&
+				crust == pizza.crust &&
+				sauce == pizza.sauce &&
+				toppings.equals(pizza.toppings);  // Compare toppings list
 	}
 	
 	public PizzaSize getSize() {

@@ -1,24 +1,15 @@
 public abstract class MenuItem {
 	private float price;
-	private int count;
 	
 	public MenuItem() {
-		count = 1;
+		this.price = 0;
 	}
 	
 	public MenuItem(float price) {
 		this.price = price;
-		count = 1;
 	}
 	
-	public MenuItem(float price, int count) {
-		this.price = price;
-		this.count = count;
-	}
-	
-	public float calcTotalCost() {
-		return price * count;
-	}
+	public abstract float calcPrice();
 	
 	public float getPrice() {
 		return price;
@@ -28,15 +19,9 @@ public abstract class MenuItem {
 		this.price = price;
 	}
 	
-	public int getCount() {
-		return count;
-	}
+	@Override
+	public abstract String toString();
 	
-	public void setCount(int count) {
-		this.count = count;
-	}
-	
-	public void incrementCount(int count) {
-		this.count += count;
-	}
+	@Override
+	public abstract boolean equals(Object obj);
 }

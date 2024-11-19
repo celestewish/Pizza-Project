@@ -17,9 +17,11 @@ public class Cart extends CardScreen {
 	private JLabel lblCurTotal;
     private JLabel lblPizzaPrice;
     private JTextArea txtAreaPizzaInfo;
-	private JButton btnCreatePizza;
-    private JButton checkoutButton;
+    private JPanel imgPizza;
+    private JButton btnCreatePizza;
+    private JButton placeYourOrderButton;
     private JLabel lblTotalCost;
+    private JButton btnViewOrder;
 
     public Cart (CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);

@@ -3,37 +3,40 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class CardScreen {
+	protected static final ProgramInfo info = new ProgramInfo();
+	
 	private final CardLayout screenLayoutController;
 	private final JPanel screenContainer;
-	private final ProgramInfo info;
 	private JPanel screenPanel;
 	private final String panelName;
-	
 	private final ArrayList<JComponent> components;
+	private final ArrayList<JLabel> totalCostFields;
 	
 	private static final char[] SPECIAL_CHARS = {
 			'!', '#', '$', '^', '_', '~', ',', '.', '@', '[', ']', '`', '{', '}', '*', '+', '-', ':', '&'
 	};
 	
-	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		this.screenLayoutController = screenLayoutController;
 		this.screenContainer = screenContainer;
-		this.info = info;
 		this.panelName = panelName;
 		components = new ArrayList<>();
+		totalCostFields = new ArrayList<>();
 	}
 	
-	public abstract boolean onAttemptLeaveScreen(ProgramInfo info);
 	
-	public abstract Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen);
 	
-	public abstract void onEnterScreen(ProgramInfo info);
+	public abstract boolean onAttemptLeaveScreen();
+	
+	public abstract Screen onAttemptEnterScreen(Screen toScreen);
+	
+	public abstract void onEnterScreen();
 	
 	public boolean onSignOut(ProgramInfo info) {
 		if (showConfirmationDialog(
 				"Would you like to sign out?",
 				"Yes, sign me out",
-				"No, keep me signed in")) {
+				"No, keep me signed in", "Sign out?")) {
 			info.setCurrentUser(null);
 			info.setCurPizza(null);
 			info.setCurOrder(null);
@@ -43,13 +46,15 @@ public abstract class CardScreen {
 		return false;
 	}
 	
-	public void onSignIn(ProgramInfo info, String email) {
+	public void onSignIn(String email) {
 		info.setLoggedIn(true);
 		info.setCurrentUser(info.UserDatabase().getUser(email));
 	}
 	
+
+	
 	public void showScreen(Screen screen) {
-		if (!onAttemptLeaveScreen(info))
+		if (!onAttemptLeaveScreen())
 			return;
 		
 		if (screen == Screen.RETURN)
@@ -61,13 +66,15 @@ public abstract class CardScreen {
 			else
 				screen = Screen.LOGIN;
 			
-		screen = info.Screens().get(screen).onAttemptEnterScreen(info, screen);
+		screen = info.Screens().get(screen).onAttemptEnterScreen(screen);
 		
 		resetScreen();
-		info.Screens().get(screen).onEnterScreen(info);
+		info.Screens().get(screen).onEnterScreen();
 		info.advanceScreen(screen);
 		screenLayoutController.show(screenContainer, info.Screens().get((screen)).getPanelName());
 	}
+	
+	
 	
 	public void setUpNavBar_LoggedOut(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_up_sign_in) {
 		home.addActionListener(_ -> showScreen(Screen.HOME));
@@ -91,6 +98,8 @@ public abstract class CardScreen {
 		});
 	}
 	
+	
+	
 	public String getPanelName() {
 		return panelName;
 	}
@@ -103,6 +112,8 @@ public abstract class CardScreen {
 		this.screenPanel = screenPanel;
 	}
 	
+	
+	
 	public void resetScreen() {
 		info.resetLoginAttempts();
 		
@@ -113,9 +124,48 @@ public abstract class CardScreen {
 				((JComboBox<?>) c).setSelectedIndex(0); // Reset selection for JComboBox
 			} else if (c instanceof JCheckBox) {
 				((JCheckBox) c).setSelected(false); // Reset selection for JCheckBox
+			} else if (c instanceof  JTextArea) {
+				((JTextArea) c).setText("");
 			}
 		}
 	}
+	
+	
+	
+	public void addTotalCostField(JLabel totalCostField) {
+		totalCostFields.add(totalCostField);
+	}
+	
+	public void updateTotalCostFields() {
+		for (JLabel lbl : totalCostFields) {
+			String[] curText = lbl.getText().split("\\$");
+			String display = curText[0].trim() + " $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost());
+			lbl.setText(display);
+		}
+	}
+	
+	public void updateSubCostField(JLabel lbl, MenuItem item) {
+		int costBreakdownIndex = -1;
+		if (item instanceof Pizza) {
+			costBreakdownIndex = 0;
+		} else if (item instanceof Drink) {
+			costBreakdownIndex = 1;
+		} else if (item instanceof Side side) {
+			switch (side.getType()) {
+				case CAESAR_SALAD -> costBreakdownIndex = 2;
+				case GARLIC_BREAD -> costBreakdownIndex = 3;
+				case GARLIC_KNOTS -> costBreakdownIndex = 4;
+				case CHICKEN_WINGS, LEMON_PEPPER_WINGS -> costBreakdownIndex = 5;
+			}
+		} else if (item instanceof Dessert) {
+			costBreakdownIndex = 6;
+		}
+		
+		String[] curText = lbl.getText().split("\\$");
+		String display = curText[0].trim() + " $" + info.formatter.format(info.getCurOrder().totalCostBreakDown()[costBreakdownIndex]);
+		lbl.setText(display);
+	}
+	
 	
 	public void addJComponent(JComponent component) {
 		components.add(component);
@@ -125,7 +175,9 @@ public abstract class CardScreen {
 		return components;
 	}
 	
-	public static boolean showConfirmationDialog(String message, String option1, String defaultOption) {
+	
+	
+	public static boolean showConfirmationDialog(String message, String option1, String defaultOption, String title) {
 		// Define the options for the dialog
 		String[] options = {option1, defaultOption};
 		
@@ -133,7 +185,7 @@ public abstract class CardScreen {
 		int choice = JOptionPane.showOptionDialog(
 				null, // Parent component (null for center of the screen)
 				message,
-				defaultOption,
+				title,
 				JOptionPane.DEFAULT_OPTION,
 				JOptionPane.QUESTION_MESSAGE,
 				null,
@@ -154,12 +206,16 @@ public abstract class CardScreen {
 		);
 	}
 	
+	
+	
 	public String convertPasswordToString (char[] password) {
 		StringBuilder passwordString = new StringBuilder();
 		for (char c : password)
 			passwordString.append(c);
 		return passwordString.toString();
 	}
+	
+	
 	
 	public boolean isEmailTaken(JTextField t) {
 		if (info.UserDatabase().customerExists(t.getText())) {

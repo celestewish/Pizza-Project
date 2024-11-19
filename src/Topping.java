@@ -11,6 +11,20 @@ public class Topping {
 		this.placement = placement;
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder topping = new StringBuilder(name);
+		topping.append(" ");
+		if (extra)
+			topping.append("Extra").append(" ");
+		switch (placement) {
+			case WHOLE -> topping.append("Whole");
+			case LEFT -> topping.append("Left");
+			case RIGHT -> topping.append("Right");
+		}
+		return topping.toString();
+	}
+	
 	public String getName() {
 		return name;
 	}

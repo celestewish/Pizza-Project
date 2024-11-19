@@ -1,4 +1,6 @@
+import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class ProgramInfo {
@@ -11,6 +13,8 @@ public class ProgramInfo {
 	private Screen curScreen;
 	private Screen lastScreen;
 	
+	protected final DecimalFormat formatter = new DecimalFormat("#0.00");
+	
 	private static final Map<Screen, CardScreen> screenNames = new HashMap<>();
 	
 	public ProgramInfo() {
@@ -19,7 +23,7 @@ public class ProgramInfo {
 		isLoggedIn = false;
 		loginAttempts = 0;
 		curOrder = null;
-		curScreen = null;
+		curScreen = Screen.LOGIN;
 		lastScreen = null;
 	}
 	
@@ -40,6 +44,8 @@ public class ProgramInfo {
 	
 	
 	public Order getCurOrder() {
+		if (curOrder == null)
+			curOrder = new Order(new LinkedList<>());
 		return curOrder;
 	}
 	
