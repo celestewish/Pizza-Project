@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class PizzaGUI extends CardScreen {
     private JPanel pnlCreatePizza;
-    
+
     private JButton btnHome;
     private JButton btnContinue;
     private JButton btnMenu;
@@ -22,6 +22,8 @@ public class PizzaGUI extends CardScreen {
     private JPanel pnlCartLogo;
     private JLabel lblHiName;
     private JLabel lblCurTotal;
+
+    private boolean isContinuing = false;
     
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
@@ -36,6 +38,7 @@ public class PizzaGUI extends CardScreen {
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 
         btnContinue.addActionListener(_ -> {
+            isContinuing = true;
             Pizza newPizza = new Pizza(mySize[0], myCrust[0], sauce[0]);
             info.setCurPizza(newPizza);
             showScreen(Screen.TOPPINGS);
@@ -83,10 +86,15 @@ public class PizzaGUI extends CardScreen {
             }
         });
     }
-    
+
+
     
     @Override
     public boolean onAttemptLeaveScreen() {
+        if(isContinuing){
+            isContinuing = false;
+            return true;
+        }
         return showConfirmationDialog("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
     }
     
