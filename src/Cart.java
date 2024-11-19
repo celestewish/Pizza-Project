@@ -15,9 +15,18 @@ public class Cart extends CardScreen {
 	private JPanel pnlLogo;
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
+  
+  private JLabel lblPizzaPrice;
+  private JTextArea txtAreaPizzaInfo;
+  private JPanel imgPizza;
+  private JButton btnCreatePizza;
+  private JButton placeYourOrderButton;
+  private JLabel lblTotalCost;
+  private JButton btnViewOrder;
 	
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
+
 		setScreenPanel(pnlCart);
 		info.registerScreenName(Screen.CART, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
