@@ -22,8 +22,8 @@ public class SignIn extends CardScreen {
 	private JButton btnSignUp;
 	
 	
-	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
-		super(screenLayoutController, screenContainer, info, panelName);
+	public SignIn(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
+		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlSignIn);
 		lblEmailNotExist.setText("");
 		info.registerScreenName(Screen.SIGN_IN, this);
@@ -58,7 +58,7 @@ public class SignIn extends CardScreen {
 			if (!doesPasswordMatchEmail(txtEmail.getText(), convertPasswordToString(txtPassword.getPassword())))
 				return;
 			
-			onSignIn(info, txtEmail.getText());
+			onSignIn(txtEmail.getText());
 			showScreen(Screen.MENU);
 		});
 
@@ -89,19 +89,19 @@ public class SignIn extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen(ProgramInfo info) {
+	public boolean onAttemptLeaveScreen() {
 		return true;
 	}
 	
 	@Override
-	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+	public Screen onAttemptEnterScreen(Screen toScreen) {
 		if (info.getCurScreen() == Screen.SIGN_IN)
 			return Screen.SIGN_UP;
 		return toScreen;
 	}
 	
 	@Override
-	public void onEnterScreen(ProgramInfo info) {
+	public void onEnterScreen() {
 	
 	}
 	

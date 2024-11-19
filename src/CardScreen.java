@@ -3,31 +3,30 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class CardScreen {
+	protected static final ProgramInfo info = new ProgramInfo();
+	
 	private final CardLayout screenLayoutController;
 	private final JPanel screenContainer;
-	private final ProgramInfo info;
 	private JPanel screenPanel;
 	private final String panelName;
-	
 	private final ArrayList<JComponent> components;
 	
 	private static final char[] SPECIAL_CHARS = {
 			'!', '#', '$', '^', '_', '~', ',', '.', '@', '[', ']', '`', '{', '}', '*', '+', '-', ':', '&'
 	};
 	
-	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
+	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		this.screenLayoutController = screenLayoutController;
 		this.screenContainer = screenContainer;
-		this.info = info;
 		this.panelName = panelName;
 		components = new ArrayList<>();
 	}
 	
-	public abstract boolean onAttemptLeaveScreen(ProgramInfo info);
+	public abstract boolean onAttemptLeaveScreen();
 	
-	public abstract Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen);
+	public abstract Screen onAttemptEnterScreen(Screen toScreen);
 	
-	public abstract void onEnterScreen(ProgramInfo info);
+	public abstract void onEnterScreen();
 	
 	public boolean onSignOut(ProgramInfo info) {
 		if (showConfirmationDialog(
@@ -43,13 +42,13 @@ public abstract class CardScreen {
 		return false;
 	}
 	
-	public void onSignIn(ProgramInfo info, String email) {
+	public void onSignIn(String email) {
 		info.setLoggedIn(true);
 		info.setCurrentUser(info.UserDatabase().getUser(email));
 	}
 	
 	public void showScreen(Screen screen) {
-		if (!onAttemptLeaveScreen(info))
+		if (!onAttemptLeaveScreen())
 			return;
 		
 		if (screen == Screen.RETURN)
@@ -61,10 +60,10 @@ public abstract class CardScreen {
 			else
 				screen = Screen.LOGIN;
 			
-		screen = info.Screens().get(screen).onAttemptEnterScreen(info, screen);
+		screen = info.Screens().get(screen).onAttemptEnterScreen(screen);
 		
 		resetScreen();
-		info.Screens().get(screen).onEnterScreen(info);
+		info.Screens().get(screen).onEnterScreen();
 		info.advanceScreen(screen);
 		screenLayoutController.show(screenContainer, info.Screens().get((screen)).getPanelName());
 	}
