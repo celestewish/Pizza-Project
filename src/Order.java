@@ -74,16 +74,17 @@ public class Order {
 	}
 	
 	// Add item with count to the order. If item already exists, increment count.
-	public boolean addItem(MenuItemWithCount item) {
+	public int addItem(MenuItemWithCount item) {
 		for (MenuItemWithCount itemWithCount : items) {
 			if (itemWithCount.getItem().equals(item.getItem())) {
-				itemWithCount.incrementCount(item.getCount());
-				return false; // Item already exists, count updated
+				if (itemWithCount.incrementCount(item.getCount()))
+					return 0;
+				return -1; // Item already exists, count updated
 			}
 		}
 		// If item doesn't exist, add a new item with count
 		items.add(item);
-		return true;
+		return 1;
 	}
 	
 	// Remove item from the order

@@ -19,12 +19,13 @@ public class MenuItemWithCount {
 		this.count = count;
 	}
 	
-	public void incrementCount(int count) {
+	public boolean incrementCount(int count) {
 		if (this.count + count <= 10) {
 			this.count += count;
-			return;
+			return true;
 		}
 		this.count = 10;
+		return false;
 	}
 	
 	public float calcTotalPrice() {

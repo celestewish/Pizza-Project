@@ -1,10 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Menu extends CardScreen {
 	private JPanel pnlMenu;
+	
+	private JScrollPane scrollPane;
 	
 	private JPanel pnlLogo;
 	private JPanel pnlCartLogo;
@@ -59,6 +59,7 @@ public class Menu extends CardScreen {
 	private JButton btnEditDrinks;
 	private JTextArea txtAreaDrinkInfo;
 	
+	double currentVerticalScrollPos = 0;
 	
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
@@ -67,6 +68,8 @@ public class Menu extends CardScreen {
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
+		
+		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		
 		lblCurTotal.setText("Total cost for this order: $0.00 ");
 		lblCurTotal.setText("Current Total: $0.00 ");
@@ -107,7 +110,12 @@ public class Menu extends CardScreen {
 		
 		resetScreen();
 		refillInfoFields();
+		currentVerticalScrollPos = 0;
+		SwingUtilities.invokeLater(() -> {
+			scrollPane.getViewport().setViewPosition((new Point(0, 0)));
+		});
 	}
+	
 	
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
@@ -124,13 +132,17 @@ public class Menu extends CardScreen {
 	public void DrinkOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+		
 		JComboBox<DrinkType> cobxType = new JComboBox<>(DrinkType.values());
 		cobxType.setFont(optionsFont);
+		
 		JComboBox<DrinkSize> cobxSize = new JComboBox<>(DrinkSize.values());
 		cobxSize.setFont(optionsFont);
+		
 		JComboBox<Integer> cobxNumber = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxNumber.setFont(optionsFont);
 		
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
 		JLabel txt1 = new JLabel("Choose Your Drink:");
@@ -158,28 +170,22 @@ public class Menu extends CardScreen {
 		System.out.println(info.getCurOrder().toString());
 		
 		int count = cobxNumber.getSelectedIndex() + 1;
-		Drink drink = new Drink((DrinkSize) cobxSize.getSelectedItem(), (DrinkType) cobxType.getSelectedItem(),  1F);
-		MenuItemWithCount drinkCount = new MenuItemWithCount(drink, count);
+		
+		MenuItemWithCount drinkCount = new MenuItemWithCount(
+				new Drink((DrinkSize) cobxSize.getSelectedItem(), (DrinkType) cobxType.getSelectedItem(), 1F),
+				count);
 		
 		if (result == JOptionPane.OK_OPTION) {
-			if (info.getCurOrder().addItem(drinkCount)) {
-				txtAreaDrinkInfo.append(drinkCount.toString());
-				txtAreaDrinkInfo.append("\n");
-			}
-			else {
-				resetScreen();
-				refillInfoFields();
-				updateSubCostField(lblDrinkPrice, drink);
-			}
-			
-			updateTotalCostFields();
-			System.out.println(info.getCurOrder().toString());
+			addItemToOrder(drinkCount);
+			updateFields(lblDrinkPrice, drinkCount.getItem());
 		}
+		resetScrollPos();
 	}
 	
 	public void WingsOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+		
 		SideType[] wingOptions = {SideType.CHICKEN_WINGS, SideType.LEMON_PEPPER_WINGS};
 		JComboBox<SideType> cobxType = new JComboBox<>(wingOptions);
 		cobxType.setFont(optionsFont);
@@ -190,6 +196,7 @@ public class Menu extends CardScreen {
 		JComboBox<Integer> cobxNumber = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxNumber.setFont(optionsFont);
 		
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
 		JLabel txt1 = new JLabel("Choose Your Wing Type and Count:");
@@ -217,23 +224,16 @@ public class Menu extends CardScreen {
 		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		int wingCt = cobxCount.getSelectedIndex() == 0 ? 5 : 10;
-		Wings wings = new Wings((SideType) cobxType.getSelectedItem(), 6F, wingCt);
-		MenuItemWithCount wingsCount = new MenuItemWithCount(wings, count);
+		
+		MenuItemWithCount wingsCount = new MenuItemWithCount(
+				new Wings((SideType) cobxType.getSelectedItem(), 6F, wingCt),
+				count);
 		
 		if (result == JOptionPane.OK_OPTION) {
-			if (info.getCurOrder().addItem(wingsCount)) {
-				txtAreaWingInfo.append(wingsCount.toString());
-				txtAreaWingInfo.append("\n");
-			}
-			else {
-				resetScreen();
-				refillInfoFields();
-				updateSubCostField(lblWingPrice, wings);
-			}
-			
-			updateTotalCostFields();
-			System.out.println(info.getCurOrder().toString());
+			addItemToOrder(wingsCount);
+			updateFields(lblWingPrice, wingsCount.getItem());
 		}
+		resetScrollPos();
 	}
 	
 	public void GarlicBreadOptionPopUp() {
@@ -246,6 +246,7 @@ public class Menu extends CardScreen {
 		JComboBox<Integer> cobxNumber = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxNumber.setFont(optionsFont);
 		
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
 		JLabel txt1 = new JLabel("Choose Your Garlic Bread Count:");
@@ -272,22 +273,16 @@ public class Menu extends CardScreen {
 		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		int breadCt = cobxCount.getSelectedIndex() == 0 ? 5 : 10;
-		Side garlicBread = new Side(SideType.GARLIC_BREAD, 4F, breadCt);
-		MenuItemWithCount garlicBreadCount = new MenuItemWithCount(garlicBread, count);
+		
+		MenuItemWithCount garlicBreadCount = new MenuItemWithCount(
+				new Side(SideType.GARLIC_BREAD, 4F, breadCt),
+				count);
 		
 		if (result == JOptionPane.OK_OPTION) {
-			if (info.getCurOrder().addItem(garlicBreadCount)) {
-				txtAreaGarlicBreadInfo.append(garlicBreadCount.toString());
-				txtAreaGarlicBreadInfo.append("\n");
-			} else {
-				resetScreen();
-				refillInfoFields();
-				updateSubCostField(lblGarlicBreadPrice, garlicBread);
-			}
-			
-			updateTotalCostFields();
-			System.out.println(info.getCurOrder().toString());
+			addItemToOrder(garlicBreadCount);
+			updateFields(lblGarlicBreadPrice, garlicBreadCount.getItem());
 		}
+		resetScrollPos();
 	}
 	
 	public void GarlicKnotsOptionPopUp() {
@@ -300,6 +295,7 @@ public class Menu extends CardScreen {
 		JComboBox<Integer> cobxNumber = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxNumber.setFont(optionsFont);
 		
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
 		JLabel txt1 = new JLabel("Choose Your Garlic Knots Count:");
@@ -326,32 +322,26 @@ public class Menu extends CardScreen {
 		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		int knotCt = cobxCount.getSelectedIndex() == 0 ? 5 : 10;
-		Side garlicKnots = new Side(SideType.GARLIC_KNOTS, 5F, knotCt);
-		MenuItemWithCount garlicKnotsCount = new MenuItemWithCount(garlicKnots, count);
+		
+		MenuItemWithCount garlicKnotsCount = new MenuItemWithCount(
+				new Side(SideType.GARLIC_KNOTS, 5F, knotCt),
+				count);
 		
 		if (result == JOptionPane.OK_OPTION) {
-			if (info.getCurOrder().addItem(garlicKnotsCount)) {
-				txtAreaGarlicKnotsInfo.append(garlicKnotsCount.toString());
-				txtAreaGarlicKnotsInfo.append("\n");
-			} else {
-				resetScreen();
-				refillInfoFields();
-				updateSubCostField(lblGarlicKnotsPrice, garlicKnots);
-			}
-			
-			updateTotalCostFields();
-			System.out.println(info.getCurOrder().toString());
+			addItemToOrder(garlicKnotsCount);
+			updateFields(lblGarlicKnotsPrice, garlicKnotsCount.getItem());
 		}
+		resetScrollPos();
 	}
-	
 	
 	public void SaladOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
-		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5});
+		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxCount.setFont(optionsFont);
 		
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
 		JLabel txt1 = new JLabel("Choose How Many Caesar Salads:");
@@ -373,22 +363,16 @@ public class Menu extends CardScreen {
 		System.out.println(info.getCurOrder().toString());
 		
 		int count = cobxCount.getSelectedIndex() + 1;
-		Side salad = new Side(SideType.CAESAR_SALAD, 3F, count);
-		MenuItemWithCount saladCount = new MenuItemWithCount(salad, 1);
+		
+		MenuItemWithCount saladCount = new MenuItemWithCount(
+				new Side(SideType.CAESAR_SALAD, 3F),
+				count);
 		
 		if (result == JOptionPane.OK_OPTION) {
-			if (info.getCurOrder().addItem(saladCount)) {
-				txtAreaSaladInfo.append(saladCount.toString());
-				txtAreaSaladInfo.append("\n");
-			} else {
-				resetScreen();
-				refillInfoFields();
-				updateSubCostField(lblSaladPrice, salad);
-			}
-			
-			updateTotalCostFields();
-			System.out.println(info.getCurOrder().toString());
+			addItemToOrder(saladCount);
+			updateFields(lblSaladPrice, saladCount.getItem());
 		}
+		resetScrollPos();
 	}
 	
 	
@@ -408,5 +392,35 @@ public class Menu extends CardScreen {
 				}
 			}
 		}
+	}
+	
+	public void updateFields(JLabel subTotalLabel, MenuItem item) {
+		resetScreen();
+		refillInfoFields();
+		updateTotalCostFields();
+		updateSubCostField(subTotalLabel, item);
+		System.out.println(info.getCurOrder().toString());
+	}
+	
+	public void addItemToOrder(MenuItemWithCount itemWithCount) {
+		int outcome = info.getCurOrder().addItem(itemWithCount);
+		if (outcome == -1) {
+			JOptionPane.showMessageDialog(
+					null,
+					"You already have the maximum amount of that item!",
+					"Maximum amount of item reached",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+	}
+	
+	public void resetScrollPos() {
+		SwingUtilities.invokeLater(() -> {
+			System.out.println("Setting scroll position to: " + currentVerticalScrollPos);
+			scrollPane.getViewport().setViewPosition(new Point(0, (int) currentVerticalScrollPos));
+		});
+		
+		// Ensure layout and repaint are complete
+		scrollPane.revalidate();
+		scrollPane.repaint();
 	}
 }
