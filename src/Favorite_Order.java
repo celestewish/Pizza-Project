@@ -14,8 +14,6 @@ public class Favorite_Order extends CardScreen{
     private JButton returnButton;
     private JButton btnViewOrder;
     private JButton btnOrders;
-    private JComboBox cboxCrust;
-    private JCheckBox selectCheckBox;
 
     public Favorite_Order(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);

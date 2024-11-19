@@ -3,7 +3,7 @@
   <grid id="27dc6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="40" y="20" width="1173" height="1082"/>
+      <xy x="23" y="21" width="1190" height="1167"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -211,7 +211,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="fcac8" layout-manager="GridLayoutManager" row-count="15" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="fcac8" layout-manager="GridLayoutManager" row-count="16" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints/>
                 <properties>
@@ -267,10 +267,10 @@
                       </grid>
                     </constraints>
                   </vspacer>
-                  <grid id="2c445" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="2c445" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="12" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <grid row="13" column="1" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-1582921"/>
@@ -296,17 +296,6 @@
                           </grid>
                         </constraints>
                       </hspacer>
-                      <component id="1ccb7" class="javax.swing.JButton">
-                        <constraints>
-                          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="40" height="40"/>
-                          </grid>
-                        </constraints>
-                        <properties>
-                          <font size="18"/>
-                          <text value="Reorder"/>
-                        </properties>
-                      </component>
                       <hspacer id="87542">
                         <constraints>
                           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
@@ -318,28 +307,28 @@
                   </grid>
                   <vspacer id="66b6f">
                     <constraints>
-                      <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                      <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                         <minimum-size width="-1" height="50"/>
                       </grid>
                     </constraints>
                   </vspacer>
                   <vspacer id="fa729">
                     <constraints>
-                      <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                      <grid row="12" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                         <minimum-size width="-1" height="50"/>
                       </grid>
                     </constraints>
                   </vspacer>
                   <vspacer id="79af8">
                     <constraints>
-                      <grid row="4" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                      <grid row="4" column="0" row-span="3" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                         <minimum-size width="-1" height="50"/>
                       </grid>
                     </constraints>
                   </vspacer>
                   <vspacer id="d9879">
                     <constraints>
-                      <grid row="13" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                      <grid row="14" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                         <minimum-size width="-1" height="20"/>
                       </grid>
                     </constraints>
@@ -363,7 +352,7 @@
                         <properties>
                           <font size="24"/>
                           <foreground color="-16777216"/>
-                          <text value="Profile"/>
+                          <text value="Orders"/>
                         </properties>
                       </component>
                       <hspacer id="b0797">
@@ -381,7 +370,7 @@
                   <grid id="4cfaa" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="14" column="0" row-span="1" col-span="4" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="15" column="0" row-span="1" col-span="4" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="-1" height="100"/>
                       </grid>
                     </constraints>
@@ -511,7 +500,7 @@
                     <properties>
                       <font size="24"/>
                       <foreground color="-16777216"/>
-                      <text value="Orders"/>
+                      <text value="Profile"/>
                     </properties>
                   </component>
                   <component id="1443" class="javax.swing.JLabel">
@@ -526,22 +515,9 @@
                       <text value="Favorite Orders"/>
                     </properties>
                   </component>
-                  <component id="e9051" class="javax.swing.JComboBox" binding="cboxCrust">
-                    <constraints>
-                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <font size="20"/>
-                      <model>
-                        <item value="Lunch Special"/>
-                        <item value="Family Dinner"/>
-                        <item value="Quick Meal"/>
-                      </model>
-                    </properties>
-                  </component>
                   <component id="4d682" class="javax.swing.JLabel">
                     <constraints>
-                      <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <background color="-1582921"/>
@@ -553,21 +529,13 @@
                   </component>
                   <hspacer id="bf90a">
                     <constraints>
-                      <grid row="12" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="13" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </hspacer>
-                  <component id="40fb9" class="javax.swing.JCheckBox" binding="selectCheckBox" default-binding="true">
-                    <constraints>
-                      <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <text value="Select"/>
-                    </properties>
-                  </component>
-                  <grid id="4cf41" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="4cf41" layout-manager="GridLayoutManager" row-count="8" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <grid row="9" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="10" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="-1" height="150"/>
                       </grid>
                     </constraints>
@@ -584,7 +552,7 @@
                           <background color="-1"/>
                           <font name="Times New Roman" size="28" style="1"/>
                           <foreground color="-16777216"/>
-                          <text value="Past Order"/>
+                          <text value="Past Orders"/>
                         </properties>
                       </component>
                       <vspacer id="21943">
@@ -612,7 +580,7 @@
                           <background color="-1"/>
                           <font size="16"/>
                           <foreground color="-16777216"/>
-                          <text value="Price: $0.00"/>
+                          <text value=""/>
                         </properties>
                       </component>
                       <hspacer id="13bba">
@@ -636,13 +604,17 @@
                         <properties>
                           <font size="20"/>
                           <model>
-                            <item value="10/24/23 Order #101 Credit card payment"/>
+                            <item value="08/02/24 Order #101 "/>
                             <item value=""/>
                             <item value="Supreme Pizza"/>
-                            <item value="Coke"/>
-                            <item value="Garlic Knots"/>
+                            <item value="2 liter Coke"/>
+                            <item value="Garlic Knots: 5 ct"/>
                             <item value=""/>
-                            <item value="Total $40.78"/>
+                            <item value="Total &#9;&#9;&#9;$25.89"/>
+                            <item value=""/>
+                            <item value="Payment Method:"/>
+                            <item value=""/>
+                            <item value="Credit Card ending in:  *6709"/>
                           </model>
                         </properties>
                       </component>
@@ -653,13 +625,18 @@
                         <properties>
                           <font size="20"/>
                           <model>
-                            <item value="10/24/23 Order #101 Credit card payment"/>
+                            <item value="09/15/24 Order #102"/>
                             <item value=""/>
-                            <item value="Supreme Pizza"/>
-                            <item value="Coke"/>
-                            <item value="Garlic Knots"/>
+                            <item value="Hawaiian Pizza"/>
+                            <item value="2 liter Sprite"/>
+                            <item value="Wings (lemoon Pepper): 5 ct"/>
+                            <item value="Salad"/>
                             <item value=""/>
-                            <item value="Total $40.78"/>
+                            <item value="Total &#9;&#9;&#9;$32.99"/>
+                            <item value=""/>
+                            <item value="Payment Method:"/>
+                            <item value=""/>
+                            <item value="Credit Card ending in:  *6709"/>
                           </model>
                         </properties>
                       </component>
@@ -686,13 +663,19 @@
                         <properties>
                           <font size="20"/>
                           <model>
-                            <item value="10/24/23 Order #101 Credit card payment"/>
+                            <item value="10/20/24 Order #103"/>
                             <item value=""/>
-                            <item value="Supreme Pizza"/>
-                            <item value="Coke"/>
-                            <item value="Garlic Knots"/>
+                            <item value="Cheese Pizza (3)"/>
+                            <item value="2 liter Sweet Tea (2)"/>
+                            <item value="Cookie (10)"/>
+                            <item value="Garlic Bread"/>
                             <item value=""/>
-                            <item value="Total $40.78"/>
+                            <item value=""/>
+                            <item value="Total &#9;&#9;&#9;$65.99"/>
+                            <item value=""/>
+                            <item value="Payment Method:"/>
+                            <item value=""/>
+                            <item value="Credit Card ending in:  *6709"/>
                           </model>
                         </properties>
                       </component>
@@ -703,13 +686,20 @@
                         <properties>
                           <font size="20"/>
                           <model>
-                            <item value="10/24/23 Order #101 Credit card payment"/>
+                            <item value="10/20/24 Order #104"/>
                             <item value=""/>
-                            <item value="Supreme Pizza"/>
-                            <item value="Coke"/>
-                            <item value="Garlic Knots"/>
+                            <item value="BBQ Chicken Pizza "/>
+                            <item value="Salad"/>
+                            <item value="2 liter Dr. Pepper"/>
+                            <item value="Chocolate Lava Cake"/>
+                            <item value="Garlic Knots (2)"/>
                             <item value=""/>
-                            <item value="Total $40.78"/>
+                            <item value=""/>
+                            <item value="Total &#9;&#9;&#9;$54.87"/>
+                            <item value=""/>
+                            <item value="Payment Method:"/>
+                            <item value=""/>
+                            <item value="Credit Card ending in:  *6709"/>
                           </model>
                         </properties>
                       </component>
@@ -729,15 +719,178 @@
                           <text value="Select"/>
                         </properties>
                       </component>
+                      <component id="20062" class="javax.swing.JButton">
+                        <constraints>
+                          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="40" height="40"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <font size="18"/>
+                          <text value="Reorder"/>
+                        </properties>
+                      </component>
                     </children>
                   </grid>
                   <vspacer id="8f6a">
                     <constraints>
-                      <grid row="6" column="1" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                      <grid row="7" column="1" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
                         <minimum-size width="-1" height="50"/>
                       </grid>
                     </constraints>
                   </vspacer>
+                  <grid id="43b1b" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                        <preferred-size width="-1" height="150"/>
+                      </grid>
+                    </constraints>
+                    <properties>
+                      <background color="-1"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="f26f2" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-1"/>
+                          <font name="Times New Roman" size="28" style="1"/>
+                          <foreground color="-16777216"/>
+                          <text value="Favorites"/>
+                        </properties>
+                      </component>
+                      <vspacer id="bd428">
+                        <constraints>
+                          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </vspacer>
+                      <hspacer id="a65de">
+                        <constraints>
+                          <grid row="1" column="3" row-span="3" col-span="1" vsize-policy="1" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="20" height="-1"/>
+                          </grid>
+                        </constraints>
+                      </hspacer>
+                      <vspacer id="c1035">
+                        <constraints>
+                          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                      </vspacer>
+                      <component id="70580" class="javax.swing.JLabel">
+                        <constraints>
+                          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-1"/>
+                          <font size="16"/>
+                          <foreground color="-16777216"/>
+                          <text value=""/>
+                        </properties>
+                      </component>
+                      <hspacer id="564d">
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="10" height="10"/>
+                          </grid>
+                        </constraints>
+                      </hspacer>
+                      <vspacer id="4e75f">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="5"/>
+                          </grid>
+                        </constraints>
+                      </vspacer>
+                      <component id="deb18" class="javax.swing.JComboBox">
+                        <constraints>
+                          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font size="20"/>
+                          <model>
+                            <item value="Lunch Special"/>
+                            <item value=""/>
+                            <item value="Personal Pizza"/>
+                            <item value="20oz pepsi"/>
+                            <item value="Cookie"/>
+                            <item value=""/>
+                            <item value="Total:&#9;&#9;&#9;$8.99"/>
+                          </model>
+                        </properties>
+                      </component>
+                      <component id="8dd21" class="javax.swing.JComboBox">
+                        <constraints>
+                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font size="20"/>
+                          <model>
+                            <item value="Dinner for the Family"/>
+                            <item value=""/>
+                            <item value="Supreme Pizza"/>
+                            <item value="2 Liter Sprite"/>
+                            <item value="Wings: 10 Piece"/>
+                            <item value="Chocolate Lava Cake"/>
+                            <item value=""/>
+                            <item value="Total:    &#9;&#9;$45.99"/>
+                          </model>
+                        </properties>
+                      </component>
+                      <component id="3a669" class="javax.swing.JRadioButton" default-binding="true">
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Select"/>
+                        </properties>
+                      </component>
+                      <component id="5e096" class="javax.swing.JRadioButton" default-binding="true">
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Select"/>
+                        </properties>
+                      </component>
+                      <component id="66528" class="javax.swing.JComboBox">
+                        <constraints>
+                          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <font size="20"/>
+                          <model>
+                            <item value="Late Night Snack"/>
+                            <item value="Wings (Lemon Pepper): 5 ct"/>
+                            <item value="200z Coke"/>
+                            <item value=""/>
+                            <item value="Total:&#9;&#9;&#9; $5.99"/>
+                          </model>
+                        </properties>
+                      </component>
+                      <component id="b27bb" class="javax.swing.JRadioButton" default-binding="true">
+                        <constraints>
+                          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Select"/>
+                        </properties>
+                      </component>
+                      <component id="8b9c3" class="javax.swing.JButton">
+                        <constraints>
+                          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="40" height="40"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <font size="18"/>
+                          <text value="Reorder"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
                 </children>
               </grid>
             </children>
