@@ -20,6 +20,8 @@ public class Menu extends CardScreen{
 	private JLabel lblPizzaPrice;
 	private JLabel lblTotalCost;
 	private JTextArea pizza1Pizza1InfoTextArea;
+	private JPanel pnlLogo;
+	private JPanel pnlCartLogo;
 	
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);
@@ -118,5 +120,10 @@ public class Menu extends CardScreen{
 		lblHiName.setText("Hi, " + info.CurrentUser().getName().split(" ")[0]);
 		if (info.getCurOrder() != null)
 			lblCurTotal.setText("Current Total: $" + info.getCurOrder().calcTotalOrderCost());
+	}
+	
+	private void createUIComponents() {
+		pnlCartLogo = new ImagePanel("src/main/resources/images/cart.png");
+		pnlLogo = new ImagePanel("src/main/resources/images/PizzaLogo.png");
 	}
 }

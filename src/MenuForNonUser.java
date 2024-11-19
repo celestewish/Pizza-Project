@@ -11,6 +11,7 @@ public class MenuForNonUser extends CardScreen {
 	private JButton btnSignUp_SignIn;
 	
 	private JButton btnCreateAccount;
+	private JPanel pnlLogo;
 	
 	public MenuForNonUser(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);
@@ -36,5 +37,9 @@ public class MenuForNonUser extends CardScreen {
 	@Override
 	public void onEnterScreen(ProgramInfo info) {
 	
+	}
+	
+	private void createUIComponents() {
+		pnlLogo = new ImagePanel("src/main/resources/images/PizzaLogo.png");
 	}
 }

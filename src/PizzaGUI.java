@@ -15,12 +15,13 @@ public class PizzaGUI extends CardScreen {
     private JButton btnSignOut;
     private JButton btnCart;
     
-    private JLabel lblHiName;
-    private JLabel lblCurTotal;
-    
     private JComboBox<?> cboxCrust;
     private JComboBox<?> cboxSize;
     private JComboBox<?> cboxSauce;
+    private JPanel pnlLogo;
+    private JPanel pnlCartLogo;
+    private JLabel lblHiName;
+    private JLabel lblCurTotal;
     
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
         super(screenLayoutController, screenContainer, info, panelName);
@@ -97,5 +98,10 @@ public class PizzaGUI extends CardScreen {
     @Override
     public void onEnterScreen(ProgramInfo info) {
     
+    }
+    
+    private void createUIComponents() {
+        pnlCartLogo = new ImagePanel("src/main/resources/images/cart.png");
+        pnlLogo = new ImagePanel("src/main/resources/images/PizzaLogo.png");
     }
 }

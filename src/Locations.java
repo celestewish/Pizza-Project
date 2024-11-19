@@ -9,12 +9,12 @@ public class Locations extends CardScreen{
 	private JButton btnDeals;
 	private JButton btnLocations;
 	private JButton btnSignUp_SignIn;
+	private JPanel pnlLogo;
 	private JButton btnSignOut;
 	private JButton btnCart;
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
 	private JPanel pnlNavBarLoggedIn;
-	private JPanel pnlNavBarLoggedOut;
 	
 	public Locations(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);
@@ -40,5 +40,9 @@ public class Locations extends CardScreen{
 	@Override
 	public void onEnterScreen(ProgramInfo info) {
 	
+	}
+	
+	private void createUIComponents() {
+		pnlLogo = new ImagePanel("src/main/resources/images/PizzaLogo.png");
 	}
 }

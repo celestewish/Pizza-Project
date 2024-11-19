@@ -6,6 +6,13 @@ import java.awt.*;
 public class CheckOut extends CardScreen {
     private JPanel pnlCheckOut;
     
+    private JTextField firstNameDis;
+    private JTextField lastNameDis;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JButton editButton;
+    private JButton dealsButton;
+    private JButton proceedToPaymentButton;
     private JButton btnHome;
     private JButton btnMenu;
     private JButton btnDeals;
@@ -14,14 +21,8 @@ public class CheckOut extends CardScreen {
     private JButton btnCart;
     private JLabel lblHiName;
     private JLabel lblCurTotal;
-    
-    private JTextField firstNameDis;
-    private JTextField lastNameDis;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JButton editButton;
-    private JButton dealsButton;
-    private JButton proceedToPaymentButton;
+    private JPanel pnlCartLogo;
+    private JPanel pnlLogo;
     
     public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
         super(screenLayoutController, screenContainer, info, panelName);
@@ -100,5 +101,10 @@ public class CheckOut extends CardScreen {
     @Override
     public void onEnterScreen(ProgramInfo info) {
     
+    }
+    
+    private void createUIComponents() {
+        pnlCartLogo = new ImagePanel("src/main/resources/images/cart.png");
+        pnlLogo = new ImagePanel("src/main/resources/images/PizzaLogo.png");
     }
 }

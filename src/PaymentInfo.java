@@ -10,8 +10,6 @@ public class PaymentInfo extends CardScreen {
 	private JButton btnLocations;
 	private JButton btnSignOut;
 	private JButton btnCart;
-	private JLabel lblHiName;
-	private JLabel lblCurTotal;
 	
 	private JLabel streetName;
 	private JLabel cityStateZip;
@@ -21,6 +19,10 @@ public class PaymentInfo extends CardScreen {
 	private JTextField CVVTextField;
 	private JTextField expDateTextField;
 	private JTextField zipCodeTextField;
+	private JLabel lblHiName;
+	private JLabel lblCurTotal;
+	private JPanel pnlCartLogo;
+	private JPanel pnlLogo;
 	
 	public PaymentInfo(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName){
 		super(screenLayoutController, screenContainer, info, panelName);
@@ -137,6 +139,11 @@ public class PaymentInfo extends CardScreen {
 	@Override
 	public void onEnterScreen(ProgramInfo info) {
 	
+	}
+	
+	private void createUIComponents() {
+		pnlCartLogo = new ImagePanel("src/main/resources/images/cart.png");
+		pnlLogo = new ImagePanel("src/main/resources/images/PizzaLogo.png");
 	}
 }
 
