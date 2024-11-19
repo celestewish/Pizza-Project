@@ -8,9 +8,9 @@ public class ImagePanel extends JPanel {
 	private Image image;
 	
 	// Constructor to load an image from a file
-	public ImagePanel(String imagePath) {
+	public ImagePanel(String imageFileName) {
 		try {
-			image = ImageIO.read(new File(imagePath));
+			image = ImageIO.read(new File("src/main/resources/images/" + imageFileName));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

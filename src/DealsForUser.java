@@ -40,7 +40,7 @@ public class DealsForUser extends CardScreen{
 	}
 	
 	private void createUIComponents() {
-		pnlCartLogo = new ImagePanel("src/main/resources/images/cart.png");
-		pnlLogo = new ImagePanel("src/main/resources/images/PizzaLogo.png");
+		pnlCartLogo = new ImagePanel("cart.png");
+		pnlLogo = new ImagePanel("PizzaLogo.png");
 	}
 }

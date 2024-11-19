@@ -43,6 +43,6 @@ public class Locations extends CardScreen{
 	}
 	
 	private void createUIComponents() {
-		pnlLogo = new ImagePanel("src/main/resources/images/PizzaLogo.png");
+		pnlLogo = new ImagePanel("PizzaLogo.png");
 	}
 }
