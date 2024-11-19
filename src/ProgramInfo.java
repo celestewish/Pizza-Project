@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class ProgramInfo {
@@ -40,6 +41,8 @@ public class ProgramInfo {
 	
 	
 	public Order getCurOrder() {
+		if (curOrder == null)
+			curOrder = new Order(new LinkedList<>());
 		return curOrder;
 	}
 	

@@ -17,8 +17,8 @@ public class Favorite_Order extends CardScreen{
     private JComboBox cboxCrust;
     private JCheckBox selectCheckBox;
 
-    public Favorite_Order(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
-        super(screenLayoutController, screenContainer, info, panelName);
+    public Favorite_Order(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
+        super(screenLayoutController, screenContainer, panelName);
     }
 
     private void createUIComponents() {
@@ -26,17 +26,17 @@ public class Favorite_Order extends CardScreen{
     }
 
     @Override
-    public boolean onAttemptLeaveScreen(ProgramInfo info) {
+    public boolean onAttemptLeaveScreen() {
         return false;
     }
 
     @Override
-    public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+    public Screen onAttemptEnterScreen(Screen toScreen) {
         return null;
     }
 
     @Override
-    public void onEnterScreen(ProgramInfo info) {
+    public void onEnterScreen() {
 
     }
 }
