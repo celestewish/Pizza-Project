@@ -12,6 +12,8 @@ public class FrameLogic extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
+		UIManager.put("Button.font", new Font("Times New Roman", Font.PLAIN, 18));
+		
 		screenContainer.setLayout(new CardLayout());
 		
 		Login login = new Login((CardLayout)screenContainer.getLayout(), screenContainer,

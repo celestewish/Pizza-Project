@@ -73,6 +73,13 @@ public class Menu extends CardScreen {
 		addTotalCostField(lblTotalCost);
 		addTotalCostField(lblCurTotal);
 		
+		addJComponent(txtAreaDrinkInfo);
+		addJComponent(txtAreaGarlicBreadInfo);
+		addJComponent(txtAreaGarlicKnotsInfo);
+		addJComponent(txtAreaPizzaInfo);
+		addJComponent(txtAreaSaladInfo);
+		addJComponent(txtAreaWingInfo);
+		
 		btnAddDrink.addActionListener(_ -> DrinkOptionPopUp());
 	}
 	
@@ -93,6 +100,9 @@ public class Menu extends CardScreen {
 		lblHiName.setText("Hi, " + info.CurrentUser().getName().split(" ")[0]);
 		if (info.getCurOrder() != null)
 			lblCurTotal.setText("Current Total: $" + info.getCurOrder().calcTotalOrderCost());
+		
+		resetScreen();
+		refillInfoFields();
 	}
 	
 	private void createUIComponents() {
@@ -131,7 +141,6 @@ public class Menu extends CardScreen {
 		
 		Font originalFont = UIManager.getFont("Button.font");
 		UIManager.put("Button.font", new Font("Times New Roman", Font.PLAIN, 18));
-		
 		int result = JOptionPane.showConfirmDialog(
 				null,          // Parent component (null for center of screen)
 				panel,         // Content panel
@@ -139,17 +148,45 @@ public class Menu extends CardScreen {
 				JOptionPane.OK_CANCEL_OPTION, // Buttons: OK and Cancel
 				JOptionPane.PLAIN_MESSAGE  // Icon type
 		);
-		
 		UIManager.put("Button.font", originalFont);
 		
-		Drink drink = new Drink((DrinkSize) cobxSize.getSelectedItem(),(DrinkType) cobxType.getSelectedItem(),  1F);
-		drink.setCount(cobxNumber.getSelectedIndex() + 1);
+		System.out.println(info.getCurOrder().toString());
+		
+		int count = cobxNumber.getSelectedIndex() + 1;
+		Drink drink = new Drink((DrinkSize) cobxSize.getSelectedItem(), (DrinkType) cobxType.getSelectedItem(),  1F);
+		MenuItemWithCount drinkCount = new MenuItemWithCount(drink, count);
 		
 		if (result == JOptionPane.OK_OPTION) {
-			info.getCurOrder().addItem(drink);
-			updateTotalCostFields();
+			if (info.getCurOrder().addItem(drinkCount)) {
+				txtAreaDrinkInfo.append(drinkCount.toString());
+				txtAreaDrinkInfo.append("\n");
+			}
+			else {
+				resetScreen();
+				refillInfoFields();
+				updateSubCostField(lblDrinkPrice, drink);
+			}
 			
-			txtAreaDrinkInfo.append(drink.toString());
+			updateTotalCostFields();
+			System.out.println(info.getCurOrder().toString());
+		}
+	}
+	
+	public void refillInfoFields() {
+		for (MenuItemWithCount m : info.getCurOrder().getItems()) {
+			MenuItem item = m.getItem();
+			if (item instanceof Pizza) {
+				txtAreaPizzaInfo.append(m + "\n");
+			} else if (item instanceof Drink) {
+				txtAreaDrinkInfo.append(m + "\n");
+			} else if (item instanceof Side) {
+				switch (((Side) item).getType()) {
+					case CAESAR_SALAD -> txtAreaSaladInfo.append(m + "\n");
+					case GARLIC_BREAD -> txtAreaGarlicBreadInfo.append((m) + "\n");
+					case GARLIC_KNOTS -> txtAreaGarlicKnotsInfo.append(m + "\n");
+					case CHICKEN_WINGS, LEMON_PEPPER_WINGS -> txtAreaWingInfo.append(m + "\n");
+				}
+			}
 		}
 	}
 }

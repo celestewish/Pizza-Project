@@ -24,6 +24,8 @@ public abstract class CardScreen {
 		totalCostFields = new ArrayList<>();
 	}
 	
+	
+	
 	public abstract boolean onAttemptLeaveScreen();
 	
 	public abstract Screen onAttemptEnterScreen(Screen toScreen);
@@ -49,13 +51,7 @@ public abstract class CardScreen {
 		info.setCurrentUser(info.UserDatabase().getUser(email));
 	}
 	
-	public void updateTotalCostFields() {
-		for (JLabel lbl : totalCostFields) {
-			String[] curText = lbl.getText().split("\\$");
-			String display = curText[0] + " $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost());
-			lbl.setText(display);
-		}
-	}
+
 	
 	public void showScreen(Screen screen) {
 		if (!onAttemptLeaveScreen())
@@ -77,6 +73,8 @@ public abstract class CardScreen {
 		info.advanceScreen(screen);
 		screenLayoutController.show(screenContainer, info.Screens().get((screen)).getPanelName());
 	}
+	
+	
 	
 	public void setUpNavBar_LoggedOut(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_up_sign_in) {
 		home.addActionListener(_ -> showScreen(Screen.HOME));
@@ -100,6 +98,8 @@ public abstract class CardScreen {
 		});
 	}
 	
+	
+	
 	public String getPanelName() {
 		return panelName;
 	}
@@ -112,6 +112,8 @@ public abstract class CardScreen {
 		this.screenPanel = screenPanel;
 	}
 	
+	
+	
 	public void resetScreen() {
 		info.resetLoginAttempts();
 		
@@ -122,13 +124,48 @@ public abstract class CardScreen {
 				((JComboBox<?>) c).setSelectedIndex(0); // Reset selection for JComboBox
 			} else if (c instanceof JCheckBox) {
 				((JCheckBox) c).setSelected(false); // Reset selection for JCheckBox
+			} else if (c instanceof  JTextArea) {
+				((JTextArea) c).setText("");
 			}
 		}
 	}
 	
+	
+	
 	public void addTotalCostField(JLabel totalCostField) {
 		totalCostFields.add(totalCostField);
 	}
+	
+	public void updateTotalCostFields() {
+		for (JLabel lbl : totalCostFields) {
+			String[] curText = lbl.getText().split("\\$");
+			String display = curText[0].trim() + " $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost());
+			lbl.setText(display);
+		}
+	}
+	
+	public void updateSubCostField(JLabel lbl, MenuItem item) {
+		int costBreakdownIndex = -1;
+		if (item instanceof Pizza) {
+			costBreakdownIndex = 0;
+		} else if (item instanceof Drink) {
+			costBreakdownIndex = 1;
+		} else if (item instanceof Side side) {
+			switch (side.getType()) {
+				case CAESAR_SALAD -> costBreakdownIndex = 2;
+				case GARLIC_BREAD -> costBreakdownIndex = 3;
+				case GARLIC_KNOTS -> costBreakdownIndex = 4;
+				case CHICKEN_WINGS, LEMON_PEPPER_WINGS -> costBreakdownIndex = 5;
+			}
+		} else if (item instanceof Dessert) {
+			costBreakdownIndex = 6;
+		}
+		
+		String[] curText = lbl.getText().split("\\$");
+		String display = curText[0].trim() + " $" + info.formatter.format(info.getCurOrder().totalCostBreakDown()[costBreakdownIndex]);
+		lbl.setText(display);
+	}
+	
 	
 	public void addJComponent(JComponent component) {
 		components.add(component);
@@ -137,6 +174,8 @@ public abstract class CardScreen {
 	public ArrayList<JComponent> getComponents() {
 		return components;
 	}
+	
+	
 	
 	public static boolean showConfirmationDialog(String message, String option1, String defaultOption, String title) {
 		// Define the options for the dialog
@@ -167,12 +206,16 @@ public abstract class CardScreen {
 		);
 	}
 	
+	
+	
 	public String convertPasswordToString (char[] password) {
 		StringBuilder passwordString = new StringBuilder();
 		for (char c : password)
 			passwordString.append(c);
 		return passwordString.toString();
 	}
+	
+	
 	
 	public boolean isEmailTaken(JTextField t) {
 		if (info.UserDatabase().customerExists(t.getText())) {

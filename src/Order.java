@@ -3,52 +3,98 @@ import java.util.LinkedList;
 public class Order {
 	private static int orderCounter = 1;
 	private final int orderNumber;
-	private final LinkedList<MenuItem> items;
+	private final LinkedList<MenuItemWithCount> items; // Using MenuItemWithCount
 	private DeliveryMethod deliveryMethod;
 	private boolean cash;
 	private Payment payment;
 	
-	public Order(LinkedList<MenuItem> items, DeliveryMethod deliveryMethod, boolean cash, Payment payment) {
-		orderNumber = orderCounter;
-		orderCounter++;
+	public Order(LinkedList<MenuItemWithCount> items, DeliveryMethod deliveryMethod, boolean cash, Payment payment) {
+		orderNumber = orderCounter++;
 		this.items = items;
 		this.deliveryMethod = deliveryMethod;
 		this.cash = cash;
 		this.payment = payment;
 	}
 	
-	public Order(LinkedList<MenuItem> items) {
-		orderNumber = orderCounter;
-		orderCounter++;
+	public Order(LinkedList<MenuItemWithCount> items) {
+		orderNumber = orderCounter++;
 		this.items = items;
 	}
 	
+	// Calculates the total cost of the order including the count
 	public float calcTotalOrderCost() {
 		float total = 0;
 		
-		for (MenuItem item : items)
-			total += item.calcTotalCost();
+		// Iterate over items and calculate total, including count from MenuItemWithCount
+		for (MenuItemWithCount itemWithCount : items) {
+			total += itemWithCount.calcTotalPrice();
+		}
 		
-		if (deliveryMethod != null)
-			if (deliveryMethod.equals(DeliveryMethod.DELIVERY))
-				total += 5F;
+		if (deliveryMethod != null && deliveryMethod.equals(DeliveryMethod.DELIVERY)) {
+			total += 5F; // Delivery charge
+		}
 		
 		return total;
 	}
 	
-	public void addItem(MenuItem item) {
-		if (items.contains(item)) {
-			items.get(items.indexOf(item)).incrementCount(item.getCount());
-			return;
+	public float[] totalCostBreakDown() {
+		float pizzaTotal = 0;
+		float drinkTotal = 0;
+		float saladTotal = 0;
+		float breadTotal = 0;
+		float knotTotal = 0;
+		float wingTotal = 0;
+		float dessertTotal = 0;
+		
+		// Iterate through items and accumulate costs based on item type
+		for (MenuItemWithCount m : items) {
+			MenuItem item = m.getItem();
+			
+			if (item instanceof Pizza) {
+				pizzaTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+			} else if (item instanceof Drink) {
+				drinkTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+			} else if (item instanceof Side side) {
+				switch (side.getType()) {
+					case CAESAR_SALAD -> saladTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+					case GARLIC_BREAD -> breadTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+					case GARLIC_KNOTS -> knotTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+					case CHICKEN_WINGS, LEMON_PEPPER_WINGS -> wingTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+				}
+			} else if (item instanceof Dessert) {
+				dessertTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+			}
 		}
-		items.add(item);
+		
+		return new float[]{pizzaTotal, drinkTotal, saladTotal, breadTotal, knotTotal, wingTotal, dessertTotal};
 	}
 	
-	public boolean removeItem(MenuItem item) {
-		if (!items.contains(item))
-			return false;
-		items.remove(item);
+	public LinkedList<MenuItemWithCount> getItems() {
+		return items;
+	}
+	
+	// Add item with count to the order. If item already exists, increment count.
+	public boolean addItem(MenuItemWithCount item) {
+		for (MenuItemWithCount itemWithCount : items) {
+			if (itemWithCount.getItem().equals(item.getItem())) {
+				itemWithCount.incrementCount(item.getCount());
+				return false; // Item already exists, count updated
+			}
+		}
+		// If item doesn't exist, add a new item with count
+		items.add(item);
 		return true;
+	}
+	
+	// Remove item from the order
+	public boolean removeItem(MenuItem item) {
+		for (MenuItemWithCount itemWithCount : items) {
+			if (itemWithCount.getItem().equals(item)) {
+				items.remove(itemWithCount); // Remove the item
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public DeliveryMethod getDeliveryMethod() {
@@ -77,5 +123,36 @@ public class Order {
 	
 	public int getOrderNumber() {
 		return orderNumber;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder orderDetails = new StringBuilder();
+		
+		// Append the order number
+		orderDetails.append("Order Number: ").append(orderNumber).append("\n");
+		
+		// Append the items in the order
+		orderDetails.append("Items:\n");
+		for (MenuItemWithCount m : items) {
+			orderDetails.append(m.toString()).append("\n");  // Use MenuItemWithCount toString method
+		}
+		
+		// Append delivery method
+		if (deliveryMethod != null) {
+			orderDetails.append("Delivery Method: ").append(deliveryMethod).append("\n");
+		}
+		
+		// Append payment information (cash or payment method)
+		if (cash) {
+			orderDetails.append("Payment: Cash\n");
+		} else {
+			orderDetails.append("Payment Method: ").append(payment).append("\n");
+		}
+		
+		// Append total cost of the order
+		orderDetails.append("Total Order Cost: $").append(String.format("%.2f", calcTotalOrderCost())).append("\n");
+		
+		return orderDetails.toString();
 	}
 }

@@ -1,6 +1,6 @@
 public class Drink extends MenuItem {
 	private DrinkSize size;
-	private DrinkType type;
+	private final DrinkType type;
 	
 	public Drink(DrinkSize size, DrinkType type, float price) {
 		super(price);
@@ -9,23 +9,23 @@ public class Drink extends MenuItem {
 	}
 	
 	@Override
-	public float calcTotalCost() {
+	public float calcPrice() {
 		float total = getPrice();
 		
+		// Add additional price based on the size
 		switch (size) {
 			case SMALL -> total += 0;
 			case MEDIUM -> total += 1;
 			case LARGE -> total += 1.5F;
 		}
-		
-		return total * getCount();
+
+		return total;
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder drink = new StringBuilder();
 		
-		// Append the type of drink
 		switch (type) {
 			case COKE -> drink.append("Coke");
 			case DIET_COKE -> drink.append("Diet Coke");
@@ -36,19 +36,26 @@ public class Drink extends MenuItem {
 			case SWEET_TEA -> drink.append("Sweet Tea");
 		}
 		
-		// Append the size
 		drink.append(" (");
+		
+		// Add size to the string
 		switch (size) {
 			case SMALL -> drink.append("Small");
 			case MEDIUM -> drink.append("Medium");
 			case LARGE -> drink.append("Large");
 		}
-		drink.append(")");
 		
-		// Append the price and count
-		drink.append(" - $").append(String.format("%.2f", calcTotalCost()));
+		drink.append(") - $").append(String.format("%.2f", calcPrice()));  // Use a single count for display purposes
 		
 		return drink.toString();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;  // Check for reference equality
+		if (getClass() != obj.getClass()) return false;  // Ensure same class
+		Drink drink = (Drink) obj;
+		return type == drink.type && size == drink.size;  // Compare Drink-specific fields
 	}
 	
 	public DrinkSize getSize() {
