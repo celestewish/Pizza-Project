@@ -1,9 +1,6 @@
 public class Wings extends Side{
-	private boolean count; // false for 5, true for 10
-	
-	public Wings(SideType type, float price, boolean count) {
-		super(type, price);
-		this.count = count;
+	public Wings(SideType type, float price, int count) {
+		super(type, price, count);
 	}
 	
 	@Override
@@ -17,10 +14,8 @@ public class Wings extends Side{
 		}
 		
 		// Append the count
-		if (count)
-			wing.append("5 Count");
-		else
-			wing.append("10 count");
+		if (getCount() > 0)
+			wing.append(" (").append(getCount()).append(" count)");
 		
 		// Append the price
 		wing.append(" - $").append(String.format("%.2f", getPrice()));
@@ -28,11 +23,12 @@ public class Wings extends Side{
 		return wing.toString();
 	}
 	
-	public boolean isCount() {
-		return count;
-	}
-	
-	public void setCount(boolean count) {
-		this.count = count;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Wings wings = (Wings) o;
+		return  type == wings.type &&
+				getCount() == wings.getCount(); // Explicitly compare the boolean count
 	}
 }
