@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -11,6 +12,8 @@ public class ProgramInfo {
 	private final UserDatabase userDatabase;
 	private Screen curScreen;
 	private Screen lastScreen;
+	
+	protected final DecimalFormat formatter = new DecimalFormat("#0.00");
 	
 	private static final Map<Screen, CardScreen> screenNames = new HashMap<>();
 	

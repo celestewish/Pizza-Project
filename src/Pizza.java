@@ -37,6 +37,32 @@ public class Pizza extends MenuItem {
 		return total * getCount();
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder pizza = new StringBuilder();
+		pizza.append(getCount()).append("\t");
+		switch (size) {
+			case SMALL -> pizza.append("Small").append(" ");
+			case MEDIUM -> pizza.append("Medium").append(" ");
+			case LARGE -> pizza.append("Large").append(" ");
+			case XL -> pizza.append("Extra Large").append(" ");
+		}
+		switch (crust) {
+			case DEEP_DISH -> pizza.append("Deep Dish").append(" ");
+			case THICK_CRUST -> pizza.append("Thick Crust").append(" ");
+			case THIN_CRUST -> pizza.append("Thin Crust").append(" ");
+		}
+		if (sauce)
+			pizza.append("Marinara Sauce");
+		else
+			pizza.append("Alfredo Sauce");
+		pizza.append("\n\tToppings:\n");
+		for (Topping topping : toppings)
+			pizza.append(topping.toString()).append("\n");
+		
+		return pizza.toString();
+	}
+	
 	public PizzaSize getSize() {
 		return size;
 	}

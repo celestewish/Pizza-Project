@@ -39,4 +39,7 @@ public abstract class MenuItem {
 	public void incrementCount(int count) {
 		this.count += count;
 	}
+	
+	@Override
+	public abstract String toString();
 }

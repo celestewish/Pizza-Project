@@ -7,11 +7,10 @@ public class FrameLogic extends JFrame {
 	public FrameLogic() {
 		setContentPane(screenContainer);
 		setTitle("Mom and Pop's Shop");
-		setSize(1200, 800);
+		setSize(1300, 800);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
 		
 		screenContainer.setLayout(new CardLayout());
 		
@@ -51,8 +50,8 @@ public class FrameLogic extends JFrame {
 		Payment_Receipt paymentReceipt = new Payment_Receipt((CardLayout)screenContainer.getLayout(), screenContainer,
 				"PaymentReceipt");
 		
-		Cart cart = new Cart((CardLayout)screenContainer.getLayout(), screenContainer,
-				"Cart");
+//		Cart cart = new Cart((CardLayout)screenContainer.getLayout(), screenContainer,
+//				"Cart");
 		
 		LocationsForUser locationsForUser = new LocationsForUser((CardLayout)screenContainer.getLayout(), screenContainer,
 				"LocationsForUser");

@@ -5,14 +5,16 @@ import java.awt.*;
 public class Cart extends CardScreen {
 	private JPanel pnlCart;
 	
+	private JPanel pnlCartLogo;
+	private JPanel pnlLogo;
+	
 	private JButton btnHome;
 	private JButton btnMenu;
 	private JButton btnDeals;
 	private JButton btnLocations;
 	private JButton btnSignOut;
 	private JButton btnCart;
-	private JPanel pnlCartLogo;
-	private JPanel pnlLogo;
+
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
     private JLabel lblPizzaPrice;
@@ -22,6 +24,7 @@ public class Cart extends CardScreen {
     private JButton placeYourOrderButton;
     private JLabel lblTotalCost;
     private JButton btnViewOrder;
+	private JPanel imgWings;
 	
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);

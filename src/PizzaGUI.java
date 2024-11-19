@@ -87,7 +87,7 @@ public class PizzaGUI extends CardScreen {
     
     @Override
     public boolean onAttemptLeaveScreen() {
-        return showConfirmationDialog("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here");
+        return showConfirmationDialog("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
     }
     
     @Override

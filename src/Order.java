@@ -29,19 +29,19 @@ public class Order {
 		for (MenuItem item : items)
 			total += item.calcTotalCost();
 		
-		if (deliveryMethod.equals(DeliveryMethod.DELIVERY))
-			total += 5F;
+		if (deliveryMethod != null)
+			if (deliveryMethod.equals(DeliveryMethod.DELIVERY))
+				total += 5F;
 		
 		return total;
 	}
 	
-	public boolean addItem(MenuItem item) {
+	public void addItem(MenuItem item) {
 		if (items.contains(item)) {
 			items.get(items.indexOf(item)).incrementCount(item.getCount());
-			return false;
+			return;
 		}
 		items.add(item);
-		return true;
 	}
 	
 	public boolean removeItem(MenuItem item) {
