@@ -14,8 +14,8 @@ public class Deals extends CardScreen{
     private JButton btnOrdernow2;
     private JPanel pnlLogo;
     
-    public Deals(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
-        super(screenLayoutController, screenContainer, info, panelName);
+    public Deals(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
+        super(screenLayoutController, screenContainer, panelName);
         setScreenPanel(pnlDeals);
         info.registerScreenName(Screen.DEALS, this);
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
@@ -24,19 +24,19 @@ public class Deals extends CardScreen{
     }
     
     @Override
-    public boolean onAttemptLeaveScreen(ProgramInfo info) {
+    public boolean onAttemptLeaveScreen() {
         return true;
     }
     
     @Override
-    public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+    public Screen onAttemptEnterScreen(Screen toScreen) {
         if (info.isLoggedIn())
             return Screen.DEALS_USER;
         return toScreen;
     }
     
     @Override
-    public void onEnterScreen(ProgramInfo info) {
+    public void onEnterScreen() {
     
     }
     

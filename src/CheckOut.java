@@ -24,8 +24,8 @@ public class CheckOut extends CardScreen {
     private JPanel pnlCartLogo;
     private JPanel pnlLogo;
     
-    public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
-        super(screenLayoutController, screenContainer, info, panelName);
+    public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
+        super(screenLayoutController, screenContainer, panelName);
         setScreenPanel(pnlCheckOut);
         info.registerScreenName(Screen.CHECK_OUT, this);
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
@@ -89,17 +89,17 @@ public class CheckOut extends CardScreen {
     }
     
     @Override
-    public boolean onAttemptLeaveScreen(ProgramInfo info) {
+    public boolean onAttemptLeaveScreen() {
         return true;
     }
     
     @Override
-    public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+    public Screen onAttemptEnterScreen(Screen toScreen) {
         return toScreen;
     }
     
     @Override
-    public void onEnterScreen(ProgramInfo info) {
+    public void onEnterScreen() {
     
     }
     

@@ -16,8 +16,8 @@ public class Cart extends CardScreen {
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
 	
-	public Cart (CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
-		super(screenLayoutController, screenContainer, info, panelName);
+	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
+		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlCart);
 		info.registerScreenName(Screen.CART, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
@@ -26,17 +26,17 @@ public class Cart extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen(ProgramInfo info) {
+	public boolean onAttemptLeaveScreen() {
 		return true;
 	}
 	
 	@Override
-	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+	public Screen onAttemptEnterScreen(Screen toScreen) {
 		return toScreen;
 	}
 	
 	@Override
-	public void onEnterScreen(ProgramInfo info) {
+	public void onEnterScreen() {
 	
 	}
 	

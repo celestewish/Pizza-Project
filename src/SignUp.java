@@ -37,8 +37,8 @@ public class SignUp extends CardScreen {
 	private JButton btnSignUp;
 	private JButton btnReturn;
 	
-	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
-		super(screenLayoutController, screenContainer, info, panelName);
+	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
+		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlSignUp);
 		info.registerScreenName(Screen.SIGN_UP, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
@@ -58,6 +58,8 @@ public class SignUp extends CardScreen {
 		addJComponent(cobxMonth);
 		addJComponent(cobxDay);
 		addJComponent(cobxYear);
+		
+		btnReturn.addActionListener(_ -> showScreen(Screen.RETURN));
 		
 		btnSignUp.addActionListener(_ -> {
 			if (info.UserDatabase().customerExists(txtEmail.getText())) {
@@ -97,7 +99,7 @@ public class SignUp extends CardScreen {
 					"",
 					JOptionPane.INFORMATION_MESSAGE);
 			
-			onSignIn(info, txtEmail.getText());
+			onSignIn(txtEmail.getText());
 			showScreen(Screen.MENU);
 		});
 		
@@ -128,19 +130,19 @@ public class SignUp extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen(ProgramInfo info) {
+	public boolean onAttemptLeaveScreen() {
 		return true;
 	}
 	
 	@Override
-	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+	public Screen onAttemptEnterScreen(Screen toScreen) {
 		if (info.getCurScreen() == Screen.SIGN_UP)
 			return Screen.SIGN_IN;
 		return toScreen;
 	}
 	
 	@Override
-	public void onEnterScreen(ProgramInfo info) {
+	public void onEnterScreen() {
 	
 	}
 	

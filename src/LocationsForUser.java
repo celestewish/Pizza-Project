@@ -15,8 +15,8 @@ public class LocationsForUser extends CardScreen {
 	private JPanel pnlCartLogo;
 	private JPanel pnlLogo;
 	
-	public LocationsForUser(CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
-		super(screenLayoutController, screenContainer, info, panelName);
+	public LocationsForUser(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
+		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlLocationsUser);
 		info.registerScreenName(Screen.LOCATIONS_USER, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
@@ -25,19 +25,19 @@ public class LocationsForUser extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen(ProgramInfo info) {
+	public boolean onAttemptLeaveScreen() {
 		return true;
 	}
 	
 	@Override
-	public Screen onAttemptEnterScreen(ProgramInfo info, Screen toScreen) {
+	public Screen onAttemptEnterScreen(Screen toScreen) {
 		if (!info.isLoggedIn())
 			return Screen.LOCATIONS;
 		return toScreen;
 	}
 	
 	@Override
-	public void onEnterScreen(ProgramInfo info) {
+	public void onEnterScreen() {
 	
 	}
 	
