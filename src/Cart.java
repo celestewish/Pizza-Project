@@ -15,6 +15,7 @@ public class Cart extends CardScreen {
 	private JPanel pnlLogo;
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
+    private JButton returnButton;
 
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, ProgramInfo info, String panelName) {
 		super(screenLayoutController, screenContainer, info, panelName);
