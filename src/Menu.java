@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 public class Menu extends CardScreen {
 	private JPanel pnlMenu;
@@ -59,7 +60,7 @@ public class Menu extends CardScreen {
 	private JButton btnEditDrinks;
 	private JTextArea txtAreaDrinkInfo;
 	
-	double currentVerticalScrollPos = 0;
+	private double currentVerticalScrollPos = 0;
 	
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
@@ -88,6 +89,13 @@ public class Menu extends CardScreen {
 		btnAddGarlicBread.addActionListener(_ -> GarlicBreadOptionPopUp());
 		btnAddGarlicKnots.addActionListener(_ -> GarlicKnotsOptionPopUp());
 		btnAddSalad.addActionListener(_ -> SaladOptionPopUp());
+		btnEditDrinks.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditGarlicBread.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditGarlicKnots.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditSalad.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditWings.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
+		btnCreatePizza.addActionListener(_ -> showScreen(Screen.CREATE_PIZZA));
 	}
 	
 	@Override
@@ -111,11 +119,8 @@ public class Menu extends CardScreen {
 		resetScreen();
 		refillInfoFields();
 		currentVerticalScrollPos = 0;
-		SwingUtilities.invokeLater(() -> {
-			scrollPane.getViewport().setViewPosition((new Point(0, 0)));
-		});
+		SwingUtilities.invokeLater(() -> scrollPane.getViewport().setViewPosition((new Point(0, 0))));
 	}
-	
 	
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
@@ -133,11 +138,15 @@ public class Menu extends CardScreen {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
-		JComboBox<DrinkType> cobxType = new JComboBox<>(DrinkType.values());
+		JComboBox<String> cobxType = new JComboBox<>();
+		Utils.populateComboBox(cobxType, DrinkType.class);
 		cobxType.setFont(optionsFont);
+		Map<String, DrinkType> drinkTypeMap = Utils.createEnumMap(DrinkType.class);
 		
-		JComboBox<DrinkSize> cobxSize = new JComboBox<>(DrinkSize.values());
+		JComboBox<String> cobxSize = new JComboBox<>();
+		Utils.populateComboBox(cobxSize, DrinkSize.class);
 		cobxSize.setFont(optionsFont);
+		Map<String, DrinkSize> drinkSizeMap = Utils.createEnumMap(DrinkSize.class);
 		
 		JComboBox<Integer> cobxNumber = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxNumber.setFont(optionsFont);
@@ -171,8 +180,10 @@ public class Menu extends CardScreen {
 		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		
+		DrinkSize selectedDrinkSize = drinkSizeMap.get((String) cobxSize.getSelectedItem());
+		DrinkType selectedDrinkType = drinkTypeMap.get((String) cobxType.getSelectedItem());
 		MenuItemWithCount drinkCount = new MenuItemWithCount(
-				new Drink((DrinkSize) cobxSize.getSelectedItem(), (DrinkType) cobxType.getSelectedItem(), 1F),
+				new Drink(selectedDrinkSize, selectedDrinkType, 1F),
 				count);
 		
 		if (result == JOptionPane.OK_OPTION) {

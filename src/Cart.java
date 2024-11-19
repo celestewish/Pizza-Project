@@ -38,7 +38,7 @@ public class Cart extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
-		
+	
 	}
 	
 	private void createUIComponents() {
