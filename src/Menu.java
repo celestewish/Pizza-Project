@@ -112,9 +112,7 @@ public class Menu extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
-		lblHiName.setText("Hi, " + info.CurrentUser().getName().split(" ")[0]);
-		if (info.getCurOrder() != null)
-			lblCurTotal.setText("Current Total: $" + info.getCurOrder().calcTotalOrderCost());
+		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 		
 		resetScreen();
 		refillInfoFields();
