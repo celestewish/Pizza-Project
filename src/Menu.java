@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Map;
 
 public class Menu extends CardScreen {
@@ -96,8 +98,21 @@ public class Menu extends CardScreen {
 		btnEditWings.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
 		btnCreatePizza.addActionListener(_ -> showScreen(Screen.CREATE_PIZZA));
+		btnViewOrder.addActionListener(_ -> viewOrderScreen());
 	}
-	
+
+	public void viewOrderScreen() {
+        Font textFont = new Font("Times New Roman", Font.BOLD, 24);
+        Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+        JPanel orderPanel = new JPanel();
+        for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
+            JLabel itemLabel = new JLabel("<html>"+info.getCurOrder().getItems().get(i).toString() + "<br></html>");
+            itemLabel.setFont(optionsFont);
+            orderPanel.add(itemLabel);
+        }
+        JOptionPane.showMessageDialog(null, orderPanel, "View Order", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 	@Override
 	public boolean onAttemptLeaveScreen() {
 		return true;
