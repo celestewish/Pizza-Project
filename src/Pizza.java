@@ -3,10 +3,10 @@ import java.util.LinkedList;
 public class Pizza extends MenuItem {
 	private PizzaSize size;
 	private CrustType crust;
-	private boolean sauce; // true for marinara, false for alfredo
+	private SauceOption sauce; // true for marinara, false for alfredo
 	private final LinkedList<Topping> toppings;
 	
-	public Pizza(PizzaSize size, CrustType crust, boolean sauce) {
+	public Pizza(PizzaSize size, CrustType crust, SauceOption sauce) {
 		this.size = size;
 		this.crust = crust;
 		this.sauce = sauce;
@@ -51,7 +51,7 @@ public class Pizza extends MenuItem {
 		pizza.append(Utils.enumToNormalCase(crust)).append(" ");
 		
 		// Append the sauce dynamically
-		pizza.append(sauce ? "Marinara Sauce" : "Alfredo Sauce");
+		pizza.append(Utils.enumToNormalCase(sauce)).append(" ");
 		
 		// Append the price (calculated with count externally)
 		pizza.append(" - $").append(String.format("%.2f", getPrice()));
@@ -93,11 +93,11 @@ public class Pizza extends MenuItem {
 		this.crust = crust;
 	}
 	
-	public boolean getSauce() {
+	public SauceOption getSauce() {
 		return sauce;
 	}
 	
-	public void setSauce(boolean sauce) {
+	public void setSauce(SauceOption sauce) {
 		this.sauce = sauce;
 	}
 	

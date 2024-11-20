@@ -37,6 +37,7 @@
         <properties>
           <font size="20"/>
           <model>
+            <item value="None"/>
             <item value="Marinera"/>
             <item value="Alfredo"/>
           </model>
@@ -49,6 +50,7 @@
         <properties>
           <font size="20"/>
           <model>
+            <item value="None"/>
             <item value="Deep Dish"/>
             <item value="Thin"/>
             <item value="Thick"/>
@@ -62,6 +64,7 @@
         <properties>
           <font size="20"/>
           <model>
+            <item value="None"/>
             <item value="Small"/>
             <item value="Medium"/>
             <item value="Large"/>
