@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -13,7 +14,12 @@ public class ProgramInfo {
 	private Screen curScreen;
 	private Screen lastScreen;
 	
-	protected final DecimalFormat formatter = new DecimalFormat("#0.00");
+	private final Font comboBoxFont = new Font("Times New Roman", Font.PLAIN, 24);
+	private final Font checkBoxFont = new Font("Arial", Font.BOLD, 20);
+	private final Font textFont = new Font("Times New Roman", Font.BOLD, 24);
+	private final Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+	
+	protected final DecimalFormat formatter;
 	
 	private static final Map<Screen, CardScreen> screenNames = new HashMap<>();
 	
@@ -25,6 +31,7 @@ public class ProgramInfo {
 		curOrder = null;
 		curScreen = Screen.LOGIN;
 		lastScreen = null;
+		formatter = new DecimalFormat("#0.00");
 	}
 	
 	public Map<Screen, CardScreen> Screens() {
@@ -34,7 +41,6 @@ public class ProgramInfo {
 	public void registerScreenName(Screen screenName, CardScreen panel) {
 		screenNames.put(screenName, panel);
 	}
-	
 	
 	public Customer CurrentUser() {
 		return currentUser;
@@ -133,7 +139,26 @@ public class ProgramInfo {
 	public void setEmail(String mail){
 		currentUser.setEmail(mail);
 	}
+	
 	public String getAddress(){
 		return currentUser.getAddress();
+	}
+	
+	
+	
+	public Font getComboBoxFont() {
+		return comboBoxFont;
+	}
+	
+	public Font getCheckBoxFont() {
+		return checkBoxFont;
+	}
+	
+	public Font getTextFont() {
+		return textFont;
+	}
+	
+	public Font getOptionsFont() {
+		return optionsFont;
 	}
 }

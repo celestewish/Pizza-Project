@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 public class ToppingsGUI extends CardScreen {
     private JPanel pnlToppings;
@@ -17,36 +18,37 @@ public class ToppingsGUI extends CardScreen {
     private JLabel lblHiName;
     private JLabel lblCurTotal;
     
-    private JComboBox<ToppingPlacement> cobxPepperoni;
+    private JComboBox<String> cobxPepperoni;
     private JCheckBox chbxXPepperoni;
     
-    private JComboBox<ToppingPlacement> cobxSausage;
+    private JComboBox<String> cobxSausage;
     private JCheckBox chbxXSausage;
     
-    private JComboBox<ToppingPlacement> cobxBacon;
+    private JComboBox<String> cobxBacon;
     private JCheckBox chbxXBacon;
     
-    private JComboBox<ToppingPlacement> cobxChicken;
+    private JComboBox<String> cobxChicken;
     private JCheckBox chbxXChicken;
     
-    private JComboBox<ToppingPlacement> cobxGbeef;
+    private JComboBox<String> cobxGbeef;
     private JCheckBox chbxXGbeef;
     
-    private JComboBox<ToppingPlacement> cobxSpinach;
+    private JComboBox<String> cobxSpinach;
     private JCheckBox chbxXSpinach;
     
-    private JComboBox<ToppingPlacement> cobxOnions;
+    private JComboBox<String> cobxOnions;
     private JCheckBox chbxXOnions;
     
-    private JComboBox<ToppingPlacement> cobxOlives;
+    private JComboBox<String> cobxOlives;
     private JCheckBox chbxXOlives;
     
-    private JComboBox<ToppingPlacement> cobxPeppers;
+    private JComboBox<String> cobxPeppers;
     private JCheckBox chbxXPeppers;
     
-    private JComboBox<ToppingPlacement> cobxMushrooms;
+    private JComboBox<String> cobxMushrooms;
     private JCheckBox chbxXMushrooms;
     
+    private static Map<String, ToppingPlacement> placementMap = Utils.createEnumMap(ToppingPlacement.class);
     
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
@@ -77,11 +79,21 @@ public class ToppingsGUI extends CardScreen {
         addJComponent(cobxMushrooms);
         addJComponent(chbxXMushrooms);
         
-        Font cobxFont = cobxPepperoni.getFont();
-        Font chbxFont = chbxXPepperoni.getFont();
+        setFontForJCompsOfAType(info.getComboBoxFont(), JComboBox.class);
+        setFontForJCompsOfAType(info.getCheckBoxFont(), JCheckBox.class);
         
-        setFontForJCompsOfAType(cobxFont, JComboBox.class);
-        setFontForJCompsOfAType(chbxFont, JCheckBox.class);
+        Utils.populateComboBox(cobxMushrooms, ToppingPlacement.class);
+        Utils.populateComboBox(cobxBacon, ToppingPlacement.class);
+        Utils.populateComboBox(cobxChicken, ToppingPlacement.class);
+        Utils.populateComboBox(cobxPepperoni, ToppingPlacement.class);
+        Utils.populateComboBox(cobxSausage, ToppingPlacement.class);
+        Utils.populateComboBox(cobxGbeef, ToppingPlacement.class);
+        Utils.populateComboBox(cobxSpinach, ToppingPlacement.class);
+        Utils.populateComboBox(cobxOnions, ToppingPlacement.class);
+        Utils.populateComboBox(cobxOlives, ToppingPlacement.class);
+        Utils.populateComboBox(cobxPeppers, ToppingPlacement.class);
+        
+        createUIComponents();
 //        //adds the toppings
 //        comboBox1.addActionListener(new ActionListener() {
 //            @Override
@@ -314,7 +326,7 @@ public class ToppingsGUI extends CardScreen {
     }
     
     @Override
-    public boolean onAttemptLeaveScreen() {
+    public boolean onAttemptLeaveScreen(Screen destinationScreen) {
         return true;
     }
     

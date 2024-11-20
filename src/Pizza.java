@@ -57,9 +57,12 @@ public class Pizza extends MenuItem {
 		pizza.append(" - $").append(String.format("%.2f", getPrice()));
 		
 		// Append the toppings
-		pizza.append("\nToppings:\n");
-		for (Topping topping : toppings)
-			pizza.append("  ").append(topping.toString()).append("\n");
+		if (!toppings.isEmpty()) {
+			pizza.append("\nToppings:\n");
+			for (Topping topping : toppings) {
+				pizza.append("  ").append(topping.toString()).append("\n");
+			}
+		}
 		
 		return pizza.toString();
 	}

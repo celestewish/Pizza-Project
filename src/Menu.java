@@ -104,21 +104,19 @@ public class Menu extends CardScreen {
 	}
 
 	public void viewOrderScreen() {
-        Font textFont = new Font("Times New Roman", Font.BOLD, 24);
-        Font optionsFont = new Font("Arial", Font.PLAIN, 20);
         JPanel orderPanel = new JPanel();
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		JTextArea item = new JTextArea();
         for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
 			item.append(info.getCurOrder().getItems().get(i).toString()+"\n");
-            item.setFont(optionsFont);
+            item.setFont(info.getOptionsFont());
             orderPanel.add(item);
         }
         JOptionPane.showMessageDialog(null, orderPanel, "View Order", JOptionPane.INFORMATION_MESSAGE);
     }
 
 	@Override
-	public boolean onAttemptLeaveScreen() {
+	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 	
@@ -365,17 +363,16 @@ public class Menu extends CardScreen {
 	}
 	
 	public void SaladOptionPopUp() {
-		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
-		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+		
 		
 		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-		cobxCount.setFont(optionsFont);
+		cobxCount.setFont(info.getOptionsFont());
 		
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
 		JLabel txt1 = new JLabel("Choose How Many Caesar Salads:");
-		txt1.setFont(textFont);
+		txt1.setFont(info.getTextFont());
 		panel.add(txt1);
 		panel.add(cobxCount);
 		
@@ -440,11 +437,7 @@ public class Menu extends CardScreen {
 	public void addItemToOrder(MenuItemWithCount itemWithCount) {
 		int outcome = info.getCurOrder().addItem(itemWithCount);
 		if (outcome == -1) {
-			JOptionPane.showMessageDialog(
-					null,
-					"You already have the maximum amount of that item!",
-					"Maximum amount of item reached",
-					JOptionPane.INFORMATION_MESSAGE);
+			showInfoDialogue("You've reached the maximum number of this item", "Okay", "Max amount of 1 item is 10");
 		}
 	}
 	

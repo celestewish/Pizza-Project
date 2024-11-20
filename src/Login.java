@@ -13,6 +13,7 @@ public class Login extends CardScreen {
 	
 	private JButton btnLogin;
 	private JButton btnCreateAccount;
+	private JButton btnLOGIN;
 	
 	public Login(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
@@ -25,10 +26,16 @@ public class Login extends CardScreen {
 		btnLogin.addActionListener(_ -> showScreen(Screen.SIGN_IN));
 		
 		btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_UP));
+		
+		btnLOGIN.addActionListener(_ -> {
+			info.setLoggedIn(true);
+			info.setCurrentUser(new Customer("Clairvoyance", "f@f.f", "123456!Q", "1 2 3 FL 12345", "1234567890"));
+			showScreen(Screen.MENU);
+		});
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen() {
+	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 	

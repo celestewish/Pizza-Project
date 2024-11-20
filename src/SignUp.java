@@ -36,6 +36,7 @@ public class SignUp extends CardScreen {
 	
 	private JButton btnSignUp;
 	private JButton btnReturn;
+	private JScrollPane scrollPane;
 	
 	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
@@ -44,6 +45,8 @@ public class SignUp extends CardScreen {
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
 		setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
+		
+		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		
 		lblEmailTaken.setText("");
 		
@@ -63,14 +66,14 @@ public class SignUp extends CardScreen {
 		
 		btnSignUp.addActionListener(_ -> {
 			if (info.UserDatabase().customerExists(txtEmail.getText())) {
-				lblEmailTaken.setText("! There already exists an account with this email");
+				lblEmailTaken.setText("There already exists an account with this email.");
 				return;
 			}
 			
-			for (JComponent jcomp : getComponents()) {
-				if (jcomp instanceof JTextField && isTextEmpty(true, (JTextField) jcomp))
+			for (JComponent j : getComponents()) {
+				if (j instanceof JTextField && isTextEmpty(true, (JTextField) j))
 					return;
-				else if (jcomp instanceof JComboBox && isComboBoxUnselected(true, (JComboBox<?>) jcomp))
+				else if (j instanceof JComboBox && isComboBoxUnselected(true, (JComboBox<?>) j))
 					return;
 			}
 			
@@ -130,7 +133,7 @@ public class SignUp extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen() {
+	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 	

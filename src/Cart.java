@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.JPanel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Cart extends CardScreen {
 	private JPanel pnlCart;
@@ -36,7 +34,7 @@ public class Cart extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen() {
+	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 	

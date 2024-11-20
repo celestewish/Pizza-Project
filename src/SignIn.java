@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
+	
 	private JPanel pnlLogo;
 	
 	private JButton btnHome;
@@ -89,7 +90,7 @@ public class SignIn extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen() {
+	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 	

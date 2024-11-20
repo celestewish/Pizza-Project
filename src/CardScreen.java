@@ -26,14 +26,14 @@ public abstract class CardScreen {
 	
 	
 	
-	public abstract boolean onAttemptLeaveScreen();
+	public abstract boolean onAttemptLeaveScreen(Screen destinationScreen);
 	
 	public abstract Screen onAttemptEnterScreen(Screen toScreen);
 	
 	public abstract void onEnterScreen();
 	
 	public boolean onSignOut(ProgramInfo info) {
-		if (showConfirmationDialog(
+		if (showConfirmationDialogue(
 				"Would you like to sign out?",
 				"Yes, sign me out",
 				"No, keep me signed in", "Sign out?")) {
@@ -54,7 +54,7 @@ public abstract class CardScreen {
 
 	
 	public void showScreen(Screen screen) {
-		if (!onAttemptLeaveScreen())
+		if (!onAttemptLeaveScreen(screen))
 			return;
 		
 		if (screen == Screen.RETURN)
@@ -189,25 +189,90 @@ public abstract class CardScreen {
 		}
 	}
 	
+	public boolean showConfirmationDialogueGreen(String title, String message) {
+		// Create a JPanel to hold the custom content
+		JPanel panel = new JPanel(new BorderLayout(10, 10));
+		
+		// Create a custom JLabel for the message with styling
+		JLabel messageLabel = new JLabel(message);
+		messageLabel.setFont(info.getTextFont());
+		messageLabel.setForeground(Color.BLACK); // Set text color
+		
+		// Load or create a green checkmark icon
+		Icon icon = UIManager.getIcon("OptionPane.questionIcon");
+		
+		// Add the icon and message to the panel
+		JLabel iconLabel = new JLabel(icon);
+		panel.add(iconLabel, BorderLayout.WEST);
+		panel.add(messageLabel, BorderLayout.CENTER);
+		
+		// Display the confirmation dialog
+		int choice = JOptionPane.showConfirmDialog(
+				null,
+				panel,
+				title,
+				JOptionPane.YES_NO_OPTION,
+				JOptionPane.PLAIN_MESSAGE
+		);
+		
+		// Return true if the user clicked "Yes" (proceed), false otherwise
+		return choice == JOptionPane.YES_OPTION;
+	}
 	
-	public static boolean showConfirmationDialog(String message, String option1, String defaultOption, String title) {
+	public static boolean showConfirmationDialogue(String message, String option1, String defaultOption, String title) {
+		// Create a JPanel to hold custom content
+		JPanel panel = new JPanel(new BorderLayout(10, 10));
+		
+		// Create a JLabel for the message with custom font
+		JLabel messageLabel = new JLabel(message);
+		messageLabel.setFont(info.getTextFont()); // Set your desired font here
+		messageLabel.setForeground(Color.BLACK); // Optional: Set text color
+		
+		// Add the message to the panel
+		panel.add(messageLabel, BorderLayout.CENTER);
+		
 		// Define the options for the dialog
 		String[] options = {option1, defaultOption};
 		
 		// Show the confirmation dialog
 		int choice = JOptionPane.showOptionDialog(
-				null, // Parent component (null for center of the screen)
-				message,
-				title,
-				JOptionPane.DEFAULT_OPTION,
-				JOptionPane.QUESTION_MESSAGE,
-				null,
-				options,
-				options[1] // Default option
+				null,            // Parent component (null for center of the screen)
+				panel,           // Custom panel with styled content
+				title,           // Title of the dialog
+				JOptionPane.DEFAULT_OPTION, // Option type
+				JOptionPane.QUESTION_MESSAGE, // Message type with a question icon
+				null,            // Icon (null for default icon)
+				options,         // Options for buttons
+				options[1]       // Default option
 		);
 		
-		// return true if the user chose option1, otherwise false
+		// Return true if the user chose option1, otherwise false
 		return choice == 0;
+	}
+	
+	public static void showInfoDialogue(String message, String buttonText, String title) {
+		// Create a JPanel to hold custom content
+		JPanel panel = new JPanel(new BorderLayout(10, 10));
+		
+		// Create a JLabel for the message with custom font
+		JLabel messageLabel = new JLabel(message);
+		messageLabel.setFont(info.getTextFont()); // Set your desired font here
+		messageLabel.setForeground(Color.BLACK); // Optional: Set text color
+		
+		// Add the message to the panel
+		panel.add(messageLabel, BorderLayout.CENTER);
+		
+		// Show the info dialog with a single button
+		JOptionPane.showOptionDialog(
+				null,                // Parent component (null for center of the screen)
+				panel,               // Custom panel with styled content
+				title,               // Title of the dialog
+				JOptionPane.DEFAULT_OPTION, // Only one option
+				JOptionPane.INFORMATION_MESSAGE, // Message type with an info icon
+				null,                // Icon (null for default info icon)
+				new String[]{buttonText}, // Single button text
+				buttonText           // Default button
+		);
 	}
 	
 	public void showPopUpWindow(String message, String title, int optionPaneType) {

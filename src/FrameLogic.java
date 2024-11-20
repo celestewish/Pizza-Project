@@ -12,7 +12,7 @@ public class FrameLogic extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		UIManager.put("Button.font", new Font("Times New Roman", Font.PLAIN, 18));
+		UIManager.put("Button.font", new Font("Arial", Font.BOLD, 18));
 		
 		screenContainer.setLayout(new CardLayout());
 		
