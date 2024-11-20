@@ -108,9 +108,9 @@ public class Menu extends CardScreen {
         Font optionsFont = new Font("Arial", Font.PLAIN, 20);
         JPanel orderPanel = new JPanel();
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
+		JTextArea item = new JTextArea();
         for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-			JTextArea item = new JTextArea();
-			item.setText(info.getCurOrder().getItems().get(i).toString()+"\n");
+			item.append(info.getCurOrder().getItems().get(i).toString()+"\n");
             item.setFont(optionsFont);
             orderPanel.add(item);
         }
