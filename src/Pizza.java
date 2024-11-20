@@ -44,28 +44,14 @@ public class Pizza extends MenuItem {
 	public String toString() {
 		StringBuilder pizza = new StringBuilder();
 		
-		// Append the size of pizza
-		switch (size) {
-			case SMALL -> pizza.append("Small");
-			case MEDIUM -> pizza.append("Medium");
-			case LARGE -> pizza.append("Large");
-			case XL -> pizza.append("Extra Large");
-		}
-		pizza.append(" ");
+		// Append the size of pizza dynamically
+		pizza.append(Utils.enumToNormalCase(size)).append(" ");
 		
-		// Append the crust of pizza
-		switch (crust) {
-			case DEEP_DISH -> pizza.append("Deep Dish");
-			case THICK_CRUST -> pizza.append("Thick Crust");
-			case THIN_CRUST -> pizza.append("Thin Crust");
-		}
-		pizza.append(" ");
+		// Append the crust of pizza dynamically
+		pizza.append(Utils.enumToNormalCase(crust)).append(" ");
 		
-		// Append the sauce of pizza
-		if (sauce)
-			pizza.append("Marinara Sauce");
-		else
-			pizza.append("Alfredo Sauce");
+		// Append the sauce dynamically
+		pizza.append(sauce ? "Marinara Sauce" : "Alfredo Sauce");
 		
 		// Append the price (calculated with count externally)
 		pizza.append(" - $").append(String.format("%.2f", getPrice()));
@@ -77,6 +63,7 @@ public class Pizza extends MenuItem {
 		
 		return pizza.toString();
 	}
+	
 	
 	@Override
 	public boolean equals(Object obj) {

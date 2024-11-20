@@ -195,9 +195,10 @@ public class Menu extends CardScreen {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
-		SideType[] wingOptions = {SideType.CHICKEN_WINGS, SideType.LEMON_PEPPER_WINGS};
-		JComboBox<SideType> cobxType = new JComboBox<>(wingOptions);
+		JComboBox<String> cobxType = new JComboBox<>();
+		Utils.populateComboBox(cobxType, WingType.class);
 		cobxType.setFont(optionsFont);
+		Map<String, WingType> wingTypeMap = Utils.createEnumMap(WingType.class);
 		
 		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{5, 10});
 		cobxCount.setFont(optionsFont);
@@ -234,8 +235,9 @@ public class Menu extends CardScreen {
 		int count = cobxNumber.getSelectedIndex() + 1;
 		int wingCt = cobxCount.getSelectedIndex() == 0 ? 5 : 10;
 		
+		WingType selectedWingType = wingTypeMap.get((String) cobxType.getSelectedItem());
 		MenuItemWithCount wingsCount = new MenuItemWithCount(
-				new Wings((SideType) cobxType.getSelectedItem(), 6F, wingCt),
+				new Wings(SideType.WINGS, 6F, wingCt, selectedWingType),
 				count);
 		
 		if (result == JOptionPane.OK_OPTION) {
@@ -392,12 +394,17 @@ public class Menu extends CardScreen {
 				txtAreaPizzaInfo.append(m + "\n");
 			} else if (item instanceof Drink) {
 				txtAreaDrinkInfo.append(m + "\n");
-			} else if (item instanceof Side) {
-				switch (((Side) item).getType()) {
-					case CAESAR_SALAD -> txtAreaSaladInfo.append(m + "\n");
-					case GARLIC_BREAD -> txtAreaGarlicBreadInfo.append((m) + "\n");
-					case GARLIC_KNOTS -> txtAreaGarlicKnotsInfo.append(m + "\n");
-					case CHICKEN_WINGS, LEMON_PEPPER_WINGS -> txtAreaWingInfo.append(m + "\n");
+			} else if (item instanceof Side sideItem) {
+				// Handle the case for WINGS type
+				if (sideItem.getType() == SideType.WINGS) {
+					txtAreaWingInfo.append(m + "\n");
+				} else {
+					// For other side types
+					switch (sideItem.getType()) {
+						case CAESAR_SALAD -> txtAreaSaladInfo.append(m + "\n");
+						case GARLIC_BREAD -> txtAreaGarlicBreadInfo.append(m + "\n");
+						case GARLIC_KNOTS -> txtAreaGarlicKnotsInfo.append(m + "\n");
+					}
 				}
 			}
 		}

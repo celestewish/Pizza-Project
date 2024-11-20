@@ -160,7 +160,7 @@ public abstract class CardScreen {
 				case CAESAR_SALAD -> costBreakdownIndex = 2;
 				case GARLIC_BREAD -> costBreakdownIndex = 3;
 				case GARLIC_KNOTS -> costBreakdownIndex = 4;
-				case CHICKEN_WINGS, LEMON_PEPPER_WINGS -> costBreakdownIndex = 5;
+				case WINGS -> costBreakdownIndex = 5;
 			}
 		} else if (item instanceof Dessert) {
 			costBreakdownIndex = 6;

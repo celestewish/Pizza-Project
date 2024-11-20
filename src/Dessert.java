@@ -1,5 +1,5 @@
 public class Dessert extends MenuItem {
-	DessertType type;
+	private final DessertType type;
 	
 	public Dessert(DessertType type, float price) {
 		super(price);
@@ -13,21 +13,9 @@ public class Dessert extends MenuItem {
 	
 	@Override
 	public String toString() {
-		StringBuilder dessert = new StringBuilder();
-		
 		// Append the type of dessert
-		switch (type) {
-			case CHOCOLATE_LAVA_CAKE -> dessert.append("Chocolate Lava Cake");
-			case CHEESECAKE -> dessert.append("Cheesecake");
-			case COOKIES -> dessert.append("Cookies");
-			case BROWNIE -> dessert.append("Brownie");
-			case CINNAMON_KNOTS -> dessert.append("Cinnamon Knots");
-		}
-		
-		// Append the price
-		dessert.append(" - $").append(String.format("%.2f", getPrice()));
-		
-		return dessert.toString();
+		return Utils.enumToNormalCase(type) + " - $" + String.format("%.2f", getPrice());
+				// Append the price
 	}
 	
 	@Override
