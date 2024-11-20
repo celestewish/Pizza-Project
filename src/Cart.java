@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Cart extends CardScreen {
 	private JPanel pnlCart;
@@ -31,6 +33,14 @@ public class Cart extends CardScreen {
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
+		returnButton.addActionListener(ActionListener_ -> showScreen(Screen.MENU));
+		/*
+		btnSignUp.addActionListener(_ -> {
+			if (info.UserDatabase().customerExists(txtEmail.getText())) {
+				lblEmailTaken.setText("There already exists an account with this email.");
+				return;
+			}
+		 */
 	}
 	
 	@Override
