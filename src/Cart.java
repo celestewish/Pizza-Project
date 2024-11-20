@@ -1,8 +1,7 @@
 import javax.swing.*;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Cart extends CardScreen {
 	private JPanel pnlCart;
@@ -70,6 +69,8 @@ public class Cart extends CardScreen {
 		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
 			JLabel lblItem = new JLabel(info.getCurOrder().getItems().get(i).toString());
 			lblItem.setFont(optionsFont);
+			orderPanel.add(lblItem);
+			lblItem.setText(info.getCurOrder().getItems().get(i).toString());
 			JButton newEditButton = new JButton("Edit");
 			JButton newRemoveButton = new JButton("Remove");
 			orderPanel.add(lblItem);
