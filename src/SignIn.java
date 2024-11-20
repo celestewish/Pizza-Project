@@ -40,9 +40,8 @@ public class SignIn extends CardScreen {
 		btnSignUp.addActionListener(_ -> showScreen(Screen.SIGN_UP));
 		
         btnValidateCredentials.addActionListener(_ -> {
-			if (isTextEmpty(true, txtEmail)) {
+			if (isTextEmpty(true, txtEmail))
 				return;
-			}
 			
 			if (isEmailInvalid(txtEmail))
 				return;

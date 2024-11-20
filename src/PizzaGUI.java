@@ -87,7 +87,7 @@ public class PizzaGUI extends CardScreen {
 
     @Override
     public void onEnterScreen() {
-
+        setUpUserAndOrderInfo(lblHiName, lblCurTotal);
     }
 
     private void createUIComponents() {

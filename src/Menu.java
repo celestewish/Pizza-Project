@@ -326,7 +326,7 @@ public class Menu extends CardScreen {
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
-		JLabel txt1 = new JLabel("Choose Your Garlic Knots Count:");
+		JLabel txt1 = new JLabel("Count:");
 		txt1.setFont(textFont);
 		panel.add(txt1);
 		panel.add(cobxCount);
@@ -363,15 +363,13 @@ public class Menu extends CardScreen {
 	}
 	
 	public void SaladOptionPopUp() {
-		
-		
 		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxCount.setFont(info.getOptionsFont());
 		
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
-		JLabel txt1 = new JLabel("Choose How Many Caesar Salads:");
+		JLabel txt1 = new JLabel("Count:");
 		txt1.setFont(info.getTextFont());
 		panel.add(txt1);
 		panel.add(cobxCount);

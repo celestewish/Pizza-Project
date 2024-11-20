@@ -1,0 +1,12 @@
+public enum ToppingType {
+	MUSHROOMS,
+	BACON,
+	CHICKEN,
+	PEPPERONI,
+	SAUSAGE,
+	GROUND_BEEF,
+	SPINACH,
+	ONIONS,
+	OLIVES,
+	PEPPERS
+}
