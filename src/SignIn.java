@@ -47,7 +47,7 @@ public class SignIn extends CardScreen {
 				return;
 			
 			if (!info.UserDatabase().customerExists(txtEmail.getText())) {
-				lblEmailNotExist.setText("! No account exists for this email");
+				lblEmailNotExist.setText("No account exists for this email. Please make an account.");
 				return;
 			}
 			

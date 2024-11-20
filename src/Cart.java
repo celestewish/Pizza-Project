@@ -65,7 +65,7 @@ public class Cart extends CardScreen {
 	
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
-		return null;
+		return toScreen;
 	}
 	
 	@Override

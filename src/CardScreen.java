@@ -75,7 +75,6 @@ public abstract class CardScreen {
 	}
 	
 	
-	
 	public void setUpNavBar_LoggedOut(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_up_sign_in) {
 		home.addActionListener(_ -> showScreen(Screen.HOME));
 		menu.addActionListener(_ -> showScreen(Screen.MENU));
