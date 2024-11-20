@@ -657,12 +657,6 @@
                       <text value="Edit"/>
                     </properties>
                   </component>
-                  <component id="57d5b" class="javax.swing.JSpinner" default-binding="true">
-                    <constraints>
-                      <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="1" use-parent-layout="false"/>
-                    </constraints>
-                    <properties/>
-                  </component>
                   <component id="9364f" class="javax.swing.JButton" binding="removeButton">
                     <constraints>
                       <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">

@@ -119,9 +119,11 @@ public class ToppingsGUI extends CardScreen {
                 ToppingType topping = entry.getKey(); // Get the enum
                 JComboBox<?> comboBox = entry.getValue(); // Get the JComboBox
                 
-                if (comboBox.getSelectedItem() != ToppingPlacement.NONE) {
+                /*if (comboBox.getSelectedItem() != ToppingPlacement.NONE) {
                     info.getCurPizza().addTopping(new Topping());
                 }
+
+                 */
             }
         });
     }

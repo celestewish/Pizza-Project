@@ -49,7 +49,13 @@ public class Payment_Receipt extends CardScreen{
     @Override
     public void onEnterScreen() {
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);
-        OrderSummary.setText(String.valueOf(info.getCurOrder()));
+        Font textFont = new Font("Times New Roman", Font.BOLD, 24);
+        Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+        if (info.getCurPizza() != null) {
+            Pizza myPizza = info.getCurPizza();
+            ItemType.setText("Custom Pizza");
+            ListIngredients.setText(myPizza.toString());
+        }
         TotalInfo.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
     }
     
