@@ -60,6 +60,15 @@ public class Cart extends CardScreen {
 			FoodDescription.setText(myPizza.toString());
 			SecondDescription.setText("");
 		}
+
+		if(info.getCurOrder().getItems()!=null){
+			Order myItems = info.getCurOrder();
+			FoodType.setText("Items");
+			FoodDescription.setText(myItems.toString());
+			SecondDescription.setText("");
+		}
+
+
 		editButton.addActionListener(_ -> {showScreen(Screen.CREATE_PIZZA);});
 		removeButton.addActionListener(_ -> {
 			info.setCurPizza(null);
