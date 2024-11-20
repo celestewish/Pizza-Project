@@ -102,6 +102,12 @@ public abstract class CardScreen {
 		if (info.getCurOrder() != null)
 			lblCurTotal.setText("Current Total: $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost()));
 	}
+
+	public void setUpForCheckOut(JLabel lblCheckName, JLabel lblCheckEmail, JLabel lblCheckPhone){
+		lblCheckName.setText(info.CurrentUser().getName());
+		lblCheckEmail.setText(info.getEmail());
+		lblCheckPhone.setText(info.getPhoneAtIndex0());
+	}
 	
 	
 	public String getPanelName() {
