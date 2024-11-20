@@ -97,7 +97,8 @@ public abstract class CardScreen {
 	}
 	
 	public void setUpUserAndOrderInfo(JLabel lblHiName, JLabel lblCurTotal) {
-		lblHiName.setText("Hi, " + info.CurrentUser().getName().split(" ")[0]);
+		if (info.CurrentUser() != null)
+			lblHiName.setText("Hi, " + info.CurrentUser().getName().split(" ")[0]);
 		if (info.getCurOrder() != null)
 			lblCurTotal.setText("Current Total: $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost()));
 	}

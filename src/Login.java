@@ -29,7 +29,7 @@ public class Login extends CardScreen {
 		
 		btnLOGIN.addActionListener(_ -> {
 			info.setLoggedIn(true);
-			info.setCurrentUser(new Customer("Clairvoyance", "f@f.f", "123456!Q", "1 2 3 FL 12345", "1234567890"));
+			info.setCurrentUser(new Customer("Clairvoyance Jones Klunker", "f@f.f", "123456!Q", "1 2 3 FL 12345", "1234567890"));
 			showScreen(Screen.MENU);
 		});
 	}

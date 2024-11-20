@@ -1,19 +1,18 @@
 public class Topping {
-	private final String name;
+	private final ToppingType type;
 	private float basePrice;
 	private boolean extra;
 	private ToppingPlacement placement;
 	
-	public Topping(String name, float basePrice, boolean extra, ToppingPlacement placement) {
-		this.name = name;
-		this.basePrice = basePrice;
+	public Topping(ToppingType type, boolean extra, ToppingPlacement placement) {
+		this.type = type;
 		this.extra = extra;
 		this.placement = placement;
 	}
 	
 	@Override
 	public String toString() {
-		StringBuilder topping = new StringBuilder(name);
+		StringBuilder topping = new StringBuilder(Utils.enumToNormalCase(type));
 		topping.append(" ");
 		
 		// Append Extra if applicable
@@ -26,8 +25,8 @@ public class Topping {
 		return topping.toString();
 	}
 	
-	public String getName() {
-		return name;
+	public ToppingType getType() {
+		return type;
 	}
 	
 	public float calcTotalPrice() {
@@ -37,14 +36,6 @@ public class Topping {
 			total /= 1.85F;
 		
 		return total;
-	}
-	
-	public float getBasePrice() {
-		return basePrice;
-	}
-	
-	public void setBasePrice(float basePrice) {
-		this.basePrice = basePrice;
 	}
 	
 	public boolean isExtra() {
