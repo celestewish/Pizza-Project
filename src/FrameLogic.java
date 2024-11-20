@@ -52,8 +52,8 @@ public class FrameLogic extends JFrame {
 		Payment_Receipt paymentReceipt = new Payment_Receipt((CardLayout)screenContainer.getLayout(), screenContainer,
 				"PaymentReceipt");
 		
-//		Cart cart = new Cart((CardLayout)screenContainer.getLayout(), screenContainer,
-//				"Cart");
+		Cart cart = new Cart((CardLayout)screenContainer.getLayout(), screenContainer,
+				"Cart");
 		
 		LocationsForUser locationsForUser = new LocationsForUser((CardLayout)screenContainer.getLayout(), screenContainer,
 				"LocationsForUser");
