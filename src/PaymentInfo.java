@@ -33,6 +33,7 @@ public class PaymentInfo extends CardScreen {
 	private JLabel deliveryDetails;
 	private JLabel securePayment;
 
+
 	public PaymentInfo(CardLayout screenLayoutController, JPanel screenContainer, String panelName){
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlPaymentInfo);
@@ -42,18 +43,16 @@ public class PaymentInfo extends CardScreen {
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 		
 		//submits payment
-		submitPaymentButton.addActionListener((e) -> {
-			String[] name = info.getName().split(" ");
-			String[] custAddress = info.getAddress().split(" ");
-			streetName.setText(custAddress[0] + " "  + custAddress[1] + " " + custAddress[2]);
-			cityStateZip.setText(custAddress[3] + " " + custAddress[4] + " " + custAddress[5]);
+		makePaymentButton.addActionListener(_ -> {
+			if(!checkPayment()){
+				showInfoDialogue("Payment format is incorrect", "Ok", "Incorrect Format");
+			}
+			else{
+				showScreen(Screen.PAYMENT_RECEIPT);
+			}
 
-
-			
-			showScreen(Screen.PAYMENT_RECEIPT);
-			
 		});
-		submitPaymentButton.addActionListener(ActionListener_ -> showScreen(Screen.CHECK_OUT));
+
 	}
 	
 	public boolean isValidDate(String date){
@@ -72,6 +71,64 @@ public class PaymentInfo extends CardScreen {
 		}
 		
 		return year >= 0 && year <= 99;
+	}
+
+	public boolean checkCardNumber(){
+		boolean checkCard = true;
+		for(char c :cardNumberInput.getText().toCharArray()){
+			if(!Character.isDigit(c) || c!=' '){
+				checkCard = false;
+				break;
+			}
+		}
+		System.out.println(cardNumberInput.getText().length());
+		if(cardNumberInput.getText().length() != 19){
+			checkCard = false;
+		}
+
+		System.out.println(checkCard);
+
+		return checkCard;
+	}
+
+	public boolean checkCVV(){
+		boolean checkCVVInput = true;
+		for(char c : CVV.getText().toCharArray()){
+			if(!Character.isDigit(c)){
+				checkCVVInput = false;
+				break;
+			}
+		}
+
+		if(CVV.getText().length() !=3){
+			checkCVVInput = false;
+		}
+		System.out.println(checkCVVInput);
+
+		return checkCVVInput;
+	}
+
+	public boolean checkZipCode(){
+		boolean checkZip = true;
+		for(char c : zipCodeInput.getText().toCharArray()){
+			if(!Character.isDigit(c)){
+				checkZip = false;
+				break;
+			}
+		}
+
+		if (zipCodeInput.getText().length()!=6) {
+			checkZip = false;
+
+		}
+		System.out.println(checkZip);
+
+		return checkZip;
+	}
+
+
+	public boolean checkPayment(){
+		return checkCardNumber() && isValidDate(expDateInput.getText()) && checkCVV() && checkZipCode();
 	}
 	
 	@Override

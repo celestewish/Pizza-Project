@@ -98,7 +98,12 @@
               <foreground color="-16777216"/>
             </properties>
             <border type="none"/>
-            <children/>
+            <children>
+              <component id="b8e63" class="javax.swing.JTextArea" binding="orderShown">
+                <constraints/>
+                <properties/>
+              </component>
+            </children>
           </scrollpane>
           <component id="a56b" class="javax.swing.JLabel" binding="lblCheckName">
             <constraints>

@@ -233,6 +233,9 @@ public abstract class CardScreen {
 		// Return true if the user clicked "Yes" (proceed), false otherwise
 		return choice == JOptionPane.YES_OPTION;
 	}
+
+
+
 	
 	public static boolean showConfirmationDialogue(String message, String option1, String defaultOption, String title) {
 		// Create a JPanel to hold custom content
@@ -289,6 +292,8 @@ public abstract class CardScreen {
 				buttonText           // Default button
 		);
 	}
+
+
 	
 	public void showPopUpWindow(String message, String title, int optionPaneType) {
 		JOptionPane.showMessageDialog(

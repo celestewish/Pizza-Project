@@ -527,7 +527,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="First Last"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="99d78" class="javax.swing.JTextField" binding="cardNumberInput">
@@ -537,7 +537,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="1234 5678 9012 3456"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="eabce" class="javax.swing.JTextField" binding="CVV">
@@ -547,7 +547,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="123"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="de9e4" class="javax.swing.JLabel" binding="expDate">
@@ -575,7 +575,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="00/00"/>
+              <text value=""/>
             </properties>
           </component>
           <component id="cbb59" class="javax.swing.JTextField" binding="zipCodeInput">
@@ -585,7 +585,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="123456"/>
+              <text value=""/>
             </properties>
           </component>
           <grid id="ebd8f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
