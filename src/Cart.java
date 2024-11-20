@@ -31,11 +31,12 @@ public class Cart extends CardScreen {
 		setScreenPanel(pnlCart);
 		info.registerScreenName(Screen.CART, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
-
+		
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
+		
 		if (info.getCurPizza() != null) {
 			Pizza myPizza = info.getCurPizza();
 			FoodType.setText("Custom Pizza");
@@ -60,7 +61,7 @@ public class Cart extends CardScreen {
 	
 	@Override
 	public boolean onAttemptLeaveScreen() {
-		return false;
+		return true;
 	}
 	
 	@Override
