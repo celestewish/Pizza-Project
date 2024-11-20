@@ -108,7 +108,7 @@ public class Menu extends CardScreen {
         JPanel orderPanel = new JPanel();
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
         for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-            JLabel itemLabel = new JLabel("<html>"+info.getCurOrder().getItems().get(i).toString() + "<br/></html>", SwingConstants.CENTER);
+            JTextField itemLabel = new JTextField("<html>"+info.getCurOrder().getItems().get(i).toString() + "<br/></html>", SwingConstants.CENTER);
             itemLabel.setFont(optionsFont);
             orderPanel.add(itemLabel);
         }
