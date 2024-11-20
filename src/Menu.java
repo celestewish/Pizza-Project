@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Map;
 
 public class Menu extends CardScreen {
@@ -86,6 +84,10 @@ public class Menu extends CardScreen {
 		addJComponent(txtAreaSaladInfo);
 		addJComponent(txtAreaWingInfo);
 		
+		for (JComponent j : getComponents()) {
+			j.setFocusable(false);
+		}
+		
 		btnAddDrink.addActionListener(_ -> DrinkOptionPopUp());
 		btnAddWings.addActionListener(_ -> WingsOptionPopUp());
 		btnAddGarlicBread.addActionListener(_ -> GarlicBreadOptionPopUp());
@@ -99,7 +101,6 @@ public class Menu extends CardScreen {
 		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
 		btnCreatePizza.addActionListener(_ -> showScreen(Screen.CREATE_PIZZA));
 		btnViewOrder.addActionListener(_ -> viewOrderScreen());
-		btnCart.addActionListener(_ -> showScreen(Screen.CART));
 	}
 
 	public void viewOrderScreen() {
