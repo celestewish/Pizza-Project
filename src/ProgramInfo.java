@@ -18,6 +18,9 @@ public class ProgramInfo {
 	private final Font checkBoxFont = new Font("Arial", Font.BOLD, 20);
 	private final Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 	private final Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+	private final Font totalFont = new Font("Times New Roman", Font.PLAIN, 16);
+	private final Font paymentFont = new Font("Times New Roman", Font.BOLD, 28);
+
 	
 	protected final DecimalFormat formatter;
 	
@@ -164,4 +167,10 @@ public class ProgramInfo {
 	public Font getOptionsFont() {
 		return optionsFont;
 	}
+
+	public Font getTotalFont(){return totalFont;}
+
+	public Font getPaymentFont(){return paymentFont;}
+
+
 }

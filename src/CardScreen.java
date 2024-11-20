@@ -108,6 +108,14 @@ public abstract class CardScreen {
 		lblCheckEmail.setText(info.getEmail());
 		lblCheckPhone.setText(info.getPhoneAtIndex0());
 	}
+
+	public void setUpForPaymentInfo(JTextArea txtAreaTotal, JTextArea txtAreaCustAddress){
+		txtAreaTotal.setText("Subtotal : $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost()) +
+		"\n\nTax: $" + info.formatter.format(0.07*info.getCurOrder().calcTotalOrderCost()) + "\n\nTotal :$" + info.formatter.format(1.07*info.getCurOrder().calcTotalOrderCost()));
+		txtAreaCustAddress.setText(info.getAddress());
+	}
+
+
 	
 	
 	public String getPanelName() {
