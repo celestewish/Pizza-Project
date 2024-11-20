@@ -99,14 +99,16 @@ public class Menu extends CardScreen {
 		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
 		btnCreatePizza.addActionListener(_ -> showScreen(Screen.CREATE_PIZZA));
 		btnViewOrder.addActionListener(_ -> viewOrderScreen());
+		btnCart.addActionListener(_ -> showScreen(Screen.CART));
 	}
 
 	public void viewOrderScreen() {
         Font textFont = new Font("Times New Roman", Font.BOLD, 24);
         Font optionsFont = new Font("Arial", Font.PLAIN, 20);
         JPanel orderPanel = new JPanel();
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
         for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-            JLabel itemLabel = new JLabel("<html>"+info.getCurOrder().getItems().get(i).toString() + "<br></html>");
+            JLabel itemLabel = new JLabel("<html>"+info.getCurOrder().getItems().get(i).toString() + "<br/></html>", SwingConstants.CENTER);
             itemLabel.setFont(optionsFont);
             orderPanel.add(itemLabel);
         }
