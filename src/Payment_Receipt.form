@@ -85,7 +85,7 @@
             </constraints>
             <properties>
               <foreground color="-16777216"/>
-              <text value="Thank you for placing your order, an email confirmation will be sent to @customer email"/>
+              <text value="Thank you for placing your order, an email confirmation will be sent to your email"/>
             </properties>
           </component>
           <component id="28f35" class="javax.swing.JLabel" binding="OrderPlace">
@@ -97,7 +97,7 @@
             <properties>
               <font size="20" style="1"/>
               <foreground color="-16777216"/>
-              <text value="Your Order has been Placed, Customer Name"/>
+              <text value="Your Order has been Placed!"/>
             </properties>
           </component>
           <component id="1f023" class="javax.swing.JLabel" binding="ItemType">
