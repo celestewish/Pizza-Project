@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class SignIn extends CardScreen {
 	private JPanel pnlSignIn;
+	
 	private JPanel pnlLogo;
 	
 	private JButton btnHome;
@@ -47,7 +48,7 @@ public class SignIn extends CardScreen {
 				return;
 			
 			if (!info.UserDatabase().customerExists(txtEmail.getText())) {
-				lblEmailNotExist.setText("! No account exists for this email");
+				lblEmailNotExist.setText("No account exists for this email. Please make an account.");
 				return;
 			}
 			
@@ -89,7 +90,7 @@ public class SignIn extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen() {
+	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 	

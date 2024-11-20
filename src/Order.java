@@ -59,7 +59,9 @@ public class Order {
 					case CAESAR_SALAD -> saladTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
 					case GARLIC_BREAD -> breadTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
 					case GARLIC_KNOTS -> knotTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
-					case CHICKEN_WINGS, LEMON_PEPPER_WINGS -> wingTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+					case WINGS -> {
+						wingTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount
+					}
 				}
 			} else if (item instanceof Dessert) {
 				dessertTotal += m.calcTotalPrice(); // Use calcTotalPrice from MenuItemWithCount

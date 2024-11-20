@@ -127,7 +127,7 @@ public class PaymentInfo extends CardScreen {
 	}
 	
 	@Override
-	public boolean onAttemptLeaveScreen() {
+	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 	

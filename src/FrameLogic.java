@@ -12,7 +12,7 @@ public class FrameLogic extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		UIManager.put("Button.font", new Font("Times New Roman", Font.PLAIN, 18));
+		UIManager.put("Button.font", new Font("Arial", Font.BOLD, 18));
 		
 		screenContainer.setLayout(new CardLayout());
 		
@@ -52,8 +52,8 @@ public class FrameLogic extends JFrame {
 		Payment_Receipt paymentReceipt = new Payment_Receipt((CardLayout)screenContainer.getLayout(), screenContainer,
 				"PaymentReceipt");
 		
-//		Cart cart = new Cart((CardLayout)screenContainer.getLayout(), screenContainer,
-//				"Cart");
+		Cart cart = new Cart((CardLayout)screenContainer.getLayout(), screenContainer,
+				"Cart");
 		
 		LocationsForUser locationsForUser = new LocationsForUser((CardLayout)screenContainer.getLayout(), screenContainer,
 				"LocationsForUser");

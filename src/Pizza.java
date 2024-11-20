@@ -3,10 +3,10 @@ import java.util.LinkedList;
 public class Pizza extends MenuItem {
 	private PizzaSize size;
 	private CrustType crust;
-	private boolean sauce; // true for marinara, false for alfredo
+	private SauceOption sauce; // true for marinara, false for alfredo
 	private final LinkedList<Topping> toppings;
 	
-	public Pizza(PizzaSize size, CrustType crust, boolean sauce) {
+	public Pizza(PizzaSize size, CrustType crust, SauceOption sauce) {
 		this.size = size;
 		this.crust = crust;
 		this.sauce = sauce;
@@ -44,39 +44,29 @@ public class Pizza extends MenuItem {
 	public String toString() {
 		StringBuilder pizza = new StringBuilder();
 		
-		// Append the size of pizza
-		switch (size) {
-			case SMALL -> pizza.append("Small");
-			case MEDIUM -> pizza.append("Medium");
-			case LARGE -> pizza.append("Large");
-			case XL -> pizza.append("Extra Large");
-		}
-		pizza.append(" ");
+		// Append the size of pizza dynamically
+		pizza.append(Utils.enumToNormalCase(size)).append(" ");
 		
-		// Append the crust of pizza
-		switch (crust) {
-			case DEEP_DISH -> pizza.append("Deep Dish");
-			case THICK_CRUST -> pizza.append("Thick Crust");
-			case THIN_CRUST -> pizza.append("Thin Crust");
-		}
-		pizza.append(" ");
+		// Append the crust of pizza dynamically
+		pizza.append(Utils.enumToNormalCase(crust)).append(" ");
 		
-		// Append the sauce of pizza
-		if (sauce)
-			pizza.append("Marinara Sauce");
-		else
-			pizza.append("Alfredo Sauce");
+		// Append the sauce dynamically
+		pizza.append(Utils.enumToNormalCase(sauce)).append(" ");
 		
 		// Append the price (calculated with count externally)
 		pizza.append(" - $").append(String.format("%.2f", getPrice()));
 		
 		// Append the toppings
-		pizza.append("\nToppings:\n");
-		for (Topping topping : toppings)
-			pizza.append("  ").append(topping.toString()).append("\n");
+		if (!toppings.isEmpty()) {
+			pizza.append("\nToppings:\n");
+			for (Topping topping : toppings) {
+				pizza.append("  ").append(topping.toString()).append("\n");
+			}
+		}
 		
 		return pizza.toString();
 	}
+	
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -106,11 +96,11 @@ public class Pizza extends MenuItem {
 		this.crust = crust;
 	}
 	
-	public boolean getSauce() {
+	public SauceOption getSauce() {
 		return sauce;
 	}
 	
-	public void setSauce(boolean sauce) {
+	public void setSauce(SauceOption sauce) {
 		this.sauce = sauce;
 	}
 	

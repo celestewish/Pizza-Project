@@ -24,30 +24,13 @@ public class Drink extends MenuItem {
 	
 	@Override
 	public String toString() {
-		StringBuilder drink = new StringBuilder();
-		
-		switch (type) {
-			case COKE -> drink.append("Coke");
-			case DIET_COKE -> drink.append("Diet Coke");
-			case PEPSI -> drink.append("Pepsi");
-			case DR_PEPPER -> drink.append("Dr Pepper");
-			case SPRITE -> drink.append("Sprite");
-			case ROOT_BEER -> drink.append("Root Beer");
-			case SWEET_TEA -> drink.append("Sweet Tea");
-		}
-		
-		drink.append(" (");
-		
-		// Add size to the string
-		switch (size) {
-			case SMALL -> drink.append("Small");
-			case MEDIUM -> drink.append("Medium");
-			case LARGE -> drink.append("Large");
-		}
-		
-		drink.append(") - $").append(String.format("%.2f", calcPrice()));  // Use a single count for display purposes
-		
-		return drink.toString();
+		// Append the drink type using Utils.enumToNormalCase
+		return Utils.enumToNormalCase(type) +
+				// Append the size dynamically
+				" (" + Utils.enumToNormalCase(size) + ")" +  // Using enumToNormalCase for size
+				
+				// Append price
+				" - $" + String.format("%.2f", calcPrice());
 	}
 	
 	@Override

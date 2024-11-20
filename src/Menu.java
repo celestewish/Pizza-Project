@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 public class Menu extends CardScreen {
 	private JPanel pnlMenu;
@@ -59,7 +60,7 @@ public class Menu extends CardScreen {
 	private JButton btnEditDrinks;
 	private JTextArea txtAreaDrinkInfo;
 	
-	double currentVerticalScrollPos = 0;
+	private double currentVerticalScrollPos = 0;
 	
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
@@ -83,15 +84,39 @@ public class Menu extends CardScreen {
 		addJComponent(txtAreaSaladInfo);
 		addJComponent(txtAreaWingInfo);
 		
+		for (JComponent j : getComponents()) {
+			j.setFocusable(false);
+		}
+		
 		btnAddDrink.addActionListener(_ -> DrinkOptionPopUp());
 		btnAddWings.addActionListener(_ -> WingsOptionPopUp());
 		btnAddGarlicBread.addActionListener(_ -> GarlicBreadOptionPopUp());
 		btnAddGarlicKnots.addActionListener(_ -> GarlicKnotsOptionPopUp());
 		btnAddSalad.addActionListener(_ -> SaladOptionPopUp());
+		btnEditDrinks.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditGarlicBread.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditGarlicKnots.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditSalad.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditWings.addActionListener(_ -> showScreen(Screen.CART));
+		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
+		btnCreatePizza.addActionListener(_ -> showScreen(Screen.CREATE_PIZZA));
+		btnViewOrder.addActionListener(_ -> viewOrderScreen());
 	}
-	
+
+	public void viewOrderScreen() {
+        JPanel orderPanel = new JPanel();
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
+		JTextArea item = new JTextArea();
+        for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
+			item.append(info.getCurOrder().getItems().get(i).toString()+"\n");
+            item.setFont(info.getOptionsFont());
+            orderPanel.add(item);
+        }
+        JOptionPane.showMessageDialog(null, orderPanel, "View Order", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 	@Override
-	public boolean onAttemptLeaveScreen() {
+	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 	
@@ -104,18 +129,13 @@ public class Menu extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
-		lblHiName.setText("Hi, " + info.CurrentUser().getName().split(" ")[0]);
-		if (info.getCurOrder() != null)
-			lblCurTotal.setText("Current Total: $" + info.getCurOrder().calcTotalOrderCost());
+		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 		
 		resetScreen();
 		refillInfoFields();
 		currentVerticalScrollPos = 0;
-		SwingUtilities.invokeLater(() -> {
-			scrollPane.getViewport().setViewPosition((new Point(0, 0)));
-		});
+		SwingUtilities.invokeLater(() -> scrollPane.getViewport().setViewPosition((new Point(0, 0))));
 	}
-	
 	
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
@@ -133,11 +153,15 @@ public class Menu extends CardScreen {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
-		JComboBox<DrinkType> cobxType = new JComboBox<>(DrinkType.values());
+		JComboBox<String> cobxType = new JComboBox<>();
+		Utils.populateComboBox(cobxType, DrinkType.class);
 		cobxType.setFont(optionsFont);
+		Map<String, DrinkType> drinkTypeMap = Utils.createEnumMap(DrinkType.class);
 		
-		JComboBox<DrinkSize> cobxSize = new JComboBox<>(DrinkSize.values());
+		JComboBox<String> cobxSize = new JComboBox<>();
+		Utils.populateComboBox(cobxSize, DrinkSize.class);
 		cobxSize.setFont(optionsFont);
+		Map<String, DrinkSize> drinkSizeMap = Utils.createEnumMap(DrinkSize.class);
 		
 		JComboBox<Integer> cobxNumber = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxNumber.setFont(optionsFont);
@@ -171,8 +195,10 @@ public class Menu extends CardScreen {
 		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		
+		DrinkSize selectedDrinkSize = drinkSizeMap.get((String) cobxSize.getSelectedItem());
+		DrinkType selectedDrinkType = drinkTypeMap.get((String) cobxType.getSelectedItem());
 		MenuItemWithCount drinkCount = new MenuItemWithCount(
-				new Drink((DrinkSize) cobxSize.getSelectedItem(), (DrinkType) cobxType.getSelectedItem(), 1F),
+				new Drink(selectedDrinkSize, selectedDrinkType, 1F),
 				count);
 		
 		if (result == JOptionPane.OK_OPTION) {
@@ -186,9 +212,10 @@ public class Menu extends CardScreen {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
-		SideType[] wingOptions = {SideType.CHICKEN_WINGS, SideType.LEMON_PEPPER_WINGS};
-		JComboBox<SideType> cobxType = new JComboBox<>(wingOptions);
+		JComboBox<String> cobxType = new JComboBox<>();
+		Utils.populateComboBox(cobxType, WingType.class);
 		cobxType.setFont(optionsFont);
+		Map<String, WingType> wingTypeMap = Utils.createEnumMap(WingType.class);
 		
 		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{5, 10});
 		cobxCount.setFont(optionsFont);
@@ -225,8 +252,9 @@ public class Menu extends CardScreen {
 		int count = cobxNumber.getSelectedIndex() + 1;
 		int wingCt = cobxCount.getSelectedIndex() == 0 ? 5 : 10;
 		
+		WingType selectedWingType = wingTypeMap.get((String) cobxType.getSelectedItem());
 		MenuItemWithCount wingsCount = new MenuItemWithCount(
-				new Wings((SideType) cobxType.getSelectedItem(), 6F, wingCt),
+				new Wings(SideType.WINGS, 6F, wingCt, selectedWingType),
 				count);
 		
 		if (result == JOptionPane.OK_OPTION) {
@@ -335,17 +363,16 @@ public class Menu extends CardScreen {
 	}
 	
 	public void SaladOptionPopUp() {
-		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
-		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+		
 		
 		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-		cobxCount.setFont(optionsFont);
+		cobxCount.setFont(info.getOptionsFont());
 		
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
 		JLabel txt1 = new JLabel("Choose How Many Caesar Salads:");
-		txt1.setFont(textFont);
+		txt1.setFont(info.getTextFont());
 		panel.add(txt1);
 		panel.add(cobxCount);
 		
@@ -383,12 +410,17 @@ public class Menu extends CardScreen {
 				txtAreaPizzaInfo.append(m + "\n");
 			} else if (item instanceof Drink) {
 				txtAreaDrinkInfo.append(m + "\n");
-			} else if (item instanceof Side) {
-				switch (((Side) item).getType()) {
-					case CAESAR_SALAD -> txtAreaSaladInfo.append(m + "\n");
-					case GARLIC_BREAD -> txtAreaGarlicBreadInfo.append((m) + "\n");
-					case GARLIC_KNOTS -> txtAreaGarlicKnotsInfo.append(m + "\n");
-					case CHICKEN_WINGS, LEMON_PEPPER_WINGS -> txtAreaWingInfo.append(m + "\n");
+			} else if (item instanceof Side sideItem) {
+				// Handle the case for WINGS type
+				if (sideItem.getType() == SideType.WINGS) {
+					txtAreaWingInfo.append(m + "\n");
+				} else {
+					// For other side types
+					switch (sideItem.getType()) {
+						case CAESAR_SALAD -> txtAreaSaladInfo.append(m + "\n");
+						case GARLIC_BREAD -> txtAreaGarlicBreadInfo.append(m + "\n");
+						case GARLIC_KNOTS -> txtAreaGarlicKnotsInfo.append(m + "\n");
+					}
 				}
 			}
 		}
@@ -405,11 +437,7 @@ public class Menu extends CardScreen {
 	public void addItemToOrder(MenuItemWithCount itemWithCount) {
 		int outcome = info.getCurOrder().addItem(itemWithCount);
 		if (outcome == -1) {
-			JOptionPane.showMessageDialog(
-					null,
-					"You already have the maximum amount of that item!",
-					"Maximum amount of item reached",
-					JOptionPane.INFORMATION_MESSAGE);
+			showInfoDialogue("You've reached the maximum number of this item", "Okay", "Max amount of 1 item is 10");
 		}
 	}
 	

@@ -30,9 +30,18 @@ public class Side extends MenuItem {
 		switch (type) {
 			case GARLIC_BREAD -> side.append("Garlic Bread");
 			case GARLIC_KNOTS -> side.append("Garlic Knots");
-			case CHICKEN_WINGS -> side.append("Chicken Wings");
-			case LEMON_PEPPER_WINGS -> side.append("Lemon Pepper Wings");
 			case CAESAR_SALAD -> side.append("Caesar Salad");
+			case WINGS -> {
+				WingType wingType = ((Wings) this).getWingType();  // Assuming this class is a Wing type and has a getWingType method
+				switch (wingType) {
+					case BREADED_CHICKEN_WINGS -> side.append("Breaded Chicken Wings");
+					case LEMON_PEPPER_WINGS -> side.append("Lemon Pepper Wings");
+					case HOT_WINGS -> side.append("Hot Wings");
+					case HONEY_FIRE_WINGS -> side.append("Honey Fire Wings");
+					case APRICOT_GLAZE_WINGS -> side.append("Apricot Glaze Wings");
+					case PERMESIAN_WINGS -> side.append("Parmesan Wings");
+				}
+			}
 		}
 		
 		// Append the count if applicable

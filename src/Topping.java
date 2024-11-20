@@ -15,13 +15,14 @@ public class Topping {
 	public String toString() {
 		StringBuilder topping = new StringBuilder(name);
 		topping.append(" ");
+		
+		// Append Extra if applicable
 		if (extra)
 			topping.append("Extra").append(" ");
-		switch (placement) {
-			case WHOLE -> topping.append("Whole");
-			case LEFT -> topping.append("Left");
-			case RIGHT -> topping.append("Right");
-		}
+		
+		// Append placement (using enumToNormalCase for readable enum value)
+		topping.append(Utils.enumToNormalCase(placement)); // Convert the placement enum to a readable string
+		
 		return topping.toString();
 	}
 	

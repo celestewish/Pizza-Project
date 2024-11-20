@@ -1,26 +1,9 @@
 public class Wings extends Side{
-	public Wings(SideType type, float price, int count) {
-		super(type, price, count);
-	}
+	private final WingType wingType;
 	
-	@Override
-	public String toString() {
-		StringBuilder wing = new StringBuilder();
-		
-		// Append the type of side
-		switch (type) {
-			case LEMON_PEPPER_WINGS -> wing.append("Lemon Pepper Wings").append(" ");
-			case CHICKEN_WINGS -> wing.append("Chicken Wings").append(" ");
-		}
-		
-		// Append the count
-		if (getCount() > 0)
-			wing.append(" (").append(getCount()).append(" count)");
-		
-		// Append the price
-		wing.append(" - $").append(String.format("%.2f", getPrice()));
-		
-		return wing.toString();
+	public Wings(SideType type, float price, int count, WingType wingType) {
+		super(type, price, count);
+		this.wingType = wingType;
 	}
 	
 	@Override
@@ -28,7 +11,13 @@ public class Wings extends Side{
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		Wings wings = (Wings) o;
-		return  type == wings.type &&
-				getCount() == wings.getCount(); // Explicitly compare the boolean count
+		
+		// Compare the WingType and count for equality
+		return getWingType() == wings.getWingType() &&  // Compare WingType
+				getCount() == wings.getCount();  // Compare count
+	}
+	
+	public WingType getWingType() {
+		return wingType;
 	}
 }

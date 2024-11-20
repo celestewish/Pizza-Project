@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Objects;
+import java.util.Map;
 
 public class PizzaGUI extends CardScreen {
     private JPanel pnlCreatePizza;
+    
+    private JPanel pnlLogo;
+    private JPanel pnlCartLogo;
     
     private JButton btnHome;
     private JButton btnContinue;
@@ -15,93 +16,86 @@ public class PizzaGUI extends CardScreen {
     private JButton btnSignOut;
     private JButton btnCart;
     
-    private JComboBox<?> cboxCrust;
-    private JComboBox<?> cboxSize;
-    private JComboBox<?> cboxSauce;
-    private JPanel pnlLogo;
-    private JPanel pnlCartLogo;
     private JLabel lblHiName;
     private JLabel lblCurTotal;
+
+    private JComboBox<String> cobxCrust;
+    private JComboBox<String> cobxSize;
+    private JComboBox<String> cobxSauce;
     
+    private JPanel imgCrust;
+    private JPanel imgSize;
+    private JPanel imgSauce;
+
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
         setScreenPanel(pnlCreatePizza);
         info.registerScreenName(Screen.CREATE_PIZZA, this);
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
         
-        final PizzaSize[] mySize = new PizzaSize[1];
-        final CrustType[] myCrust = new CrustType[1];
-        final boolean[] sauce = new boolean[1];
-
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 
-        btnContinue.addActionListener(_ -> {
-            Pizza newPizza = new Pizza(mySize[0], myCrust[0], sauce[0]);
-            info.setCurPizza(newPizza);
-            showScreen(Screen.TOPPINGS);
-        });
-
-        cboxCrust.addActionListener(_ -> {
-            if (Objects.requireNonNull(cboxCrust.getSelectedItem()).toString().equalsIgnoreCase("deep dish")){
-                myCrust[0] = CrustType.DEEP_DISH;
-            }
-            else if (cboxCrust.getSelectedItem().toString().equalsIgnoreCase("thin")){
-                myCrust[0] = CrustType.THIN_CRUST;
-            }
-            else if (cboxCrust.getSelectedItem().toString().equalsIgnoreCase("thick")){
-                myCrust[0] = CrustType.THICK_CRUST;
-            }
-        });
         
-        cboxSize.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (cboxSize.getSelectedItem().toString().equalsIgnoreCase("small")){
-                    mySize[0] = PizzaSize.SMALL;
-                }
-                else if (cboxSize.getSelectedItem().toString().equalsIgnoreCase("medium")){
-                    mySize[0] = PizzaSize.MEDIUM;
-                }
-                else if (cboxSize.getSelectedItem().toString().equalsIgnoreCase("large")){
-                    mySize[0] = PizzaSize.LARGE;
-                }
-                else if (cboxSize.getSelectedItem().toString().equalsIgnoreCase("xlarge")){
-                    mySize[0] = PizzaSize.XL;
-                }
+        addJComponent(cobxCrust);
+        addJComponent(cobxSauce);
+        addJComponent(cobxSize);
+        
+        cobxCrust.addItem("Make a selection");
+        Utils.populateComboBox(cobxCrust, CrustType.class);
+        Map<String, CrustType> crustTypeMap = Utils.createEnumMap(CrustType.class);
+        
+        cobxSize.addItem("Make a selection");
+        Utils.populateComboBox(cobxSize, PizzaSize.class);
+        Map<String, PizzaSize> sizeMap = Utils.createEnumMap(PizzaSize.class);
+        
+        cobxSauce.addItem("Make a selection");
+        Utils.populateComboBox(cobxSauce, SauceOption.class);
+        Map<String, SauceOption> sauceOptionMap = Utils.createEnumMap(SauceOption.class);
+        
+        setFontForJCompsOfAType(info.getComboBoxFont(), JComboBox.class);
+        
+        btnContinue.addActionListener(_ -> {
+            if (cobxCrust.getSelectedIndex() == 0 || cobxSize.getSelectedIndex() == 0 || cobxSauce.getSelectedIndex() == 0) {
+                showInfoDialogue("Please make all selections!", "Okay", "");
             }
-        });
-
-        cboxSauce.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (cboxSauce.getSelectedItem().toString().equalsIgnoreCase("marinera")){
-                    sauce[0] = true;
-                }
-                else if (cboxSauce.getSelectedItem().toString().equalsIgnoreCase("alfredo")){
-                    sauce[0] = false;
+            else {
+                SauceOption sauceOption = sauceOptionMap.get((String) cobxSauce.getSelectedItem());
+                CrustType crustType = crustTypeMap.get((String) cobxCrust.getSelectedItem());
+                PizzaSize size = sizeMap.get((String) cobxSize.getSelectedItem());
+                if (showConfirmationDialogueGreen("Proceed?", "Are you ready to proceed with your pizza?")) {
+                    Pizza pizza = new Pizza(size, crustType, sauceOption);
+                    info.setCurPizza(pizza);
+                    
+                    showScreen(Screen.TOPPINGS);
                 }
             }
         });
     }
-    
     
     @Override
-    public boolean onAttemptLeaveScreen() {
-        return showConfirmationDialog("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
+    public boolean onAttemptLeaveScreen(Screen destinationScreen) {
+        if (destinationScreen.equals(Screen.TOPPINGS))
+            return true;
+        else
+            return showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
     }
-    
+
     @Override
     public Screen onAttemptEnterScreen(Screen toScreen) {
         return toScreen;
     }
-    
+
     @Override
     public void onEnterScreen() {
-    
+
     }
-    
+
     private void createUIComponents() {
         pnlCartLogo = new ImagePanel("cart.png");
         pnlLogo = new ImagePanel("PizzaLogo.png");
+        
+        imgCrust = new ImagePanel("crust.jpg");
+        imgSauce = new ImagePanel("sauce.jpg");
+        imgSize = new ImagePanel("size.jpg");
     }
 }
