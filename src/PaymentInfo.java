@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PaymentInfo extends CardScreen {
 	private JPanel pnlPaymentInfo;
@@ -106,6 +108,7 @@ public class PaymentInfo extends CardScreen {
 			showScreen(Screen.PAYMENT_RECEIPT);
 			
 		});
+		submitPaymentButton.addActionListener(ActionListener_ -> showScreen(Screen.CHECK_OUT));
 	}
 	
 	public boolean isValidDate(String date){

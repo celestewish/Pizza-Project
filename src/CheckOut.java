@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 
 
 public class CheckOut extends CardScreen {
@@ -87,6 +89,7 @@ public class CheckOut extends CardScreen {
             textField4.setText(info.getPhoneAtIndex0());
             textField3.setText(info.getEmail());
         });
+        proceedToPaymentButton.addActionListener(_ -> showScreen(Screen.PAYMENT_INFO));
     }
     
     @Override
