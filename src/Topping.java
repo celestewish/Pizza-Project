@@ -19,7 +19,13 @@ public class Topping {
 			topping.append("Extra").append(" ");
 		
 		// Append placement (using enumToNormalCase for readable enum value)
-		topping.append(Utils.enumToNormalCase(placement)); // Convert the placement enum to a readable string
+		topping.append(" (");
+		switch (placement) {
+			case WHOLE -> topping.append("Whole Pizza");
+			case RIGHT -> topping.append("Right Side of Pizza");
+			case LEFT -> topping.append("Left Side of Pizza");
+		}
+		topping.append(")"); // Convert the placement enum to a readable string
 		
 		return topping.toString();
 	}

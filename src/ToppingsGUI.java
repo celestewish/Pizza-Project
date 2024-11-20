@@ -50,11 +50,14 @@ public class ToppingsGUI extends CardScreen {
     private JCheckBox chbxXMushrooms;
     
     private JButton btnCreate;
-    private JTextArea txtAreaPizzaInfo;
     
     private JComboBox<Integer> cobxCount;
+    private JTextArea txtareaPizzaInfo;
+    private JLabel lblTotalCostPizzaPlusCount;
     
-    private static Map<String, ToppingPlacement> placementMap = Utils.createEnumMap(ToppingPlacement.class);
+    private boolean orderComplete = false;
+    
+    private static final Map<String, ToppingPlacement> placementMap = Utils.createEnumMap(ToppingPlacement.class);
     
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
@@ -65,6 +68,8 @@ public class ToppingsGUI extends CardScreen {
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
         
         createUIComponents();
+        
+        addTotalCostField(lblCurTotal);
         
         addJComponent(cobxBacon);
         addJComponent(chbxXBacon);
@@ -126,26 +131,21 @@ public class ToppingsGUI extends CardScreen {
         checkBoxEnumMap.put(ToppingType.PEPPERS, chbxXPeppers);
         checkBoxEnumMap.put(ToppingType.SPINACH, chbxXSpinach);
         
-        txtAreaPizzaInfo.setText("");
+        txtareaPizzaInfo.setText("");
+        
+        txtareaPizzaInfo.setFocusable(false);
         
         btnCreate.addActionListener(_ -> {
-            // Loop through each entry in the map
-            for (Map.Entry<ToppingType, JComboBox<?>> entry : comboBoxEnumMap.entrySet()) {
-                ToppingType topping = entry.getKey(); // Get the enum
-                JComboBox<?> comboBox = entry.getValue(); // Get the JComboBox
-                
-                if (comboBox.getSelectedItem() != ToppingPlacement.NONE) {
-                   info.getCurPizza().addTopping(new Topping(
-                           topping,
-                           checkBoxEnumMap.get(topping).isSelected(),
-                           placementMap.get((String) comboBox.getSelectedItem())));
-                }
-            }
-            
             if (showConfirmationDialogueGreen("Add Pizza to Order?", "Are you finished making your pizza?")) {
                 info.addCurPizzaToOrder(cobxCount.getSelectedIndex() + 1);
+                orderComplete = true;
                 showScreen(Screen.MENU);
             }
+        });
+        
+        cobxCount.addActionListener(_ -> {
+            String output = "Total: " + info.formatter.format(info.getCurPizza().calcPrice() * (cobxCount.getSelectedIndex() + 1));
+            lblTotalCostPizzaPlusCount.setText(output);
         });
         
         for (Map.Entry<ToppingType, JComboBox<?>> entry : comboBoxEnumMap.entrySet()) {
@@ -153,16 +153,53 @@ public class ToppingsGUI extends CardScreen {
             JComboBox<?> comboBox = entry.getValue(); // Get the JComboBox
             
             comboBox.addActionListener(_ -> {
+                System.out.println(info.getCurPizza().toString());
                 if (placementMap.get((String) comboBox.getSelectedItem()) == ToppingPlacement.NONE) {
                     info.getCurPizza().removeTopping(topping);
+                } else if (info.getCurPizza().getTopping(topping) == null) {
+                    info.getCurPizza().addTopping(new Topping(
+                            topping,
+                            checkBoxEnumMap.get(topping).isSelected(),
+                            placementMap.get((String) comboBox.getSelectedItem())));
+                } else {
+                    info.getCurPizza().getTopping(topping).setPlacement(placementMap.get((String) comboBox.getSelectedItem()));
                 }
+                txtareaPizzaInfo.setText(info.getCurPizza().toString());
+                String output = "Total: " + info.formatter.format(info.getCurPizza().calcPrice() * (cobxCount.getSelectedIndex() + 1));
+                lblTotalCostPizzaPlusCount.setText(output);
+            });
+        }
+        
+        for (Map.Entry<ToppingType, JCheckBox> entry : checkBoxEnumMap.entrySet()) {
+            ToppingType topping = entry.getKey(); // Get the enum
+            JCheckBox checkBox = entry.getValue(); // Get the JComboBox
+            
+            checkBox.addActionListener(_ -> {
+                if (info.getCurPizza().getTopping(topping) == null) {
+                    return;
+                }
+                info.getCurPizza().getTopping(topping).setExtra(checkBox.isSelected());
+                txtareaPizzaInfo.setText(info.getCurPizza().toString());
+                
+                String output = "Total: " + info.formatter.format(info.getCurPizza().calcPrice() * (cobxCount.getSelectedIndex() + 1));
+                lblTotalCostPizzaPlusCount.setText(output);
             });
         }
     }
     
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
-        return true;
+        if (orderComplete)
+            return true;
+        else {
+            boolean staying = showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
+            
+            if (!staying) {
+                info.setCurPizza(null);
+            }
+            
+            return staying;
+        }
     }
     
     @Override
@@ -173,13 +210,14 @@ public class ToppingsGUI extends CardScreen {
     @Override
     public void onEnterScreen() {
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);
-        txtAreaPizzaInfo.setText(info.getCurPizza().toString());
+        txtareaPizzaInfo.setText(info.getCurPizza().toString());
+        orderComplete = false;
+        String output = "Total: " + info.formatter.format(info.getCurPizza().calcPrice() * (cobxCount.getSelectedIndex() + 1));
+        lblTotalCostPizzaPlusCount.setText(output);
     }
     
     private void createUIComponents() {
         pnlCartLogo = new ImagePanel("cart.png");
         pnlLogo = new ImagePanel("PizzaLogo.png");
-        
-        cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
     }
 }
