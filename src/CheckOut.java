@@ -29,6 +29,7 @@ public class CheckOut extends CardScreen {
         setScreenPanel(pnlCheckOut);
         info.registerScreenName(Screen.CHECK_OUT, this);
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
+        setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 
         //array to store customer name to display, index 0 is  first name,
         //index 1 is last name
