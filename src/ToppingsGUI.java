@@ -133,13 +133,15 @@ public class ToppingsGUI extends CardScreen {
             for (Map.Entry<ToppingType, JComboBox<?>> entry : comboBoxEnumMap.entrySet()) {
                 ToppingType topping = entry.getKey(); // Get the enum
                 JComboBox<?> comboBox = entry.getValue(); // Get the JComboBox
-                
+
                 if (comboBox.getSelectedItem() != ToppingPlacement.NONE) {
                    info.getCurPizza().addTopping(new Topping(
                            topping,
                            checkBoxEnumMap.get(topping).isSelected(),
                            placementMap.get((String) comboBox.getSelectedItem())));
                 }
+
+
             }
             
             if (showConfirmationDialogueGreen("Add Pizza to Order?", "Are you finished making your pizza?")) {
