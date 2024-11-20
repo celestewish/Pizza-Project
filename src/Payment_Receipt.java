@@ -11,14 +11,10 @@ public class Payment_Receipt extends CardScreen{
     private JLabel OrderNumber;
     private JLabel OrderSummary;
     private JLabel ItemType;
-    private JLabel ListIngred;
+    private JLabel ListIngredients;
     private JLabel Total;
     private JLabel PaymentMethod;
     private JLabel TotalInfo;
-    private JLabel Carry;
-    private JLabel StorePhone;
-    private JLabel StoreAddress;
-    private JLabel EstTime;
     private JButton btnMenu;
     private JButton btnDeals;
     private JButton btnLocations;
@@ -34,8 +30,10 @@ public class Payment_Receipt extends CardScreen{
         setScreenPanel(pnlPaymentReceipt);
         info.registerScreenName(Screen.PAYMENT_RECEIPT, this);
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
+
+        setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
         
-        btnHome.addActionListener(_ -> showScreen(Screen.MENU));
+       // btnHome.addActionListener(_ -> showScreen(Screen.MENU));
     }
     
     @Override
@@ -50,7 +48,8 @@ public class Payment_Receipt extends CardScreen{
     
     @Override
     public void onEnterScreen() {
-    
+        OrderSummary.setText(String.valueOf(info.getCurOrder()));
+        TotalInfo.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
     }
     
     private void createUIComponents() {
