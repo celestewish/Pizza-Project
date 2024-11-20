@@ -101,6 +101,7 @@ public class CheckOut extends CardScreen {
     
     @Override
     public void onEnterScreen() {
+        setUpUserAndOrderInfo(lblHiName, lblCurTotal);
     
     }
     

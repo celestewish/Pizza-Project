@@ -15,7 +15,6 @@ public class Cart extends CardScreen {
 	private JPanel pnlLogo;
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
-    private JButton returnButton;
 	private JLabel FoodType;
 	private JLabel FoodDescription;
 	private JButton editButton;
@@ -23,6 +22,7 @@ public class Cart extends CardScreen {
 	private JLabel SecondDescription;
 	private JPanel orderPanel;
 	private JLabel costNumber;
+	private JButton returnButton;
 
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
@@ -46,7 +46,7 @@ public class Cart extends CardScreen {
 	@Override
 	public void onEnterScreen() {
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
-		
+
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		if (info.getCurPizza() != null) {

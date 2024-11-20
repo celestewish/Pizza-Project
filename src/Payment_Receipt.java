@@ -48,6 +48,7 @@ public class Payment_Receipt extends CardScreen{
     
     @Override
     public void onEnterScreen() {
+        setUpUserAndOrderInfo(lblHiName, lblCurTotal);
         OrderSummary.setText(String.valueOf(info.getCurOrder()));
         TotalInfo.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
     }
