@@ -25,6 +25,7 @@ public class Cart extends CardScreen {
 	private JPanel orderPanel;
 	private JLabel costNumber;
 	private JButton returnButton;
+	private JButton btnCheckout;
 
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
@@ -34,13 +35,7 @@ public class Cart extends CardScreen {
 
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 		returnButton.addActionListener(ActionListener_ -> showScreen(Screen.MENU));
-		/*
-		btnSignUp.addActionListener(_ -> {
-			if (info.UserDatabase().customerExists(txtEmail.getText())) {
-				lblEmailTaken.setText("There already exists an account with this email.");
-				return;
-			}
-		 */
+		btnCheckout.addActionListener(ActionListener_ -> showScreen(Screen.CHECK_OUT));
 	}
 	
 	@Override
