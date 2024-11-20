@@ -28,6 +28,10 @@ public class PaymentInfo extends CardScreen {
 	private JTextField expDateInput;
 	private JTextField zipCodeInput;
 	private JLabel expDate;
+	private JButton makePaymentButton;
+	private JTextArea txtAreaTotal;
+	private JLabel deliveryDetails;
+	private JLabel securePayment;
 
 	public PaymentInfo(CardLayout screenLayoutController, JPanel screenContainer, String panelName){
 		super(screenLayoutController, screenContainer, panelName);
@@ -43,11 +47,7 @@ public class PaymentInfo extends CardScreen {
 			String[] custAddress = info.getAddress().split(" ");
 			streetName.setText(custAddress[0] + " "  + custAddress[1] + " " + custAddress[2]);
 			cityStateZip.setText(custAddress[3] + " " + custAddress[4] + " " + custAddress[5]);
-			String cardNameInput = cardHoldName.getText();
-			String cardNumberInput = null;
-			String expDateInput = null;
-			String zipCodeInput = null;
-			int cvvInput = 0;
+
 
 			
 			showScreen(Screen.PAYMENT_RECEIPT);
@@ -86,7 +86,13 @@ public class PaymentInfo extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
-	
+		setUpForPaymentInfo(txtAreaTotal, txtAreaCustAddress);
+		txtAreaTotal.setFont(info.getTotalFont());
+		txtAreaCustAddress.setFont(info.getTextFont());
+		txtAreaStoreAddress.setText("680 Arnston Rd, Suite 161 Marietta, GA 30060");
+		txtAreaStoreAddress.setFont(info.getTextFont());
+		deliveryDetails.setFont(info.getPaymentFont());
+		securePayment.setFont(info.getPaymentFont());
 	}
 	
 	private void createUIComponents() {

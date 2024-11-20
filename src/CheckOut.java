@@ -38,6 +38,7 @@ public class CheckOut extends CardScreen {
     
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
+        orderShown.setText(null);
         return true;
     }
     
