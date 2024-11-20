@@ -90,7 +90,6 @@ public abstract class CardScreen {
 		deals.addActionListener(_ -> showScreen(Screen.DEALS));
 		locations.addActionListener(_ -> showScreen(Screen.LOCATIONS));
 		cart.addActionListener(_ -> showScreen(Screen.CART));
-		
 		sign_out.addActionListener(_ -> {
 			if (!onSignOut(info))
 				return;
@@ -180,6 +179,16 @@ public abstract class CardScreen {
 		return components;
 	}
 	
+	public void setFontForJCompsOfAType(Font font, Class<? extends JComponent> componentType) {
+		// Loop through the components list
+		for (JComponent comp : components) {
+			// Check if the component is an instance of the provided type
+			if (componentType.isInstance(comp)) {
+				// Set the font for the matching component
+				comp.setFont(font);
+			}
+		}
+	}
 	
 	
 	public static boolean showConfirmationDialog(String message, String option1, String defaultOption, String title) {

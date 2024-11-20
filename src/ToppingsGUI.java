@@ -4,39 +4,48 @@ import java.awt.*;
 public class ToppingsGUI extends CardScreen {
     private JPanel pnlToppings;
     
-    private JButton btnDeals;
-    private JButton btnLocations;
+    private JPanel pnlLogo;
+    private JPanel pnlCartLogo;
+    
     private JButton btnHome;
     private JButton btnMenu;
-    private JButton cartButton;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JComboBox comboBox3;
-    private JComboBox comboBox4;
-    private JComboBox comboBox5;
-    private JComboBox comboBox6;
-    private JComboBox comboBox7;
-    private JComboBox comboBox8;
-    private JComboBox comboBox9;
-    private JComboBox comboBox10;
-
-    private JCheckBox extraCheckBox1;
-    private JCheckBox extraCheckBox2;
-    private JCheckBox extraCheckBox3;
-    private JCheckBox extraCheckBox4;
-    private JCheckBox extraCheckBox5;
-    private JCheckBox extraCheckBox6;
-    private JCheckBox extraCheckBox7;
-    private JCheckBox extraCheckBox8;
-    private JCheckBox extraCheckBox9;
+    private JButton btnDeals;
+    private JButton btnLocations;
     private JButton btnSignOut;
     private JButton btnCart;
+    
     private JLabel lblHiName;
     private JLabel lblCurTotal;
-    private JLabel totalLabel;
-    private JButton updateTotalButton;
-    private JButton returnButton;
-    private JCheckBox extraCheckBox10;
+    
+    private JComboBox<ToppingPlacement> cobxPepperoni;
+    private JCheckBox chbxXPepperoni;
+    
+    private JComboBox<ToppingPlacement> cobxSausage;
+    private JCheckBox chbxXSausage;
+    
+    private JComboBox<ToppingPlacement> cobxBacon;
+    private JCheckBox chbxXBacon;
+    
+    private JComboBox<ToppingPlacement> cobxChicken;
+    private JCheckBox chbxXChicken;
+    
+    private JComboBox<ToppingPlacement> cobxGbeef;
+    private JCheckBox chbxXGbeef;
+    
+    private JComboBox<ToppingPlacement> cobxSpinach;
+    private JCheckBox chbxXSpinach;
+    
+    private JComboBox<ToppingPlacement> cobxOnions;
+    private JCheckBox chbxXOnions;
+    
+    private JComboBox<ToppingPlacement> cobxOlives;
+    private JCheckBox chbxXOlives;
+    
+    private JComboBox<ToppingPlacement> cobxPeppers;
+    private JCheckBox chbxXPeppers;
+    
+    private JComboBox<ToppingPlacement> cobxMushrooms;
+    private JCheckBox chbxXMushrooms;
     
     
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
@@ -47,19 +56,32 @@ public class ToppingsGUI extends CardScreen {
         
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
         
-        //variables
-        final Topping[] pepperoni = new Topping[1];
-        final Topping[] sausage = new Topping[1];
-        final Topping[] bacon = new Topping[1];
-        final Topping[] chicken = new Topping[1];
-        final Topping[] groundBeef = new Topping[1];
-        final Topping[] spinach = new Topping[1];
-        final Topping[] onions = new Topping[1];
-        final Topping[] olives = new Topping[1];
-        final Topping[] peppers = new Topping[1];
-        final Topping[] mushrooms = new Topping[1];
-
-
+        addJComponent(cobxBacon);
+        addJComponent(chbxXBacon);
+        addJComponent(cobxPepperoni);
+        addJComponent(chbxXPepperoni);
+        addJComponent(cobxSausage);
+        addJComponent(chbxXSausage);
+        addJComponent(cobxChicken);
+        addJComponent(chbxXChicken);
+        addJComponent(cobxGbeef);
+        addJComponent(chbxXGbeef);
+        addJComponent(cobxSpinach);
+        addJComponent(chbxXSpinach);
+        addJComponent(cobxOnions);
+        addJComponent(chbxXOnions);
+        addJComponent(cobxOlives);
+        addJComponent(chbxXOlives);
+        addJComponent(cobxPeppers);
+        addJComponent(chbxXPeppers);
+        addJComponent(cobxMushrooms);
+        addJComponent(chbxXMushrooms);
+        
+        Font cobxFont = cobxPepperoni.getFont();
+        Font chbxFont = chbxXPepperoni.getFont();
+        
+        setFontForJCompsOfAType(cobxFont, JComboBox.class);
+        setFontForJCompsOfAType(chbxFont, JCheckBox.class);
 //        //adds the toppings
 //        comboBox1.addActionListener(new ActionListener() {
 //            @Override
@@ -303,6 +325,11 @@ public class ToppingsGUI extends CardScreen {
     
     @Override
     public void onEnterScreen() {
+        setUpUserAndOrderInfo(lblHiName, lblCurTotal);
+    }
     
+    private void createUIComponents() {
+        pnlCartLogo = new ImagePanel("cart.png");
+        pnlLogo = new ImagePanel("PizzaLogo.png");
     }
 }
