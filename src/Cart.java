@@ -45,6 +45,8 @@ public class Cart extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
+		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
+		
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		if (info.getCurPizza() != null) {
