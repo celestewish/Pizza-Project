@@ -108,9 +108,10 @@ public class Menu extends CardScreen {
         JPanel orderPanel = new JPanel();
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
         for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-            JLabel itemLabel = new JLabel("<html>"+info.getCurOrder().getItems().get(i).toString() + "<br/></html>", SwingConstants.CENTER);
-            itemLabel.setFont(optionsFont);
-            orderPanel.add(itemLabel);
+			JTextArea item = new JTextArea();
+			item.setText(info.getCurOrder().getItems().get(i).toString()+"\n");
+            item.setFont(optionsFont);
+            orderPanel.add(item);
         }
         JOptionPane.showMessageDialog(null, orderPanel, "View Order", JOptionPane.INFORMATION_MESSAGE);
     }
