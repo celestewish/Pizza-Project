@@ -113,9 +113,27 @@ public class Pizza extends MenuItem {
 		return toppings;
 	}
 	
+	public Topping getTopping(ToppingType toppingType) {
+		int index = 0;
+		for (Topping t : toppings) {
+			if (t.getType() == toppingType) {
+				return toppings.get(index);
+			}
+			index++;
+		}
+		return null;
+	}
+	
+	public void removeTopping(ToppingType toppingType) {
+		toppings.removeIf(t -> t.getType() == toppingType);
+	}
+	
 	public void addTopping(Topping topping) {
-		if (toppings.contains(topping))
-			return;
+		for (Topping t : toppings) {
+			if (t.getType() == topping.getType()) {
+				return;
+			}
+		}
 		toppings.addLast(topping);
 	}
 }
