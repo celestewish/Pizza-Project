@@ -68,15 +68,8 @@ public class Cart extends CardScreen {
 			info.setCurPizza(null);
 		});
 		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-			textArea1.append(info.getCurOrder().getItems().get(i).toString() + "\n");
-			textArea1.setFont(info.getOptionsFont());
 			JLabel lblItem = new JLabel(info.getCurOrder().getItems().get(i).toString());
-			lblItem.setFont(optionsFont);//this is
-			/*lblItem.setHorizontalAlignment(SwingConstants.CENTER);
-			lblItem.setVerticalAlignment(SwingConstants.CENTER);
-			lblItem.setText(info.getCurOrder().getItems().get(i).toString());
-
-			 */
+			lblItem.setFont(optionsFont);
 			JButton newEditButton = new JButton("Edit");
 			JButton newRemoveButton = new JButton("Remove");
 			orderPanel.add(lblItem);
