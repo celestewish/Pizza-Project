@@ -1,8 +1,7 @@
 import javax.swing.*;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Cart extends CardScreen {
 	private JPanel pnlCart;
@@ -26,6 +25,7 @@ public class Cart extends CardScreen {
 	private JLabel costNumber;
 	private JButton returnButton;
 	private JButton btnCheckout;
+	private JTextArea textArea1;
 
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);

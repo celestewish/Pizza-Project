@@ -8,7 +8,6 @@ public class Payment_Receipt extends CardScreen{
     private JButton btnHome;
     private JLabel OrderPlace;
     private JLabel ThankYou;
-    private JLabel OrderNumber;
     private JLabel OrderSummary;
     private JLabel ItemType;
     private JLabel ListIngredients;

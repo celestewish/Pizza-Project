@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PaymentInfo extends CardScreen {
 	private JPanel pnlPaymentInfo;
@@ -15,17 +13,27 @@ public class PaymentInfo extends CardScreen {
 	
 	private JLabel streetName;
 	private JLabel cityStateZip;
-	private JTextField firstLastTextField;
+	private JTextField cardHoldName;
 	private JButton submitPaymentButton;
-	private JTextField cardNumberTextField;
-	private JTextField CVVTextField;
-	private JTextField expDateTextField;
-	private JTextField zipCodeTextField;
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
 	private JPanel pnlCartLogo;
 	private JPanel pnlLogo;
-	
+	private JTextArea txtAreaStoreAddress;
+	private JTextArea txtAreaCustAddress;
+	private JLabel lblStoreAddress;
+	private JLabel lblCustAddress;
+	private JTextField cardNumberInput;
+	private JTextField CVV;
+	private JTextField expDateInput;
+	private JTextField zipCodeInput;
+	private JLabel expDate;
+	private JButton makePaymentButton;
+	private JTextArea txtAreaTotal;
+	private JLabel deliveryDetails;
+	private JLabel securePayment;
+
+
 	public PaymentInfo(CardLayout screenLayoutController, JPanel screenContainer, String panelName){
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlPaymentInfo);
@@ -35,80 +43,16 @@ public class PaymentInfo extends CardScreen {
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 		
 		//submits payment
-		submitPaymentButton.addActionListener((e) -> {
-			String[] name = info.getName().split(" ");
-			String[] custAddress = info.getAddress().split(" ");
-			streetName.setText(custAddress[0] + " "  + custAddress[1] + " " + custAddress[2]);
-			cityStateZip.setText(custAddress[3] + " " + custAddress[4] + " " + custAddress[5]);
-			String cardNameInput = firstLastTextField.getText();
-			String cardNumberInput = null;
-			String expDateInput = null;
-			String zipCodeInput = null;
-			int cvvInput = 0;
-			//could not implement in time
-            /*
-            try{
-                cardNumberInput = cardNumberTextField.getText();
-                if(!cardNumberInput.matches("\\d+" )){
-                    throw new IllegalArgumentException("Valid characters only");
-                }
+		makePaymentButton.addActionListener(_ -> {
+			if(!checkPayment()){
+				showInfoDialogue("Payment format is incorrect", "Ok", "Incorrect Format");
+			}
+			else{
+				showScreen(Screen.PAYMENT_RECEIPT);
+			}
 
-            }
-            catch(IllegalArgumentException ex){
-                JFrame frame = new JFrame("Error");
-                frame.setSize(200,200);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                JOptionPane.showMessageDialog(frame, "Invalid input! Please enter a card number", "Error", JOptionPane.ERROR_MESSAGE);
-                frame.setVisible(true);
-            }
-            try{
-
-                cvvInput = Integer.parseInt(CVVTextField.getText());
-                if((!String.valueOf(cvvInput).matches("\\d+" )) || String.valueOf(cvvInput).length() <3 ){
-                    throw new IllegalArgumentException("Too many characters or illegal characters");
-                }
-
-            }
-            catch(IllegalArgumentException ex){
-                JFrame frame = new JFrame("Error");
-                frame.setSize(200,200);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                JOptionPane.showMessageDialog(frame, "Invalid input! PLease enter the correct cvv", "Error", JOptionPane.ERROR_MESSAGE);
-                frame.setVisible(true);
-            }
-
-            try{
-                expDateInput = expDateTextField.getText();
-                if(!isValidDate(expDateInput)){
-                    throw new IllegalArgumentException("Not a valid date.");
-                }
-            }
-            catch(IllegalArgumentException ex){
-                JFrame frame = new JFrame("Error");
-                frame.setSize(200,200);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                JOptionPane.showMessageDialog(frame, "Invalid input! PLease enter a correct date", "Error", JOptionPane.ERROR_MESSAGE);
-                frame.setVisible(true);
-            }
-            try{
-                zipCodeInput = zipCodeTextField.getText();
-                if((zipCodeInput.length() != 6) && !zipCodeInput.matches("\\d+")){
-                   throw new IllegalArgumentException("Invalid zip code.");
-               }
-            }
-            catch (IllegalArgumentException ex){
-                JFrame frame = new JFrame("Error");
-                frame.setSize(200,200);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                JOptionPane.showMessageDialog(frame, "Invalid input! PLease enter a correct zip code.", "Error", JOptionPane.ERROR_MESSAGE);
-            frame.setVisible(true);
-            }
-             */
-			
-			showScreen(Screen.PAYMENT_RECEIPT);
-			
 		});
-		submitPaymentButton.addActionListener(ActionListener_ -> showScreen(Screen.CHECK_OUT));
+
 	}
 	
 	public boolean isValidDate(String date){
@@ -128,6 +72,64 @@ public class PaymentInfo extends CardScreen {
 		
 		return year >= 0 && year <= 99;
 	}
+
+	public boolean checkCardNumber(){
+		boolean checkCard = true;
+		for(char c :cardNumberInput.getText().toCharArray()){
+			if(!Character.isDigit(c) || c!=' '){
+				checkCard = false;
+				break;
+			}
+		}
+		System.out.println(cardNumberInput.getText().length());
+		if(cardNumberInput.getText().length() != 19){
+			checkCard = false;
+		}
+
+		System.out.println(checkCard);
+
+		return checkCard;
+	}
+
+	public boolean checkCVV(){
+		boolean checkCVVInput = true;
+		for(char c : CVV.getText().toCharArray()){
+			if(!Character.isDigit(c)){
+				checkCVVInput = false;
+				break;
+			}
+		}
+
+		if(CVV.getText().length() !=3){
+			checkCVVInput = false;
+		}
+		System.out.println(checkCVVInput);
+
+		return checkCVVInput;
+	}
+
+	public boolean checkZipCode(){
+		boolean checkZip = true;
+		for(char c : zipCodeInput.getText().toCharArray()){
+			if(!Character.isDigit(c)){
+				checkZip = false;
+				break;
+			}
+		}
+
+		if (zipCodeInput.getText().length()!=6) {
+			checkZip = false;
+
+		}
+		System.out.println(checkZip);
+
+		return checkZip;
+	}
+
+
+	public boolean checkPayment(){
+		return checkCardNumber() && isValidDate(expDateInput.getText()) && checkCVV() && checkZipCode();
+	}
 	
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
@@ -141,7 +143,13 @@ public class PaymentInfo extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
-	
+		setUpForPaymentInfo(txtAreaTotal, txtAreaCustAddress);
+		txtAreaTotal.setFont(info.getTotalFont());
+		txtAreaCustAddress.setFont(info.getTextFont());
+		txtAreaStoreAddress.setText("680 Arnston Rd, Suite 161 Marietta, GA 30060");
+		txtAreaStoreAddress.setFont(info.getTextFont());
+		deliveryDetails.setFont(info.getPaymentFont());
+		securePayment.setFont(info.getPaymentFont());
 	}
 	
 	private void createUIComponents() {

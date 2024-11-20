@@ -101,6 +101,7 @@ public class Menu extends CardScreen {
 		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
 		btnCreatePizza.addActionListener(_ -> showScreen(Screen.CREATE_PIZZA));
 		btnViewOrder.addActionListener(_ -> viewOrderScreen());
+		btnPlaceOrder.addActionListener(_ -> showScreen(Screen.CHECK_OUT));
 	}
 
 	public void viewOrderScreen() {
