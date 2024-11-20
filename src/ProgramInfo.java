@@ -69,6 +69,9 @@ public class ProgramInfo {
 		this.curPizza = curPizza;
 	}
 	
+	public void addCurPizzaToOrder(int count) {
+		curOrder.addItem(new MenuItemWithCount(curPizza, count));
+	}
 	
 	
 	public boolean isLoggedIn() {

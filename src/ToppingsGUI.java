@@ -49,8 +49,10 @@ public class ToppingsGUI extends CardScreen {
     private JComboBox<String> cobxMushrooms;
     private JCheckBox chbxXMushrooms;
     
-    private JButton btnContinue;
+    private JButton btnCreate;
     private JTextArea txtAreaPizzaInfo;
+    
+    private JComboBox<Integer> cobxCount;
     
     private static Map<String, ToppingPlacement> placementMap = Utils.createEnumMap(ToppingPlacement.class);
     
@@ -84,6 +86,7 @@ public class ToppingsGUI extends CardScreen {
         addJComponent(chbxXPeppers);
         addJComponent(cobxMushrooms);
         addJComponent(chbxXMushrooms);
+        addJComponent(cobxCount);
         
         setFontForJCompsOfAType(info.getComboBoxFont(), JComboBox.class);
         setFontForJCompsOfAType(info.getCheckBoxFont(), JCheckBox.class);
@@ -111,19 +114,37 @@ public class ToppingsGUI extends CardScreen {
         comboBoxEnumMap.put(ToppingType.PEPPERS, cobxPeppers);
         comboBoxEnumMap.put(ToppingType.SPINACH, cobxSpinach);
         
+        Map<ToppingType, JCheckBox> checkBoxEnumMap = new HashMap<>();
+        checkBoxEnumMap.put(ToppingType.BACON, chbxXBacon);
+        checkBoxEnumMap.put(ToppingType.CHICKEN, chbxXChicken);
+        checkBoxEnumMap.put(ToppingType.PEPPERONI, chbxXPepperoni);
+        checkBoxEnumMap.put(ToppingType.GROUND_BEEF, chbxXGbeef);
+        checkBoxEnumMap.put(ToppingType.SAUSAGE, chbxXSausage);
+        checkBoxEnumMap.put(ToppingType.MUSHROOMS, chbxXMushrooms);
+        checkBoxEnumMap.put(ToppingType.OLIVES, chbxXOlives);
+        checkBoxEnumMap.put(ToppingType.ONIONS, chbxXOnions);
+        checkBoxEnumMap.put(ToppingType.PEPPERS, chbxXPeppers);
+        checkBoxEnumMap.put(ToppingType.SPINACH, chbxXSpinach);
+        
         txtAreaPizzaInfo.setText("");
         
-        btnContinue.addActionListener(_ -> {
+        btnCreate.addActionListener(_ -> {
             // Loop through each entry in the map
             for (Map.Entry<ToppingType, JComboBox<?>> entry : comboBoxEnumMap.entrySet()) {
                 ToppingType topping = entry.getKey(); // Get the enum
                 JComboBox<?> comboBox = entry.getValue(); // Get the JComboBox
                 
-                /*if (comboBox.getSelectedItem() != ToppingPlacement.NONE) {
-                    info.getCurPizza().addTopping(new Topping());
+                if (comboBox.getSelectedItem() != ToppingPlacement.NONE) {
+                   info.getCurPizza().addTopping(new Topping(
+                           topping,
+                           checkBoxEnumMap.get(topping).isSelected(),
+                           placementMap.get(comboBoxEnumMap.get(topping).getSelectedItem())));
                 }
-
-                 */
+            }
+            
+            if (showConfirmationDialogueGreen("Add Pizza to Order?", "Are you finished making your pizza?")) {
+                info.addCurPizzaToOrder(cobxCount.getSelectedIndex() + 1);
+                showScreen(Screen.MENU);
             }
         });
     }
@@ -147,5 +168,7 @@ public class ToppingsGUI extends CardScreen {
     private void createUIComponents() {
         pnlCartLogo = new ImagePanel("cart.png");
         pnlLogo = new ImagePanel("PizzaLogo.png");
+        
+        cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
     }
 }

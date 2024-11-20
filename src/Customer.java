@@ -16,7 +16,7 @@ public class Customer {
 	
 	Customer(String name, String email, String password, String address, String phoneNumber) {
 		// Read file to determine next available ID
-		File file = new File("resources/customerRecords.txt");
+		File file = new File("src/main/resources/customerRecords.txt");
 		try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 			String line;
 			int maxID = -1;

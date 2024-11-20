@@ -1,5 +1,5 @@
 public abstract class MenuItem {
-	private float price;
+	protected float price;
 	
 	public MenuItem() {
 		this.price = 0;
