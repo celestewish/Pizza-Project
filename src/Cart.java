@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Cart extends CardScreen {
 	private JPanel pnlCart;
@@ -16,6 +18,10 @@ public class Cart extends CardScreen {
 	private JLabel lblHiName;
 	private JLabel lblCurTotal;
     private JButton returnButton;
+	private JLabel FoodType;
+	private JLabel FoodDescription;
+	private JButton editButton;
+	private JButton removeButton;
 
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
@@ -24,6 +30,15 @@ public class Cart extends CardScreen {
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
+		if (info.getCurPizza() != null) {
+			Pizza myPizza = info.getCurPizza();
+			FoodType.setText("Pizza");
+			FoodDescription.setText(myPizza.toString());
+		}
+		editButton.addActionListener(_ -> {showScreen(Screen.CREATE_PIZZA);});
+		removeButton.addActionListener(_ -> {
+            info.setCurPizza(null);
+        });
 	}
 	
 	@Override
