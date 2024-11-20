@@ -41,6 +41,11 @@ public class Pizza extends MenuItem {
 	}
 	
 	@Override
+	public float getPrice() {
+		return calcPrice();
+	}
+	
+	@Override
 	public String toString() {
 		StringBuilder pizza = new StringBuilder();
 		

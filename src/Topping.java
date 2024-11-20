@@ -1,6 +1,5 @@
 public class Topping {
 	private final ToppingType type;
-	private float basePrice;
 	private boolean extra;
 	private ToppingPlacement placement;
 	
@@ -30,12 +29,28 @@ public class Topping {
 	}
 	
 	public float calcTotalPrice() {
-		float total = extra ? basePrice*=1.1F : basePrice;
+		float total = 0;
+		
+		switch (type) {
+			case BACON, CHICKEN, PEPPERONI -> total += .5F;
+			case OLIVES, ONIONS -> total += .1F;
+			case PEPPERS -> total += .2F;
+			case SPINACH -> total += .15F;
+			case SAUSAGE -> total += .75F;
+			case MUSHROOMS -> total += .25F;
+			case GROUND_BEEF -> total += 1F;
+		}
+		
+		total = extra ? total * 1.15F : total;
 		
 		if (!placement.equals(ToppingPlacement.WHOLE))
 			total /= 1.85F;
 		
 		return total;
+	}
+	
+	public float getPrice() {
+		return calcTotalPrice();
 	}
 	
 	public boolean isExtra() {
