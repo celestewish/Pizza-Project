@@ -69,8 +69,6 @@ public class Cart extends CardScreen {
 		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
 			JLabel lblItem = new JLabel(info.getCurOrder().getItems().get(i).toString());
 			lblItem.setFont(optionsFont);
-			orderPanel.add(lblItem);
-			lblItem.setText(info.getCurOrder().getItems().get(i).toString());
 			JButton newEditButton = new JButton("Edit");
 			JButton newRemoveButton = new JButton("Remove");
 			orderPanel.add(lblItem);
@@ -79,6 +77,10 @@ public class Cart extends CardScreen {
 		}
 		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
 	}
+	/*
+	orderPanel.add(lblItem);
+			lblItem.setText(info.getCurOrder().getItems().get(i).toString());
+	 */
 	
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
