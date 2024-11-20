@@ -31,32 +31,8 @@ public class Cart extends CardScreen {
 		setScreenPanel(pnlCart);
 		info.registerScreenName(Screen.CART, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
-		
-		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
-		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
-		
-		if (info.getCurPizza() != null) {
-			Pizza myPizza = info.getCurPizza();
-			FoodType.setText("Custom Pizza");
-			FoodDescription.setText(myPizza.toString());
-			SecondDescription.setText("");
-		}
-		editButton.addActionListener(_ -> {showScreen(Screen.CREATE_PIZZA);});
-		removeButton.addActionListener(_ -> {
-            info.setCurPizza(null);
-        });
-		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-			JLabel lblItem = new JLabel(info.getCurOrder().getItems().get(i).toString());
-			lblItem.setFont(optionsFont);
-			JButton newEditButton = new JButton("Edit");
-			JButton newRemoveButton = new JButton("Remove");
-			orderPanel.add(lblItem);
-			orderPanel.add(newEditButton);
-			orderPanel.add(newRemoveButton);
-		}
-		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
 	}
 	
 	@Override
@@ -71,7 +47,28 @@ public class Cart extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
-	
+		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
+		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
+		if (info.getCurPizza() != null) {
+			Pizza myPizza = info.getCurPizza();
+			FoodType.setText("Custom Pizza");
+			FoodDescription.setText(myPizza.toString());
+			SecondDescription.setText("");
+		}
+		editButton.addActionListener(_ -> {showScreen(Screen.CREATE_PIZZA);});
+		removeButton.addActionListener(_ -> {
+			info.setCurPizza(null);
+		});
+		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
+			JLabel lblItem = new JLabel(info.getCurOrder().getItems().get(i).toString());
+			lblItem.setFont(optionsFont);
+			JButton newEditButton = new JButton("Edit");
+			JButton newRemoveButton = new JButton("Remove");
+			orderPanel.add(lblItem);
+			orderPanel.add(newEditButton);
+			orderPanel.add(newRemoveButton);
+		}
+		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
 	}
 	
 	private void createUIComponents() {
