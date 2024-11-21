@@ -5,7 +5,7 @@
  */
 public class Wings extends Side {
 	
-	/** The type of wings (e.g., spicy, mild, BBQ) */
+	/** The type of wings */
 	private final WingType wingType;
 	
 	/**
