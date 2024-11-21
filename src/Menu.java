@@ -72,7 +72,6 @@ public class Menu extends CardScreen {
 		
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		
-		lblCurTotal.setText("Total cost for this order: $0.00 ");
 		lblCurTotal.setText("Current Total: $0.00 ");
 		addTotalCostField(lblTotalCost);
 		addTotalCostField(lblCurTotal);
@@ -89,7 +88,8 @@ public class Menu extends CardScreen {
 		addJComponent(lblGarlicKnotsPrice);
 		addJComponent(lblWingPrice);
 		addJComponent(lblSaladPrice);
-		
+		addJComponent(lblTotalCost);
+
 		for (JComponent j : getComponents()) {
 			j.setFocusable(false);
 		}
@@ -105,9 +105,21 @@ public class Menu extends CardScreen {
 		btnEditSalad.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditWings.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
-		btnCreatePizza.addActionListener(_ -> showScreen(Screen.CREATE_PIZZA));
 		btnViewOrder.addActionListener(_ -> viewOrderScreen());
-		btnPlaceOrder.addActionListener(_ -> showScreen(Screen.CHECK_OUT));
+		
+		btnCreatePizza.addActionListener(_ -> {
+			if (info.getCurOrder().getNumberPizzasInOrder() >= 10)
+				showInfoDialogue("You've reached the maximum amount of pizzas for one order!", "Fine, but I'll be back for more pizza later", "Pizza limit reached!");
+			else
+				showScreen(Screen.CREATE_PIZZA);
+		});
+		
+		btnPlaceOrder.addActionListener(_ ->  {
+			if (info.getCurOrder().getItems().isEmpty())
+				showInfoDialogue("Please add an item to your order!", "Okay", "No items in cart");
+			else
+				showScreen(Screen.CHECK_OUT);
+		});
 	}
 
 	public void viewOrderScreen() {
@@ -138,9 +150,10 @@ public class Menu extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
-		System.out.println(info.getCurOrder().toString());
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 		resetScreen();
+		resetCostFields();
+		
 		refillInfoFields();
 		updateSubCostField(lblPizzaPrice, new Pizza());
 		currentVerticalScrollPos = 0;
@@ -215,7 +228,7 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(drinkCount);
-			updateFields(lblDrinkPrice, drinkCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
@@ -271,7 +284,7 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(wingsCount);
-			updateFields(lblWingPrice, wingsCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
@@ -320,7 +333,7 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(garlicBreadCount);
-			updateFields(lblGarlicBreadPrice, garlicBreadCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
@@ -369,7 +382,7 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(garlicKnotsCount);
-			updateFields(lblGarlicKnotsPrice, garlicKnotsCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
@@ -407,7 +420,7 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(saladCount);
-			updateFields(lblSaladPrice, saladCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
@@ -436,12 +449,29 @@ public class Menu extends CardScreen {
 		}
 	}
 	
-	public void updateFields(JLabel subTotalLabel, MenuItem item) {
+	public void updateFields() {
 		resetScreen();
+		resetCostFields();
+		lblTotalCost.setText("Total: $0.00");
 		refillInfoFields();
 		updateTotalCostFields();
-		updateSubCostField(subTotalLabel, item);
+		updateSubCostField(lblPizzaPrice, new Pizza());
+		updateSubCostField(lblGarlicKnotsPrice, new Side(SideType.GARLIC_KNOTS, 0, 1));
+		updateSubCostField(lblGarlicBreadPrice, new Side(SideType.GARLIC_BREAD, 0, 1));
+		updateSubCostField(lblPizzaPrice, new Pizza());
+		updateSubCostField(lblWingPrice, new Wings(SideType.WINGS, 0, 1, WingType.HOT_WINGS));
+		updateSubCostField(lblSaladPrice, new Side(SideType.CAESAR_SALAD, 0, 1));
+		updateSubCostField(lblDrinkPrice, new Drink(DrinkSize.MEDIUM, DrinkType.DR_PEPPER, 0));
 		System.out.println(info.getCurOrder().toString());
+	}
+	
+	public void resetCostFields() {
+		lblDrinkPrice.setText("Sub Total: $0.00");
+		lblGarlicBreadPrice.setText("Sub Total: $0.00");
+		lblPizzaPrice.setText("Sub Total: $0.00");
+		lblGarlicKnotsPrice.setText("Sub Total: $0.00");
+		lblWingPrice.setText("Sub Total: $0.00");
+		lblSaladPrice.setText("Sub Total: $0.00");
 	}
 	
 	public void addItemToOrder(MenuItemWithCount itemWithCount) {
