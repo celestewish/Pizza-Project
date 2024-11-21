@@ -20,11 +20,6 @@ public class Locations extends CardScreen{
 	private JLabel OrderPlace;
 	private JLabel Total;
 	private JButton btnCreateAccount;
-	private JButton btnSignOut;
-	private JButton btnCart;
-	private JLabel lblHiName;
-	private JLabel lblCurTotal;
-	private JPanel pnlNavBarLoggedIn;
 
 	/**
 	 * Constructor for the Locations screen.
@@ -69,11 +64,9 @@ public class Locations extends CardScreen{
 
 	/**
 	 * Handles any setup or logic when the screen is entered.
-	 * Sets up user-specific information like their name and cart total.
 	 */
 	@Override
 	public void onEnterScreen() {
-		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 	}
 
 	/**
