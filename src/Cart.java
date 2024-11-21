@@ -25,6 +25,8 @@ public class Cart extends CardScreen {
 	private JLabel costNumber;
 	private JButton returnButton;
 	private JButton btnCheckout;
+	private JPanel bigPanel;
+	private JTextField textField1;
 	private JTextArea textArea1;
 
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
@@ -51,30 +53,22 @@ public class Cart extends CardScreen {
 	@Override
 	public void onEnterScreen() {
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
-		
+
+		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
+		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		if (info.getCurPizza() != null) {
 			Pizza myPizza = info.getCurPizza();
 			FoodType.setText("Custom Pizza");
 			FoodDescription.setText(myPizza.toString());
 			SecondDescription.setText("");
 		}
-
-
-
-		editButton.addActionListener(_ -> {showScreen(Screen.CREATE_PIZZA);});
+		editButton.addActionListener(_ -> {showScreen(Screen.MENU);});
 		removeButton.addActionListener(_ -> {
 			info.setCurPizza(null);
 		});
-//		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-//			JLabel lblItem = new JLabel(info.getCurOrder().getItems().get(i).toString());
-//			lblItem.setFont(optionsFont);
-//			JButton newEditButton = new JButton("Edit");
-//			JButton newRemoveButton = new JButton("Remove");
-//			orderPanel.add(lblItem);
-//			orderPanel.add(newEditButton);
-//			orderPanel.add(newRemoveButton);
-//		}
-//		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
+		textArea1.setText(info.getCurOrder().toString());
+		textArea1.setFont(optionsFont);
+		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
 	}
 	
 	private void createUIComponents() {
