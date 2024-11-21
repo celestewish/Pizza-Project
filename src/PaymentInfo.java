@@ -148,17 +148,21 @@ public class PaymentInfo extends CardScreen {
 	}
 
 
-	public boolean checkPayment(){
-		return checkName() && checkCardNumber() && isValidDate(expDateInput.getText()) && checkCVV() && checkZipCode();
-	}
+
 	
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
+		cardNumberInput.setText(null);
+		CVV.setText(null);
+		expDateInput.setText(null);
+		zipCodeInput.setText(null);
+		cardHoldName.setText(null);
 		return true;
 	}
 	
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
+
 		return toScreen;
 	}
 	
