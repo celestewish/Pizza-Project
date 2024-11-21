@@ -28,24 +28,31 @@ public class DealsForUser extends CardScreen{
 
 		btnOrdernow1.addActionListener(_ -> {
 			if (showConfirmationDialogueGreen("Please Confirm", "Add Deal to Order?")) {
-				/*Pizza pizza = info.getCurPizza().clone();
+				//(Large 1 topping pizza, 12 wings, small order of breadsticks) - $20
+				Pizza newDeal = new Pizza(PizzaSize.LARGE,CrustType.THIN_CRUST,SauceOption.MARINARA);
+				info.getCurOrder().addItem(newDeal);
 
-				info.getCurOrder().addItem(new MenuItemWithCount(pizza, cobxCount.getSelectedIndex() + 1));
-				orderComplete = true;
+				Side BreadSticks = new Side(SideType.GARLIC_BREAD,2.50f,1);
+				info.getCurOrder().addItem(BreadSticks);
 
-				 */
+				Wings wings = new Wings(SideType.WINGS,5.50f,1,WingType.HOT_WINGS);
+				info.getCurOrder().addItem(wings);
+
 				showScreen(Screen.MENU);
 			}
 		});
 
 		btnOrdernow2.addActionListener(_ -> {
 			if (showConfirmationDialogueGreen("Please Confirm", "Add Deal to Order?")) {
-				/*Pizza pizza = info.getCurPizza().clone();
+				//(Large 2 topping pizza, large order of breadsticks, 2-Liter soda)$25.00
+				Pizza newDeal = new Pizza(PizzaSize.LARGE,CrustType.THIN_CRUST,SauceOption.MARINARA);
+				info.getCurOrder().addItem(newDeal);
 
-				info.getCurOrder().addItem(new MenuItemWithCount(pizza, cobxCount.getSelectedIndex() + 1));
-				orderComplete = true;
+				Side BreadSticks = new Side(SideType.GARLIC_BREAD,2.50f,1);
+				info.getCurOrder().addItem(BreadSticks);
 
-				 */
+				Drink drink = new Drink(DrinkSize.LARGE,DrinkType.DR_PEPPER,2.50f);
+				info.getCurOrder().addItem(drink);
 				showScreen(Screen.MENU);
 			}
 		});

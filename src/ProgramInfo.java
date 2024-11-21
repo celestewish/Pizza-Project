@@ -13,7 +13,8 @@ public class ProgramInfo {
 	private final UserDatabase userDatabase;
 	private Screen curScreen;
 	private Screen lastScreen;
-	
+
+	//fonts used for screens
 	private final Font comboBoxFont = new Font("Times New Roman", Font.PLAIN, 24);
 	private final Font checkBoxFont = new Font("Arial", Font.BOLD, 20);
 	private final Font textFont = new Font("Times New Roman", Font.BOLD, 24);
@@ -23,11 +24,13 @@ public class ProgramInfo {
 	private final Font checkOutFont1 = new Font("Times New Roman", Font.BOLD, 28);
 	private final Font checkOutFont2 = new Font("Times New Roman", Font.BOLD, 18);
 
-	
+
+	//general formatter, mostly for the total
 	protected final DecimalFormat formatter;
 	
 	private static final Map<Screen, CardScreen> screenNames = new HashMap<>();
-	
+
+	//constructor for ProgramInfo
 	public ProgramInfo() {
 		userDatabase = new UserDatabase();
 		currentUser = null;
@@ -38,7 +41,8 @@ public class ProgramInfo {
 		lastScreen = null;
 		formatter = new DecimalFormat("#0.00");
 	}
-	
+
+
 	public Map<Screen, CardScreen> Screens() {
 		return screenNames;
 	}
@@ -46,45 +50,51 @@ public class ProgramInfo {
 	public void registerScreenName(Screen screenName, CardScreen panel) {
 		screenNames.put(screenName, panel);
 	}
-	
+
+	//returns the current user
 	public Customer CurrentUser() {
 		return currentUser;
 	}
-	
+
+	//sets the current order
 	public void setCurrentUser(Customer customer) {currentUser = customer;}
 	
-	
+	//returns the current order
 	public Order getCurOrder() {
 		if (curOrder == null) {
 			setCurOrder(new Order(new LinkedList<>()));
 		}
 		return curOrder;
 	}
-	
+
+	//sets the current order
 	public void setCurOrder(Order order) {
 		curOrder = order;
 	}
 
+	//clears the current order, used for when the order is paid for
 	public void clearCurOrder(){ curOrder = null;}
 
 	
 	
-	
+	//returns the current pizza
 	public Pizza getCurPizza() {
 		return this.curPizza;
 	}
-	
+
+	//sets the current pizza
 	public void setCurPizza(Pizza inputPizza) {
 		this.curPizza = inputPizza;
 	}
-	
+
+	//adds the current pizza to the order
 	public void addCurPizzaToOrder(int count) {
 		this.curOrder.addItem(new MenuItemWithCount(this.curPizza, count));
 	}
 
 
-	
-	
+
+	//get/set for checking if the user is logged in
 	public boolean isLoggedIn() {
 		return isLoggedIn;
 	}
@@ -92,13 +102,13 @@ public class ProgramInfo {
 	public void setLoggedIn(boolean isLoggedIn) {this.isLoggedIn = isLoggedIn;}
 	
 	
-	
+	//returns the current userDataBase
 	public UserDatabase UserDatabase() {
 		return userDatabase;
 	}
 	
 	
-	
+	//get/set for screens, as well as moving through the screen
 	public Screen getCurScreen() {
 		return curScreen;
 	}
@@ -117,7 +127,7 @@ public class ProgramInfo {
 	}
 	
 	
-	
+	//get/set for login attempts
 	public int getLoginAttempts() {
 		return loginAttempts;
 	}
@@ -130,6 +140,7 @@ public class ProgramInfo {
 		loginAttempts = 0;
 	}
 
+	//get/set for user information
 	public String getName(){
 		return currentUser.getName();
 	}
@@ -158,8 +169,9 @@ public class ProgramInfo {
 		return currentUser.getAddress();
 	}
 	
-	
-	
+
+
+	//get methods for the fonts used in various screens
 	public Font getComboBoxFont() {
 		return comboBoxFont;
 	}
