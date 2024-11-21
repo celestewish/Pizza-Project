@@ -1,6 +1,9 @@
 import javax.swing.*;
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * The Cart class represents a screen that displays the details about the customer order.
  * This screen provides navigation to the checkout screen.
@@ -45,10 +48,37 @@ public class Cart extends CardScreen {
 		setScreenPanel(pnlCart);
 		info.registerScreenName(Screen.CART, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
-
+		removeButton.addActionListener(_ -> showDropdownPopup());
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 		returnButton.addActionListener(_ -> showScreen(Screen.MENU));
 		btnCheckout.addActionListener(_ -> showScreen(Screen.CHECK_OUT));
+	}
+	public void showDropdownPopup() {
+		// Data for the dropdown (JComboBox)
+
+		// Create the combo box (dropdown)
+		JComboBox<MenuItemWithCount> comboBox = new JComboBox<>(info.getCurOrder().getItems().toArray(new MenuItemWithCount[0]));
+
+		// Create a message in the popup
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Select item to delete:"));
+		panel.add(comboBox);
+
+		MenuItemWithCount toDelete = (MenuItemWithCount) comboBox.getSelectedItem();
+		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
+			if (info.getCurOrder().getItems().contains(toDelete)) {
+				info.getCurOrder().removeItem(info.getCurOrder().getItems().get(i).getItem());
+			}
+		}
+
+		// Create the dialog popup to show the dropdown
+		int option = JOptionPane.showConfirmDialog(null, panel, "Select Option", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+		// Handle the selection after the popup closes
+		if (option == JOptionPane.OK_OPTION) {
+			String selectedOption = (String) comboBox.getSelectedItem();
+			JOptionPane.showMessageDialog(null, "You deleted: " + selectedOption);
+		}
 	}
 
 	/**
@@ -88,10 +118,6 @@ public class Cart extends CardScreen {
 			FoodDescription.setText(myPizza.toString());
 			SecondDescription.setText("");
 		}
-		editButton.addActionListener(_ -> {showScreen(Screen.MENU);});
-		removeButton.addActionListener(_ -> {
-			info.setCurPizza(null);
-		});
 		textArea1.setText(info.getCurOrder().toString());
 		textArea1.setFont(info.getOptionsFont());
 		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
