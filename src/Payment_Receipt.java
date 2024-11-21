@@ -37,6 +37,7 @@ public class Payment_Receipt extends CardScreen{
     
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
+        info.clearCurOrder();
         return true;
     }
     
