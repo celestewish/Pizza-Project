@@ -5,16 +5,19 @@ public class Pizza extends MenuItem {
 	private CrustType crust;
 	private SauceOption sauce; // true for marinara, false for alfredo
 	private final LinkedList<Topping> toppings;
-	
+
+
+	// Constructor to create a Pizza with specified size, crust, and sauce
 	public Pizza(PizzaSize size, CrustType crust, SauceOption sauce) {
 		this.size = size;
 		this.crust = crust;
 		this.sauce = sauce;
-		this.toppings = new LinkedList<>();
+		this.toppings = new LinkedList<>(); // Initialize the toppings list
 	}
-	
+
+	// Default constructor to create a Pizza with no size, crust, or sauce (empty toppings list)
 	public Pizza() {
-		toppings = new LinkedList<>();
+		toppings = new LinkedList<>(); // Initialize the toppings list
 	}
 	
 	@Override
@@ -43,7 +46,8 @@ public class Pizza extends MenuItem {
 		
 		return total;
 	}
-	
+
+	// Returns the price of the pizza by calling calcPrice()
 	@Override
 	public float getPrice() {
 		return calcPrice();
@@ -75,8 +79,9 @@ public class Pizza extends MenuItem {
 		
 		return pizza.toString();
 	}
-	
-	
+
+
+	// Checks if the current pizza is equal to another pizza by comparing their size, crust, sauce, and toppings
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) return true;  // Check if both objects are the same instance
@@ -88,64 +93,79 @@ public class Pizza extends MenuItem {
 				sauce == pizza.sauce &&
 				toppings.equals(pizza.toppings);  // Compare toppings list
 	}
-	
+
+	// Getter for the size of the pizza
 	public PizzaSize getSize() {
 		return size;
 	}
-	
+
+	// Creates and returns a clone of the current pizza, including its toppings
 	public Pizza clone() {
 		Pizza clone = new Pizza(this.size, this.crust, this.sauce);
+		// Add each topping to the cloned pizza
 		for (Topping topping : this.toppings) {
 			clone.addTopping(new Topping(topping.getType(), topping.isExtra(), topping.getPlacement()));
 		}
 		return clone;
 	}
-	
+
+	// Setter for the size of the pizza
 	public void setSize(PizzaSize size) {
 		this.size = size;
 	}
-	
+
+	// Getter for the crust type of the pizza
 	public CrustType getCrust() {
 		return crust;
 	}
-	
+
+	// Setter for the crust type of the pizza
 	public void setCrust(CrustType crust) {
 		this.crust = crust;
 	}
-	
+
+	// Getter for the sauce option of the pizza
 	public SauceOption getSauce() {
 		return sauce;
 	}
-	
+
+	// Setter for the sauce option of the pizza
 	public void setSauce(SauceOption sauce) {
 		this.sauce = sauce;
 	}
-	
+
+	// Getter for the list of toppings on the pizza
 	public LinkedList<Topping> getToppings() {
 		return toppings;
 	}
-	
+
+	// Retrieves a specific topping by its type, if present
 	public Topping getTopping(ToppingType toppingType) {
 		int index = 0;
+		// Iterate through the toppings list to find the specified topping
 		for (Topping t : toppings) {
 			if (t.getType() == toppingType) {
-				return toppings.get(index);
+				return toppings.get(index);  // Return the topping if found
 			}
 			index++;
 		}
-		return null;
+		return null;  // Return null if the topping is not found
 	}
-	
+
+	// Removes a topping from the pizza by its type
 	public void removeTopping(ToppingType toppingType) {
+		// Remove the topping matching the specified type
 		toppings.removeIf(t -> t.getType() == toppingType);
 	}
-	
+
+	// Adds a new topping to the pizza if it's not already present
 	public void addTopping(Topping topping) {
+		// Check if the topping is already in the list
 		for (Topping t : toppings) {
 			if (t.getType() == topping.getType()) {
-				return;
+				return;  // Do nothing if the topping is already added
 			}
 		}
-		toppings.addLast(topping);
+		toppings.addLast(topping);  // Add the topping if not already present
 	}
 }
