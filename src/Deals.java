@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Deals extends CardScreen{
     private JPanel pnlDeals;
@@ -13,7 +15,8 @@ public class Deals extends CardScreen{
     private JButton btnOrdernow1;
     private JButton btnOrdernow2;
     private JPanel pnlLogo;
-    
+    private JButton btnCreateAccount;
+
     public Deals(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
         setScreenPanel(pnlDeals);
@@ -21,6 +24,7 @@ public class Deals extends CardScreen{
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
         setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
+        btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_IN));
     }
     
     @Override
