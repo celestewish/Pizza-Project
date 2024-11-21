@@ -109,31 +109,38 @@ public class Order {
 		}
 		return false;
 	}
-	
+
+	// Getter for the delivery method
 	public DeliveryMethod getDeliveryMethod() {
 		return deliveryMethod;
 	}
-	
+
+	// Setter for the delivery method
 	public void setDeliveryMethod(DeliveryMethod deliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
 	}
-	
+
+	// Checks if the payment method is cash
 	public boolean isCash() {
 		return cash;
 	}
-	
+
+	// Setter for the cash payment status
 	public void setCash(boolean cash) {
 		this.cash = cash;
 	}
-	
+
+	// Getter for the payment object associated with the order
 	public Payment getPayment() {
 		return payment;
 	}
-	
+
+	// Setter for the payment object associated with the order
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-	
+
+	// Getter for the order number
 	public int getOrderNumber() {
 		return orderNumber;
 	}

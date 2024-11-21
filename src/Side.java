@@ -53,25 +53,30 @@ public class Side extends MenuItem {
 		side.append(" - $").append(String.format("%.2f", calcPrice()));
 		return side.toString();
 	}
-	
+
+	// Checks if the current side is equal to another side by comparing their price, type, and count
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Side side = (Side) o;
+		if (this == o) return true;  // Check if both objects are the same instance
+		if (o == null || getClass() != o.getClass()) return false;  // Ensure the objects are of the same class
+		Side side = (Side) o;  // Cast the object to Side
+		// Compare price, type, and count of the side
 		return Float.compare(side.getPrice(), getPrice()) == 0
 				&& type == side.type
-				&& count == side.count; // Compare count as well
+				&& count == side.count;  // Compare count as well
 	}
-	
+
+	// Getter for the type of the side
 	public SideType getType() {
 		return type;
 	}
-	
+
+	// Getter for the count of the side
 	public int getCount() {
 		return count;
 	}
-	
+
+	// Setter for the count of the side
 	public void setCount(int count) {
 		this.count = count;
 	}

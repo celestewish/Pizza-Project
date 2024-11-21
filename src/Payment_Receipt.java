@@ -1,6 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The Payment_Receipt class represents the checkout screen in the application.
+ * It displays the user's order details and order confirmation with total. It navigates
+ * back to the home screen.
+ */
+
 public class Payment_Receipt extends CardScreen{
     private JPanel pnlPaymentReceipt;
 
@@ -24,6 +30,14 @@ public class Payment_Receipt extends CardScreen{
     private JScrollPane showOrder;
     private JTextArea orderShown;
 
+    /**
+     * Constructor for the CheckOut screen.
+     *
+     * @param screenLayoutController The CardLayout controller for switching screens.
+     * @param screenContainer        The container holding all screens.
+     * @param panelName              The unique name for this panel.
+     */
+
     public Payment_Receipt(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
         setScreenPanel(pnlPaymentReceipt);
@@ -31,8 +45,7 @@ public class Payment_Receipt extends CardScreen{
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
-        
-       // btnHome.addActionListener(_ -> showScreen(Screen.MENU));
+
     }
     
     @Override
@@ -45,6 +58,10 @@ public class Payment_Receipt extends CardScreen{
     public Screen onAttemptEnterScreen(Screen toScreen) {
         return toScreen;
     }
+
+    /**
+     * Sets up the screen when entering it, including user info, order details, and fonts.
+     */
     
     @Override
     public void onEnterScreen() {
@@ -53,17 +70,13 @@ public class Payment_Receipt extends CardScreen{
             orderShown.append(info.getCurOrder().getItems().get(i).toString() + "\n");
             orderShown.setFont(info.getOptionsFont());
         }
-        /*Font textFont = new Font("Times New Roman", Font.BOLD, 24);
-        Font optionsFont = new Font("Arial", Font.PLAIN, 20);
-        if (info.getCurPizza() != null) {
-            Pizza myPizza = info.getCurPizza();
-            ItemType.setText("Custom Pizza");
-            ListIngredients.setText(myPizza.toString());
-        }
 
-         */
         TotalInfo.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
     }
+
+    /**
+     * Initializes custom UI components, such as images for logos.
+     */
     
     private void createUIComponents() {
         pnlCartLogo = new ImagePanel("cart.png");

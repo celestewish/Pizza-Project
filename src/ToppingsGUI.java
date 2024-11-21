@@ -3,6 +3,11 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The ToppingsGUI class provides a graphical interface for users to customize their pizza
+ * by selecting toppings, their placements, and quantities. It integrates seamlessly with
+ * the ordering system to update pizza details and total cost in real-time.
+ */
 public class ToppingsGUI extends CardScreen {
     private JPanel pnlToppings;
     
@@ -58,7 +63,14 @@ public class ToppingsGUI extends CardScreen {
     private boolean orderComplete = false;
     
     private static final Map<String, ToppingPlacement> placementMap = Utils.createEnumMap(ToppingPlacement.class);
-    
+
+    /**
+     * Constructor for the ToppingsGUI class.
+     *
+     * @param screenLayoutController The CardLayout controller for managing screen transitions.
+     * @param screenContainer        The container holding all screens.
+     * @param panelName              The unique name for this panel.
+     */
     public ToppingsGUI(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
         setScreenPanel(pnlToppings);
@@ -189,7 +201,14 @@ public class ToppingsGUI extends CardScreen {
             });
         }
     }
-    
+
+    /**
+     * Handles the logic when attempting to leave the screen.
+     * If the pizza order is incomplete, shows a confirmation dialog.
+     *
+     * @param destinationScreen The screen to navigate to.
+     * @return True if navigation is allowed, false otherwise.
+     */
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
         if (orderComplete)
@@ -204,12 +223,22 @@ public class ToppingsGUI extends CardScreen {
             return staying;
         }
     }
-    
+
+    /**
+     * Handles the logic when attempting to enter the screen.
+     *
+     * @param toScreen The screen to navigate to.
+     * @return Always returns the target screen.
+     */
     @Override
     public Screen onAttemptEnterScreen(Screen toScreen) {
         return toScreen;
     }
-    
+
+    /**
+     * Performs setup when the screen is entered.
+     * Updates the pizza count combo box and user information display.
+     */
     @Override
     public void onEnterScreen() {
         updatePizzaCountComboBox(cobxCount);
@@ -220,12 +249,20 @@ public class ToppingsGUI extends CardScreen {
         String output = "Total: " + info.formatter.format(info.getCurPizza().calcPrice() * (cobxCount.getSelectedIndex() + 1));
         lblTotalCostPizzaPlusCount.setText(output);
     }
-    
+    /**
+     * Initializes custom UI components, such as logos.
+     */
+
     private void createUIComponents() {
         pnlCartLogo = new ImagePanel("cart.png");
         pnlLogo = new ImagePanel("PizzaLogo.png");
     }
-    
+
+    /**
+     * Updates the pizza count combo box based on remaining order capacity.
+     *
+     * @param comboBox The combo box to update.
+     */
     private void updatePizzaCountComboBox(JComboBox<Integer> comboBox) {
         // Clear the existing items in the combo box
         comboBox.removeAllItems();
