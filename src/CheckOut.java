@@ -31,6 +31,8 @@ public class CheckOut extends CardScreen {
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 
+
+
         proceedToPaymentButton.addActionListener(_ -> showScreen(Screen.PAYMENT_INFO));
 
 

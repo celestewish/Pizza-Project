@@ -43,7 +43,7 @@ public class PaymentInfo extends CardScreen {
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
-		
+
 		//submits payment
 		makePaymentButton.addActionListener(_ -> {
 			if(!checkName()){
@@ -168,6 +168,7 @@ public class PaymentInfo extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
+		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 		setUpForPaymentInfo(txtAreaTotal, txtAreaCustAddress);
 		txtAreaTotal.setFont(info.getTotalFont());
 		txtAreaCustAddress.setFont(info.getTextFont());
