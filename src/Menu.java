@@ -148,6 +148,13 @@ public class Menu extends CardScreen {
 		panel.add(new JLabel("Select item to delete:"));
 		panel.add(comboBox);
 
+		String toDelete = (String) comboBox.getSelectedItem();
+		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
+			if (info.getCurOrder().getItems().get(i).getItem().toString().equals(toDelete)) {
+				info.getCurOrder().getItems().remove(i);
+			}
+		}
+
 		// Create the dialog popup to show the dropdown
 		int option = JOptionPane.showConfirmDialog(null, panel, "Select Option", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
