@@ -10,6 +10,9 @@ public class Locations extends CardScreen{
 	private JButton btnLocations;
 	private JButton btnSignUp_SignIn;
 	private JPanel pnlLogo;
+	private JLabel ThankYou;
+	private JLabel OrderPlace;
+	private JLabel Total;
 	private JButton btnSignOut;
 	private JButton btnCart;
 	private JLabel lblHiName;
