@@ -79,6 +79,8 @@ public class Cart extends CardScreen {
 		if (option == JOptionPane.OK_OPTION) {
 			String selectedOption = (String) comboBox.getSelectedItem();
 			JOptionPane.showMessageDialog(null, "You deleted: " + selectedOption);
+			textArea1.setText(info.getCurOrder().toString());
+			costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
 		}
 	}
 
