@@ -294,6 +294,7 @@ public abstract class CardScreen {
 	}
 
 
+
 	
 	public void showPopUpWindow(String message, String title, int optionPaneType) {
 		JOptionPane.showMessageDialog(

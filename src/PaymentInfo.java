@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PaymentInfo extends CardScreen {
 	private JPanel pnlPaymentInfo;
@@ -44,8 +46,20 @@ public class PaymentInfo extends CardScreen {
 		
 		//submits payment
 		makePaymentButton.addActionListener(_ -> {
-			if(!checkPayment()){
-				showInfoDialogue("Payment format is incorrect", "Ok", "Incorrect Format");
+			if(!checkName()){
+				showInfoDialogue("Customer name must only contain letters. Please avoid any special characters or numbers", "Ok", "Incorrect Format");
+			}
+			else if(!checkCardNumber()){
+				showInfoDialogue("Card Number can only contain numbers. Please avoid special characters and letters. Card number must be in xxxx xxxx xxxx xxxx format", "Ok", "Incorrect format");
+			}
+			else if(!checkCVV()){
+				showInfoDialogue("CVV can only contain numbers. Please avoid letters and special characters", "Ok", "Incorrect format");
+			}
+			else if(!isValidDate(expDateInput.getText())){
+				showInfoDialogue("Expiration date can only contain numbers. Please enter in MM/YY format", "Ok", "Incorrect Format");
+			}
+			else if(!checkZipCode()){
+				showInfoDialogue("Zip code can only contain numbers. Please avoid letters special characters", "Ok", "Incorrect Format");
 			}
 			else{
 				showScreen(Screen.PAYMENT_RECEIPT);
@@ -56,27 +70,33 @@ public class PaymentInfo extends CardScreen {
 	}
 	
 	public boolean isValidDate(String date){
+		boolean checkMonth;
+		boolean checkYear;
 		String dateRegex = "^(0[1-9]|1[0-2])/\\d{2}$";
-		
+
 		if(!date.matches(dateRegex)){
-			return false;
+			checkMonth = false;
+			checkYear = false;
 		}
+
 		
 		String[] parts = date.split("/");
 		int month = Integer.parseInt(parts[0]);
 		int year = Integer.parseInt(parts[1]);
-		
-		if(month<1 || month>12){
-			return false;
-		}
-		
-		return year >= 0 && year <= 99;
+
+        checkMonth = month >= 1 && month <= 12;
+
+        checkYear = year >= 0 && year <= 99;
+
+		System.out.println(checkMonth + " " + checkYear);
+
+		return checkMonth && checkYear;
 	}
 
 	public boolean checkCardNumber(){
 		boolean checkCard = true;
 		for(char c :cardNumberInput.getText().toCharArray()){
-			if(!Character.isDigit(c) || c!=' '){
+			if(!Character.isDigit(c) && c!=' '){
 				checkCard = false;
 				break;
 			}
@@ -86,58 +106,63 @@ public class PaymentInfo extends CardScreen {
 			checkCard = false;
 		}
 
-		System.out.println(checkCard);
+		System.out.println("Check card number is: " + checkCard);
 
 		return checkCard;
 	}
 
 	public boolean checkCVV(){
 		boolean checkCVVInput = true;
-		for(char c : CVV.getText().toCharArray()){
-			if(!Character.isDigit(c)){
-				checkCVVInput = false;
-				break;
-			}
-		}
+		Pattern digitP = Pattern.compile("[0-9]");
+		Matcher checkDigit =digitP.matcher(CVV.getText());
 
 		if(CVV.getText().length() !=3){
 			checkCVVInput = false;
 		}
-		System.out.println(checkCVVInput);
+		System.out.println("Check CVV is: "+ checkCVVInput);
 
 		return checkCVVInput;
 	}
 
 	public boolean checkZipCode(){
-		boolean checkZip = true;
-		for(char c : zipCodeInput.getText().toCharArray()){
-			if(!Character.isDigit(c)){
-				checkZip = false;
-				break;
-			}
-		}
+		boolean checkZip;
+		Pattern digitP = Pattern.compile("[0-9]");
+		Matcher checkDigit = digitP.matcher(zipCodeInput.getText());
+		checkZip = checkDigit.find();
 
-		if (zipCodeInput.getText().length()!=6) {
+		if(zipCodeInput.getText().length() !=5){
 			checkZip = false;
-
 		}
-		System.out.println(checkZip);
+
+		System.out.println("Check zip is: " + checkZip);
 
 		return checkZip;
 	}
 
-
-	public boolean checkPayment(){
-		return checkCardNumber() && isValidDate(expDateInput.getText()) && checkCVV() && checkZipCode();
+	public boolean checkName(){
+		Pattern p = Pattern.compile("[!@#$%&*()_+=|<>?\\[\\]~-]");
+		Matcher m = p.matcher(cardHoldName.getText());
+		boolean checkNameBool = m.find();
+		System.out.println("Check name is: " + checkNameBool);
+		return !checkNameBool;
 	}
+
+
+
 	
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
+		cardNumberInput.setText(null);
+		CVV.setText(null);
+		expDateInput.setText(null);
+		zipCodeInput.setText(null);
+		cardHoldName.setText(null);
 		return true;
 	}
 	
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
+
 		return toScreen;
 	}
 	
