@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * The DealsForUser class represents a screen displaying deals available for logged-in users.
+ * It allows users to add specific deals to their order and navigate to other parts of the application.
+ */
 public class DealsForUser extends CardScreen{
 	private JPanel pnlDealsUser;
 	
@@ -17,6 +20,13 @@ public class DealsForUser extends CardScreen{
 	private JButton btnOrdernow1;
 	private JButton btnOrdernow2;
 
+	/**
+	 * Constructor for the DealsForUser screen.
+	 *
+	 * @param screenLayoutController The CardLayout controller for managing screen transitions.
+	 * @param screenContainer        The container holding all screens.
+	 * @param panelName              The unique name for this panel.
+	 */
 	public DealsForUser(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlDealsUser);
@@ -57,26 +67,45 @@ public class DealsForUser extends CardScreen{
 			}
 		});
 	}
-	
+
+
+	/**
+	 * Allows the user to leave the current screen.
+	 *
+	 * @param destinationScreen The screen the user is navigating to.
+	 * @return Always returns true to allow navigation.
+	 */
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
 
-	//if the user is not logged in, they will be sent to a different screen
+	/**
+	 * Redirects the user to the generic deals screen if they are not logged in.
+	 *
+	 * @param toScreen The screen the user is attempting to navigate to.
+	 * @return The generic deals screen if not logged in; otherwise, the requested screen.
+	 */
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
 		if (!info.isLoggedIn())
 			return Screen.DEALS;
 		return toScreen;
 	}
-	
+
+	/**
+	 * Handles logic for setting up the screen when entering it.
+	 * Displays user-specific information, such as their name and current order total.
+	 */
 	@Override
 	public void onEnterScreen() {
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 	
 	}
-	
+
+	/**
+	 * Initializes custom UI components, such as the logo and cart panels.
+	 */
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
 		pnlLogo = new ImagePanel("PizzaLogo.png");
