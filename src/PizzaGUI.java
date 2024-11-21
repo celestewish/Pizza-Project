@@ -128,7 +128,6 @@ public class PizzaGUI extends CardScreen {
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
         if (destinationScreen.equals(Screen.TOPPINGS)) {
-            info.testout = "going to toppings";
             return true;
         }
         else {
@@ -136,7 +135,6 @@ public class PizzaGUI extends CardScreen {
             
             if (!staying) {
                 info.setCurPizza(null);
-                info.testout = "set current pizza to nul";
             }
             
             return staying;
