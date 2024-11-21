@@ -20,7 +20,14 @@ public abstract class CardScreen {
 	private static final char[] SPECIAL_CHARS = {
 			'!', '#', '$', '^', '_', '~', ',', '.', '@', '[', ']', '`', '{', '}', '*', '+', '-', ':', '&'
 	};
-	
+
+	/**
+	 * Constructor for the CardScreen class.
+	 *
+	 * @param screenLayoutController the layout manager for the screen
+	 * @param screenContainer the container holding the screen
+	 * @param panelName the name of the panel for this screen
+	 */
 	public CardScreen(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		this.screenLayoutController = screenLayoutController;
 		this.screenContainer = screenContainer;
@@ -28,15 +35,35 @@ public abstract class CardScreen {
 		components = new ArrayList<>();
 		totalCostFields = new ArrayList<>();
 	}
-	
-	
-	
+
+
+	/**
+	 * Abstract method that defines the behavior when attempting to leave the current screen.
+	 *
+	 * @param destinationScreen the screen the user is attempting to navigate to
+	 * @return true if leaving the screen is allowed, false otherwise
+	 */
 	public abstract boolean onAttemptLeaveScreen(Screen destinationScreen);
-	
+
+	/**
+	 * Abstract method that determines what should happen when attempting to enter a new screen.
+	 *
+	 * @param toScreen the screen the user is attempting to enter
+	 * @return the resulting screen after attempting to enter
+	 */
 	public abstract Screen onAttemptEnterScreen(Screen toScreen);
-	
+
+	/**
+	 * Abstract method for actions that occur when entering the screen.
+	 */
 	public abstract void onEnterScreen();
-	
+
+	/**
+	 * Signs the user out of the application after confirming the action with the user.
+	 *
+	 * @param info program information that contains user session data
+	 * @return true if the user successfully signed out, false otherwise
+	 */
 	public boolean onSignOut(ProgramInfo info) {
 		if (showConfirmationDialogue(
 				"Would you like to sign out?",
@@ -50,14 +77,23 @@ public abstract class CardScreen {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * Signs the user in by setting the user data in the program's information.
+	 *
+	 * @param email the email of the user to sign in
+	 */
 	public void onSignIn(String email) {
 		info.setLoggedIn(true);
 		info.setCurrentUser(info.UserDatabase().getUser(email));
 	}
-	
 
-	
+
+	/**
+	 * Displays a specified screen by navigating through different logic and handling actions.
+	 *
+	 * @param screen the screen to display
+	 */
 	public void showScreen(Screen screen) {
 		if (!onAttemptLeaveScreen(screen))
 			return;
@@ -84,8 +120,17 @@ public abstract class CardScreen {
 		info.advanceScreen(screen);
 		screenLayoutController.show(screenContainer, info.Screens().get((screen)).getPanelName());
 	}
-	
-	
+
+
+	/**
+	 * Sets up the navigation bar for when the user is logged out.
+	 *
+	 * @param home the home button
+	 * @param menu the menu button
+	 * @param deals the deals button
+	 * @param locations the locations button
+	 * @param sign_up_sign_in the sign up/sign in button
+	 */
 	public void setUpNavBar_LoggedOut(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_up_sign_in) {
 		home.addActionListener(_ -> showScreen(Screen.HOME));
 		menu.addActionListener(_ -> showScreen(Screen.MENU));
@@ -93,7 +138,17 @@ public abstract class CardScreen {
 		locations.addActionListener(_ -> showScreen(Screen.LOCATIONS));
 		sign_up_sign_in.addActionListener(_ -> showScreen(Screen.SIGN_IN));
 	}
-	
+
+	/**
+	 * Sets up the navigation bar for when the user is logged in.
+	 *
+	 * @param home the home button
+	 * @param menu the menu button
+	 * @param deals the deals button
+	 * @param locations the locations button
+	 * @param sign_out the sign out button
+	 * @param cart the cart button
+	 */
 	public void setUpNavBar_LoggedIn(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_out, JButton cart) {
 		home.addActionListener(_ -> showScreen(Screen.HOME));
 		menu.addActionListener(_ -> showScreen(Screen.MENU));
@@ -106,7 +161,13 @@ public abstract class CardScreen {
 			showScreen(Screen.LOGIN);
 		});
 	}
-	
+
+	/**
+	 * Sets up user information such as the user's name and current order total.
+	 *
+	 * @param lblHiName the label to display the user's name
+	 * @param lblCurTotal the label to display the current total cost
+	 */
 	public void setUpUserAndOrderInfo(JLabel lblHiName, JLabel lblCurTotal) {
 		if (info.CurrentUser() != null)
 			lblHiName.setText("Hi, " + info.CurrentUser().getName().split(" ")[0]);
@@ -114,12 +175,25 @@ public abstract class CardScreen {
 			lblCurTotal.setText("Current Total: $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost()));
 	}
 
+	/**
+	 * Prepares and displays checkout information.
+	 *
+	 * @param lblCheckName the label displaying the customer's name
+	 * @param lblCheckEmail the label displaying the customer's email
+	 * @param lblCheckPhone the label displaying the customer's phone number
+	 */
 	public void setUpForCheckOut(JLabel lblCheckName, JLabel lblCheckEmail, JLabel lblCheckPhone){
 		lblCheckName.setText(info.CurrentUser().getName());
 		lblCheckEmail.setText(info.getEmail());
 		lblCheckPhone.setText(info.getPhoneAtIndex0());
 	}
 
+	/**
+	 * Prepares and displays payment information including total cost, tax, and customer address.
+	 *
+	 * @param txtAreaTotal the text area displaying the total cost information
+	 * @param txtAreaCustAddress the text area displaying the customer's address
+	 */
 	public void setUpForPaymentInfo(JTextArea txtAreaTotal, JTextArea txtAreaCustAddress){
 		txtAreaTotal.setText("Subtotal : $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost()) +
 		"\n\nTax: $" + info.formatter.format(0.07*info.getCurOrder().calcTotalOrderCost()) + "\n\nTotal :$" + info.formatter.format(1.07*info.getCurOrder().calcTotalOrderCost()));
@@ -127,22 +201,38 @@ public abstract class CardScreen {
 	}
 
 
-	
-	
+
+	/**
+	 * Gets the name of the panel associated with this screen.
+	 *
+	 * @return the name of the panel
+	 */
 	public String getPanelName() {
 		return panelName;
 	}
-	
+
+	/**
+	 * Gets the JPanel object that represents the screen.
+	 *
+	 * @return the screen's JPanel
+	 */
 	public JPanel getScreenPanel() {
 		return screenPanel;
 	}
-	
+
+	/**
+	 * Sets the JPanel for the screen.
+	 *
+	 * @param screenPanel the JPanel to set for this screen
+	 */
 	public void setScreenPanel(JPanel screenPanel) {
 		this.screenPanel = screenPanel;
 	}
-	
-	
-	
+
+
+	/**
+	 * Resets the screen by clearing all user input and resetting the components.
+	 */
 	public void resetScreen() {
 		info.resetLoginAttempts();
 		
@@ -160,13 +250,20 @@ public abstract class CardScreen {
 			}
 		}
 	}
-	
-	
-	
+
+
+	/**
+	 * Adds a JLabel to the list of total cost fields to be updated later.
+	 *
+	 * @param totalCostField the JLabel to add
+	 */
 	public void addTotalCostField(JLabel totalCostField) {
 		totalCostFields.add(totalCostField);
 	}
-	
+
+	/**
+	 * Updates all total cost fields to reflect the current total order cost.
+	 */
 	public void updateTotalCostFields() {
 		for (JLabel lbl : totalCostFields) {
 			String[] curText = lbl.getText().split("\\$");
@@ -174,7 +271,12 @@ public abstract class CardScreen {
 			lbl.setText(display);
 		}
 	}
-	
+
+	/**
+	 *
+	 * @param lbl passes any label that holds the subtotal
+	 * @param item passes any MenuItem to add to the subtotal
+	 */
 	public void updateSubCostField(JLabel lbl, MenuItem item) {
 		int costBreakdownIndex = -1;
 		if (item instanceof Pizza) {
@@ -196,8 +298,11 @@ public abstract class CardScreen {
 		String display = curText[0].trim() + " $" + info.formatter.format(info.getCurOrder().totalCostBreakDown()[costBreakdownIndex]);
 		lbl.setText(display);
 	}
-	
-	
+
+	/**
+	 *
+	 * @param component passes a Java swing component to be edited
+	 */
 	public void addJComponent(JComponent component) {
 		components.add(component);
 	}
@@ -216,7 +321,13 @@ public abstract class CardScreen {
 			}
 		}
 	}
-	
+
+	/**
+	 *
+	 * @param title passes a string that is used for the popup
+	 * @param message passes a string that is used for the popup
+	 * @return returns true if yes is clicked
+	 */
 	public boolean showConfirmationDialogueGreen(String title, String message) {
 		// Create a JPanel to hold the custom content
 		JPanel panel = new JPanel(new BorderLayout(10, 10));
@@ -248,8 +359,14 @@ public abstract class CardScreen {
 	}
 
 
-
-	
+	/**
+	 *
+	 * @param message passes a string that is used for the message of the pop up
+	 * @param option1 used for the text of the left button
+	 * @param defaultOption used for the text of the right button
+	 * @param title used for the title of the popup
+	 * @return returns true if user choose option1
+	 */
 	public static boolean showConfirmationDialogue(String message, String option1, String defaultOption, String title) {
 		// Create a JPanel to hold custom content
 		JPanel panel = new JPanel(new BorderLayout(10, 10));
@@ -280,7 +397,13 @@ public abstract class CardScreen {
 		// Return true if the user chose option1, otherwise false
 		return choice == 0;
 	}
-	
+
+	/**
+	 *
+	 * @param message passes a string that is used for the popup
+	 * @param buttonText passes a string that is used for the text of the button
+	 * @param title passes a string that is used for the title of the popup
+	 */
 	public static void showInfoDialogue(String message, String buttonText, String title) {
 		// Create a JPanel to hold custom content
 		JPanel panel = new JPanel(new BorderLayout(10, 10));
@@ -307,8 +430,12 @@ public abstract class CardScreen {
 	}
 
 
-
-	
+	/**
+	 *
+	 * @param message passes a string that is used for the popup
+	 * @param title passes a string that is used for the popup
+	 * @param optionPaneType passes an int for the pane type
+	 */
 	public void showPopUpWindow(String message, String title, int optionPaneType) {
 		JOptionPane.showMessageDialog(
 				null,
@@ -317,18 +444,26 @@ public abstract class CardScreen {
 				optionPaneType
 		);
 	}
-	
-	
-	
+
+
+	/**
+	 *
+	 * @param password passes an array of chars, used to convert them to string
+	 * @return passes the char array converted into a string
+	 */
 	public String convertPasswordToString (char[] password) {
 		StringBuilder passwordString = new StringBuilder();
 		for (char c : password)
 			passwordString.append(c);
 		return passwordString.toString();
 	}
-	
-	
-	
+
+
+	/**
+	 *
+	 * @param t takes in the JTextField that contains the text
+	 * @return returns true if the email already exists in the database, otherwise false
+	 */
 	public boolean isEmailTaken(JTextField t) {
 		if (info.UserDatabase().customerExists(t.getText())) {
 			JOptionPane.showMessageDialog(
@@ -340,7 +475,13 @@ public abstract class CardScreen {
 		}
 		return  false;
 	}
-	
+
+	/**
+	 *
+	 * @param email takes in a string
+	 * @param password takes in a string
+	 * @return returns true if the email exists and is correlated to the password, otherwise false
+	 */
 	public boolean doesPasswordMatchEmail(String email, String password) {
 		if (!info.UserDatabase().customerExists(email)) {
 			showPopUpWindow(
@@ -367,7 +508,13 @@ public abstract class CardScreen {
 		}
 		return true;
 	}
-	
+
+	/**
+	 *
+	 * @param required takes in a boolean to show that the textfield is required
+	 * @param t takes in a text field to get the text entered from the user
+	 * @return returns true if the text field is not empty, otherwise false
+	 */
 	public boolean isTextEmpty (boolean required, JTextField t) {
 		if (t.getText().isBlank()) {
 			if (required) {
@@ -390,7 +537,12 @@ public abstract class CardScreen {
 		}
 		return false;
 	}
-	
+
+	/**
+	 *
+	 * @param p takes in a password field
+	 * @return returns true if the password is invalid
+	 */
 	public boolean isPasswordInvalid(JPasswordField p){
 		if (p.getPassword().length < 8) {
 			JOptionPane.showMessageDialog(
@@ -431,7 +583,12 @@ public abstract class CardScreen {
 		}
 		return  false;
 	}
-	
+
+	/**
+	 *
+	 * @param t takes in a text field to grab the user inputs
+	 * @return returns true if the phone is invalid, otherwise false
+	 */
 	public boolean isPhoneInvalid(JTextField t) {
 		String p = t.getText();
 		if (p.length() != 10 || !p.matches("\\d+")) {
@@ -444,7 +601,12 @@ public abstract class CardScreen {
 		}
 		return false;
 	}
-	
+
+	/**
+	 *
+	 * @param t takes in a text field to grab the user's inputs
+	 * @return returns true if the email is invalid, otherwise false
+	 */
 	public boolean isEmailInvalid(JTextField t) {
 		String email = t.getText().trim();
 		
@@ -493,7 +655,13 @@ public abstract class CardScreen {
 		// If all checks pass, the email is valid
 		return false;
 	}
-	
+
+	/**
+	 *
+	 * @param required takes in a boolean
+	 * @param t takes in a combo box
+	 * @return returns true of the combo box is selected, otherwise false
+	 */
 	public boolean isComboBoxUnselected (boolean required, JComboBox<?> t) {
 		if (t.getSelectedIndex() == 0) {
 			if (required) {
