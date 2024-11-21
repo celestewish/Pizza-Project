@@ -3,6 +3,7 @@ import java.awt.*;
 import java.util.Map;
 
 public class Menu extends CardScreen {
+	//variables
 	private JPanel pnlMenu;
 	
 	private JScrollPane scrollPane;
@@ -70,6 +71,7 @@ public class Menu extends CardScreen {
 	private double currentVerticalScrollPos = 0;
 	
 	public Menu(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
+		//adding components to menu form
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlMenu);
 		info.registerScreenName(Screen.MENU, this);
@@ -102,7 +104,8 @@ public class Menu extends CardScreen {
 		for (JComponent j : getComponents()) {
 			j.setFocusable(false);
 		}
-		
+
+		//action listeners
 		btnAddDrink.addActionListener(_ -> drinkOptionPopUp());
 		btnAddWings.addActionListener(_ -> wingsOptionPopUp());
 		btnAddGarlicBread.addActionListener(_ -> garlicBreadOptionPopUp());
@@ -132,7 +135,7 @@ public class Menu extends CardScreen {
 		});
 	}
 	
-
+//allows user the view the order screen
 	public void viewOrderScreen() {
         JPanel orderPanel = new JPanel();
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
@@ -146,19 +149,19 @@ public class Menu extends CardScreen {
 		
         JOptionPane.showMessageDialog(null, orderPanel, "View Order", JOptionPane.INFORMATION_MESSAGE);
     }
-
+//leaving the screen
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
-	
+	//entering the screen
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
 		if (!info.isLoggedIn())
 			return Screen.MENU_NON_USER;
 		return toScreen;
 	}
-	
+	//when the screen is entered
 	@Override
 	public void onEnterScreen() {
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
@@ -171,7 +174,7 @@ public class Menu extends CardScreen {
 		SwingUtilities.invokeLater(() -> scrollPane.getViewport().setViewPosition((new Point(0, 0))));
 		info.setCurPizza(null);
 	}
-	
+	//images
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
 		pnlLogo = new ImagePanel("PizzaLogo.png");
@@ -185,7 +188,7 @@ public class Menu extends CardScreen {
 		imgDessert = new ImagePanel("dessert.jpg");
 	}
 	
-	
+	//drink option popup
 	public void drinkOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
@@ -244,7 +247,7 @@ public class Menu extends CardScreen {
 		}
 		resetScrollPos();
 	}
-	
+	//dessert option pop up
 	public void dessertOptionsPopUp() {
 		JComboBox<String> cobxType = new JComboBox<>();
 		Utils.populateComboBox(cobxType, DessertType.class);
@@ -293,7 +296,7 @@ public class Menu extends CardScreen {
 		}
 		resetScrollPos();
 	}
-	
+	//wing option popup
 	public void wingsOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
@@ -349,7 +352,7 @@ public class Menu extends CardScreen {
 		}
 		resetScrollPos();
 	}
-	
+	//garlic bread option popup
 	public void garlicBreadOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
@@ -398,7 +401,7 @@ public class Menu extends CardScreen {
 		}
 		resetScrollPos();
 	}
-	
+	//garlic knot option popup
 	public void garlicKnotsOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
@@ -447,7 +450,7 @@ public class Menu extends CardScreen {
 		}
 		resetScrollPos();
 	}
-	
+	//salad option popup
 	public void saladOptionPopUp() {
 		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxCount.setFont(info.getOptionsFont());
@@ -486,7 +489,7 @@ public class Menu extends CardScreen {
 		resetScrollPos();
 	}
 	
-	
+	//refill info fields
 	public void refillInfoFields() {
 		for (MenuItemWithCount m : info.getCurOrder().getItems()) {
 			MenuItem item = m.getItem();
@@ -511,7 +514,7 @@ public class Menu extends CardScreen {
 			}
 		}
 	}
-	
+	//updates fields
 	public void updateFields() {
 		resetScreen();
 		resetCostFields();
@@ -528,7 +531,7 @@ public class Menu extends CardScreen {
 		updateSubCostField(lblDessertPrice, new Dessert(DessertType.BROWNIE, 0));
 		System.out.println(info.getCurOrder().toString());
 	}
-	
+	//resets cost fields
 	public void resetCostFields() {
 		lblDrinkPrice.setText("Sub Total: $0.00");
 		lblGarlicBreadPrice.setText("Sub Total: $0.00");
@@ -538,14 +541,14 @@ public class Menu extends CardScreen {
 		lblSaladPrice.setText("Sub Total: $0.00");
 		lblDessertPrice.setText("Sub Total: $0.00");
 	}
-	
+	//adds item to order
 	public void addItemToOrder(MenuItemWithCount itemWithCount) {
 		int outcome = info.getCurOrder().addItem(itemWithCount);
 		if (outcome == -1) {
 			showInfoDialogue("You've reached the maximum number of this item", "Okay", "Max amount of 1 item is 10");
 		}
 	}
-	
+	//resets the scroll
 	public void resetScrollPos() {
 		SwingUtilities.invokeLater(() -> {
 			System.out.println("Setting scroll position to: " + currentVerticalScrollPos);
