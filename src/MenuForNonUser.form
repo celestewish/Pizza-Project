@@ -3,14 +3,14 @@
   <grid id="27dc6" binding="pnlMenuNonUser" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="1220" height="1451"/>
+      <xy x="20" y="20" width="1036" height="993"/>
     </constraints>
     <properties>
       <background color="-1582921"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="fdbad" layout-manager="GridLayoutManager" row-count="27" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="fdbad" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -20,368 +20,31 @@
         </properties>
         <border type="none"/>
         <children>
-          <hspacer id="85153">
-            <constraints>
-              <grid row="1" column="2" row-span="1" col-span="5" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
-          <component id="eed98" class="javax.swing.JButton" binding="btnCreateAccount">
-            <constraints>
-              <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="100" height="60"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font size="36"/>
-              <text value="Create an Account"/>
-            </properties>
-          </component>
           <hspacer id="2603b">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <vspacer id="1788c">
+          <hspacer id="48e35">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <component id="d72fd" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <font size="22" style="1"/>
-              <foreground color="-16777216"/>
-              <text value="Pizza Options:"/>
-            </properties>
-          </component>
-          <component id="7faaf" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Crust Types:"/>
-            </properties>
-          </component>
-          <component id="7874e" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="5" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Deep Dish, Thick Crust, Thin Crust"/>
-            </properties>
-          </component>
-          <vspacer id="aba95">
-            <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <component id="63418" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Sauce Options:"/>
-            </properties>
-          </component>
-          <component id="5b57" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="6" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Marinera, Alfredo"/>
-            </properties>
-          </component>
-          <component id="ef479" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Meat Toppings:"/>
-            </properties>
-          </component>
-          <component id="51083" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="7" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Pepperoni, Sausage, Bacon, Chicken, Ground Beef"/>
-            </properties>
-          </component>
-          <component id="4549d" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Vegetable Toppings:"/>
-            </properties>
-          </component>
-          <component id="c13d6" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="8" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Spinach, Onion, Black Olive, Red/Green Peppers, Mushroom"/>
-            </properties>
-          </component>
-          <vspacer id="e2a16">
-            <constraints>
-              <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <component id="7fcb0" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="12" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Garlic Bread"/>
-            </properties>
-          </component>
-          <component id="1e7b" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="13" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Garlic Knots"/>
-            </properties>
-          </component>
-          <component id="e17c8" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="14" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Chicken Wings"/>
-            </properties>
-          </component>
-          <component id="ce9cb" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="15" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Salad"/>
-            </properties>
-          </component>
-          <component id="37bb8" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="18" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <font size="22" style="1"/>
-              <foreground color="-16777216"/>
-              <text value="Beverages:"/>
-            </properties>
-          </component>
-          <vspacer id="7f96e">
-            <constraints>
-              <grid row="17" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <hspacer id="20701">
-            <constraints>
-              <grid row="2" column="7" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
-          <vspacer id="bd6e">
+          <grid id="2b1fa" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="26" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
-          </vspacer>
-          <vspacer id="11dc5">
-            <constraints>
-              <grid row="10" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </vspacer>
-          <component id="dd686" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <font size="22"/>
-              <foreground color="-16777216"/>
-              <text value="To begin creating your order, please sign in!"/>
-            </properties>
-          </component>
-          <hspacer id="ca19e">
-            <constraints>
-              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-          </hspacer>
-          <component id="3e980" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="19" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Coke"/>
-            </properties>
-          </component>
-          <component id="3b70" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="20" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Diet Coke"/>
-            </properties>
-          </component>
-          <component id="76889" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="21" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Pepsi"/>
-            </properties>
-          </component>
-          <component id="7d8e8" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="23" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Dr. Pepper"/>
-            </properties>
-          </component>
-          <component id="6fbaa" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="22" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Sprite"/>
-            </properties>
-          </component>
-          <component id="a0d43" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="24" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Root Beer"/>
-            </properties>
-          </component>
-          <component id="f9107" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="25" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Sweet Tea"/>
-            </properties>
-          </component>
-          <component id="9ff8f" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="11" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <font size="22" style="1"/>
-              <foreground color="-16777216"/>
-              <text value="Sides:"/>
-            </properties>
-          </component>
-          <component id="4843d" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="12" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Cookie"/>
-            </properties>
-          </component>
-          <component id="248fb" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="11" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <font size="22" style="1"/>
-              <foreground color="-16777216"/>
-              <text value="Desserts"/>
-            </properties>
-          </component>
-          <component id="7cf0" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="13" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Brownies"/>
-            </properties>
-          </component>
-          <component id="46b01" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="14" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Cinammon Knots"/>
-            </properties>
-          </component>
-          <component id="61ce8" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="15" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Chocolate Lava Cake"/>
-            </properties>
-          </component>
-          <component id="3d930" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="16" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <background color="-1582921"/>
-              <foreground color="-16777216"/>
-              <text value="Cheesecake"/>
-            </properties>
-          </component>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
         </children>
       </grid>
-      <grid id="cae16" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="cae16" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-1582921"/>
@@ -390,19 +53,35 @@
         <children>
           <component id="f3894" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-1582921"/>
               <enabled value="true"/>
               <font name="Times New Roman" size="48" style="1"/>
               <foreground color="-16777216"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
               <text value="Menu"/>
             </properties>
           </component>
           <hspacer id="4e26b">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <hspacer id="2ae79">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="50" height="50"/>
+                <preferred-size width="200" height="50"/>
+                <maximum-size width="200" height="50"/>
+              </grid>
+            </constraints>
+          </hspacer>
+          <hspacer id="d4d3">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
         </children>

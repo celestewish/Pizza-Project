@@ -29,14 +29,14 @@ public class DealsForUser extends CardScreen{
 		btnOrdernow1.addActionListener(_ -> {
 			if (showConfirmationDialogueGreen("Please Confirm", "Add Deal to Order?")) {
 				//(Large 1 topping pizza, 12 wings, small order of breadsticks) - $20
-				Pizza newDeal = new Pizza(PizzaSize.LARGE,CrustType.THIN_CRUST,SauceOption.MARINARA);
-				info.getCurOrder().addItem(newDeal);
+				Pizza newPizza = new Pizza(PizzaSize.LARGE, CrustType.THIN_CRUST, SauceOption.MARINARA);
+				info.getCurOrder().addItem(new MenuItemWithCount(newPizza, 1));
 
-				Side BreadSticks = new Side(SideType.GARLIC_BREAD,2.50f,1);
-				info.getCurOrder().addItem(BreadSticks);
+				Side breadSticks = new Side(SideType.GARLIC_BREAD,2.50f,5);
+				info.getCurOrder().addItem(new MenuItemWithCount(breadSticks, 1));
 
-				Wings wings = new Wings(SideType.WINGS,5.50f,1,WingType.HOT_WINGS);
-				info.getCurOrder().addItem(wings);
+				Wings wings = new Wings(SideType.WINGS,5.50f,10, WingType.HOT_WINGS);
+				info.getCurOrder().addItem(new MenuItemWithCount(wings, 1));
 
 				showScreen(Screen.MENU);
 			}
@@ -45,14 +45,14 @@ public class DealsForUser extends CardScreen{
 		btnOrdernow2.addActionListener(_ -> {
 			if (showConfirmationDialogueGreen("Please Confirm", "Add Deal to Order?")) {
 				//(Large 2 topping pizza, large order of breadsticks, 2-Liter soda)$25.00
-				Pizza newDeal = new Pizza(PizzaSize.LARGE,CrustType.THIN_CRUST,SauceOption.MARINARA);
-				info.getCurOrder().addItem(newDeal);
+				Pizza newPizza = new Pizza(PizzaSize.LARGE, CrustType.THIN_CRUST, SauceOption.MARINARA);
+				info.getCurOrder().addItem(new MenuItemWithCount(newPizza, 2));
 
-				Side BreadSticks = new Side(SideType.GARLIC_BREAD,2.50f,1);
-				info.getCurOrder().addItem(BreadSticks);
+				Side breadSticks = new Side(SideType.GARLIC_BREAD,2.50f,1);
+				info.getCurOrder().addItem(new MenuItemWithCount(breadSticks, 1));
 
 				Drink drink = new Drink(DrinkSize.LARGE,DrinkType.DR_PEPPER,2.50f);
-				info.getCurOrder().addItem(drink);
+				info.getCurOrder().addItem(new MenuItemWithCount(drink, 1));
 				showScreen(Screen.MENU);
 			}
 		});

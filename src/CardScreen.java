@@ -2,6 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/*
+*   Card Screen is an abstract class that contains all info about a particular screen.
+*   All methods defined here are actions that are performed by the screen
+*/
+
 public abstract class CardScreen {
 	protected static final ProgramInfo info = new ProgramInfo();
 	

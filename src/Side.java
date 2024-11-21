@@ -39,7 +39,7 @@ public class Side extends MenuItem {
 					case HOT_WINGS -> side.append("Hot Wings");
 					case HONEY_FIRE_WINGS -> side.append("Honey Fire Wings");
 					case APRICOT_GLAZE_WINGS -> side.append("Apricot Glaze Wings");
-					case PERMESIAN_WINGS -> side.append("Parmesan Wings");
+					case PARMESAN_WINGS -> side.append("Parmesan Wings");
 				}
 			}
 		}
