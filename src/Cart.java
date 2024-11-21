@@ -25,6 +25,8 @@ public class Cart extends CardScreen {
 	private JLabel costNumber;
 	private JButton returnButton;
 	private JButton btnCheckout;
+	private JPanel bigPanel;
+	private JTextField textField1;
 	private JTextArea textArea1;
 
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
@@ -60,22 +62,12 @@ public class Cart extends CardScreen {
 			FoodDescription.setText(myPizza.toString());
 			SecondDescription.setText("");
 		}
-
-
-
 		editButton.addActionListener(_ -> {showScreen(Screen.CREATE_PIZZA);});
 		removeButton.addActionListener(_ -> {
 			info.setCurPizza(null);
 		});
-		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-			JLabel lblItem = new JLabel(info.getCurOrder().getItems().get(i).toString());
-			lblItem.setFont(optionsFont);
-			JButton newEditButton = new JButton("Edit");
-			JButton newRemoveButton = new JButton("Remove");
-			orderPanel.add(lblItem);
-			orderPanel.add(newEditButton);
-			orderPanel.add(newRemoveButton);
-		}
+		textArea1.setText(info.getCurOrder().toString());
+		textArea1.setFont(optionsFont);
 		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
 	}
 	
