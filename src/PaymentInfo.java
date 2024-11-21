@@ -47,15 +47,19 @@ public class PaymentInfo extends CardScreen {
 		//submits payment
 		makePaymentButton.addActionListener(_ -> {
 			if(!checkName()){
+				//shows a popup if the format for the name is not correct
 				showInfoDialogue("Customer name must only contain letters. Please avoid any special characters or numbers", "Ok", "Incorrect Format");
 			}
 			else if(!checkCardNumber()){
+				//shows a popup if the format for the card number is not correct
 				showInfoDialogue("Card Number can only contain numbers. Please avoid special characters and letters. Card number must be in xxxx xxxx xxxx xxxx format", "Ok", "Incorrect format");
 			}
 			else if(!checkCVV()){
+				//shows a popup if the format for the CVV is not correct
 				showInfoDialogue("CVV can only contain numbers. Please avoid letters and special characters", "Ok", "Incorrect format");
 			}
 			else if(!isValidDate(expDateInput.getText())){
+				//shows a popup if the expiration date is incorrect
 				showInfoDialogue("Expiration date can only contain numbers. Please enter in MM/YY format", "Ok", "Incorrect Format");
 			}
 			else if(!checkZipCode()){
@@ -73,20 +77,25 @@ public class PaymentInfo extends CardScreen {
 		boolean checkMonth;
 		boolean checkYear;
 		String dateRegex = "^(0[1-9]|1[0-2])/\\d{2}$";
-
+		//makes sure that the date enter does not contain letters or special characters
 		if(!date.matches(dateRegex)){
-			checkMonth = false;
-			checkYear = false;
+			return false;
 		}
 
-		
+		//to make sure it's within the time range
 		String[] parts = date.split("/");
 		int month = Integer.parseInt(parts[0]);
 		int year = Integer.parseInt(parts[1]);
 
+		//checks if the date is within the set months and the current year to 2099
         checkMonth = month >= 1 && month <= 12;
+        checkYear = year >= 24 && year <= 99;
 
-        checkYear = year >= 0 && year <= 99;
+		//checks if the card did not expire in the current month
+		if(year ==24 && month <=11){
+			checkMonth = false;
+			checkYear = false;
+		}
 
 		System.out.println(checkMonth + " " + checkYear);
 
@@ -111,10 +120,15 @@ public class PaymentInfo extends CardScreen {
 		return checkCard;
 	}
 
+	//checks if the CVV is withing the set parameters, ie 322 and not 3205 nor 3d2
 	public boolean checkCVV(){
 		boolean checkCVVInput = true;
 		Pattern digitP = Pattern.compile("[0-9]");
 		Matcher checkDigit =digitP.matcher(CVV.getText());
+
+		if(!checkDigit.find()){
+			checkCVVInput = false;
+		}
 
 		if(CVV.getText().length() !=3){
 			checkCVVInput = false;
@@ -124,6 +138,7 @@ public class PaymentInfo extends CardScreen {
 		return checkCVVInput;
 	}
 
+	//checks if the zip code is valid, ie has 5 digits and no special characters/letters
 	public boolean checkZipCode(){
 		boolean checkZip;
 		Pattern digitP = Pattern.compile("[0-9]");
@@ -139,17 +154,20 @@ public class PaymentInfo extends CardScreen {
 		return checkZip;
 	}
 
+	//checks if the name does not have special characters or numbers
 	public boolean checkName(){
-		Pattern p = Pattern.compile("[!@#$%&*()_+=|<>?\\[\\]~-]");
-		Matcher m = p.matcher(cardHoldName.getText());
-		boolean checkNameBool = m.find();
+		Pattern specialC = Pattern.compile("[!@#$%&*()_+=|<>?\\[\\]~-]");
+		Pattern digitP = Pattern.compile("[0-9]");
+		Matcher m = specialC.matcher(cardHoldName.getText());
+		Matcher digitM = digitP.matcher(cardHoldName.getText());
+		boolean checkNameBool = m.find() && digitM.find();
 		System.out.println("Check name is: " + checkNameBool);
 		return !checkNameBool;
 	}
 
 
 
-	
+	//clears the input fields
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		cardNumberInput.setText(null);
@@ -165,7 +183,8 @@ public class PaymentInfo extends CardScreen {
 
 		return toScreen;
 	}
-	
+
+	//sets up the screen when entering it, ie lblHiName will have the current users name.
 	@Override
 	public void onEnterScreen() {
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
@@ -177,7 +196,8 @@ public class PaymentInfo extends CardScreen {
 		deliveryDetails.setFont(info.getPaymentFont());
 		securePayment.setFont(info.getPaymentFont());
 	}
-	
+
+	//sets up the images found on the screen
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
 		pnlLogo = new ImagePanel("PizzaLogo.png");

@@ -5,8 +5,6 @@ import java.awt.*;
 
 public class CheckOut extends CardScreen {
     private JPanel pnlCheckOut;
-
-    private JButton dealsButton;
     private JButton proceedToPaymentButton;
     private JButton btnHome;
     private JButton btnMenu;
@@ -29,10 +27,11 @@ public class CheckOut extends CardScreen {
         setScreenPanel(pnlCheckOut);
         info.registerScreenName(Screen.CHECK_OUT, this);
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
+        //sets up the buttons ont the top of the screen
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 
 
-
+        //proceeds to the receipt
         proceedToPaymentButton.addActionListener(_ -> showScreen(Screen.PAYMENT_INFO));
 
 
@@ -40,7 +39,7 @@ public class CheckOut extends CardScreen {
     
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
-        orderShown.setText(null);
+        orderShown.setText(null);//clears the order shown in the checkout screen when leaving the screen
         return true;
     }
     
@@ -51,16 +50,20 @@ public class CheckOut extends CardScreen {
     
     @Override
     public void onEnterScreen() {
+        //sets up the name of the user on the top tight
+        //sets up the cart total on the top right
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);
+        //sets up the name, email, and phone for the order
         setUpForCheckOut(lblCheckName, lblCheckEmail, lblCheckPhone);
 
+        //prints out the current order, if the order changes so will the JTextArea
         for(int i=0; i<info.getCurOrder().getItems().size(); i++){
             orderShown.append(info.getCurOrder().getItems().get(i).toString() + "\n");
             orderShown.setFont(info.getOptionsFont());
         }
     
     }
-    
+    //creates the images seen on the screen
     private void createUIComponents() {
         pnlCartLogo = new ImagePanel("cart.png");
         pnlLogo = new ImagePanel("PizzaLogo.png");
