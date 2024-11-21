@@ -20,6 +20,8 @@ public class ProgramInfo {
 	private final Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 	private final Font totalFont = new Font("Times New Roman", Font.PLAIN, 16);
 	private final Font paymentFont = new Font("Times New Roman", Font.BOLD, 28);
+	private final Font checkOutFont1 = new Font("Times New Roman", Font.BOLD, 28);
+	private final Font checkOutFont2 = new Font("Times New Roman", Font.BOLD, 18);
 
 	
 	protected final DecimalFormat formatter;
@@ -177,4 +179,7 @@ public class ProgramInfo {
 	public Font getTotalFont(){return totalFont;}
 
 	public Font getPaymentFont(){return paymentFont;}
+
+	public Font getCheckOutFont1(){return checkOutFont1;}
+	public Font getCheckOutFont2(){return checkOutFont2;}
 }

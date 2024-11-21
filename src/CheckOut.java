@@ -22,6 +22,10 @@ public class CheckOut extends CardScreen {
     private JLabel lblCheckEmail;
     private JLabel lblCheckPhone;
     private JLabel lblCheckOut;
+    private JLabel lbllYourInfo;
+    private JLabel lblName;
+    private JLabel lblEmail;
+    private JLabel lblPhone;
 
     public CheckOut(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
@@ -57,7 +61,12 @@ public class CheckOut extends CardScreen {
         //sets up the name, email, and phone for the order
         setUpForCheckOut(lblCheckName, lblCheckEmail, lblCheckPhone);
 
-        lblCheckOut.setFont(info.getPaymentFont());
+        lblCheckOut.setFont(info.getCheckOutFont1());
+        lbllYourInfo.setFont(info.getCheckOutFont1());
+        lblName.setFont(info.getCheckOutFont2());
+        lblEmail.setFont(info.getCheckOutFont2());
+        lblPhone.setFont(info.getCheckOutFont2());
+
 
         //prints out the current order, if the order changes so will the JTextArea
         for(int i=0; i<info.getCurOrder().getItems().size(); i++){
