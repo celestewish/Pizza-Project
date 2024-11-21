@@ -69,7 +69,8 @@ public abstract class CardScreen {
 		screen = info.Screens().get(screen).onAttemptEnterScreen(screen);
 		
 		resetScreen();
-		info.Screens().get(screen).onEnterScreen();
+		Screen targetScreen = screen;
+		SwingUtilities.invokeLater(() -> info.Screens().get(targetScreen).onEnterScreen());
 		info.advanceScreen(screen);
 		screenLayoutController.show(screenContainer, info.Screens().get((screen)).getPanelName());
 	}
@@ -142,8 +143,10 @@ public abstract class CardScreen {
 				((JComboBox<?>) c).setSelectedIndex(0); // Reset selection for JComboBox
 			} else if (c instanceof JCheckBox) {
 				((JCheckBox) c).setSelected(false); // Reset selection for JCheckBox
-			} else if (c instanceof  JTextArea) {
+			} else if (c instanceof JTextArea) {
 				((JTextArea) c).setText("");
+			} else if (c instanceof JLabel) {
+				((JLabel) c).setText("");
 			}
 		}
 	}
