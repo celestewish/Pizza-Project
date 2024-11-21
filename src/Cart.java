@@ -1,6 +1,10 @@
 import javax.swing.*;
 import javax.swing.JPanel;
 import java.awt.*;
+/**
+ * The Cart class represents a screen that displays the details about the customer order.
+ * This screen provides navigation to the checkout screen.
+ */
 
 public class Cart extends CardScreen {
 	private JPanel pnlCart;
@@ -28,6 +32,14 @@ public class Cart extends CardScreen {
 	private JTextField textField1;
 	private JTextArea textArea1;
 
+	/**
+	 * Constructor for the Cart screen.
+	 *
+	 * @param screenLayoutController The CardLayout controller for switching screens.
+	 * @param screenContainer        The container holding all screens.
+	 * @param panelName              The unique name for this panel.
+	 */
+
 	public Cart (CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlCart);
@@ -38,16 +50,33 @@ public class Cart extends CardScreen {
 		returnButton.addActionListener(_ -> showScreen(Screen.MENU));
 		btnCheckout.addActionListener(_ -> showScreen(Screen.CHECK_OUT));
 	}
+
+	/**
+	 * Clears the order details displayed when leaving the screen.
+	 *
+	 * @param destinationScreen The screen the user is navigating to.
+	 * @return True to allow navigation, false otherwise.
+	 */
 	
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
+
+	/**
+	 * Handles logic for entering this screen
+	 *
+	 * @return The screen to navigate to.
+	 */
 	
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
 		return toScreen;
 	}
+
+	/**
+	 * Sets up the screen when entering it including order details, and fonts.
+	 */
 	
 	@Override
 	public void onEnterScreen() {
@@ -67,6 +96,10 @@ public class Cart extends CardScreen {
 		textArea1.setFont(info.getOptionsFont());
 		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
 	}
+
+	/**
+	 * Initializes custom UI components, such as images for logos.
+	 */
 	
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
