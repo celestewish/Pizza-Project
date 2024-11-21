@@ -57,7 +57,7 @@ public class Cart extends CardScreen {
 	 * @param destinationScreen The screen the user is navigating to.
 	 * @return True to allow navigation, false otherwise.
 	 */
-	
+
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
