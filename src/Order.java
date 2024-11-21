@@ -89,6 +89,16 @@ public class Order {
 		return 1;
 	}
 	
+	public int getNumberPizzasInOrder() {
+		int total = 0;
+		for (MenuItemWithCount item : items) {
+			if (item.getItem() instanceof Pizza) {
+				total += item.getCount();
+			}
+		}
+		return total;
+	}
+	
 	// Remove item from the order
 	public boolean removeItem(MenuItem item) {
 		for (MenuItemWithCount itemWithCount : items) {

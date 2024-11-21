@@ -54,11 +54,18 @@ public class Menu extends CardScreen {
 	private JButton btnEditGarlicBread;
 	private JTextArea txtAreaGarlicBreadInfo;
 	
+	private JPanel imgDessert;
+	private JLabel lblDessertPrice;
+	private JButton btnEditDesserts;
+	private JButton btnAddDessert;
+	private JTextArea txtAreaDesserts;
+	
 	private JPanel imgDrinks;
 	private JLabel lblDrinkPrice;
 	private JButton btnAddDrink;
 	private JButton btnEditDrinks;
 	private JTextArea txtAreaDrinkInfo;
+
 	
 	private double currentVerticalScrollPos = 0;
 	
@@ -72,7 +79,6 @@ public class Menu extends CardScreen {
 		
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20);
 		
-		lblCurTotal.setText("Total cost for this order: $0.00 ");
 		lblCurTotal.setText("Current Total: $0.00 ");
 		addTotalCostField(lblTotalCost);
 		addTotalCostField(lblCurTotal);
@@ -83,31 +89,47 @@ public class Menu extends CardScreen {
 		addJComponent(txtAreaPizzaInfo);
 		addJComponent(txtAreaSaladInfo);
 		addJComponent(txtAreaWingInfo);
+		addJComponent(txtAreaDesserts);
 		addJComponent(lblDrinkPrice);
 		addJComponent(lblGarlicBreadPrice);
 		addJComponent(lblPizzaPrice);
 		addJComponent(lblGarlicKnotsPrice);
 		addJComponent(lblWingPrice);
 		addJComponent(lblSaladPrice);
-		
+		addJComponent(lblTotalCost);
+		addJComponent(lblDessertPrice);
+
 		for (JComponent j : getComponents()) {
 			j.setFocusable(false);
 		}
 		
-		btnAddDrink.addActionListener(_ -> DrinkOptionPopUp());
-		btnAddWings.addActionListener(_ -> WingsOptionPopUp());
-		btnAddGarlicBread.addActionListener(_ -> GarlicBreadOptionPopUp());
-		btnAddGarlicKnots.addActionListener(_ -> GarlicKnotsOptionPopUp());
-		btnAddSalad.addActionListener(_ -> SaladOptionPopUp());
+		btnAddDrink.addActionListener(_ -> drinkOptionPopUp());
+		btnAddWings.addActionListener(_ -> wingsOptionPopUp());
+		btnAddGarlicBread.addActionListener(_ -> garlicBreadOptionPopUp());
+		btnAddGarlicKnots.addActionListener(_ -> garlicKnotsOptionPopUp());
+		btnAddSalad.addActionListener(_ -> saladOptionPopUp());
+		btnAddDessert.addActionListener(_ -> dessertOptionsPopUp());
 		btnEditDrinks.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditGarlicBread.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditGarlicKnots.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditSalad.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditWings.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
-		btnCreatePizza.addActionListener(_ -> showScreen(Screen.CREATE_PIZZA));
 		btnViewOrder.addActionListener(_ -> viewOrderScreen());
-		btnPlaceOrder.addActionListener(_ -> showScreen(Screen.CHECK_OUT));
+		
+		btnCreatePizza.addActionListener(_ -> {
+			if (info.getCurOrder().getNumberPizzasInOrder() >= 10)
+				showInfoDialogue("You've reached the maximum amount of pizzas for one order!", "Fine, but I'll be back for more pizza later", "Pizza limit reached!");
+			else
+				showScreen(Screen.CREATE_PIZZA);
+		});
+		
+		btnPlaceOrder.addActionListener(_ ->  {
+			if (info.getCurOrder().getItems().isEmpty())
+				showInfoDialogue("Please add an item to your order!", "Okay", "No items in cart");
+			else
+				showScreen(Screen.CHECK_OUT);
+		});
 	}
 
 	public void viewOrderScreen() {
@@ -138,9 +160,10 @@ public class Menu extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
-		System.out.println(info.getCurOrder().toString());
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 		resetScreen();
+		resetCostFields();
+		
 		refillInfoFields();
 		updateSubCostField(lblPizzaPrice, new Pizza());
 		currentVerticalScrollPos = 0;
@@ -158,10 +181,11 @@ public class Menu extends CardScreen {
 		imgGarlicBread = new ImagePanel("garlicbread.jpg");
 		imgSalad = new ImagePanel("salad.jpg");
 		imgGarlicKnots = new ImagePanel("garlicknots.jpg");
+		imgDessert = new ImagePanel("dessert.jpg");
 	}
 	
 	
-	public void DrinkOptionPopUp() {
+	public void drinkOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
@@ -215,12 +239,61 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(drinkCount);
-			updateFields(lblDrinkPrice, drinkCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
 	
-	public void WingsOptionPopUp() {
+	public void dessertOptionsPopUp() {
+		JComboBox<String> cobxType = new JComboBox<>();
+		Utils.populateComboBox(cobxType, DessertType.class);
+		cobxType.setFont(info.getOptionsFont());
+		Map<String, DessertType> dessertTypeMap = Utils.createEnumMap(DessertType.class);
+		
+		JComboBox<Integer> cobxNumber = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+		cobxNumber.setFont(info.getOptionsFont());
+		
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
+		// Create a panel to hold the combo box
+		JPanel panel = new JPanel();
+		JLabel txt1 = new JLabel("Choose Your Drink:");
+		txt1.setFont(info.getTextFont());
+		panel.add(txt1);
+		panel.add(cobxType);
+		JLabel txt2 = new JLabel("How Many:");
+		txt2.setFont(info.getTextFont());
+		panel.add(txt2);
+		panel.add(cobxNumber);
+		
+		Font originalFont = UIManager.getFont("Button.font");
+		UIManager.put("Button.font", new Font("Times New Roman", Font.PLAIN, 18));
+		int result = JOptionPane.showConfirmDialog(
+				null,          // Parent component (null for center of screen)
+				panel,         // Content panel
+				"Add a drink", // Title
+				JOptionPane.OK_CANCEL_OPTION, // Buttons: OK and Cancel
+				JOptionPane.PLAIN_MESSAGE  // Icon type
+		);
+		
+		UIManager.put("Button.font", originalFont);
+		
+		System.out.println(info.getCurOrder().toString());
+		
+		int count = cobxNumber.getSelectedIndex() + 1;
+		
+		DessertType selectedDessertType = dessertTypeMap.get((String) cobxType.getSelectedItem());
+		MenuItemWithCount dessertCount = new MenuItemWithCount(
+				new Dessert(selectedDessertType, 5F),
+				count);
+		
+		if (result == JOptionPane.OK_OPTION) {
+			addItemToOrder(dessertCount);
+			updateFields();
+		}
+		resetScrollPos();
+	}
+	
+	public void wingsOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
@@ -271,12 +344,12 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(wingsCount);
-			updateFields(lblWingPrice, wingsCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
 	
-	public void GarlicBreadOptionPopUp() {
+	public void garlicBreadOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
@@ -320,12 +393,12 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(garlicBreadCount);
-			updateFields(lblGarlicBreadPrice, garlicBreadCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
 	
-	public void GarlicKnotsOptionPopUp() {
+	public void garlicKnotsOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
@@ -369,12 +442,12 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(garlicKnotsCount);
-			updateFields(lblGarlicKnotsPrice, garlicKnotsCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
 	
-	public void SaladOptionPopUp() {
+	public void saladOptionPopUp() {
 		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxCount.setFont(info.getOptionsFont());
 		
@@ -407,7 +480,7 @@ public class Menu extends CardScreen {
 		
 		if (result == JOptionPane.OK_OPTION) {
 			addItemToOrder(saladCount);
-			updateFields(lblSaladPrice, saladCount.getItem());
+			updateFields();
 		}
 		resetScrollPos();
 	}
@@ -432,16 +505,37 @@ public class Menu extends CardScreen {
 						case GARLIC_KNOTS -> txtAreaGarlicKnotsInfo.append(m + "\n");
 					}
 				}
+			} else if (item instanceof Dessert) {
+				txtAreaDesserts.append(m + "\n");
 			}
 		}
 	}
 	
-	public void updateFields(JLabel subTotalLabel, MenuItem item) {
+	public void updateFields() {
 		resetScreen();
+		resetCostFields();
+		lblTotalCost.setText("Total: $0.00");
 		refillInfoFields();
 		updateTotalCostFields();
-		updateSubCostField(subTotalLabel, item);
+		updateSubCostField(lblPizzaPrice, new Pizza());
+		updateSubCostField(lblGarlicKnotsPrice, new Side(SideType.GARLIC_KNOTS, 0, 1));
+		updateSubCostField(lblGarlicBreadPrice, new Side(SideType.GARLIC_BREAD, 0, 1));
+		updateSubCostField(lblPizzaPrice, new Pizza());
+		updateSubCostField(lblWingPrice, new Wings(SideType.WINGS, 0, 1, WingType.HOT_WINGS));
+		updateSubCostField(lblSaladPrice, new Side(SideType.CAESAR_SALAD, 0, 1));
+		updateSubCostField(lblDrinkPrice, new Drink(DrinkSize.MEDIUM, DrinkType.DR_PEPPER, 0));
+		updateSubCostField(lblDessertPrice, new Dessert(DessertType.BROWNIE, 0));
 		System.out.println(info.getCurOrder().toString());
+	}
+	
+	public void resetCostFields() {
+		lblDrinkPrice.setText("Sub Total: $0.00");
+		lblGarlicBreadPrice.setText("Sub Total: $0.00");
+		lblPizzaPrice.setText("Sub Total: $0.00");
+		lblGarlicKnotsPrice.setText("Sub Total: $0.00");
+		lblWingPrice.setText("Sub Total: $0.00");
+		lblSaladPrice.setText("Sub Total: $0.00");
+		lblDessertPrice.setText("Sub Total: $0.00");
 	}
 	
 	public void addItemToOrder(MenuItemWithCount itemWithCount) {

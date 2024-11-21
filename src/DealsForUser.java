@@ -62,9 +62,12 @@ public class DealsForUser extends CardScreen{
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
-	
+
+	//if the user is not logged in, they will be sent to a different screen
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
+		if (!info.isLoggedIn())
+			return Screen.DEALS;
 		return toScreen;
 	}
 	

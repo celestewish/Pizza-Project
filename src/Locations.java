@@ -27,7 +27,7 @@ public class Locations extends CardScreen{
 		setScreenPanel(pnlLocations);
 		info.registerScreenName(Screen.LOCATIONS, this);
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
-		
+		//sets up the buttons seen at the top of the screen
 		setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
 		btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_IN));
 	}
@@ -36,7 +36,8 @@ public class Locations extends CardScreen{
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
-	
+
+	//if the user is logged in, they will be sent to a different screen.
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
 		if (info.isLoggedIn())
@@ -48,7 +49,7 @@ public class Locations extends CardScreen{
 	public void onEnterScreen() {
 	
 	}
-	
+	//creates the images seen on the screen
 	private void createUIComponents() {
 		pnlLogo = new ImagePanel("PizzaLogo.png");
 	}

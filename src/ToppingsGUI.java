@@ -212,6 +212,8 @@ public class ToppingsGUI extends CardScreen {
     
     @Override
     public void onEnterScreen() {
+        updatePizzaCountComboBox(cobxCount);
+        
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);
         txtareaPizzaInfo.setText(info.getCurPizza().toString());
         orderComplete = false;
@@ -222,5 +224,21 @@ public class ToppingsGUI extends CardScreen {
     private void createUIComponents() {
         pnlCartLogo = new ImagePanel("cart.png");
         pnlLogo = new ImagePanel("PizzaLogo.png");
+    }
+    
+    private void updatePizzaCountComboBox(JComboBox<Integer> comboBox) {
+        // Clear the existing items in the combo box
+        comboBox.removeAllItems();
+        
+        // Calculate the remaining pizzas the user can order
+        int pizzasLeft = 10 - info.getCurOrder().getNumberPizzasInOrder();
+        
+        // Repopulate the combo box with integers from 1 to pizzasLeft
+        for (int i = 1; i <= pizzasLeft; i++) {
+            comboBox.addItem(i);
+        }
+        
+        // If there are no pizzas left, disable the combo box
+        comboBox.setEnabled(pizzasLeft > 0);
     }
 }

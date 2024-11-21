@@ -22,8 +22,9 @@ public class Deals extends CardScreen{
         setScreenPanel(pnlDeals);
         info.registerScreenName(Screen.DEALS, this);
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
-
+        //sets up the buttons seen at the top of the screen
         setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
+        //button to create an account if needed
         btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_IN));
         btnOrdernow1.addActionListener(_ -> showScreen(Screen.SIGN_IN));
         btnOrdernow2.addActionListener(_ -> showScreen(Screen.SIGN_IN));
@@ -33,7 +34,8 @@ public class Deals extends CardScreen{
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
         return true;
     }
-    
+
+    //if the user is logged in, they will be sent to a different screen
     @Override
     public Screen onAttemptEnterScreen(Screen toScreen) {
         if (info.isLoggedIn())
