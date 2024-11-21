@@ -45,6 +45,7 @@ public class LocationsForUser extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
+		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 	
 	}
 	

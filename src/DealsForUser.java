@@ -14,7 +14,9 @@ public class DealsForUser extends CardScreen{
 	private JLabel lblCurTotal;
 	private JPanel pnlCartLogo;
 	private JPanel pnlLogo;
-	
+	private JButton btnOrdernow1;
+	private JButton btnOrdernow2;
+
 	public DealsForUser(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlDealsUser);
@@ -36,6 +38,7 @@ public class DealsForUser extends CardScreen{
 	
 	@Override
 	public void onEnterScreen() {
+		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 	
 	}
 	
