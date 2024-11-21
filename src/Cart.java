@@ -62,7 +62,7 @@ public class Cart extends CardScreen {
 			FoodDescription.setText(myPizza.toString());
 			SecondDescription.setText("");
 		}
-		editButton.addActionListener(_ -> {showScreen(Screen.CREATE_PIZZA);});
+		editButton.addActionListener(_ -> {showScreen(Screen.MENU);});
 		removeButton.addActionListener(_ -> {
 			info.setCurPizza(null);
 		});
