@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Map;
+/**
+ * The Menu class represents the menu screen in the application.
+ * It displays the entirety of the menu including: Sides, Drinks, desserts and allows navigation
+ * to the payment information screen.
+ */
 
 public class Menu extends CardScreen {
 	private JPanel pnlMenu;
