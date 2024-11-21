@@ -114,7 +114,7 @@ public class Menu extends CardScreen {
 		btnEditGarlicKnots.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditSalad.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditWings.addActionListener(_ -> showScreen(Screen.CART));
-		//btnEditPizza.addActionListener(_ -> showDropdownPopupPizza());
+		btnEditPizza.addActionListener(_ -> showScreen(Screen.CART));
 		btnViewOrder.addActionListener(_ -> viewOrderScreen());
 		
 		btnCreatePizza.addActionListener(_ -> {
@@ -132,39 +132,34 @@ public class Menu extends CardScreen {
 		});
 	}
 	
-//	public void showDropdownPopupPizza() {
-//		String[] dropdownItems = new String[10];
-//		// Data for the dropdown (JComboBox)
-//		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-//			if (info.getCurOrder().getItems().get(i).getItem() instanceof Pizza){
-//				dropdownItems[i] += info.getCurOrder().getItems().get(i).getItem().toString();
-//			}
-//		}
-//
-//		// Create the combo box (dropdown)
-//		JComboBox<String> comboBox = new JComboBox<>(dropdownItems);
-//
-//		// Create a message in the popup
-//		JPanel panel = new JPanel();
-//		panel.add(new JLabel("Select item to delete:"));
-//		panel.add(comboBox);
-//
-//		String toDelete = (String) comboBox.getSelectedItem();
-//		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-//			if (info.getCurOrder().getItems().get(i).getItem().toString().equals(toDelete)) {
-//				info.getCurOrder().getItems().remove(i);
-//			}
-//		}
-//
-//		// Create the dialog popup to show the dropdown
-//		int option = JOptionPane.showConfirmDialog(null, panel, "Select Option", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-//
-//		// Handle the selection after the popup closes
-//		if (option == JOptionPane.OK_OPTION) {
-//			String selectedOption = (String) comboBox.getSelectedItem();
-//			JOptionPane.showMessageDialog(null, "You deleted: " + selectedOption);
-//		}
-//	}
+	public void showDropdownPopupPizza() {
+		// Data for the dropdown (JComboBox)
+
+		// Create the combo box (dropdown)
+		JComboBox<MenuItemWithCount> comboBox = new JComboBox<>(info.getCurOrder().getItems().toArray(new MenuItemWithCount[0]));
+
+		// Create a message in the popup
+		JPanel panel = new JPanel();
+		panel.add(new JLabel("Select item to delete:"));
+		panel.add(comboBox);
+
+		MenuItemWithCount toDelete = (MenuItemWithCount) comboBox.getSelectedItem();
+		for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
+			if (info.getCurOrder().getItems().contains(toDelete)) {
+				info.getCurOrder().removeItem(info.getCurOrder().getItems().get(i).getItem());
+			}
+		}
+
+		// Create the dialog popup to show the dropdown
+		int option = JOptionPane.showConfirmDialog(null, panel, "Select Option", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+		// Handle the selection after the popup closes
+		if (option == JOptionPane.OK_OPTION) {
+			String selectedOption = (String) comboBox.getSelectedItem();
+			JOptionPane.showMessageDialog(null, "You deleted: " + selectedOption);
+		}
+	}
+
 
 	public void viewOrderScreen() {
         JPanel orderPanel = new JPanel();
