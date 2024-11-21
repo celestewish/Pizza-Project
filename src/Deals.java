@@ -25,6 +25,8 @@ public class Deals extends CardScreen{
 
         setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
         btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_IN));
+        btnOrdernow1.addActionListener(_ -> showScreen(Screen.SIGN_IN));
+        btnOrdernow2.addActionListener(_ -> showScreen(Screen.SIGN_IN));
     }
     
     @Override
