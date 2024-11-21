@@ -53,6 +53,7 @@ public class Cart extends CardScreen {
 		returnButton.addActionListener(_ -> showScreen(Screen.MENU));
 		btnCheckout.addActionListener(_ -> showScreen(Screen.CHECK_OUT));
 	}
+	//this dropdown allows the user to delete items in their order
 	public void showDropdownPopup() {
 		// Data for the dropdown (JComboBox)
 
