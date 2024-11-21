@@ -24,6 +24,19 @@ public class DealsForUser extends CardScreen{
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
+
+
+		btnOrdernow1.addActionListener(_ -> {
+			if (showConfirmationDialogueGreen("Add Deal to Order?", "Are you sure?")) {
+				/*Pizza pizza = info.getCurPizza().clone();
+
+				info.getCurOrder().addItem(new MenuItemWithCount(pizza, cobxCount.getSelectedIndex() + 1));
+				orderComplete = true;
+				
+				 */
+				showScreen(Screen.MENU);
+			}
+		});
 	}
 	
 	@Override
