@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Locations extends CardScreen{
 	private JPanel pnlLocations;
@@ -13,6 +15,7 @@ public class Locations extends CardScreen{
 	private JLabel ThankYou;
 	private JLabel OrderPlace;
 	private JLabel Total;
+	private JButton btnCreateAccount;
 	private JButton btnSignOut;
 	private JButton btnCart;
 	private JLabel lblHiName;
@@ -26,6 +29,7 @@ public class Locations extends CardScreen{
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
 		setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
+		btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_IN));
 	}
 	
 	@Override

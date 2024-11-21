@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LocationsForUser extends CardScreen {
 	private JPanel pnlLocationsUser;
@@ -14,7 +16,11 @@ public class LocationsForUser extends CardScreen {
 	private JLabel lblCurTotal;
 	private JPanel pnlCartLogo;
 	private JPanel pnlLogo;
-	
+	private JLabel ThankYou;
+	private JLabel OrderPlace;
+	private JLabel Total;
+	private JButton btnCreateAccount;
+
 	public LocationsForUser(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlLocationsUser);
@@ -22,6 +28,7 @@ public class LocationsForUser extends CardScreen {
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 		
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
+		btnCreateAccount.addActionListener(_ -> showScreen(Screen.MENU));
 	}
 	
 	@Override

@@ -23,7 +23,7 @@ public class Payment_Receipt extends CardScreen{
     private JLabel lblCurTotal;
     private JPanel pnlCartLogo;
     private JPanel pnlLogo;
-    
+
     public Payment_Receipt(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
         setScreenPanel(pnlPaymentReceipt);
