@@ -285,7 +285,7 @@
             </constraints>
             <properties>
               <background color="-1582921"/>
-              <font size="16"/>
+              <font size="22"/>
               <foreground color="-16777216"/>
               <text value="To begin creating your order, please sign in!"/>
             </properties>
