@@ -107,6 +107,7 @@ public class Cart extends CardScreen {
 
 	/**
 	 * Sets up the screen when entering it including order details, and fonts.
+	 * Populates screen with current order items
 	 */
 	
 	@Override
