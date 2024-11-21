@@ -54,11 +54,18 @@ public class Menu extends CardScreen {
 	private JButton btnEditGarlicBread;
 	private JTextArea txtAreaGarlicBreadInfo;
 	
+	private JPanel imgDessert;
+	private JLabel lblDessertPrice;
+	private JButton btnEditDesserts;
+	private JButton btnAddDessert;
+	private JTextArea txtAreaDesserts;
+	
 	private JPanel imgDrinks;
 	private JLabel lblDrinkPrice;
 	private JButton btnAddDrink;
 	private JButton btnEditDrinks;
 	private JTextArea txtAreaDrinkInfo;
+
 	
 	private double currentVerticalScrollPos = 0;
 	
@@ -82,6 +89,7 @@ public class Menu extends CardScreen {
 		addJComponent(txtAreaPizzaInfo);
 		addJComponent(txtAreaSaladInfo);
 		addJComponent(txtAreaWingInfo);
+		addJComponent(txtAreaDesserts);
 		addJComponent(lblDrinkPrice);
 		addJComponent(lblGarlicBreadPrice);
 		addJComponent(lblPizzaPrice);
@@ -89,16 +97,18 @@ public class Menu extends CardScreen {
 		addJComponent(lblWingPrice);
 		addJComponent(lblSaladPrice);
 		addJComponent(lblTotalCost);
+		addJComponent(lblDessertPrice);
 
 		for (JComponent j : getComponents()) {
 			j.setFocusable(false);
 		}
 		
-		btnAddDrink.addActionListener(_ -> DrinkOptionPopUp());
-		btnAddWings.addActionListener(_ -> WingsOptionPopUp());
-		btnAddGarlicBread.addActionListener(_ -> GarlicBreadOptionPopUp());
-		btnAddGarlicKnots.addActionListener(_ -> GarlicKnotsOptionPopUp());
-		btnAddSalad.addActionListener(_ -> SaladOptionPopUp());
+		btnAddDrink.addActionListener(_ -> drinkOptionPopUp());
+		btnAddWings.addActionListener(_ -> wingsOptionPopUp());
+		btnAddGarlicBread.addActionListener(_ -> garlicBreadOptionPopUp());
+		btnAddGarlicKnots.addActionListener(_ -> garlicKnotsOptionPopUp());
+		btnAddSalad.addActionListener(_ -> saladOptionPopUp());
+		btnAddDessert.addActionListener(_ -> dessertOptionsPopUp());
 		btnEditDrinks.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditGarlicBread.addActionListener(_ -> showScreen(Screen.CART));
 		btnEditGarlicKnots.addActionListener(_ -> showScreen(Screen.CART));
@@ -171,10 +181,11 @@ public class Menu extends CardScreen {
 		imgGarlicBread = new ImagePanel("garlicbread.jpg");
 		imgSalad = new ImagePanel("salad.jpg");
 		imgGarlicKnots = new ImagePanel("garlicknots.jpg");
+		imgDessert = new ImagePanel("dessert.jpg");
 	}
 	
 	
-	public void DrinkOptionPopUp() {
+	public void drinkOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
@@ -233,7 +244,56 @@ public class Menu extends CardScreen {
 		resetScrollPos();
 	}
 	
-	public void WingsOptionPopUp() {
+	public void dessertOptionsPopUp() {
+		JComboBox<String> cobxType = new JComboBox<>();
+		Utils.populateComboBox(cobxType, DessertType.class);
+		cobxType.setFont(info.getOptionsFont());
+		Map<String, DessertType> dessertTypeMap = Utils.createEnumMap(DessertType.class);
+		
+		JComboBox<Integer> cobxNumber = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+		cobxNumber.setFont(info.getOptionsFont());
+		
+		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
+		// Create a panel to hold the combo box
+		JPanel panel = new JPanel();
+		JLabel txt1 = new JLabel("Choose Your Drink:");
+		txt1.setFont(info.getTextFont());
+		panel.add(txt1);
+		panel.add(cobxType);
+		JLabel txt2 = new JLabel("How Many:");
+		txt2.setFont(info.getTextFont());
+		panel.add(txt2);
+		panel.add(cobxNumber);
+		
+		Font originalFont = UIManager.getFont("Button.font");
+		UIManager.put("Button.font", new Font("Times New Roman", Font.PLAIN, 18));
+		int result = JOptionPane.showConfirmDialog(
+				null,          // Parent component (null for center of screen)
+				panel,         // Content panel
+				"Add a drink", // Title
+				JOptionPane.OK_CANCEL_OPTION, // Buttons: OK and Cancel
+				JOptionPane.PLAIN_MESSAGE  // Icon type
+		);
+		
+		UIManager.put("Button.font", originalFont);
+		
+		System.out.println(info.getCurOrder().toString());
+		
+		int count = cobxNumber.getSelectedIndex() + 1;
+		
+		DessertType selectedDessertType = dessertTypeMap.get((String) cobxType.getSelectedItem());
+		MenuItemWithCount dessertCount = new MenuItemWithCount(
+				new Dessert(selectedDessertType, 5F),
+				count);
+		
+		if (result == JOptionPane.OK_OPTION) {
+			addItemToOrder(dessertCount);
+			updateFields();
+		}
+		resetScrollPos();
+	}
+	
+	public void wingsOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
@@ -289,7 +349,7 @@ public class Menu extends CardScreen {
 		resetScrollPos();
 	}
 	
-	public void GarlicBreadOptionPopUp() {
+	public void garlicBreadOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
@@ -338,7 +398,7 @@ public class Menu extends CardScreen {
 		resetScrollPos();
 	}
 	
-	public void GarlicKnotsOptionPopUp() {
+	public void garlicKnotsOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
 		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		
@@ -387,7 +447,7 @@ public class Menu extends CardScreen {
 		resetScrollPos();
 	}
 	
-	public void SaladOptionPopUp() {
+	public void saladOptionPopUp() {
 		JComboBox<Integer> cobxCount = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
 		cobxCount.setFont(info.getOptionsFont());
 		
@@ -445,6 +505,8 @@ public class Menu extends CardScreen {
 						case GARLIC_KNOTS -> txtAreaGarlicKnotsInfo.append(m + "\n");
 					}
 				}
+			} else if (item instanceof Dessert) {
+				txtAreaDesserts.append(m + "\n");
 			}
 		}
 	}
@@ -462,6 +524,7 @@ public class Menu extends CardScreen {
 		updateSubCostField(lblWingPrice, new Wings(SideType.WINGS, 0, 1, WingType.HOT_WINGS));
 		updateSubCostField(lblSaladPrice, new Side(SideType.CAESAR_SALAD, 0, 1));
 		updateSubCostField(lblDrinkPrice, new Drink(DrinkSize.MEDIUM, DrinkType.DR_PEPPER, 0));
+		updateSubCostField(lblDessertPrice, new Dessert(DessertType.BROWNIE, 0));
 		System.out.println(info.getCurOrder().toString());
 	}
 	
@@ -472,6 +535,7 @@ public class Menu extends CardScreen {
 		lblGarlicKnotsPrice.setText("Sub Total: $0.00");
 		lblWingPrice.setText("Sub Total: $0.00");
 		lblSaladPrice.setText("Sub Total: $0.00");
+		lblDessertPrice.setText("Sub Total: $0.00");
 	}
 	
 	public void addItemToOrder(MenuItemWithCount itemWithCount) {
