@@ -23,6 +23,8 @@ public class Payment_Receipt extends CardScreen{
     private JLabel lblCurTotal;
     private JPanel pnlCartLogo;
     private JPanel pnlLogo;
+    private JScrollPane showOrder;
+    private JTextArea orderShown;
 
     public Payment_Receipt(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
@@ -49,13 +51,19 @@ public class Payment_Receipt extends CardScreen{
     @Override
     public void onEnterScreen() {
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);
-        Font textFont = new Font("Times New Roman", Font.BOLD, 24);
+        for(int i=0; i<info.getCurOrder().getItems().size(); i++){
+            orderShown.append(info.getCurOrder().getItems().get(i).toString() + "\n");
+            orderShown.setFont(info.getOptionsFont());
+        }
+        /*Font textFont = new Font("Times New Roman", Font.BOLD, 24);
         Font optionsFont = new Font("Arial", Font.PLAIN, 20);
         if (info.getCurPizza() != null) {
             Pizza myPizza = info.getCurPizza();
             ItemType.setText("Custom Pizza");
             ListIngredients.setText(myPizza.toString());
         }
+
+         */
         TotalInfo.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
     }
     
