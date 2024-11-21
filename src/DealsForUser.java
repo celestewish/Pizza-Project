@@ -38,6 +38,7 @@ public class DealsForUser extends CardScreen{
 	
 	@Override
 	public void onEnterScreen() {
+		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 	
 	}
 	
