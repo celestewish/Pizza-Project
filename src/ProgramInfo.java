@@ -63,6 +63,9 @@ public class ProgramInfo {
 	public void setCurOrder(Order order) {
 		curOrder = order;
 	}
+
+	public void clearCurOrder(){ curOrder = null;}
+
 	
 	
 	
@@ -77,6 +80,8 @@ public class ProgramInfo {
 	public void addCurPizzaToOrder(int count) {
 		this.curOrder.addItem(new MenuItemWithCount(this.curPizza, count));
 	}
+
+
 	
 	
 	public boolean isLoggedIn() {
