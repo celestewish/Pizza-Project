@@ -13,6 +13,10 @@ public class Pizza extends MenuItem {
 		this.toppings = new LinkedList<>();
 	}
 	
+	public Pizza() {
+		toppings = new LinkedList<>();
+	}
+	
 	@Override
 	public float calcPrice() {
 		float total = 0;
@@ -34,7 +38,7 @@ public class Pizza extends MenuItem {
 		
 		// Add the cost of toppings
 		for (Topping t : toppings) {
-			total += t.calcTotalPrice();
+			total += t.getPrice();
 		}
 		
 		return total;
@@ -63,9 +67,9 @@ public class Pizza extends MenuItem {
 		
 		// Append the toppings
 		if (!toppings.isEmpty()) {
-			pizza.append("\nToppings:\n");
+			pizza.append("\n   Toppings:\n");
 			for (Topping topping : toppings) {
-				pizza.append("  ").append(topping.toString()).append("\n");
+				pizza.append("        ").append(topping.toString()).append("\n");
 			}
 		}
 		
@@ -87,6 +91,14 @@ public class Pizza extends MenuItem {
 	
 	public PizzaSize getSize() {
 		return size;
+	}
+	
+	public Pizza clone() {
+		Pizza clone = new Pizza(this.size, this.crust, this.sauce);
+		for (Topping topping : this.toppings) {
+			clone.addTopping(new Topping(topping.getType(), topping.isExtra(), topping.getPlacement()));
+		}
+		return clone;
 	}
 	
 	public void setSize(PizzaSize size) {

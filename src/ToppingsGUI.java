@@ -137,7 +137,9 @@ public class ToppingsGUI extends CardScreen {
         
         btnCreate.addActionListener(_ -> {
             if (showConfirmationDialogueGreen("Add Pizza to Order?", "Are you finished making your pizza?")) {
-                info.addCurPizzaToOrder(cobxCount.getSelectedIndex() + 1);
+                Pizza pizza = info.getCurPizza().clone();
+                
+                info.getCurOrder().addItem(new MenuItemWithCount(pizza, cobxCount.getSelectedIndex() + 1));
                 orderComplete = true;
                 showScreen(Screen.MENU);
             }
@@ -153,15 +155,16 @@ public class ToppingsGUI extends CardScreen {
             JComboBox<?> comboBox = entry.getValue(); // Get the JComboBox
             
             comboBox.addActionListener(_ -> {
-                System.out.println(info.getCurPizza().toString());
                 if (placementMap.get((String) comboBox.getSelectedItem()) == ToppingPlacement.NONE) {
                     info.getCurPizza().removeTopping(topping);
-                } else if (info.getCurPizza().getTopping(topping) == null) {
+                }
+                else if (info.getCurPizza().getTopping(topping) == null) {
                     info.getCurPizza().addTopping(new Topping(
                             topping,
                             checkBoxEnumMap.get(topping).isSelected(),
                             placementMap.get((String) comboBox.getSelectedItem())));
-                } else {
+                }
+                else {
                     info.getCurPizza().getTopping(topping).setPlacement(placementMap.get((String) comboBox.getSelectedItem()));
                 }
                 txtareaPizzaInfo.setText(info.getCurPizza().toString());

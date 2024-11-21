@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="PizzaProjectGroup7:jar">
+  <artifact type="jar" build-on-make="true" name="PizzaProjectGroup7:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/PizzaProjectGroup7_jar</output-path>
     <root id="archive" name="PizzaProjectGroup7.jar">
       <element id="module-output" name="PizzaProjectGroup7" />

@@ -41,8 +41,11 @@ public class PizzaGUI extends CardScreen {
         addJComponent(cobxCrust);
         addJComponent(cobxSauce);
         addJComponent(cobxSize);
+        addJComponent(lblTotalCost);
         
         addTotalCostField(lblCurTotal);
+        
+        lblTotalCost.setText("");
         
         cobxCrust.addItem("Make a selection");
         Utils.populateComboBox(cobxCrust, CrustType.class);
@@ -68,8 +71,6 @@ public class PizzaGUI extends CardScreen {
         });
         
         cobxCrust.addActionListener(_ -> {
-            if (info.getCurPizza() != null)
-                System.out.println(info.getCurPizza().toString());
             if (cobxCrust.getSelectedIndex() != 0 && cobxSize.getSelectedIndex() != 0 && cobxSauce.getSelectedIndex() != 0) {
                 SauceOption sauceOption = sauceOptionMap.get((String) cobxSauce.getSelectedItem());
                 PizzaSize size = sizeMap.get((String) cobxSize.getSelectedItem());
@@ -83,14 +84,11 @@ public class PizzaGUI extends CardScreen {
                 else {
                     info.getCurPizza().setCrust(crustType);
                 }
-                System.out.println(info.getCurPizza());
                 lblTotalCost.setText(info.getCurPizza().toString());
             }
         });
         
         cobxSize.addActionListener(_ -> {
-            if (info.getCurPizza() != null)
-                System.out.println(info.getCurPizza().toString());
             if (cobxCrust.getSelectedIndex() != 0 && cobxSize.getSelectedIndex() != 0 && cobxSauce.getSelectedIndex() != 0) {
                 SauceOption sauceOption = sauceOptionMap.get((String) cobxSauce.getSelectedItem());
                 CrustType crustType = crustTypeMap.get((String) cobxCrust.getSelectedItem());
@@ -104,14 +102,11 @@ public class PizzaGUI extends CardScreen {
                 else {
                     info.getCurPizza().setSize(size);
                 }
-                System.out.println(info.getCurPizza());
                 lblTotalCost.setText(info.getCurPizza().toString());
             }
         });
         
         cobxSauce.addActionListener(_ -> {
-            if (info.getCurPizza() != null)
-                System.out.println(info.getCurPizza().toString());
             if (cobxCrust.getSelectedIndex() != 0 && cobxSize.getSelectedIndex() != 0 && cobxSauce.getSelectedIndex() != 0) {
                 CrustType crustType = crustTypeMap.get((String) cobxCrust.getSelectedItem());
                 PizzaSize size = sizeMap.get((String) cobxSize.getSelectedItem());
@@ -125,7 +120,6 @@ public class PizzaGUI extends CardScreen {
                 else {
                     info.getCurPizza().setSauce(sauceOption);
                 }
-                System.out.println(info.getCurPizza());
                 lblTotalCost.setText(info.getCurPizza().toString());
             }
         });
@@ -133,13 +127,16 @@ public class PizzaGUI extends CardScreen {
     
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
-        if (destinationScreen.equals(Screen.TOPPINGS))
+        if (destinationScreen.equals(Screen.TOPPINGS)) {
+            info.testout = "going to toppings";
             return true;
+        }
         else {
             boolean staying = showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
             
             if (!staying) {
                 info.setCurPizza(null);
+                info.testout = "set current pizza to nul";
             }
             
             return staying;
@@ -155,6 +152,9 @@ public class PizzaGUI extends CardScreen {
     public void onEnterScreen() {
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);
         resetScreen();
+        if (info.getCurPizza() != null)
+            info.setCurPizza(null);
+        lblTotalCost.setText("");
     }
 
     private void createUIComponents() {

@@ -147,9 +147,9 @@
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <minimum-size width="200" height="175"/>
-                        <preferred-size width="200" height="175"/>
-                        <maximum-size width="200" height="175"/>
+                        <minimum-size width="250" height="175"/>
+                        <preferred-size width="250" height="175"/>
+                        <maximum-size width="250" height="175"/>
                       </grid>
                     </constraints>
                     <properties>
@@ -599,9 +599,9 @@
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <minimum-size width="200" height="175"/>
-                        <preferred-size width="200" height="175"/>
-                        <maximum-size width="200" height="175"/>
+                        <minimum-size width="250" height="175"/>
+                        <preferred-size width="250" height="175"/>
+                        <maximum-size width="250" height="175"/>
                       </grid>
                     </constraints>
                     <properties>
@@ -772,9 +772,9 @@
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <minimum-size width="200" height="175"/>
-                        <preferred-size width="200" height="175"/>
-                        <maximum-size width="200" height="175"/>
+                        <minimum-size width="225" height="175"/>
+                        <preferred-size width="225" height="175"/>
+                        <maximum-size width="225" height="175"/>
                       </grid>
                     </constraints>
                     <properties>
@@ -944,9 +944,9 @@
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <minimum-size width="200" height="175"/>
-                        <preferred-size width="200" height="175"/>
-                        <maximum-size width="200" height="175"/>
+                        <minimum-size width="250" height="175"/>
+                        <preferred-size width="250" height="175"/>
+                        <maximum-size width="250" height="175"/>
                       </grid>
                     </constraints>
                     <properties>
@@ -1117,9 +1117,9 @@
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <minimum-size width="200" height="175"/>
-                        <preferred-size width="200" height="175"/>
-                        <maximum-size width="200" height="175"/>
+                        <minimum-size width="250" height="175"/>
+                        <preferred-size width="250" height="175"/>
+                        <maximum-size width="250" height="175"/>
                       </grid>
                     </constraints>
                     <properties>
@@ -1288,9 +1288,9 @@
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="1" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                        <minimum-size width="200" height="175"/>
-                        <preferred-size width="200" height="175"/>
-                        <maximum-size width="200" height="175"/>
+                        <minimum-size width="250" height="175"/>
+                        <preferred-size width="250" height="175"/>
+                        <maximum-size width="250" height="175"/>
                       </grid>
                     </constraints>
                     <properties>

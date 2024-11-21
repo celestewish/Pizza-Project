@@ -9,8 +9,6 @@ public abstract class MenuItem {
 		this.price = price;
 	}
 	
-	public abstract float calcPrice();
-	
 	public float getPrice() {
 		return price;
 	}
@@ -18,6 +16,8 @@ public abstract class MenuItem {
 	public void setPrice(float price) {
 		this.price = price;
 	}
+	
+	public abstract float calcPrice();
 	
 	@Override
 	public abstract String toString();

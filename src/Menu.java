@@ -83,6 +83,12 @@ public class Menu extends CardScreen {
 		addJComponent(txtAreaPizzaInfo);
 		addJComponent(txtAreaSaladInfo);
 		addJComponent(txtAreaWingInfo);
+		addJComponent(lblDrinkPrice);
+		addJComponent(lblGarlicBreadPrice);
+		addJComponent(lblPizzaPrice);
+		addJComponent(lblGarlicKnotsPrice);
+		addJComponent(lblWingPrice);
+		addJComponent(lblSaladPrice);
 		
 		for (JComponent j : getComponents()) {
 			j.setFocusable(false);
@@ -108,11 +114,16 @@ public class Menu extends CardScreen {
         JPanel orderPanel = new JPanel();
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		JTextArea item = new JTextArea();
-        for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-			item.append(info.getCurOrder().getItems().get(i).toString()+"\n");
-            item.setFont(info.getOptionsFont());
-            orderPanel.add(item);
-        }
+
+		item.append(info.getCurOrder().toString());
+//        for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
+//			item.append(info.getCurOrder().getItems().get(i).toString()+"\n");
+//            item.setFont(info.getOptionsFont());
+//            orderPanel.add(item);
+//        }
+		
+		orderPanel.add(item);
+		
         JOptionPane.showMessageDialog(null, orderPanel, "View Order", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -130,12 +141,14 @@ public class Menu extends CardScreen {
 	
 	@Override
 	public void onEnterScreen() {
+		System.out.println(info.getCurOrder().toString());
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
-		
 		resetScreen();
 		refillInfoFields();
+		updateSubCostField(lblPizzaPrice, new Pizza());
 		currentVerticalScrollPos = 0;
 		SwingUtilities.invokeLater(() -> scrollPane.getViewport().setViewPosition((new Point(0, 0))));
+		info.setCurPizza(null);
 	}
 	
 	private void createUIComponents() {
@@ -149,6 +162,7 @@ public class Menu extends CardScreen {
 		imgSalad = new ImagePanel("salad.jpg");
 		imgGarlicKnots = new ImagePanel("garlicknots.jpg");
 	}
+	
 	
 	public void DrinkOptionPopUp() {
 		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
