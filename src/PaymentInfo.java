@@ -3,6 +3,11 @@ import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The PaymentInfo class represents the payment information screen in the application.
+ * It handles user input validation for payment details and navigation between screens.
+ */
+
 public class PaymentInfo extends CardScreen {
 	private JPanel pnlPaymentInfo;
 	
@@ -35,7 +40,13 @@ public class PaymentInfo extends CardScreen {
 	private JLabel deliveryDetails;
 	private JLabel securePayment;
 
-
+	/**
+	 * Constructor for the PaymentInfo screen.
+	 *
+	 * @param screenLayoutController The CardLayout controller for switching screens.
+	 * @param screenContainer        The container holding all screens.
+	 * @param panelName              The unique name for this panel.
+	 */
 	public PaymentInfo(CardLayout screenLayoutController, JPanel screenContainer, String panelName){
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlPaymentInfo);
@@ -72,7 +83,12 @@ public class PaymentInfo extends CardScreen {
 		});
 
 	}
-	
+	/**
+	 * Validates the expiration date format and range.
+	 *
+	 * @param date The expiration date input by the user.
+	 * @return True if the date is valid, false otherwise.
+	 */
 	public boolean isValidDate(String date){
 		boolean checkMonth;
 		boolean checkYear;
@@ -102,6 +118,11 @@ public class PaymentInfo extends CardScreen {
 		return checkMonth && checkYear;
 	}
 
+	/**
+	 * Validates the credit card number format.
+	 *
+	 * @return True if the card number is valid, false otherwise.
+	 */
 	public boolean checkCardNumber(){
 		boolean checkCard = true;
 		for(char c :cardNumberInput.getText().toCharArray()){
@@ -120,7 +141,11 @@ public class PaymentInfo extends CardScreen {
 		return checkCard;
 	}
 
-	//checks if the CVV is withing the set parameters, ie 322 and not 3205 nor 3d2
+	/**
+	 * Validates the CVV format.
+	 *
+	 * @return True if the CVV is valid, false otherwise.
+	 */
 	public boolean checkCVV(){
 		boolean checkCVVInput = true;
 		Pattern digitP = Pattern.compile("[0-9]");
@@ -138,7 +163,11 @@ public class PaymentInfo extends CardScreen {
 		return checkCVVInput;
 	}
 
-	//checks if the zip code is valid, ie has 5 digits and no special characters/letters
+	/**
+	 * Validates the zip code format.
+	 *
+	 * @return True if the zip code is valid, false otherwise.
+	 */
 	public boolean checkZipCode(){
 		boolean checkZip;
 		Pattern digitP = Pattern.compile("[0-9]");
@@ -154,7 +183,11 @@ public class PaymentInfo extends CardScreen {
 		return checkZip;
 	}
 
-	//checks if the name does not have special characters or numbers
+	/**
+	 * Validates the cardholder name format.
+	 *
+	 * @return True if the name is valid, false otherwise.
+	 */
 	public boolean checkName(){
 		Pattern specialC = Pattern.compile("[!@#$%&*()_+=|<>?\\[\\]~-]");
 		Pattern digitP = Pattern.compile("[0-9]");
@@ -167,7 +200,12 @@ public class PaymentInfo extends CardScreen {
 
 
 
-	//clears the input fields
+	/**
+	 * Clears all input fields when attempting to leave the screen.
+	 *
+	 * @param destinationScreen The screen the user is navigating to.
+	 * @return True to allow navigation, false otherwise.
+	 */
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		cardNumberInput.setText(null);
@@ -177,14 +215,19 @@ public class PaymentInfo extends CardScreen {
 		cardHoldName.setText(null);
 		return true;
 	}
-	
+
+	/**
+	 * Sets up the screen when entering it.
+	 */
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
 
 		return toScreen;
 	}
 
-	//sets up the screen when entering it, ie lblHiName will have the current users name.
+	/**
+	 * Sets up the screen when entering it.
+     */
 	@Override
 	public void onEnterScreen() {
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
@@ -197,7 +240,9 @@ public class PaymentInfo extends CardScreen {
 		securePayment.setFont(info.getPaymentFont());
 	}
 
-	//sets up the images found on the screen
+	/**
+	 * Sets up the images found on the screen.
+	 */
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
 		pnlLogo = new ImagePanel("PizzaLogo.png");
