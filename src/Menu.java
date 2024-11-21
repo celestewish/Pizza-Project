@@ -113,16 +113,13 @@ public class Menu extends CardScreen {
 	public void viewOrderScreen() {
         JPanel orderPanel = new JPanel();
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
-		JTextArea item = new JTextArea();
-
-		item.append(info.getCurOrder().toString());
-//        for (int i = 0; i < info.getCurOrder().getItems().size(); i++) {
-//			item.append(info.getCurOrder().getItems().get(i).toString()+"\n");
-//            item.setFont(info.getOptionsFont());
-//            orderPanel.add(item);
-//        }
+		JTextArea orderInfo = new JTextArea();
+		orderInfo.setFocusable(false);
+		orderInfo.setFont(info.getTextFont());
 		
-		orderPanel.add(item);
+		orderInfo.append(info.getCurOrder().toString());
+		
+		orderPanel.add(orderInfo);
 		
         JOptionPane.showMessageDialog(null, orderPanel, "View Order", JOptionPane.INFORMATION_MESSAGE);
     }

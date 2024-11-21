@@ -13,7 +13,6 @@ public class ProgramInfo {
 	private final UserDatabase userDatabase;
 	private Screen curScreen;
 	private Screen lastScreen;
-	public String testout = "";
 	
 	private final Font comboBoxFont = new Font("Times New Roman", Font.PLAIN, 24);
 	private final Font checkBoxFont = new Font("Arial", Font.BOLD, 20);
@@ -178,6 +177,4 @@ public class ProgramInfo {
 	public Font getTotalFont(){return totalFont;}
 
 	public Font getPaymentFont(){return paymentFont;}
-
-
 }

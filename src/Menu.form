@@ -1382,54 +1382,6 @@
               </grid>
             </constraints>
           </hspacer>
-          <component id="3e59d" class="javax.swing.JButton" binding="btnHome">
-            <constraints>
-              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="50" height="37"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font name="Times New Roman" size="24"/>
-              <foreground color="-16777216"/>
-              <text value="Home"/>
-            </properties>
-          </component>
-          <component id="18784" class="javax.swing.JButton" binding="btnMenu">
-            <constraints>
-              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="50" height="37"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font name="Times New Roman" size="24"/>
-              <foreground color="-16777216"/>
-              <text value="Menu"/>
-            </properties>
-          </component>
-          <component id="7cdc2" class="javax.swing.JButton" binding="btnDeals">
-            <constraints>
-              <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="50" height="37"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font name="Times New Roman" size="24"/>
-              <foreground color="-16777216"/>
-              <text value="Deals"/>
-            </properties>
-          </component>
-          <component id="cbdf9" class="javax.swing.JButton" binding="btnLocations">
-            <constraints>
-              <grid row="2" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="50" height="37"/>
-              </grid>
-            </constraints>
-            <properties>
-              <font name="Times New Roman" size="24"/>
-              <foreground color="-16777216"/>
-              <text value="Locations"/>
-            </properties>
-          </component>
           <component id="fe3d2" class="javax.swing.JButton" binding="btnSignOut">
             <constraints>
               <grid row="2" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
@@ -1586,6 +1538,54 @@
             <border type="none"/>
             <children/>
           </grid>
+          <component id="3e59d" class="javax.swing.JButton" binding="btnHome">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="37"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Times New Roman" size="24"/>
+              <foreground color="-16777216"/>
+              <text value="Home"/>
+            </properties>
+          </component>
+          <component id="18784" class="javax.swing.JButton" binding="btnMenu">
+            <constraints>
+              <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="37"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Times New Roman" size="24"/>
+              <foreground color="-16777216"/>
+              <text value="Menu"/>
+            </properties>
+          </component>
+          <component id="7cdc2" class="javax.swing.JButton" binding="btnDeals">
+            <constraints>
+              <grid row="3" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="37"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Times New Roman" size="24"/>
+              <foreground color="-16777216"/>
+              <text value="Deals"/>
+            </properties>
+          </component>
+          <component id="cbdf9" class="javax.swing.JButton" binding="btnLocations">
+            <constraints>
+              <grid row="3" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="50" height="37"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Times New Roman" size="24"/>
+              <foreground color="-16777216"/>
+              <text value="Locations"/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>
