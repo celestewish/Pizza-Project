@@ -27,12 +27,24 @@ public class DealsForUser extends CardScreen{
 
 
 		btnOrdernow1.addActionListener(_ -> {
-			if (showConfirmationDialogueGreen("Add Deal to Order?", "Are you sure?")) {
+			if (showConfirmationDialogueGreen("Please Confirm", "Add Deal to Order?")) {
 				/*Pizza pizza = info.getCurPizza().clone();
 
 				info.getCurOrder().addItem(new MenuItemWithCount(pizza, cobxCount.getSelectedIndex() + 1));
 				orderComplete = true;
-				
+
+				 */
+				showScreen(Screen.MENU);
+			}
+		});
+
+		btnOrdernow2.addActionListener(_ -> {
+			if (showConfirmationDialogueGreen("Please Confirm", "Add Deal to Order?")) {
+				/*Pizza pizza = info.getCurPizza().clone();
+
+				info.getCurOrder().addItem(new MenuItemWithCount(pizza, cobxCount.getSelectedIndex() + 1));
+				orderComplete = true;
+
 				 */
 				showScreen(Screen.MENU);
 			}
