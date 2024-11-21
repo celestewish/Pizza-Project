@@ -73,6 +73,11 @@ public abstract class CardScreen {
 			
 		screen = info.Screens().get(screen).onAttemptEnterScreen(screen);
 		
+		if (screen == null) {
+			System.out.println("yoink");
+			return;
+		}
+		
 		resetScreen();
 		Screen targetScreen = screen;
 		SwingUtilities.invokeLater(() -> info.Screens().get(targetScreen).onEnterScreen());

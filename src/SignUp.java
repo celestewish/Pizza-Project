@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The SignUp class provides a GUI for the user to create a new account.
+ * It includes fields for personal information, address, payment method, and sign-up functionality.
+ */
 public class SignUp extends CardScreen {
 	private JPanel pnlSignUp;
 	private JPanel pnlLogo;
@@ -37,7 +41,14 @@ public class SignUp extends CardScreen {
 	private JButton btnSignUp;
 	private JButton btnReturn;
 	private JScrollPane scrollPane;
-	
+
+	/**
+	 * Constructor for the SignUp class.
+	 *
+	 * @param screenLayoutController the CardLayout controller to manage screen navigation
+	 * @param screenContainer the container panel holding all screens
+	 * @param panelName the name identifier for this panel
+	 */
 	public SignUp(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
 		super(screenLayoutController, screenContainer, panelName);
 		setScreenPanel(pnlSignUp);
@@ -131,24 +142,40 @@ public class SignUp extends CardScreen {
 				txtPassword.setEchoChar('*');
 		});
 	}
-	
+
+	/**
+	 *
+	 * @param destinationScreen receives the destination screen
+	 * @return returns true to make sure the program moves to the next screen
+	 */
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
 	}
-	
+
+	/**
+	 *
+	 * @param toScreen the screen to navigate to
+	 * @return returns the sign in screen if the screen is sign_up, otherwise returns any of the other screens
+	 */
 	@Override
 	public Screen onAttemptEnterScreen(Screen toScreen) {
 		if (info.getCurScreen() == Screen.SIGN_UP)
 			return Screen.SIGN_IN;
 		return toScreen;
 	}
-	
+
+	/**
+	 * placeholder in case anything needed to be added
+	 */
 	@Override
 	public void onEnterScreen() {
 	
 	}
-	
+
+	/**
+	 * Initializes custom UI components, such as logos
+	 */
 	private void createUIComponents() {
 		pnlLogo = new ImagePanel("PizzaLogo.png");
 	}

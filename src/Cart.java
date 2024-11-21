@@ -1,6 +1,5 @@
 import javax.swing.*;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class Cart extends CardScreen {
@@ -36,8 +35,8 @@ public class Cart extends CardScreen {
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
-		returnButton.addActionListener(ActionListener_ -> showScreen(Screen.MENU));
-		btnCheckout.addActionListener(ActionListener_ -> showScreen(Screen.CHECK_OUT));
+		returnButton.addActionListener(_ -> showScreen(Screen.MENU));
+		btnCheckout.addActionListener(_ -> showScreen(Screen.CHECK_OUT));
 	}
 	
 	@Override
@@ -54,8 +53,6 @@ public class Cart extends CardScreen {
 	public void onEnterScreen() {
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 
-		Font textFont = new Font("Times New Roman", Font.BOLD, 24);
-		Font optionsFont = new Font("Arial", Font.PLAIN, 20);
 		if (info.getCurPizza() != null) {
 			Pizza myPizza = info.getCurPizza();
 			FoodType.setText("Custom Pizza");
@@ -67,7 +64,7 @@ public class Cart extends CardScreen {
 			info.setCurPizza(null);
 		});
 		textArea1.setText(info.getCurOrder().toString());
-		textArea1.setFont(optionsFont);
+		textArea1.setFont(info.getOptionsFont());
 		costNumber.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
 	}
 	
