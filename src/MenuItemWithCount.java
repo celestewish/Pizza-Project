@@ -24,6 +24,18 @@ public class MenuItemWithCount {
 		this.count = count;
 	}
 
+	public void increaseCount() {
+		if (count < 10) {
+			count++;
+		}
+	}
+	
+	public void decreaseCount() {
+		if (count > 1) {
+			count--;
+		}
+	}
+	
 	// Increments the count by a specified amount (up to a maximum of 10)
 	public boolean incrementCount(int count) {
 		if (this.count + count <= 10) {
@@ -43,5 +55,12 @@ public class MenuItemWithCount {
 	@Override
 	public String toString() {
 		return count + " x " + item.toString();
+	}
+	
+	public String shortToString() {
+		if (item instanceof Pizza)
+			return count + " x " + ((Pizza) item).shortToString();
+		else
+			return toString();
 	}
 }

@@ -195,8 +195,8 @@ public abstract class CardScreen {
 	 * @param txtAreaCustAddress the text area displaying the customer's address
 	 */
 	public void setUpForPaymentInfo(JTextArea txtAreaTotal, JTextArea txtAreaCustAddress){
-		txtAreaTotal.setText("Subtotal : $" + info.formatter.format(info.getCurOrder().calcTotalOrderCost()) +
-		"\n\nTax: $" + info.formatter.format(0.07*info.getCurOrder().calcTotalOrderCost()) + "\n\nTotal :$" + info.formatter.format(1.07*info.getCurOrder().calcTotalOrderCost()));
+		txtAreaTotal.setText("Subtotal:\t$" + info.formatter.format(info.getCurOrder().calcTotalOrderCost()) +
+		"\n\nTax:   \t$" + info.formatter.format(0.07*info.getCurOrder().calcTotalOrderCost()) + "\n\nTotal:   \t$" + info.formatter.format(1.07*info.getCurOrder().calcTotalOrderCost()));
 		txtAreaCustAddress.setText(info.getAddress());
 	}
 
@@ -428,24 +428,35 @@ public abstract class CardScreen {
 				buttonText           // Default button
 		);
 	}
-
-
-	/**
-	 *
-	 * @param message passes a string that is used for the popup
-	 * @param title passes a string that is used for the popup
-	 * @param optionPaneType passes an int for the pane type
-	 */
-	public void showPopUpWindow(String message, String title, int optionPaneType) {
-		JOptionPane.showMessageDialog(
-				null,
-				message,
-				title,
-				optionPaneType
+	
+	
+	public static void showWarningDialogue(String message, String buttonText, String title) {
+		// Create a JPanel to hold custom content
+		JPanel panel = new JPanel(new BorderLayout(10, 10));
+		
+		// Create a JLabel for the message with custom font and red color
+		JLabel messageLabel = new JLabel(message);
+		messageLabel.setFont(info.getTextFont()); // Set your desired font here
+		messageLabel.setForeground(Color.RED);    // Set the text color to red
+		
+		// Add the message to the panel
+		panel.add(messageLabel, BorderLayout.CENTER);
+		
+		// Show the warning dialog with a single button
+		JOptionPane.showOptionDialog(
+				null,                // Parent component (null for center of the screen)
+				panel,               // Custom panel with styled content
+				title,               // Title of the dialog
+				JOptionPane.DEFAULT_OPTION, // Only one option
+				JOptionPane.WARNING_MESSAGE, // Message type with a warning icon
+				null,                // Icon (null for default warning icon)
+				new String[]{buttonText}, // Single button text
+				buttonText           // Default button
 		);
 	}
-
-
+	
+	
+	
 	/**
 	 *
 	 * @param password passes an array of chars, used to convert them to string
@@ -484,25 +495,26 @@ public abstract class CardScreen {
 	 */
 	public boolean doesPasswordMatchEmail(String email, String password) {
 		if (!info.UserDatabase().customerExists(email)) {
-			showPopUpWindow(
+			showWarningDialogue(
 					"That email does not exist in our database...\nPlease sign up with the button below!",
-					"",
-					1);
+					"Okay",
+					"");
 			return false;
 		}
 		if (!info.UserDatabase().getUser(email).checkPassword(password)) {
-			showPopUpWindow(
-					"Incorrect password.",
-					"",
-					0);
+			int attemptsLeft = 3 - info.getLoginAttempts();
+			showWarningDialogue(
+					"Incorrect password. You have " + attemptsLeft + " attempts left",
+					"Try Again",
+					"Incorrect password.");
 			info.incrementLoginAttempts();
 			if (info.getLoginAttempts() >= 3) {
-				showPopUpWindow(
+				showWarningDialogue(
 						"You have surpassed the limit of 3 login attempts.\n" +
 								"Sending a password reset link to the email:\n\t\t" +
 								email.toLowerCase(),
-						"",
-						1);
+						"Okay",
+						"Password reset link sent to your email");
 			}
 			return false;
 		}
@@ -518,11 +530,7 @@ public abstract class CardScreen {
 	public boolean isTextEmpty (boolean required, JTextField t) {
 		if (t.getText().isBlank()) {
 			if (required) {
-				JOptionPane.showMessageDialog(
-						null,
-						"Please complete all required fields",
-						"",
-						JOptionPane.ERROR_MESSAGE);
+			
 			}
 			return true;
 		}
@@ -609,50 +617,41 @@ public abstract class CardScreen {
 	 */
 	public boolean isEmailInvalid(JTextField t) {
 		String email = t.getText().trim();
-		
+		boolean valid = true;
 		// Check if the email contains exactly one '@'
 		String[] parts = email.split("@");
 		if (parts.length != 2) {
-			showPopUpWindow(
-					"Please enter a valid email.",
-					"",
-					0);
-			return true; // Invalid: No '@' or multiple '@'
+			valid = false;
 		}
 		
 		// Check the local part (before '@')
 		String localPart = parts[0];
 		if (localPart.isEmpty()) {
-			showPopUpWindow(
-					"Please enter a valid email.",
-					"",
-					0);
-			return true; // Invalid: Local part is empty
+			valid = false;
 		}
 		
 		// Check the domain part (after '@')
 		String domainPart = parts[1];
 		String[] domainParts = domainPart.split("\\.");
 		if (domainParts.length < 2) {
-			showPopUpWindow(
-					"Please enter a valid email.",
-					"",
-					0);
-			return true; // Invalid: No '.' in domain
+			valid = false;
 		}
 		
 		// Ensure all domain parts are non-empty
 		for (String part : domainParts) {
 			if (part.isEmpty()) {
-				showPopUpWindow(
-						"Please enter a valid email.",
-						"",
-						0);
-				return true; // Invalid: Empty domain part
+				valid = false;
+				break;
 			}
 		}
 		
-		// If all checks pass, the email is valid
+		if (!valid) {
+			showWarningDialogue(
+					"Please enter a valid email.",
+					"Okay",
+					"Email Invalid");
+			return true;
+		}
 		return false;
 	}
 
@@ -665,11 +664,10 @@ public abstract class CardScreen {
 	public boolean isComboBoxUnselected (boolean required, JComboBox<?> t) {
 		if (t.getSelectedIndex() == 0) {
 			if (required) {
-				JOptionPane.showMessageDialog(
-						null,
-						"Please complete all required fields",
-						"title",
-						JOptionPane.ERROR_MESSAGE);
+				showInfoDialogue(
+						"Please complete all required fields!",
+						"Okay",
+						"Required fields unfilled");
 			}
 			return true;
 		}

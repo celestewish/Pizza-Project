@@ -29,6 +29,11 @@ public class Topping {
 
 		return topping.toString();
 	}
+	
+	public String shortToString() {
+		return Utils.enumToNormalCase(type);
+	}
+	
 
 	// Getter for the type of the topping
 	public ToppingType getType() {

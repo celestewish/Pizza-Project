@@ -28,18 +28,16 @@ public class PaymentInfo extends CardScreen {
 	private JPanel pnlLogo;
 	private JTextArea txtAreaStoreAddress;
 	private JTextArea txtAreaCustAddress;
-	private JLabel lblStoreAddress;
-	private JLabel lblCustAddress;
 	private JTextField cardNumberInput;
 	private JTextField CVV;
 	private JTextField expDateInput;
 	private JTextField zipCodeInput;
-	private JLabel expDate;
-	private JButton makePaymentButton;
+	private JButton btnMakePayment;
 	private JTextArea txtAreaTotal;
 	private JLabel deliveryDetails;
 	private JLabel securePayment;
-
+	private JButton btnReturn;
+	
 	/**
 	 * Constructor for the PaymentInfo screen.
 	 *
@@ -55,8 +53,10 @@ public class PaymentInfo extends CardScreen {
 		
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 
+		btnReturn.addActionListener(_ -> showScreen(Screen.RETURN));
+		
 		//submits payment
-		makePaymentButton.addActionListener(_ -> {
+		btnMakePayment.addActionListener(_ -> {
 			if(!checkName()){
 				//shows a popup if the format for the name is not correct
 				showInfoDialogue("Customer name must only contain letters. Please avoid any special characters or numbers", "Ok", "Incorrect Format");
@@ -113,8 +113,6 @@ public class PaymentInfo extends CardScreen {
 			checkYear = false;
 		}
 
-		System.out.println(checkMonth + " " + checkYear);
-
 		return checkMonth && checkYear;
 	}
 
@@ -131,12 +129,9 @@ public class PaymentInfo extends CardScreen {
 				break;
 			}
 		}
-		System.out.println(cardNumberInput.getText().length());
 		if(cardNumberInput.getText().length() != 19){
 			checkCard = false;
 		}
-
-		System.out.println("Check card number is: " + checkCard);
 
 		return checkCard;
 	}
@@ -158,7 +153,6 @@ public class PaymentInfo extends CardScreen {
 		if(CVV.getText().length() !=3){
 			checkCVVInput = false;
 		}
-		System.out.println("Check CVV is: "+ checkCVVInput);
 
 		return checkCVVInput;
 	}
@@ -178,8 +172,6 @@ public class PaymentInfo extends CardScreen {
 			checkZip = false;
 		}
 
-		System.out.println("Check zip is: " + checkZip);
-
 		return checkZip;
 	}
 
@@ -194,7 +186,6 @@ public class PaymentInfo extends CardScreen {
 		Matcher m = specialC.matcher(cardHoldName.getText());
 		Matcher digitM = digitP.matcher(cardHoldName.getText());
 		boolean checkNameBool = m.find() && digitM.find();
-		System.out.println("Check name is: " + checkNameBool);
 		return !checkNameBool;
 	}
 

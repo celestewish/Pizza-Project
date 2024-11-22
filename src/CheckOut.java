@@ -9,6 +9,7 @@ import java.awt.*;
  */
 public class CheckOut extends CardScreen {
     private JPanel pnlCheckOut;
+    
     private JButton proceedToPaymentButton;
     private JButton btnHome;
     private JButton btnMenu;
@@ -21,7 +22,7 @@ public class CheckOut extends CardScreen {
     private JPanel pnlCartLogo;
     private JPanel pnlLogo;
     private JScrollPane showOrder;
-    private JTextArea orderShown;
+    private JTextArea txtAreaOrderShown;
     private JLabel lblCheckName;
     private JLabel lblCheckEmail;
     private JLabel lblCheckPhone;
@@ -50,7 +51,7 @@ public class CheckOut extends CardScreen {
         //proceeds to the receipt
         proceedToPaymentButton.addActionListener(_ -> showScreen(Screen.PAYMENT_INFO));
 
-
+        txtAreaOrderShown.setFocusable(false);
     }
 
     /**
@@ -61,7 +62,7 @@ public class CheckOut extends CardScreen {
      */
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
-        orderShown.setText(null);//clears the order shown in the checkout screen when leaving the screen
+        txtAreaOrderShown.setText(null);//clears the order shown in the checkout screen when leaving the screen
         return true;
     }
 
@@ -96,8 +97,8 @@ public class CheckOut extends CardScreen {
 
         //prints out the current order, if the order changes so will the JTextArea
         for(int i=0; i<info.getCurOrder().getItems().size(); i++){
-            orderShown.append(info.getCurOrder().getItems().get(i).toString() + "\n");
-            orderShown.setFont(info.getOptionsFont());
+            txtAreaOrderShown.append(info.getCurOrder().getItems().get(i).toString() + "\n");
+            txtAreaOrderShown.setFont(info.getOptionsFont());
         }
     
     }

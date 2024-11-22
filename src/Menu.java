@@ -71,7 +71,6 @@ public class Menu extends CardScreen {
 	private JButton btnAddDrink;
 	private JButton btnEditDrinks;
 	private JTextArea txtAreaDrinkInfo;
-
 	
 	private double currentVerticalScrollPos = 0;
 	
@@ -140,7 +139,7 @@ public class Menu extends CardScreen {
 		});
 	}
 	
-//allows user the view the order screen
+	//allows user the view the order screen
 	public void viewOrderScreen() {
         JPanel orderPanel = new JPanel();
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
@@ -154,7 +153,7 @@ public class Menu extends CardScreen {
 		
         JOptionPane.showMessageDialog(null, orderPanel, "View Order", JOptionPane.INFORMATION_MESSAGE);
     }
-//leaving the screen
+	//leaving the screen
 	@Override
 	public boolean onAttemptLeaveScreen(Screen destinationScreen) {
 		return true;
@@ -173,13 +172,14 @@ public class Menu extends CardScreen {
 		resetScreen();
 		resetCostFields();
 		
-		refillInfoFields();
+		updateFields();
+		
 		updateSubCostField(lblPizzaPrice, new Pizza());
 		currentVerticalScrollPos = 0;
 		SwingUtilities.invokeLater(() -> scrollPane.getViewport().setViewPosition((new Point(0, 0))));
 		info.setCurPizza(null);
 	}
-	//images
+	// loading all the images onto panels
 	private void createUIComponents() {
 		pnlCartLogo = new ImagePanel("cart.png");
 		pnlLogo = new ImagePanel("PizzaLogo.png");
@@ -236,8 +236,6 @@ public class Menu extends CardScreen {
 		
 		UIManager.put("Button.font", originalFont);
 		
-		System.out.println(info.getCurOrder().toString());
-		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		
 		DrinkSize selectedDrinkSize = drinkSizeMap.get((String) cobxSize.getSelectedItem());
@@ -265,7 +263,7 @@ public class Menu extends CardScreen {
 		currentVerticalScrollPos = scrollPane.getViewport().getViewPosition().getY();
 		// Create a panel to hold the combo box
 		JPanel panel = new JPanel();
-		JLabel txt1 = new JLabel("Choose Your Drink:");
+		JLabel txt1 = new JLabel("Choose a Dessert:");
 		txt1.setFont(info.getTextFont());
 		panel.add(txt1);
 		panel.add(cobxType);
@@ -285,8 +283,6 @@ public class Menu extends CardScreen {
 		);
 		
 		UIManager.put("Button.font", originalFont);
-		
-		System.out.println(info.getCurOrder().toString());
 		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		
@@ -341,8 +337,6 @@ public class Menu extends CardScreen {
 		);
 		UIManager.put("Button.font", originalFont);
 		
-		System.out.println(info.getCurOrder().toString());
-		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		int wingCt = cobxCount.getSelectedIndex() == 0 ? 5 : 10;
 		
@@ -391,8 +385,6 @@ public class Menu extends CardScreen {
 		);
 		UIManager.put("Button.font", originalFont);
 		
-		System.out.println(info.getCurOrder().toString());
-		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		int breadCt = cobxCount.getSelectedIndex() == 0 ? 5 : 10;
 		
@@ -440,8 +432,6 @@ public class Menu extends CardScreen {
 		);
 		UIManager.put("Button.font", originalFont);
 		
-		System.out.println(info.getCurOrder().toString());
-		
 		int count = cobxNumber.getSelectedIndex() + 1;
 		int knotCt = cobxCount.getSelectedIndex() == 0 ? 5 : 10;
 		
@@ -478,8 +468,6 @@ public class Menu extends CardScreen {
 				JOptionPane.PLAIN_MESSAGE  // Icon type
 		);
 		UIManager.put("Button.font", originalFont);
-		
-		System.out.println(info.getCurOrder().toString());
 		
 		int count = cobxCount.getSelectedIndex() + 1;
 		
@@ -534,7 +522,6 @@ public class Menu extends CardScreen {
 		updateSubCostField(lblSaladPrice, new Side(SideType.CAESAR_SALAD, 0, 1));
 		updateSubCostField(lblDrinkPrice, new Drink(DrinkSize.MEDIUM, DrinkType.DR_PEPPER, 0));
 		updateSubCostField(lblDessertPrice, new Dessert(DessertType.BROWNIE, 0));
-		System.out.println(info.getCurOrder().toString());
 	}
 	//resets cost fields
 	public void resetCostFields() {
@@ -556,7 +543,6 @@ public class Menu extends CardScreen {
 	//resets the scroll
 	public void resetScrollPos() {
 		SwingUtilities.invokeLater(() -> {
-			System.out.println("Setting scroll position to: " + currentVerticalScrollPos);
 			scrollPane.getViewport().setViewPosition(new Point(0, (int) currentVerticalScrollPos));
 		});
 		

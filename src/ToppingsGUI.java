@@ -149,6 +149,13 @@ public class ToppingsGUI extends CardScreen {
         
         btnCreate.addActionListener(_ -> {
             if (showConfirmationDialogueGreen("Add Pizza to Order?", "Are you finished making your pizza?")) {
+                if (info.getCurPizza() == null) {
+                    showWarningDialogue(
+                            "Something went wrong on our end. We are very sorry! Please try again.",
+                            "Okay",
+                            "An error occurred.");
+                    showScreen(Screen.MENU);
+                }
                 Pizza pizza = info.getCurPizza().clone();
                 
                 info.getCurOrder().addItem(new MenuItemWithCount(pizza, cobxCount.getSelectedIndex() + 1));
@@ -167,6 +174,10 @@ public class ToppingsGUI extends CardScreen {
             JComboBox<?> comboBox = entry.getValue(); // Get the JComboBox
             
             comboBox.addActionListener(_ -> {
+                if (info.getCurPizza() == null) {
+                    showScreen(Screen.MENU);
+                }
+                
                 if (placementMap.get((String) comboBox.getSelectedItem()) == ToppingPlacement.NONE) {
                     info.getCurPizza().removeTopping(topping);
                 }
@@ -214,13 +225,7 @@ public class ToppingsGUI extends CardScreen {
         if (orderComplete)
             return true;
         else {
-            boolean staying = showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
-            
-            if (!staying) {
-                info.setCurPizza(null);
-            }
-            
-            return staying;
+            return showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
         }
     }
 
@@ -241,6 +246,13 @@ public class ToppingsGUI extends CardScreen {
      */
     @Override
     public void onEnterScreen() {
+        if (info.getCurPizza() == null) {
+            showWarningDialogue(
+                    "Something went wrong on our end. We are very sorry! Please try again.",
+                    "Okay",
+                    "An error occurred.");
+            showScreen(Screen.MENU);
+        }
         updatePizzaCountComboBox(cobxCount);
         
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);

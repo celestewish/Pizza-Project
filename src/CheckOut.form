@@ -87,7 +87,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="b8e63" class="javax.swing.JTextArea" binding="orderShown">
+              <component id="b8e63" class="javax.swing.JTextArea" binding="txtAreaOrderShown">
                 <constraints/>
                 <properties/>
               </component>

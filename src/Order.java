@@ -164,10 +164,12 @@ public class Order {
 		}
 		
 		// Append payment information (cash or payment method)
-		if (cash) {
-			orderDetails.append("Payment: Cash\n");
-		} else {
-			orderDetails.append("Payment Method: ").append(payment).append("\n");
+		if (payment != null) {
+			if (cash) {
+				orderDetails.append("Payment: Cash\n");
+			} else {
+				orderDetails.append("Payment Method: ").append(payment).append("\n");
+			}
 		}
 		
 		// Append total cost of the order

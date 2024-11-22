@@ -35,7 +35,7 @@ public class Locations extends CardScreen{
 		screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
 		setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
-		btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_IN));
+		btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_UP));
 	}
 
 	/**
