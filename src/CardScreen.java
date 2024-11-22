@@ -621,40 +621,47 @@ public abstract class CardScreen {
 	 */
 	public boolean isEmailInvalid(JTextField t) {
 		String email = t.getText().trim();
-		boolean valid = true;
+
 		// Check if the email contains exactly one '@'
 		String[] parts = email.split("@");
 		if (parts.length != 2) {
-			valid = false;
+			showWarningDialogue(
+					"Please enter a valid email.",
+					"Okay",
+					"Email Invalid");
+			return true;
 		}
 		
 		// Check the local part (before '@')
 		String localPart = parts[0];
 		if (localPart.isEmpty()) {
-			valid = false;
+			showWarningDialogue(
+					"Please enter a valid email.",
+					"Okay",
+					"Email Invalid");
+			return true;
 		}
 		
 		// Check the domain part (after '@')
 		String domainPart = parts[1];
 		String[] domainParts = domainPart.split("\\.");
 		if (domainParts.length < 2) {
-			valid = false;
-		}
-		
-		// Ensure all domain parts are non-empty
-		for (String part : domainParts) {
-			if (part.isEmpty()) {
-				valid = false;
-				break;
-			}
-		}
-		
-		if (!valid) {
 			showWarningDialogue(
 					"Please enter a valid email.",
 					"Okay",
 					"Email Invalid");
 			return true;
+		}
+		
+		// Ensure all domain parts are non-empty
+		for (String part : domainParts) {
+			if (part.isEmpty()) {
+				showWarningDialogue(
+						"Please enter a valid email.",
+						"Okay",
+						"Email Invalid");
+				return true;
+			}
 		}
 		return false;
 	}

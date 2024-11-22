@@ -38,7 +38,10 @@
             <children>
               <component id="b8e63" class="javax.swing.JTextArea" binding="txtAreaOrderShown">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <background color="-1"/>
+                  <foreground color="-16777216"/>
+                </properties>
               </component>
             </children>
           </scrollpane>

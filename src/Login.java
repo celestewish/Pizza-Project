@@ -18,7 +18,6 @@ public class Login extends CardScreen {
 	
 	private JButton btnLogin;
 	private JButton btnCreateAccount;
-	private JButton LOGINBRUH;
 	
 	/**
 	 * Constructor for the Login screen.
@@ -38,14 +37,6 @@ public class Login extends CardScreen {
 		btnLogin.addActionListener(_ -> showScreen(Screen.SIGN_IN));
 		
 		btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_UP));
-		
-		LOGINBRUH.addActionListener(_ -> {
-			info.setLoggedIn(true);
-			info.setCurrentUser(new Customer("Clarence Jpmes JEWB", "r@r.r", "12duho", "Nowhere bruh", "1234567890"));
-			showScreen(Screen.MENU);
-			
-		}
-		);
 	}
 
 	/**
