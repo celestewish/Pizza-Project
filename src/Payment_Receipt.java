@@ -45,6 +45,8 @@ public class Payment_Receipt extends CardScreen{
 
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
         
+        addTotalCostField(lblTotalPrice);
+        
         lblTotalPrice.setText("Total Cost: $0.00");
         txtAreaOrderInfo.setFocusable(false);
         txtAreaOrderInfo.setFont(info.getTextFont());
