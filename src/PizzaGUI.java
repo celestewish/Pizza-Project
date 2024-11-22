@@ -3,6 +3,12 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents the graphical user interface (GUI) for creating a pizza.
+ * This screen allows users to select the crust type, pizza size, and sauce option,
+ * and proceed to customize their pizza further. It also handles user interactions
+ * and displays the total cost of the pizza being created.
+ */
 public class PizzaGUI extends CardScreen {
     private JPanel pnlCreatePizza;
     
@@ -29,7 +35,15 @@ public class PizzaGUI extends CardScreen {
     private JPanel imgSauce;
     
     private JLabel lblTotalCost;
-    
+
+    /**
+     * Constructs the PizzaGUI screen, sets up UI components, registers the screen,
+     * and defines the actions for user interactions such as selecting crust, size, and sauce.
+     *
+     * @param screenLayoutController The CardLayout used for screen transitions
+     * @param screenContainer The container holding all the screens
+     * @param panelName The name of the panel for this screen
+     */
     public PizzaGUI(CardLayout screenLayoutController, JPanel screenContainer, String panelName) {
         super(screenLayoutController, screenContainer, panelName);
         setScreenPanel(pnlCreatePizza);
@@ -124,7 +138,15 @@ public class PizzaGUI extends CardScreen {
             }
         });
     }
-    
+
+    /**
+     * Determines if the user can leave the current screen.
+     * If leaving to the toppings screen, allows the transition.
+     * Otherwise, asks for confirmation to abandon the current pizza creation.
+     *
+     * @param destinationScreen The screen the user is attempting to navigate to
+     * @return True if the user can leave the screen, otherwise false
+     */
     @Override
     public boolean onAttemptLeaveScreen(Screen destinationScreen) {
         if (destinationScreen.equals(Screen.TOPPINGS)) {
@@ -135,11 +157,21 @@ public class PizzaGUI extends CardScreen {
         }
     }
 
+    /**
+     * Defines the behavior when attempting to enter this screen.
+     *
+     * @param toScreen The screen being navigated to
+     * @return The screen to enter
+     */
     @Override
     public Screen onAttemptEnterScreen(Screen toScreen) {
         return toScreen;
     }
 
+    /**
+     * Defines actions to perform when entering this screen, including resetting the screen
+     * and clearing the pizza information.
+     */
     @Override
     public void onEnterScreen() {
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);
@@ -148,6 +180,9 @@ public class PizzaGUI extends CardScreen {
             info.setCurPizza(null);
         lblTotalCost.setText("");
     }
+    /**
+     * Initializes UI components like the logo and images for crust, size, and sauce.
+     */
 
     private void createUIComponents() {
         pnlCartLogo = new ImagePanel("cart.png");

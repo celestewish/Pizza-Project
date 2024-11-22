@@ -23,7 +23,7 @@ public class MenuItemWithCount {
 	public void setCount(int count) {
 		this.count = count;
 	}
-
+	
 	public void increaseCount() {
 		if (count < 10) {
 			count++;

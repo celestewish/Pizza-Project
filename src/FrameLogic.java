@@ -1,9 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The FrameLogic class represents the main frame for the application,
+ * which contains a variety of panels such as login, sign-up, menu, and more,
+ * using a CardLayout for navigation between different screens.
+ * This class is responsible for setting up the window and initializing
+ * various screens that the user can interact with.
+ */
 public class FrameLogic extends JFrame {
 	private JPanel screenContainer;
-	
+
+	/**
+	 * Constructs a new FrameLogic object that sets up the main window
+	 * and initializes various screens with CardLayout for navigation.
+	 */
 	public FrameLogic() {
 		setContentPane(screenContainer);
 		setTitle("Mom and Pop's Shop");
@@ -60,7 +71,8 @@ public class FrameLogic extends JFrame {
 		
 		DealsForUser dealsForUser = new DealsForUser((CardLayout)screenContainer.getLayout(), screenContainer,
 				"DealsForUser");
-		
+
+		// Initially show the login screen
 		((CardLayout) screenContainer.getLayout()).show(screenContainer, login.getPanelName());
 	}
 }

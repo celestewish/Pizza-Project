@@ -1,5 +1,10 @@
 import java.util.LinkedList;
 
+/**
+ * Represents an order containing a list of menu items with their respective quantities,
+ * along with delivery and payment methods.
+ * This class provides functionality to calculate the total cost, add/remove items, and more.
+ */
 public class Order {
 	private static int orderCounter = 1;
 	private final int orderNumber;
@@ -7,7 +12,15 @@ public class Order {
 	private DeliveryMethod deliveryMethod;
 	private boolean cash;
 	private Payment payment;
-	
+
+	/**
+	 * Constructor to create an order with a list of items, delivery method, payment type, and payment information.
+	 *
+	 * @param items          The list of `MenuItemWithCount` representing the items in the order.
+	 * @param deliveryMethod The delivery method for the order (e.g., delivery or pickup).
+	 * @param cash           True if the payment is made by cash; false otherwise.
+	 * @param payment        The payment object if the payment is not made by cash.
+	 */
 	public Order(LinkedList<MenuItemWithCount> items, DeliveryMethod deliveryMethod, boolean cash, Payment payment) {
 		orderNumber = orderCounter++;
 		this.items = items;
@@ -15,13 +28,23 @@ public class Order {
 		this.cash = cash;
 		this.payment = payment;
 	}
-	
+
+	/**
+	 * Constructor to create an order with a list of items, but without specifying payment or delivery method.
+	 *
+	 * @param items The list of `MenuItemWithCount` representing the items in the order.
+	 */
 	public Order(LinkedList<MenuItemWithCount> items) {
 		orderNumber = orderCounter++;
 		this.items = items;
 	}
-	
-	// Calculates the total cost of the order including the count
+
+	/**
+	 * Calculates the total cost of the order, including item prices and delivery charges.
+	 * If the delivery method is delivery, an additional charge is applied.
+	 *
+	 * @return The total cost of the order, including any delivery charges.
+	 */
 	public float calcTotalOrderCost() {
 		float total = 0;
 		
@@ -36,7 +59,12 @@ public class Order {
 		
 		return total;
 	}
-	
+
+	/**
+	 * Breaks down the total cost into categories by item type (e.g., pizza, drink, salad, etc.).
+	 *
+	 * @return A float array containing the total cost for each item category.
+	 */
 	public float[] totalCostBreakDown() {
 		float pizzaTotal = 0;
 		float drinkTotal = 0;
@@ -70,12 +98,23 @@ public class Order {
 		
 		return new float[]{pizzaTotal, drinkTotal, saladTotal, breadTotal, knotTotal, wingTotal, dessertTotal};
 	}
-	
+
+	/**
+	 * Getter for the list of items in the order.
+	 *
+	 * @return The list of `MenuItemWithCount` objects representing the items in the order.
+	 */
 	public LinkedList<MenuItemWithCount> getItems() {
 		return items;
 	}
-	
-	// Add item with count to the order. If item already exists, increment count.
+
+	/**
+	 * Adds a menu item to the order, updating the count if the item already exists.
+	 * If the item already exists in the order, its count will be incremented.
+	 *
+	 * @param item The `MenuItemWithCount` object representing the item to be added.
+	 * @return 1 if the item was added, 0 if the count was incremented, or -1 if the count could not be incremented.
+	 */
 	public int addItem(MenuItemWithCount item) {
 		for (MenuItemWithCount itemWithCount : items) {
 			if (itemWithCount.getItem().equals(item.getItem())) {
@@ -88,7 +127,12 @@ public class Order {
 		items.add(item);
 		return 1;
 	}
-	
+
+	/**
+	 * Gets the total number of pizzas in the order.
+	 *
+	 * @return The total count of pizzas in the order.
+	 */
 	public int getNumberPizzasInOrder() {
 		int total = 0;
 		for (MenuItemWithCount item : items) {
@@ -98,8 +142,13 @@ public class Order {
 		}
 		return total;
 	}
-	
-	// Remove item from the order
+
+	/**
+	 * Removes a menu item from the order.
+	 *
+	 * @param item The `MenuItem` to be removed from the order.
+	 * @return True if the item was successfully removed, false otherwise.
+	 */
 	public boolean removeItem(MenuItem item) {
 		for (MenuItemWithCount itemWithCount : items) {
 			if (itemWithCount.getItem().equals(item)) {
@@ -110,41 +159,75 @@ public class Order {
 		return false;
 	}
 
-	// Getter for the delivery method
+	/**
+	 * Getter for the delivery method of the order.
+	 *
+	 * @return The `DeliveryMethod` for this order.
+	 */
 	public DeliveryMethod getDeliveryMethod() {
 		return deliveryMethod;
 	}
 
-	// Setter for the delivery method
+	/**
+	 * Setter for the delivery method of the order.
+	 *
+	 * @param deliveryMethod The new `DeliveryMethod` for this order.
+	 */
 	public void setDeliveryMethod(DeliveryMethod deliveryMethod) {
 		this.deliveryMethod = deliveryMethod;
 	}
 
-	// Checks if the payment method is cash
+	/**
+	 * Checks if the payment is made by cash.
+	 *
+	 * @return True if the payment is made by cash, false otherwise.
+	 */
 	public boolean isCash() {
 		return cash;
 	}
 
-	// Setter for the cash payment status
+	/**
+	 * Setter for the cash payment status.
+	 *
+	 * @param cash True if the payment is made by cash, false otherwise.
+	 */
 	public void setCash(boolean cash) {
 		this.cash = cash;
 	}
 
-	// Getter for the payment object associated with the order
+	/**
+	 * Getter for the payment method used for this order.
+	 *
+	 * @return The `Payment` object representing the payment method.
+	 */
 	public Payment getPayment() {
 		return payment;
 	}
 
-	// Setter for the payment object associated with the order
+	/**
+	 * Setter for the payment method used for this order.
+	 *
+	 * @param payment The `Payment` object to set as the payment method for this order.
+	 */
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
 
-	// Getter for the order number
+	/**
+	 * Getter for the order number.
+	 *
+	 * @return The unique order number for this order.
+	 */
 	public int getOrderNumber() {
 		return orderNumber;
 	}
-	
+
+	/**
+	 * Returns a string representation of the order, including order details,
+	 * items, delivery method, payment method, and total cost.
+	 *
+	 * @return A string representation of the order.
+	 */
 	@Override
 	public String toString() {
 		StringBuilder orderDetails = new StringBuilder();
