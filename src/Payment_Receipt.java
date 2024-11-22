@@ -60,6 +60,7 @@ public class Payment_Receipt extends CardScreen{
     
     @Override
     public Screen onAttemptEnterScreen(Screen toScreen) {
+        txtAreaOrderInfo.setText(null);
         return toScreen;
     }
 
