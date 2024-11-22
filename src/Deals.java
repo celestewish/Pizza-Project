@@ -37,7 +37,7 @@ public class Deals extends CardScreen{
         //sets up the buttons seen at the top of the screen
         setUpNavBar_LoggedOut(btnHome, btnMenu, btnDeals, btnLocations, btnSignUp_SignIn);
         //button to create an account if needed
-        btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_IN));
+        btnCreateAccount.addActionListener(_ -> showScreen(Screen.SIGN_UP));
         btnOrdernow1.addActionListener(_ -> showScreen(Screen.SIGN_IN));
         btnOrdernow2.addActionListener(_ -> showScreen(Screen.SIGN_IN));
     }

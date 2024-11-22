@@ -18,6 +18,7 @@ public class Login extends CardScreen {
 	
 	private JButton btnLogin;
 	private JButton btnCreateAccount;
+	
 	/**
 	 * Constructor for the Login screen.
 	 *

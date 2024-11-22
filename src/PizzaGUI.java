@@ -153,13 +153,7 @@ public class PizzaGUI extends CardScreen {
             return true;
         }
         else {
-            boolean staying = showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
-            
-            if (!staying) {
-                info.setCurPizza(null);
-            }
-            
-            return staying;
+	        return info.isAttemptingLogout() && showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
         }
     }
 
@@ -185,6 +179,7 @@ public class PizzaGUI extends CardScreen {
         if (info.getCurPizza() != null)
             info.setCurPizza(null);
         lblTotalCost.setText("");
+        info.setAttemptingLogout(false);
     }
     /**
      * Initializes UI components like the logo and images for crust, size, and sauce.

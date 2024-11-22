@@ -15,9 +15,8 @@ public class Payment_Receipt extends CardScreen{
     private JLabel OrderPlace;
     private JLabel ThankYou;
     private JLabel OrderSummary;
-    private JLabel Total;
     private JLabel PaymentMethod;
-    private JLabel TotalInfo;
+    private JLabel lblTotalPrice;
     private JButton btnMenu;
     private JButton btnDeals;
     private JButton btnLocations;
@@ -28,7 +27,7 @@ public class Payment_Receipt extends CardScreen{
     private JPanel pnlCartLogo;
     private JPanel pnlLogo;
     private JScrollPane showOrder;
-    private JTextArea orderShown;
+    private JTextArea txtAreaOrderInfo;
 
     /**
      * Constructor for the CheckOut screen.
@@ -45,7 +44,10 @@ public class Payment_Receipt extends CardScreen{
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
 
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
-
+        
+        lblTotalPrice.setText("Total Cost: $0.00");
+        txtAreaOrderInfo.setFocusable(false);
+        txtAreaOrderInfo.setFont(info.getTextFont());
     }
     
     @Override
@@ -67,11 +69,12 @@ public class Payment_Receipt extends CardScreen{
     public void onEnterScreen() {
         setUpUserAndOrderInfo(lblHiName, lblCurTotal);
         for(int i=0; i<info.getCurOrder().getItems().size(); i++){
-            orderShown.append(info.getCurOrder().getItems().get(i).toString() + "\n");
-            orderShown.setFont(info.getOptionsFont());
+            txtAreaOrderInfo.append(info.getCurOrder().getItems().get(i).toString() + "\n");
+            txtAreaOrderInfo.setFont(info.getOptionsFont());
         }
-
-        TotalInfo.setText(String.valueOf(info.getCurOrder().calcTotalOrderCost()));
+        
+        lblTotalPrice.setText("Total Cost: $0.00");
+        updateTotalCostFields();
     }
 
     /**

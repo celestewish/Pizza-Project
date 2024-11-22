@@ -37,6 +37,7 @@ public class Drink extends MenuItem {
 			case SMALL -> total += 0;
 			case MEDIUM -> total += 1;
 			case LARGE -> total += 1.5F;
+			case AMERICAN_SIZE -> total += 5;
 		}
 
 		return total;

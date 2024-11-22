@@ -79,6 +79,32 @@ public class Pizza extends MenuItem {
 		
 		return pizza.toString();
 	}
+	
+	public String shortToString() {
+		StringBuilder pizza = new StringBuilder();
+		
+		// Append the size of pizza dynamically
+		pizza.append(Utils.enumToNormalCase(size)).append(" ");
+		
+		// Append the crust of pizza dynamically
+		pizza.append(Utils.enumToNormalCase(crust)).append(" ");
+		
+		// Append the sauce dynamically
+		pizza.append(Utils.enumToNormalCase(sauce)).append(" ");
+		
+		// Append the price (calculated with count externally)
+		pizza.append(" - $").append(String.format("%.2f", getPrice()));
+		
+		// Append the toppings
+		if (!toppings.isEmpty()) {
+			pizza.append(", Toppings:");
+			for (Topping topping : toppings) {
+				pizza.append(" ").append(topping.shortToString());
+			}
+		}
+		
+		return pizza.toString();
+	}
 
 
 	// Checks if the current pizza is equal to another pizza by comparing their size, crust, sauce, and toppings

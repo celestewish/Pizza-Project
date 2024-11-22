@@ -1,5 +1,6 @@
 public enum DrinkSize {
 	SMALL,
 	MEDIUM,
-	LARGE
+	LARGE,
+	AMERICAN_SIZE
 }
