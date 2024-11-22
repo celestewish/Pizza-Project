@@ -59,6 +59,7 @@ public class ToppingsGUI extends CardScreen {
     private JComboBox<Integer> cobxCount;
     private JTextArea txtareaPizzaInfo;
     private JLabel lblTotalCostPizzaPlusCount;
+    private JScrollPane scrollPane;
     
     private boolean orderComplete = false;
     
@@ -80,6 +81,8 @@ public class ToppingsGUI extends CardScreen {
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
         
         createUIComponents();
+        
+        scrollPane.getVerticalScrollBar().setUnitIncrement(20);
         
         addTotalCostField(lblCurTotal);
         
@@ -225,7 +228,7 @@ public class ToppingsGUI extends CardScreen {
         if (orderComplete)
             return true;
         else {
-            return showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
+            return info.isAttemptingLogout() && showConfirmationDialogue("Abandon Pizza?", "Yes, I want to abandon my pizza", "No, keep me here", "Are you sure?");
         }
     }
 
@@ -260,6 +263,8 @@ public class ToppingsGUI extends CardScreen {
         orderComplete = false;
         String output = "Total: " + info.formatter.format(info.getCurPizza().calcPrice() * (cobxCount.getSelectedIndex() + 1));
         lblTotalCostPizzaPlusCount.setText(output);
+        
+        info.setAttemptingLogout(false);
     }
     /**
      * Initializes custom UI components, such as logos.

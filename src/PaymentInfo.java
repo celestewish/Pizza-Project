@@ -53,6 +53,10 @@ public class PaymentInfo extends CardScreen {
 		
 		setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
 
+		txtAreaCustAddress.setFocusable(false);
+		txtAreaTotal.setFocusable(false);
+		txtAreaStoreAddress.setFocusable(false);
+		
 		btnReturn.addActionListener(_ -> showScreen(Screen.RETURN));
 		
 		//submits payment
@@ -223,7 +227,6 @@ public class PaymentInfo extends CardScreen {
 	public void onEnterScreen() {
 		setUpUserAndOrderInfo(lblHiName, lblCurTotal);
 		setUpForPaymentInfo(txtAreaTotal, txtAreaCustAddress);
-		txtAreaTotal.setFont(info.getTotalFont());
 		txtAreaCustAddress.setFont(info.getTextFont());
 		txtAreaStoreAddress.setText("680 Arnston Rd, Suite 161 Marietta, GA 30060");
 		txtAreaStoreAddress.setFont(info.getTextFont());

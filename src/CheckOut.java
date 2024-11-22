@@ -10,7 +10,6 @@ import java.awt.*;
 public class CheckOut extends CardScreen {
     private JPanel pnlCheckOut;
     
-    private JButton proceedToPaymentButton;
     private JButton btnHome;
     private JButton btnMenu;
     private JButton btnDeals;
@@ -21,13 +20,15 @@ public class CheckOut extends CardScreen {
     private JLabel lblCurTotal;
     private JPanel pnlCartLogo;
     private JPanel pnlLogo;
-    private JScrollPane showOrder;
+    private JScrollPane scrollPanelOrder;
     private JTextArea txtAreaOrderShown;
     private JLabel lblCheckName;
     private JLabel lblCheckEmail;
     private JLabel lblCheckPhone;
     private JLabel lblCheckOut;
-    private JLabel lbllYourInfo;
+    private JButton btnProceedToPayment;
+    private JButton btnReturn;
+    private JLabel lblYourInfo;
     private JLabel lblName;
     private JLabel lblEmail;
     private JLabel lblPhone;
@@ -46,10 +47,11 @@ public class CheckOut extends CardScreen {
         screenContainer.add(this.getScreenPanel(), this.getPanelName());
         //sets up the buttons ont the top of the screen
         setUpNavBar_LoggedIn(btnHome, btnMenu, btnDeals, btnLocations, btnSignOut, btnCart);
-
-
+        
+        btnReturn.addActionListener(_ -> showScreen(Screen.MENU));
+        
         //proceeds to the receipt
-        proceedToPaymentButton.addActionListener(_ -> showScreen(Screen.PAYMENT_INFO));
+        btnProceedToPayment.addActionListener(_ -> showScreen(Screen.PAYMENT_INFO));
 
         txtAreaOrderShown.setFocusable(false);
     }
@@ -88,18 +90,9 @@ public class CheckOut extends CardScreen {
         //sets up the name, email, and phone for the order
         setUpForCheckOut(lblCheckName, lblCheckEmail, lblCheckPhone);
 
-        lblCheckOut.setFont(info.getCheckOutFont1());
-        lbllYourInfo.setFont(info.getCheckOutFont1());
-        lblName.setFont(info.getCheckOutFont2());
-        lblEmail.setFont(info.getCheckOutFont2());
-        lblPhone.setFont(info.getCheckOutFont2());
-
-
         //prints out the current order, if the order changes so will the JTextArea
-        for(int i=0; i<info.getCurOrder().getItems().size(); i++){
-            txtAreaOrderShown.append(info.getCurOrder().getItems().get(i).toString() + "\n");
-            txtAreaOrderShown.setFont(info.getOptionsFont());
-        }
+        txtAreaOrderShown.setFont(info.getTextFont());
+        txtAreaOrderShown.setText(info.getCurOrder().toString());
     
     }
     /**

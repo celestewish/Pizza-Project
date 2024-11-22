@@ -27,12 +27,12 @@ public class Cart extends CardScreen {
 	private JButton btnRemove;
 	private JLabel SecondDescription;
 	private JPanel orderPanel;
-	private JButton returnButton;
 	private JButton btnCheckout;
 	private JPanel pnlOrder;
 	private JTextField textField1;
 	private JTextArea txtAreaOrder;
 	private JScrollPane scrollPane;
+	private JButton btnReturn;
 	
 	/**
 	 * Constructor for the Cart screen.
@@ -57,7 +57,7 @@ public class Cart extends CardScreen {
 		addTotalCostField(lblCurTotal);
 		
 		btnRemove.addActionListener(_ -> showDropdownPopup());
-		returnButton.addActionListener(_ -> showScreen(Screen.MENU));
+		btnReturn.addActionListener(_ -> showScreen(Screen.MENU));
 		btnCheckout.addActionListener(_ -> {
 			if (info.getCurOrder().getItems().isEmpty())
 				showInfoDialogue("Your cart is empty, you can't check out!", "Okay", "No items to check out with");
@@ -205,7 +205,7 @@ public class Cart extends CardScreen {
 							JOptionPane.INFORMATION_MESSAGE
 					);
 				} else {
-					JLabel errorMessage = new JLabel("Cannot decrease further. Use 'Remove Completely' to remove the item.");
+					JLabel errorMessage = new JLabel("Cannot decrease further. Use the remove button instead.");
 					errorMessage.setFont(customFont);
 					JOptionPane.showMessageDialog(
 							null,

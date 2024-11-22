@@ -61,21 +61,25 @@ public abstract class CardScreen {
 	/**
 	 * Signs the user out of the application after confirming the action with the user.
 	 *
-	 * @param info program information that contains user session data
 	 * @return true if the user successfully signed out, false otherwise
 	 */
-	public boolean onSignOut(ProgramInfo info) {
+	public boolean onAttemptSignOut() {
 		if (showConfirmationDialogue(
 				"Would you like to sign out?",
 				"Yes, sign me out",
 				"No, keep me signed in", "Sign out?")) {
-			info.setCurrentUser(null);
-			info.setCurPizza(null);
-			info.setCurOrder(null);
-			info.setLoggedIn(false);
+			info.setAttemptingLogout(true);
 			return true;
 		}
 		return false;
+	}
+	
+	public void onSignOut() {
+		info.setCurrentUser(null);
+		info.setCurPizza(null);
+		info.setCurOrder(null);
+		info.setLoggedIn(false);
+		showScreen(Screen.LOGIN);
 	}
 
 	/**
@@ -146,7 +150,7 @@ public abstract class CardScreen {
 	 * @param menu the menu button
 	 * @param deals the deals button
 	 * @param locations the locations button
-	 * @param sign_out the sign out button
+	 * @param sign_out the sign-out button
 	 * @param cart the cart button
 	 */
 	public void setUpNavBar_LoggedIn(JButton home, JButton menu, JButton deals, JButton locations, JButton sign_out, JButton cart) {
@@ -156,7 +160,7 @@ public abstract class CardScreen {
 		locations.addActionListener(_ -> showScreen(Screen.LOCATIONS));
 		cart.addActionListener(_ -> showScreen(Screen.CART));
 		sign_out.addActionListener(_ -> {
-			if (!onSignOut(info))
+			if (!onAttemptSignOut())
 				return;
 			showScreen(Screen.LOGIN);
 		});

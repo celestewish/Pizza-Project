@@ -13,6 +13,7 @@ public class ProgramInfo {
 	private final UserDatabase userDatabase;
 	private Screen curScreen;
 	private Screen lastScreen;
+	private boolean isAttemptingLogout;
 
 	//fonts used for screens
 	private final Font comboBoxFont = new Font("Times New Roman", Font.PLAIN, 24);
@@ -40,6 +41,7 @@ public class ProgramInfo {
 		curScreen = Screen.LOGIN;
 		lastScreen = null;
 		formatter = new DecimalFormat("#0.00");
+		isAttemptingLogout = false;
 	}
 
 
@@ -194,4 +196,12 @@ public class ProgramInfo {
 
 	public Font getCheckOutFont1(){return checkOutFont1;}
 	public Font getCheckOutFont2(){return checkOutFont2;}
+	
+	public boolean isAttemptingLogout() {
+		return isAttemptingLogout;
+	}
+	
+	public void setAttemptingLogout(boolean attemptingLogout) {
+		isAttemptingLogout = attemptingLogout;
+	}
 }
